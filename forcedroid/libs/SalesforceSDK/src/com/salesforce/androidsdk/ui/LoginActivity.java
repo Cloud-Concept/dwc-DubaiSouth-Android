@@ -204,7 +204,7 @@ public class LoginActivity extends AccountAuthenticatorActivity
 	@Override
 	public void loadingLoginPage(String loginUrl) {
 		final ActionBar ab = getActionBar();
-		ab.setTitle(loginUrl);
+		ab.setTitle("Dubai South");
 	}
 
 	@Override

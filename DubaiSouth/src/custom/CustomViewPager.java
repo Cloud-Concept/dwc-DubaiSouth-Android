@@ -6,8 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.google.gson.Gson;
-
 /**
  * Created by Abanoub Wagdy on 9/6/2015.
  */
@@ -52,8 +50,8 @@ public class CustomViewPager extends ViewPager {
     @Override
     protected boolean canScroll(View v, boolean checkV, int dx, int x, int y) {
         if (v != this && (v instanceof HorizontalListView)) {
-            v.requestFocus();
-            v.getParent().requestDisallowInterceptTouchEvent(true);
+//            v.requestFocus();
+//            v.getParent().requestDisallowInterceptTouchEvent(true);
 //            ((HorizontalListView) v).requestDisallowInterceptTouchEvent(false);
 //            HorizontalListView listView = (HorizontalListView) v;
 //            HorizontalListViewAdapter adapter = (HorizontalListViewAdapter) listView.getAdapter();
