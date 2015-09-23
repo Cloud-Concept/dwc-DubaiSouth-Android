@@ -427,7 +427,6 @@ public class HomepageActivity extends Activity implements
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
         if (!new StoreData(getApplicationContext()).getUserID().equals("")) {
             setContentView(R.layout.homepage);
-            Utilities.showloadingDialog(this);
             InitializeViews();
         }
     }
@@ -624,6 +623,7 @@ public class HomepageActivity extends Activity implements
                             if (Utilities.getIsProgressLoading()) {
                                 Utilities.dismissLoadingDialog();
                             }
+                            Utilities.setUserPhoto(HomepageActivity.this, _user.get_contact().get_account().getCompany_Logo(), smartCompanyImage);
                             tvCompanyName.setText(_user.get_contact().get_account().getName());
                             tvLicenseNumber.setText(_user.get_contact().get_account().getLicenseNumberFormula());
                             tvLicenseExpiry.setText(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date());
