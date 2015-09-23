@@ -1,0 +1,4 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Text1"
+    style="@style/SmartStore.Inspector.Cell" />
+<!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartStore/res/layout/sf__inspector_result_cell.xml --><!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/DubaiSouth.forcedroid.libs/SmartStore/unspecified/res/layout/sf__inspector_result_cell.xml -->

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\DubaiSouth\forcedroid\libs\SmartStore\assets"><file name="icudt46l.zip" path="D:\DubaiSouth\forcedroid\libs\SmartStore\assets\icudt46l.zip"/></source></dataSet><dataSet config="debug"><source path="D:\DubaiSouth\forcedroid\libs\SmartStore\build-types\debug\assets"/></dataSet></merger>

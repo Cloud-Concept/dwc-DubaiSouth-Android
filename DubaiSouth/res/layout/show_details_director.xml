@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@color/header_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="Show Details"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/service_show_details" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/image">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Name"
+            android:id="@+id/textView65"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="27dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:gravity="center"
+            android:id="@+id/tvName"
+            android:layout_alignTop="@+id/textView65"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView69" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Nationality"
+            android:id="@+id/textView67"
+            android:layout_below="@+id/textView65"
+            android:layout_alignStart="@+id/textView65"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:gravity="center"
+            android:id="@+id/tvNationality"
+            android:layout_above="@+id/textView69"
+            android:layout_alignEnd="@+id/tvName"
+            android:layout_toEndOf="@+id/textView69" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Passport Number"
+            android:id="@+id/textView69"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/textView67"
+            android:layout_alignStart="@+id/textView67" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:gravity="center"
+            android:id="@+id/tvPassportNumber"
+            android:layout_above="@+id/textView71"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView69" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Role"
+            android:id="@+id/textView71"
+            android:layout_below="@+id/textView69"
+            android:layout_alignStart="@+id/textView69"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:gravity="center"
+            android:id="@+id/tvRole"
+            android:layout_alignTop="@+id/textView71"
+            android:layout_alignStart="@+id/tvPassportNumber" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Start Date"
+            android:id="@+id/textView73"
+            android:layout_below="@+id/textView71"
+            android:layout_marginTop="25dp"
+            android:layout_alignStart="@+id/textView71" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:gravity="center"
+            android:id="@+id/tvStartDate"
+            android:layout_alignTop="@+id/textView73"
+            android:layout_alignStart="@+id/tvRole" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,5 @@
+include ':forcedroid:libs:SmartSync', ':library', ':jackson-all-1.9.0'
+include ':forcedroid:external:cordova:framework'
+include ':forcedroid:libs:SmartStore'
+include ':DubaiSouth'
+include ':forcedroid:libs:SalesforceSDK'

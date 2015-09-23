@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Issue Date"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/issueDate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:textColorHint="@color/light_grey"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_edit_text_background" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Expire Date"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/expireDate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:textColorHint="@color/light_grey"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_edit_text_background" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Commercial Name"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/commercialName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:textColorHint="@color/light_grey"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_edit_text_background" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Commercial Name Arabic"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/commercialNameArabic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:textColorHint="@color/light_grey"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_edit_text_background" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="License Number"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/licenseNumber"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:textColorHint="@color/light_grey"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/search_edit_text_background" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
