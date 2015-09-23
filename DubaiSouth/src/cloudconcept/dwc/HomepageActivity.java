@@ -496,6 +496,7 @@ public class HomepageActivity extends Activity implements
                     return;
                 } else {
                     try {
+                        Utilities.showloadingDialog(HomepageActivity.this);
                         new StoreData(getApplicationContext()).saveUserID(SalesforceSDKManager.getInstance().getUserAccountManager().getCurrentUser().getUserId());
                         sendRequestCompanyInfo(HomepageActivity.this, client);
                     } catch (UnsupportedEncodingException e) {
@@ -632,7 +633,7 @@ public class HomepageActivity extends Activity implements
                     sendNotificationCountRequestInAnotherThread(_user, client);
                 }
             }).start();
-        }else{
+        } else {
             String soql = SoqlStatements.soql_company_info + "\'" + new StoreData(act.getApplicationContext()).getUserID() + "\'";
 
             final RestRequest restRequest = RestRequest.getRequestForQuery(
@@ -742,7 +743,7 @@ public class HomepageActivity extends Activity implements
 
         new StoreData(getApplicationContext()).setUsername(_user.get_contact().getName());
         findViewById(R.id.root).setVisibility(View.VISIBLE);
-        if (Utilities.getIsProgressLoading()) {
+        if (Utilities._progress != null && Utilities.getIsProgressLoading()) {
             Utilities.dismissLoadingDialog();
         }
         tvCompanyName.setText(_user.get_contact().get_account().getName());

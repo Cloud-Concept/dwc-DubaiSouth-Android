@@ -2256,7 +2256,7 @@ import model.WebForm;
 public class Utilities {
 
     static ProgressBar mProgressBar;
-    private static ProgressDialog _progress;
+    public static ProgressDialog _progress;
     private static Receipt_Template__c eServiceAdministration;
     private static String Amount;
     private static String TotalAmount;
