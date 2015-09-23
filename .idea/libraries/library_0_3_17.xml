@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="library-0.3.17">
+    <ANNOTATIONS>
+      <root url="jar://$PROJECT_DIR$/DubaiSouth/build/intermediates/exploded-aar/com.marshalchen.ultimaterecyclerview/library/0.3.17/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/DubaiSouth/build/intermediates/exploded-aar/com.marshalchen.ultimaterecyclerview/library/0.3.17/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/DubaiSouth/build/intermediates/exploded-aar/com.marshalchen.ultimaterecyclerview/library/0.3.17/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

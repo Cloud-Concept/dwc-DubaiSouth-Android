@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DubaiSouth/DubaiSouth.iml" filepath="$PROJECT_DIR$/DubaiSouth/DubaiSouth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/SalesforceSDK.iml" filepath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/SalesforceSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/libs/SmartStore/SmartStore.iml" filepath="$PROJECT_DIR$/forcedroid/libs/SmartStore/SmartStore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/libs/SmartSync/SmartSync.iml" filepath="$PROJECT_DIR$/forcedroid/libs/SmartSync/SmartSync.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/external/cordova/cordova.iml" filepath="$PROJECT_DIR$/forcedroid/external/cordova/cordova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dwc-DubaiSouth-Android.iml" filepath="$PROJECT_DIR$/dwc-DubaiSouth-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/external/external.iml" filepath="$PROJECT_DIR$/forcedroid/external/external.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/forcedroid.iml" filepath="$PROJECT_DIR$/forcedroid/forcedroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/external/cordova/framework/framework.iml" filepath="$PROJECT_DIR$/forcedroid/external/cordova/framework/framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jackson-all-1.9.0/jackson-all-1.9.0.iml" filepath="$PROJECT_DIR$/jackson-all-1.9.0/jackson-all-1.9.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forcedroid/libs/libs.iml" filepath="$PROJECT_DIR$/forcedroid/libs/libs.iml" />
+    </modules>
+  </component>
+</project>
