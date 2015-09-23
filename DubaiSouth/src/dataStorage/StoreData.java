@@ -166,7 +166,7 @@ public class StoreData {
         return b;
     }
 
-    public void reset(){
+    public void reset() {
         sharedPreferences = context.getSharedPreferences(DATABASE_NAME,
                 Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -203,7 +203,7 @@ public class StoreData {
 
     public boolean getIsHomepageDataLoaded() {
         boolean b = sharedPreferences.getBoolean("HomepageDataLoaded",
-                true);
+                false);
         return b;
 
     }

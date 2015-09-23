@@ -4,4 +4,4 @@
 		<bitmap android:src="@drawable/sf__header_bg" />
 	</item>
 </layer-list>
-<!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/drawable-xlarge/sf__login_content_header.xml --><!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/DubaiSouth.forcedroid.libs/SalesforceSDK/unspecified/res/drawable-xlarge-v4/sf__login_content_header.xml -->
+<!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/drawable-xlarge/sf__login_content_header.xml --><!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SalesforceSDK/unspecified/res/drawable-xlarge-v4/sf__login_content_header.xml -->

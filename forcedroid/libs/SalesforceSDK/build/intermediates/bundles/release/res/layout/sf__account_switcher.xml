@@ -19,4 +19,4 @@
         style="@style/SalesforceSDK.AccountSwitcher.Button.AddAccount"
         android:onClick="switchToNewAccount" />
 </LinearLayout>
-<!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/layout/sf__account_switcher.xml -->
+<!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/layout/sf__account_switcher.xml -->

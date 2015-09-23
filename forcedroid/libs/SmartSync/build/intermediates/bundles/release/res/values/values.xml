@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartSync/res/values/colors.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartSync/res/values/colors.xml -->
     <eat-comment/>
     <color name="record_account">#ff3e80c3</color>
     <color name="record_campaign">#ffedb93b</color>
@@ -10,7 +10,7 @@
     <color name="record_opportunity">#fff9cb2c</color>
     <color name="record_other">#ffbbbbbb</color>
     <color name="record_task">#ff1bb68c</color>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartSync/res/values/strings.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartSync/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">SmartSync</string>
     <string name="app_package">com.salesforce.androidsdk.smartsync</string>

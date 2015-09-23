@@ -68,4 +68,4 @@
         android:id="@+id/sf__inspector_result_grid"
         style="@style/SmartStore.Inspector.GridView" />
 
-</LinearLayout><!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartStore/res/layout/sf__inspector.xml --><!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/DubaiSouth.forcedroid.libs/SmartStore/unspecified/res/layout/sf__inspector.xml -->
+</LinearLayout><!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/res/layout/sf__inspector.xml --><!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SmartStore/unspecified/res/layout/sf__inspector.xml -->

@@ -17,4 +17,4 @@
     <feature name="com.salesforce.smartstore"><param name="android-package" value="com.salesforce.androidsdk.smartstore.phonegap.SmartStorePlugin"/></feature>
     <feature name="com.salesforce.smartsync"><param name="android-package" value="com.salesforce.androidsdk.smartsync.phonegap.SmartSyncPlugin"/></feature>
 </widget>
-<!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartSync/res/xml/config.xml -->
+<!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartSync/res/xml/config.xml -->
