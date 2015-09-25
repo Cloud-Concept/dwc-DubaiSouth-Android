@@ -303,5 +303,38 @@ public class StoreData {
         return b;
     }
 
+    public void setMyRequestsStatus(String s) {
+        editor.putString("MyRequestsStatus", s);
+        editor.commit();
+    }
 
+
+    public String getMyRequestsStatus() {
+
+        String b = sharedPreferences.getString("MyRequestsStatus",
+                "");
+        return b;
+    }
+
+    public void setMyRequestsRequestType(String s) {
+        editor.putString("MyRequestsRequestType", s);
+        editor.commit();
+    }
+
+    public String getMyRequestsRequestType() {
+        String b = sharedPreferences.getString("MyRequestsRequestType",
+                "");
+        return b;
+    }
+
+    public void setLastMyRequestsResponse(String s) {
+        editor.putString("MyRequestsResponse", s);
+        editor.commit();
+    }
+
+    public String getLastMyRequestsResponse() {
+        String b = sharedPreferences.getString("MyRequestsResponse",
+                "");
+        return b;
+    }
 }

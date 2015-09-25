@@ -220,7 +220,7 @@ public class VisitVisaFragment extends Fragment {
                     offset += limit;
                 }
 
-                if (callType == CallType.SPINNETCHANGEDDATA) {
+                if (callType == CallType.SPINNETCHANGEDDATA || callType == CallType.FIRSTTIME) {
                     Utilities.showloadingDialog(getActivity());
                 }
                 new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
@@ -234,7 +234,7 @@ public class VisitVisaFragment extends Fragment {
                                 @Override
                                 public void onSuccess(RestRequest request, RestResponse result) {
                                     try {
-                                        if (callType == CallType.SPINNETCHANGEDDATA) {
+                                        if (callType == CallType.SPINNETCHANGEDDATA || callType == CallType.FIRSTTIME) {
                                             Utilities.dismissLoadingDialog();
                                         } else {
                                             mSwipeRefreshLayout.setRefreshing(false);
