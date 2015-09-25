@@ -17,7 +17,7 @@
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:background="@drawable/reports_myrequests" />
+            android:background="@mipmap/reports_myrequests" />
 
         <TextView
             android:id="@+id/tvMyRequests"
@@ -44,7 +44,7 @@
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:background="@drawable/statement_of_account" />
+            android:background="@mipmap/statement_of_account" />
 
         <TextView
             android:id="@+id/tvStatementOfAccount"

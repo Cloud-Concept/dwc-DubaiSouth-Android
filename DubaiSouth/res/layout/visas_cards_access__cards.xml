@@ -25,7 +25,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_weight="1"
-                android:background="@drawable/spinner_background"
+                android:background="@mipmap/spinner_background"
                 android:entries="@array/permanent_employee_filter"
                 android:keepScreenOn="true"
                 android:padding="5dp"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/new_card" />
+                android:background="@mipmap/new_card" />
 
             <TextView
                 android:id="@+id/tvNewCard"

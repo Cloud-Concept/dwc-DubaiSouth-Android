@@ -80,7 +80,7 @@ public class PayAndSubmit extends Fragment {
 
         ref.setText(activity.getCaseNumber());
 
-        image.setImageResource(R.drawable.renew_license);
+        image.setImageResource(R.mipmap.renew_license);
 
 
         DrawLayout(inflater);

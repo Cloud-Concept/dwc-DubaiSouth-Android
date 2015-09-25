@@ -23,7 +23,7 @@
         android:layout_marginRight="21dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edit_text_background_disabled"
+        android:background="@mipmap/edit_text_background_disabled"
         android:gravity="center"
         android:textColor="@color/white" />
 
@@ -47,7 +47,7 @@
         android:layout_marginRight="21dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edit_text_background_disabled"
+        android:background="@mipmap/edit_text_background_disabled"
         android:gravity="center"
         android:textColor="@color/white" />
 
@@ -70,7 +70,7 @@
         android:layout_marginRight="21dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/search_edit_text_background"
+        android:background="@mipmap/search_edit_text_background"
         android:gravity="center" />
 
     <TextView
@@ -92,7 +92,7 @@
         android:layout_marginRight="21dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/search_edit_text_background"
+        android:background="@mipmap/search_edit_text_background"
         android:gravity="center" />
 
 

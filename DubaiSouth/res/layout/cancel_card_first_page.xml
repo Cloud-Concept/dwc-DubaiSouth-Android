@@ -24,7 +24,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView18"
-        android:background="@drawable/search_edit_text_background"
+        android:background="@mipmap/search_edit_text_background"
         android:gravity="center"
         android:textSize="10sp" />
 
@@ -46,7 +46,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@+id/textView19"
-        android:background="@drawable/search_edit_text_background"
+        android:background="@mipmap/search_edit_text_background"
         android:gravity="center"
         android:textSize="10sp" />
 
@@ -60,7 +60,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/spinner_background" />
+        android:background="@mipmap/spinner_background" />
 
     <TextView
         android:id="@+id/tvDuration"

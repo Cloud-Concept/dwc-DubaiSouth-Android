@@ -55,12 +55,12 @@ public class CertificatesAdapter extends ClickableListAdapter {
         ArrayList<ServiceItem> _items = new ArrayList<>();
 
         if (eServices_document_checklist__c.getOriginal_can_be_Requested__c()) {
-            _items.add(new ServiceItem("Request True Copy", R.drawable.copy));
+            _items.add(new ServiceItem("Request True Copy", R.mipmap.copy));
         }
 
         if (eServices_document_checklist__c.getAvailable_for_Preview__c()) {
             if (!eServices_document_checklist__c.getEService_Administration__r().getService_VF_Page__c().contains("<ContractId>") && !eServices_document_checklist__c.getEService_Administration__r().getService_VF_Page__c().contains("<tenId>")) {
-                _items.add(new ServiceItem("Preview", R.drawable.preview));
+                _items.add(new ServiceItem("Preview", R.mipmap.preview));
             }
         }
 

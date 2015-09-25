@@ -26,8 +26,8 @@ import cloudconcept.dwc.R;
 import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.Directorship;
-import model.SFServiceCall;
 import model.User;
+import utilities.CallType;
 
 /**
  * Created by Abanoub on 7/2/2015.
@@ -72,20 +72,20 @@ public class DirectorsFragment extends Fragment {
                         limit = offset;
                         offset = 0;
                     }
-                    CallDirectorsService(true, SFServiceCall.REFRESH);
+                    CallDirectorsService(true, CallType.REFRESH);
                 } else if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.BOTTOM) {
-                    CallDirectorsService(true, SFServiceCall.LOADMORE);
+                    CallDirectorsService(true, CallType.LOADMORE);
                 }
             }
         });
 
-        CallDirectorsService(true, SFServiceCall.FIRSTTIME);
+        CallDirectorsService(true, CallType.FIRSTTIME);
     }
 
-    private void CallDirectorsService(boolean b, final SFServiceCall serviceCall) {
+    private void CallDirectorsService(boolean b, final CallType serviceCall) {
         Gson gson = new Gson();
         User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-        if (serviceCall == SFServiceCall.LOADMORE) {
+        if (serviceCall == CallType.LOADMORE) {
             offset += 10;
             limit = 10;
         }
@@ -107,10 +107,10 @@ public class DirectorsFragment extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse response) {
 
-                                if (serviceCall == SFServiceCall.LOADMORE || serviceCall == SFServiceCall.REFRESH)
+                                if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
                                     swipyRefreshLayout.setRefreshing(false);
 
-                                if (serviceCall == SFServiceCall.LOADMORE) {
+                                if (serviceCall == CallType.LOADMORE) {
                                     if (lastReponseString.equals("") || !lastReponseString.equals(response.toString())) {
                                         directorships.addAll(SFResponseManager.parseDirectionshipObject(response.toString()));
                                     }

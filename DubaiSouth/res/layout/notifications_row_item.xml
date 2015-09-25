@@ -20,7 +20,7 @@
         android:layout_marginRight="5dp"
         android:visibility="invisible"
         android:layout_below="@+id/tvNotificationMessage"
-        android:background="@drawable/icon_next" />
+        android:background="@mipmap/icon_next" />
 
     <TextView
         android:id="@+id/tvNotificationMessage"

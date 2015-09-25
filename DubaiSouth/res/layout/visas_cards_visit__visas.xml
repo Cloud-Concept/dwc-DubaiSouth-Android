@@ -20,7 +20,7 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/spinner_background"
+            android:background="@mipmap/spinner_background"
             android:entries="@array/permanent_employee_filter"
             android:keepScreenOn="true"
             android:padding="5dp"

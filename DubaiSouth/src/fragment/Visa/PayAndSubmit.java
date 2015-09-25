@@ -10,16 +10,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import cloudconcept.dwc.R;
-import fragmentActivity.CardActivity;
 import fragmentActivity.VisaActivity;
-import model.Card_Management__c;
-import model.FormField;
 
 /**
  * Created by M_Ghareeb on 8/26/2015.
@@ -84,10 +79,9 @@ public class PayAndSubmit extends Fragment {
 
         ref.setText(activity.getCaseNumber());
         if (activity.getType().equals("1"))
-            image.setImageResource(R.drawable.renew_visa);
+            image.setImageResource(R.mipmap.renew_visa);
         else if (activity.getType().equals("2"))
-            image.setImageResource(R.drawable.cancel_visa);
-
+            image.setImageResource(R.mipmap.cancel_visa);
 
         DrawLayout(inflater);
         return view;

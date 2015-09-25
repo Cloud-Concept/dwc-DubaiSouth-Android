@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_green"
@@ -23,9 +22,8 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_background"
-                android:gravity="center"
-                />
+                android:background="@mipmap/spinner_background"
+                android:gravity="center" />
 
 
         </RelativeLayout>
@@ -42,9 +40,8 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_background"
-                android:gravity="center"
-               />
+                android:background="@mipmap/spinner_background"
+                android:gravity="center" />
 
         </RelativeLayout>
 
@@ -62,13 +59,13 @@
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="15dp"
-            android:singleLine="true"
-            android:imeOptions="actionDone"
             android:layout_marginRight="15dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/textfield_bg"
             android:gravity="center"
             android:hint="Search"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             android:textSize="@dimen/text_view_size" />
 
     </RelativeLayout>

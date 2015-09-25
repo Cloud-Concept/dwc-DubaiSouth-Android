@@ -26,8 +26,8 @@ import cloudconcept.dwc.R;
 import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.LegalRepresentative;
-import model.SFServiceCall;
 import model.User;
+import utilities.CallType;
 
 /**
  * Created by Abanoub on 7/2/2015.
@@ -73,20 +73,20 @@ public class LegalRepresentativesFragment extends Fragment {
                         limit = offset;
                         offset = 0;
                     }
-                    CallLegalRepresentativesService(true, SFServiceCall.REFRESH);
+                    CallLegalRepresentativesService(true, CallType.REFRESH);
                 } else if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.BOTTOM) {
-                    CallLegalRepresentativesService(true, SFServiceCall.LOADMORE);
+                    CallLegalRepresentativesService(true, CallType.LOADMORE);
                 }
             }
         });
 
-        CallLegalRepresentativesService(true, SFServiceCall.FIRSTTIME);
+        CallLegalRepresentativesService(true, CallType.FIRSTTIME);
     }
 
-    private void CallLegalRepresentativesService(boolean b, final SFServiceCall serviceCall) {
+    private void CallLegalRepresentativesService(boolean b, final CallType serviceCall) {
         Gson gson = new Gson();
         User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-        if (serviceCall == SFServiceCall.LOADMORE) {
+        if (serviceCall == CallType.LOADMORE) {
             offset += 10;
             limit = 10;
         }
@@ -107,10 +107,10 @@ public class LegalRepresentativesFragment extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse response) {
 
-                                if (serviceCall == SFServiceCall.LOADMORE || serviceCall == SFServiceCall.REFRESH)
+                                if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
                                     swipyRefreshLayout.setRefreshing(false);
 
-                                if (serviceCall == SFServiceCall.LOADMORE) {
+                                if (serviceCall == CallType.LOADMORE) {
                                     if (lastReponseString.equals("") || !lastReponseString.equals(response.toString())) {
                                         legalRepresentatives.addAll(SFResponseManager.parseLegalRepresentativesObject(response.toString()));
                                     }

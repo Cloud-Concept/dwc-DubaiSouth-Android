@@ -38,8 +38,8 @@ import custom.PullAndLoadListView;
 import custom.PullToRefreshListView;
 import dataStorage.StoreData;
 import model.NotificationManagement;
-import model.SFServiceCall;
 import model.User;
+import utilities.CallType;
 import utilities.Utilities;
 
 /**
@@ -188,7 +188,7 @@ public class NotificationFragment extends Fragment {
                 if (aVoid.equals("success")) {
                     new StoreData(getActivity()).setNotificationCount("0");
                     ((BaseActivity)getActivity()).ManageBadgeNotification();
-                    CallOnRefreshNotificationService(SFServiceCall.REFRESH, offset, limit, client);
+                    CallOnRefreshNotificationService(CallType.REFRESH, offset, limit, client);
 
                 }
                 else {
@@ -202,7 +202,7 @@ public class NotificationFragment extends Fragment {
                             SalesforceSDKManager.getInstance().logout(getActivity());
                             return;
                         } else {
-                            CallOnRefreshNotificationService(SFServiceCall.LOADMORE, offset, limit, client);
+                            CallOnRefreshNotificationService(CallType.LOADMORE, offset, limit, client);
                         }
                     }
                 });
@@ -216,7 +216,7 @@ public class NotificationFragment extends Fragment {
         }
     }
 
-    private void CallOnRefreshNotificationService(final SFServiceCall callType, final int offset, int limit, RestClient client) {
+    private void CallOnRefreshNotificationService(final CallType callType, final int offset, int limit, RestClient client) {
 
         Gson gson = new Gson();
         User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
@@ -244,11 +244,11 @@ public class NotificationFragment extends Fragment {
                        // pullAndLoadListViewNotifications.setOnLoadMoreListener(null);
                     }
                     loadMoreResponse = result.toString();
-                    if (callType == SFServiceCall.LOADMORE) {
+                    if (callType == CallType.LOADMORE) {
                         pullAndLoadListViewNotifications.onLoadMoreComplete();
                         pullAndLoadListViewNotifications.setScrollingCacheEnabled(true);
 
-                    } else if (callType == SFServiceCall.REFRESH) {
+                    } else if (callType == CallType.REFRESH) {
                         pullAndLoadListViewNotifications.onRefreshComplete();
                     }
                     Utilities.dismissLoadingDialog();

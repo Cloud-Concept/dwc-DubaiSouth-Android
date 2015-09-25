@@ -98,7 +98,7 @@ public class NocPayAndSubmit extends Fragment {
         } else {
             ref.setText(CompanyNocMainFragment.caseNummberId);
             noc=CompanyNocMainFragment._noc;
-            image.setImageResource(R.drawable.company_noc);
+            image.setImageResource(R.mipmap.company_noc);
             labelPerson.setText("Company Name:");
         }
 

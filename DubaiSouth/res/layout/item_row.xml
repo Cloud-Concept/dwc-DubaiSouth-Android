@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
     android:layout_height="wrap_content"
     android:background="@color/dwc_blue_color"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
 
 
     <ImageView
+        android:id="@+id/rowIcon"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:id="@+id/rowIcon"
-        android:layout_marginLeft="15dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_launcher" />
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/dwc_launcher" />
 
     <TextView
+        android:id="@+id/rowText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
-        android:textAlignment="textStart"
-        android:textSize="15sp"
-        android:id="@+id/rowText"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/rowIcon" />
+        android:layout_toEndOf="@+id/rowIcon"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
 </RelativeLayout>

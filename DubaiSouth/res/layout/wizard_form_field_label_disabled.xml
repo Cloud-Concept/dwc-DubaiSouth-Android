@@ -29,6 +29,6 @@
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:enabled="false"
-        android:background="@drawable/edit_text_background_disabled" />
+        android:background="@mipmap/edit_text_background_disabled" />
 
 </RelativeLayout>

@@ -17,7 +17,7 @@
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:background="@drawable/company_noc" />
+            android:background="@mipmap/company_noc" />
 
         <TextView
             android:id="@+id/tvCompanyNOC"
@@ -44,7 +44,7 @@
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:background="@drawable/noc_service_image" />
+            android:background="@mipmap/noc_service_image" />
 
         <TextView
             android:id="@+id/tvEmployeeNOC"
@@ -69,7 +69,7 @@
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:background="@drawable/new_card" />
+            android:background="@mipmap/new_card" />
 
         <TextView
             android:id="@+id/tvNewCard"

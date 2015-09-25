@@ -55,12 +55,12 @@ public class ViewStatementAdapter extends RecyclerView.Adapter<ViewStatementAdap
 
         if (data.get(position).getEffectOnAccount().equals("Debit")) {
             holder.tvAmount.setText(Utilities.stringNotNull(data.get(position).getDebitAmount()) + " AED.");
-            holder.imageStatusDebitCredit.setBackgroundResource(R.drawable.payment_debit);
+            holder.imageStatusDebitCredit.setBackgroundResource(R.mipmap.payment_debit);
             holder.tvBalance.setVisibility(View.GONE);
             holder.tvBalanceLabel.setVisibility(View.GONE);
         } else {
             holder.tvAmount.setText(Utilities.stringNotNull(data.get(position).getCreditAmount()));
-            holder.imageStatusDebitCredit.setBackgroundResource(R.drawable.payment_credit);
+            holder.imageStatusDebitCredit.setBackgroundResource(R.mipmap.payment_credit);
             holder.tvBalance.setText(Utilities.stringNotNull(data.get(position).getClosingBalance()));
         }
 
@@ -276,12 +276,12 @@ public class ViewStatementAdapter extends RecyclerView.Adapter<ViewStatementAdap
 //
 //        if (item.getEffectOnAccount().equals("Debit")) {
 //            holder.tvAmount.setText(Utilities.stringNotNull(item.getDebitAmount()) + " AED.");
-//            holder.imageStatusDebitCredit.setBackgroundResource(R.drawable.payment_debit);
+//            holder.imageStatusDebitCredit.setBackgroundResource(R.mipmap.payment_debit);
 //            holder.tvBalance.setVisibility(View.GONE);
 //            holder.tvBalanceLabel.setVisibility(View.GONE);
 //        } else {
 //            holder.tvAmount.setText(Utilities.stringNotNull(item.getCreditAmount()));
-//            holder.imageStatusDebitCredit.setBackgroundResource(R.drawable.payment_credit);
+//            holder.imageStatusDebitCredit.setBackgroundResource(R.mipmap.payment_credit);
 //            holder.tvBalance.setText(Utilities.stringNotNull(item.getClosingBalance()));
 //        }
 //

@@ -69,9 +69,9 @@ public class DirectorsAdapter extends ClickableListAdapter {
         holder.tvStartDate.setText(_directorship.getDirectorship_Start_Date() == null ? "" : _directorship.getDirectorship_Start_Date());
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
-        _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         if (directorships != null && directorships.size() > 1) {
-            _items.add(new ServiceItem("Director Removal", R.drawable.reports_myrequests));
+            _items.add(new ServiceItem("Director Removal", R.mipmap.reports_myrequests));
         }
 
 //        holder.item.setOnClickListener(new ClickableListAdapter.OnClickListener(holder) {

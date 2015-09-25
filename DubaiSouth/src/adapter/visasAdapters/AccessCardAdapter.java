@@ -74,17 +74,17 @@ public class AccessCardAdapter extends ClickableListAdapter {
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 
         if (_cardManagement.getStatus__c().equals("Active")) {
-            _items.add(new ServiceItem("Cancel Card", R.drawable.cancel_card));
-            _items.add(new ServiceItem("Replace Card", R.drawable.replace_card));
+            _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
+            _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
         }
 
         Calendar _calendar = Calendar.getInstance();
         int DaysToExpire = (int) Utilities.daysDifference(_cardManagement.getCard_Expiry_Date__c());
         if (_cardManagement.getStatus__c().equals("Expired") || (_cardManagement.getStatus__c().equals("Active") && DaysToExpire < 7)) {
-            _items.add(new ServiceItem("Renew Card", R.drawable.renew_card));
+            _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
         }
 
-        _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
 
 //        holder.item.setOnClickListener(new OnClickListener(holder) {
 //

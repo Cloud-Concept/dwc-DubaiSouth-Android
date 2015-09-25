@@ -32,7 +32,7 @@
         android:layout_below="@+id/header"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:background="@drawable/service_show_details" />
+        android:background="@mipmap/service_show_details" />
 
     <RelativeLayout
         android:layout_width="match_parent"

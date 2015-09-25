@@ -92,29 +92,29 @@ public class MyRequestsAdapter extends ClickableListAdapter {
         mvh.tvCurrentStatus.setText(myRequest.getStatus());
         if (myRequest.getType() != null) {
             if (myRequest.getType().equals(services[0])) {
-                mvh.imageMyRequest.setBackgroundResource(R.drawable.notification_visa);
+                mvh.imageMyRequest.setBackgroundResource(R.mipmap.notification_visa);
             } else if (myRequest.getType().equals(services[1])) {
-                mvh.imageMyRequest.setBackgroundResource(R.drawable.notification_noc);
+                mvh.imageMyRequest.setBackgroundResource(R.mipmap.notification_noc);
             } else if (myRequest.getType().equals(services[2])) {
-                mvh.imageMyRequest.setBackgroundResource(R.drawable.notification_license);
+                mvh.imageMyRequest.setBackgroundResource(R.mipmap.notification_license);
             } else if (myRequest.getType().equals(services[3])) {
-                mvh.imageMyRequest.setBackgroundResource(R.drawable.notification_card_icon);
+                mvh.imageMyRequest.setBackgroundResource(R.mipmap.notification_card_icon);
             } else if (myRequest.getType().equals(services[4])) {
-                mvh.imageMyRequest.setBackgroundResource(R.drawable.notification_registration);
+                mvh.imageMyRequest.setBackgroundResource(R.mipmap.notification_registration);
             } else if (myRequest.getType().equals(services[5])) {
-                mvh.imageMyRequest.setBackgroundResource(R.drawable.notification_leasing);
+                mvh.imageMyRequest.setBackgroundResource(R.mipmap.notification_leasing);
             }
         }
 
 
         if (myRequest.getStatus().equals(status_filter[0])) {
-            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.drawable.bullet_green));
+            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.mipmap.bullet_green));
         } else if (myRequest.getStatus().equals(status_filter[1]) || myRequest.getStatus().equals(status_filter[5])) {
-            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.drawable.bullet_yellow));
+            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.mipmap.bullet_yellow));
         } else if (myRequest.getStatus().equals(status_filter[2])) {
-            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.drawable.bullet_blue));
+            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.mipmap.bullet_blue));
         } else if (myRequest.getStatus().equals(status_filter[3]) || myRequest.getStatus().equals(status_filter[4])) {
-            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.drawable.bullet_red));
+            mvh.bulletStatus.setImageDrawable(act.getResources().getDrawable(R.mipmap.bullet_red));
         }
     }
 

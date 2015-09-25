@@ -26,8 +26,8 @@ import cloudconcept.dwc.R;
 import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.ManagementMember;
-import model.SFServiceCall;
 import model.User;
+import utilities.CallType;
 
 /**
  * Created by Abanoub on 7/2/2015.
@@ -72,21 +72,21 @@ public class GeneralManagersFragment extends Fragment {
                         limit = offset;
                         offset = 0;
                     }
-                    CallGeneralManagersService(true, SFServiceCall.REFRESH);
+                    CallGeneralManagersService(true, CallType.REFRESH);
                 } else if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.BOTTOM) {
-                    CallGeneralManagersService(true, SFServiceCall.LOADMORE);
+                    CallGeneralManagersService(true, CallType.LOADMORE);
                 }
             }
         });
 
-        CallGeneralManagersService(true, SFServiceCall.FIRSTTIME);
+        CallGeneralManagersService(true, CallType.FIRSTTIME);
     }
 
-    private void CallGeneralManagersService(boolean b, final SFServiceCall serviceCall) {
+    private void CallGeneralManagersService(boolean b, final CallType serviceCall) {
         Gson gson = new Gson();
 
         User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-        if (serviceCall == SFServiceCall.LOADMORE) {
+        if (serviceCall == CallType.LOADMORE) {
             offset += 10;
             limit = 10;
 
@@ -109,10 +109,10 @@ public class GeneralManagersFragment extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse response) {
 
-                                if (serviceCall == SFServiceCall.LOADMORE || serviceCall == SFServiceCall.REFRESH)
+                                if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
                                     swipyRefreshLayout.setRefreshing(false);
 
-                                if (serviceCall == SFServiceCall.LOADMORE) {
+                                if (serviceCall == CallType.LOADMORE) {
                                     if (lastReponseString.equals("") || !lastReponseString.equals(response.toString())) {
                                         _members.addAll(SFResponseManager.parseManagementMemberObject(response.toString()));
                                     }

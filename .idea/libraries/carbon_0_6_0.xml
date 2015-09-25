@@ -2,7 +2,7 @@
   <library name="carbon-0.6.0">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/library/build/intermediates/exploded-aar/tk.zielony/carbon/0.6.0/res" />
-      <root url="jar://$PROJECT_DIR$/library/build/intermediates/exploded-aar/tk.zielony/carbon/0.6.0/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/build/intermediates/exploded-aar/tk.zielony/carbon/0.6.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

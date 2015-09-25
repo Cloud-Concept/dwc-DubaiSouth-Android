@@ -16,4 +16,4 @@
     <feature name="com.salesforce.sdkinfo"><param name="android-package" value="com.salesforce.androidsdk.phonegap.SDKInfoPlugin"/></feature>
 
 </widget>
-<!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/xml/config.xml --><!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/build/intermediates/bundles/debug/res/xml/config.xml -->
+<!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/xml/config.xml --><!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/build/intermediates/bundles/debug/res/xml/config.xml -->

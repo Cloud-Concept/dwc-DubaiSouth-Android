@@ -37,7 +37,7 @@ public class PayAndSubmitCancelVisa extends Fragment {
         ImageView image = (ImageView) view.findViewById(R.id.imageEmpoyeeNOC);
 
 
-        image.setImageResource(R.drawable.cancel_visa);
+        image.setImageResource(R.mipmap.cancel_visa);
 
 
 

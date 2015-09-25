@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartStore/res/values/sf__colors.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/res/values/sf__colors.xml -->
     <eat-comment/>
     <color name="sf__inspector_button_background_color">#ccc</color>
     <color name="sf__inspector_cell_background_color">#eeeeee</color>
     <color name="sf__inspector_cell_text_color">#000000</color>
     <color name="sf__inspector_text_background_color">#eeeeee</color>
     <color name="sf__inspector_text_color">#00aa00</color>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartStore/res/values/sf__dimens.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/res/values/sf__dimens.xml -->
     <eat-comment/>
     <dimen name="sf__inspector_cell_text_size">10sp</dimen>
     <dimen name="sf__inspector_grid_cell_spacing">1dp</dimen>
     <dimen name="sf__inspector_margin">1dp</dimen>
     <dimen name="sf__inspector_query_field_height">36dp</dimen>
     <dimen name="sf__inspector_text_size">10sp</dimen>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartStore/res/values/strings.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">SmartStore</string>
     <string name="app_package">com.salesforce.androidsdk.smartstore</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartStore/res/values/sf__strings.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/res/values/sf__strings.xml -->
     <eat-comment/>
     <string name="sf__inspector_clear_button">Clear</string>
     <string name="sf__inspector_colon_button">:</string>
@@ -37,7 +37,7 @@
     <string name="sf__inspector_soups_button">Soups</string>
     <string name="sf__inspector_soups_query">select soupName from soup_names</string>
     <string name="sf__inspector_where_button">WHERE</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SmartStore/res/values/sf__styles.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/res/values/sf__styles.xml -->
     <eat-comment/>
     <style name="SmartStore">
     </style>

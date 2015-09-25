@@ -17,29 +17,29 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/header_menu_button"
-            android:background="@drawable/back" />
+            android:background="@mipmap/back" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_toEndOf="@+id/imageBack"
             android:layout_toLeftOf="@+id/btnNotifications"
             android:gravity="center"
             android:text="New NOC"
             android:textColor="@color/white"
-            android:textSize="15sp"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/imageBack" />
+            android:textSize="15sp" />
 
         <Button
+            android:id="@+id/btnBackTransparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:id="@+id/btnBackTransparent"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+            android:background="@android:color/transparent" />
 
 
     </RelativeLayout>
@@ -170,33 +170,28 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin">
 
 
-
-            <Button
-                android:id="@+id/btnCancel"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/cancel_rounded_corners"
-                android:text="Cancel"
-                android:textColor="@color/white" />
-
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/cancel_rounded_corners"
+            android:text="Cancel"
+            android:textColor="@color/white" />
 
 
-
-
-            <Button
-                android:id="@+id/btnNext"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/next_rounded_corners"
-                android:text="Next"
-                android:textColor="@color/white" />
-
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/next_rounded_corners"
+            android:text="Next"
+            android:textColor="@color/white" />
 
 
     </LinearLayout>

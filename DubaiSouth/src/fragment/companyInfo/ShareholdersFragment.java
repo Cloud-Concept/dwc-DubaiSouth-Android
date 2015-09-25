@@ -27,9 +27,9 @@ import adapter.ShareHolderAdapter;
 import cloudconcept.dwc.R;
 import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
-import model.SFServiceCall;
 import model.ShareOwnership;
 import model.User;
+import utilities.CallType;
 
 /**
  * Created by Abanoub on 7/2/2015.
@@ -74,20 +74,20 @@ public class ShareholdersFragment extends Fragment {
                         limit = offset;
                         offset = 0;
                     }
-                    CallShareholdersService(true, SFServiceCall.REFRESH);
+                    CallShareholdersService(true, CallType.REFRESH);
                 } else if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.BOTTOM) {
-                    CallShareholdersService(true, SFServiceCall.LOADMORE);
+                    CallShareholdersService(true, CallType.LOADMORE);
                 }
             }
         });
 
-        CallShareholdersService(true, SFServiceCall.FIRSTTIME);
+        CallShareholdersService(true, CallType.FIRSTTIME);
     }
 
-    private void CallShareholdersService(boolean isNew, final SFServiceCall serviceCall) {
+    private void CallShareholdersService(boolean isNew, final CallType serviceCall) {
         Gson gson = new Gson();
         User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-        if (serviceCall == SFServiceCall.LOADMORE) {
+        if (serviceCall == CallType.LOADMORE) {
             offset += 10;
             limit = 10;
         }
@@ -111,10 +111,10 @@ public class ShareholdersFragment extends Fragment {
 
                         @Override
                         public void onSuccess(RestRequest request, RestResponse response) {
-                            if (serviceCall == SFServiceCall.LOADMORE || serviceCall == SFServiceCall.REFRESH)
+                            if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
                                 swipyRefreshLayout.setRefreshing(false);
                             try {
-                                if (serviceCall == SFServiceCall.LOADMORE) {
+                                if (serviceCall == CallType.LOADMORE) {
                                     _shareOwnerships.addAll(SFResponseManager.parseShareOwnerShipObject(response.toString()));
                                 } else {
                                     _shareOwnerships = new ArrayList<ShareOwnership>();

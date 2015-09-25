@@ -434,7 +434,7 @@ public class HomepageActivity extends Activity implements
     private void InitializeViews() {
         _badgeButton = (BadgeButton) findViewById(R.id.btnBadgeCount);
         _badgeButton.setBadgeDrawable(getResources().getDrawable(
-                R.drawable.notification_image3));
+                R.mipmap.notification_image3));
 
         btnLogout = (Button) findViewById(R.id.btnLogout);
 

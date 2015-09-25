@@ -68,7 +68,7 @@ public class GeneralManagersAdapter extends ClickableListAdapter {
         holder.tvStartDate.setText(managementMember.getManager_Start_Date() == null ? "" : managementMember.getManager_Start_Date());
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(managementMember.get_manager().getPersonal_Photo()), holder._smartEmployeeImage);
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
-        _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         holder.horizontalListView.setAdapter(new HorizontalListViewAdapter(managementMember, activity, context, _items));
     }
 

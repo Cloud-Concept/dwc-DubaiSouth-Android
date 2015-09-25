@@ -30,9 +30,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
             android:gravity="center"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:background="@drawable/spinner_background"
+            android:background="@mipmap/spinner_background"
              />
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,7 +71,7 @@
             android:layout_alignStart="@+id/llSubject"
             android:layout_below="@+id/llSubject"
             android:layout_marginTop="15dp"
-            android:background="@drawable/search_edit_text_background"
+            android:background="@mipmap/search_edit_text_background"
             android:imeOptions="actionNext"
             android:padding="10dp"
             android:singleLine="true" />
@@ -113,7 +114,7 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="15dp"
             android:gravity="left"
-            android:background="@drawable/search_edit_text_background"
+            android:background="@mipmap/search_edit_text_background"
             android:padding="10dp" />
 
         <Button

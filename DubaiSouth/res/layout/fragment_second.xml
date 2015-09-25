@@ -1,8 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-   android:orientation="vertical"
-    android:layout_height="match_parent" tools:context="fragment.Visa.Renew.SecondFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="fragment.Visa.Renew.SecondFragment">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -27,8 +30,7 @@
 
                     android:text="Monthly Salary (AED)"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                     />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -37,12 +39,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/label"
-                android:inputType="numberDecimal"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
 
@@ -61,8 +63,7 @@
 
                     android:text="Monthly Allowance (AED)"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                     />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -71,12 +72,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/label"
-                android:inputType="numberDecimal"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
 
@@ -95,8 +96,7 @@
 
                     android:text="Occupation"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                    />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -107,9 +107,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_background"
+                android:background="@mipmap/spinner_background"
                 android:gravity="center" />
-
 
 
             <LinearLayout
@@ -127,8 +126,7 @@
 
                     android:text="Qualification"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                    />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -138,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_background"
+                android:background="@mipmap/spinner_background"
                 android:gravity="center" />
 
 
@@ -157,23 +155,22 @@
 
                     android:text="Urgent Stamping (AED 250)"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
-                     />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
             <com.gc.materialdesign.views.Switch
                 android:id="@+id/UrgentStamping"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
 
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:background="@color/dwc_blue_color"
                 materialdesign:check="false" />
 
 
-            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 

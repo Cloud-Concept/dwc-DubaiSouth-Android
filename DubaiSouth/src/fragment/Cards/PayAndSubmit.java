@@ -96,13 +96,13 @@ public class PayAndSubmit extends Fragment {
 
             ref.setText(activity.getCaseNumber());
         if(activity.getType().equals("1"))
-            image.setImageResource(R.drawable.new_card);
+            image.setImageResource(R.mipmap.new_card);
         else if(activity.getType().equals("2"))
-            image.setImageResource(R.drawable.cancel_card);
+            image.setImageResource(R.mipmap.cancel_card);
             else if(activity.getType().equals("3"))
-            image.setImageResource(R.drawable.renew_card);
+            image.setImageResource(R.mipmap.renew_card);
             else if(activity.getType().equals("4"))
-            image.setImageResource(R.drawable.replace_card);
+            image.setImageResource(R.mipmap.replace_card);
 
 
         DrawLayout(inflater);

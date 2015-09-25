@@ -55,9 +55,9 @@ public class CustomerDocumentsAdapter extends RecyclerView.Adapter<CustomerDocum
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         if (data.get(position).getAttachment_Id__c() != null && !data.get(position).getAttachment_Id__c().equals("")) {
-            _items.add(new ServiceItem("Preview", R.drawable.preview));
+            _items.add(new ServiceItem("Preview", R.mipmap.preview));
         }
-        _items.add(new ServiceItem("Edit", R.drawable.edit));
+        _items.add(new ServiceItem("Edit", R.mipmap.edit));
 
         holder.horizontalServices.setAdapter(new HorizontalListViewAdapter(data.get(position), activity, context, _items));
 

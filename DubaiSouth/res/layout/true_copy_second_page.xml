@@ -10,7 +10,7 @@
         android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/notification_registration" />
+        android:background="@mipmap/notification_registration" />
 
     <TextView
         android:id="@+id/textView57"

@@ -2,7 +2,7 @@
   <library name="selectableroundedimageview-1.0.1">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/library/build/intermediates/exploded-aar/com.joooonho/selectableroundedimageview/1.0.1/res" />
-      <root url="jar://$PROJECT_DIR$/library/build/intermediates/exploded-aar/com.joooonho/selectableroundedimageview/1.0.1/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/build/intermediates/exploded-aar/com.joooonho/selectableroundedimageview/1.0.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

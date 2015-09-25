@@ -28,7 +28,7 @@
             android:layout_marginStart="21dp"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_background_disabled"
+            android:background="@mipmap/edit_text_background_disabled"
             android:inputType="phone" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:gravity="center"
             android:layout_marginStart="21dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_background_disabled" />
+            android:background="@mipmap/edit_text_background_disabled" />
 
         <TextView
             android:id="@+id/textView33"
@@ -73,7 +73,7 @@
             android:gravity="center"
             android:layout_marginStart="21dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_background_disabled" />
+            android:background="@mipmap/edit_text_background_disabled" />
 
         <TextView
             android:id="@+id/textView34"
@@ -95,7 +95,7 @@
             android:layout_marginStart="21dp"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_background_disabled" />
+            android:background="@mipmap/edit_text_background_disabled" />
 
         <TextView
             android:id="@+id/textView35"
@@ -116,7 +116,7 @@
             android:gravity="center"
             android:layout_marginStart="21dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/search_edit_text_background"
+            android:background="@mipmap/search_edit_text_background"
             android:imeOptions="actionNext"
             android:inputType="phone"
             android:singleLine="true" />
@@ -140,7 +140,7 @@
             android:layout_marginStart="21dp"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/search_edit_text_background"
+            android:background="@mipmap/search_edit_text_background"
             android:imeOptions="actionNext"
             android:singleLine="true" />
 
@@ -163,7 +163,7 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:background="@drawable/search_edit_text_background"
+            android:background="@mipmap/search_edit_text_background"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:singleLine="true" />
@@ -187,7 +187,7 @@
             android:gravity="center"
             android:layout_marginStart="21dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/search_edit_text_background"
+            android:background="@mipmap/search_edit_text_background"
             android:imeOptions="actionDone"
             android:singleLine="true" />
 

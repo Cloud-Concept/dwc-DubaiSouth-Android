@@ -34,11 +34,11 @@ public class ViewStatementShowDetails extends Activity {
         Gson gson = new Gson();
         FreeZonePayment freeZonePayment = gson.fromJson(getIntent().getExtras().getString("str"), FreeZonePayment.class);
         if(freeZonePayment.getEffectOnAccount().equals("Debit")){
-            imageShowDetails.setImageResource(R.drawable.payment_debit);
+            imageShowDetails.setImageResource(R.mipmap.payment_debit);
             tvAmount.setText(Utilities.stringNotNull(freeZonePayment.getDebitAmount()) + " AED.");
             tvBalance.setText("");
         }else{
-            imageShowDetails.setImageResource(R.drawable.payment_credit);
+            imageShowDetails.setImageResource(R.mipmap.payment_credit);
             tvAmount.setText(Utilities.stringNotNull(freeZonePayment.getCreditAmount()) + " AED.");
             tvBalance.setText(Utilities.stringNotNull(freeZonePayment.getClosingBalance()));
         }

@@ -93,20 +93,20 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         }
         if (mo.getVisa_Validity_Status__c().equals("Issued")) {
 
-            _items.add(new ServiceItem("New NOC", R.drawable.noc_service_image));
-            _items.add(new ServiceItem("Renew Passport", R.drawable.renew_license));
+            _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
+            _items.add(new ServiceItem("Renew Passport", R.mipmap.renew_license));
             if (mo.getVisa_Type__c().equals("Employment") || mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External")) {
-                _items.add(new ServiceItem("Renew Visa", R.drawable.renew_visa));
-                _items.add(new ServiceItem("Cancel Visa", R.drawable.cancel_visa));
+                _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
+                _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
             }
 
         } else if (VisaDate != null) {
             if (AutomaticUtilities.daysBetween(VisaDate, System.currentTimeMillis()) < 60) {
-                _items.add(new ServiceItem("Renew Visa", R.drawable.renew_visa));
+                _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
             }
         }
 
-        _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
 //        mvh.item.setOnClickListener(new OnClickListener(mvh) {
 //
 //            public void onClick(View v, ViewHolder viewHolder) {

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
     <eat-comment/>
     <string-array name="oauthScopes">
         <item>api</item>
     </string-array>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/sf__colors.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/sf__colors.xml -->
     <eat-comment/>
     <color name="sf__forgot_passcode_text">#000</color>
     <color name="sf__passcode_bg">#888888</color>
     <color name="sf__passcode_error_text">#F00</color>
     <color name="sf__passcode_layout_bg">#000000</color>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/sf__dimens.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/sf__dimens.xml -->
     <eat-comment/>
     <dimen name="sf__button_font_size">24dp</dimen>
     <dimen name="sf__button_margin">2dp</dimen>
@@ -34,27 +34,27 @@
     <dimen name="sf__server_picker_margin_left">3dp</dimen>
     <dimen name="sf__server_picker_margin_right">3dp</dimen>
     <dimen name="sf__server_picker_margin_top">7dp</dimen>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/strings.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/strings.xml -->
     <eat-comment/>
     <string name="account_type">com.salesforce.androidsdk</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
     <eat-comment/>
     <string name="androidPushNotificationClientId"/>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/strings.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/strings.xml -->
     <eat-comment/>
     <string name="api_version">v33.0</string>
     <string name="app_name">SalesforceSDK</string>
     <string name="app_package">com.salesforce.androidsdk</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
     <eat-comment/>
     <string name="oauthRedirectURI">dwcmobile://auth/success</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/strings.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/strings.xml -->
     <eat-comment/>
     <string name="oauth_display_type">touch</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/bootconfig.xml -->
     <eat-comment/>
     <string name="remoteAccessConsumerKey">3MVG9sLbBxQYwWqsa8dlM02Kaxs1PH5oIbF_o2Y4FfeOoF.1__CEjo_6_fIBta82uOIvzvuJ9tVtR1iU9PbtA</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/sf__strings.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/sf__strings.xml -->
     <eat-comment/>
     <string name="sf__access_token_revoked">Your access token has been revoked by the administrator. You will now be logged out.</string>
     <string name="sf__add_new_account">Add New Account</string>
@@ -101,7 +101,7 @@
     <string name="sf__ssl_unknown_error">Unknown Error</string>
     <string name="sf__ssl_untrusted">Untrusted Certificate Authority</string>
     <string name="sf__switch_account">Switch Account</string>
-    <!-- From: file:/D:/DubaiSouth/forcedroid/libs/SalesforceSDK/res/values/sf__styles.xml -->
+    <!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/values/sf__styles.xml -->
     <eat-comment/>
     <style name="SalesforceSDK">
     </style>

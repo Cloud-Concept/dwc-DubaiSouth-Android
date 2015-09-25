@@ -30,8 +30,8 @@ import dataStorage.StoreData;
 import exceptionHandling.ExceptionHandler;
 import model.Attachment;
 import model.Company_Documents__c;
-import model.SFServiceCall;
 import model.User;
+import utilities.CallType;
 import utilities.Utilities;
 
 public class CompanyDocumentsActivity extends SalesforceActivity implements View.OnClickListener {
@@ -114,7 +114,7 @@ public class CompanyDocumentsActivity extends SalesforceActivity implements View
         if (isFirstTime) {
             Utilities.showloadingDialog(this);
         }
-        DoCompanyDocumentQuery(this.client, SFServiceCall.FIRSTTIME, limit, Mainoffset);
+        DoCompanyDocumentQuery(this.client, CallType.FIRSTTIME, limit, Mainoffset);
 //        lstCompanyDocuments.onRefresh();
     }
 
@@ -136,7 +136,7 @@ public class CompanyDocumentsActivity extends SalesforceActivity implements View
         @Override
         protected void onPostExecute(Void aVoid) {
             Mainoffset = 0;
-            DoCompanyDocumentQuery(client, SFServiceCall.REFRESH, limit, Mainoffset);
+            DoCompanyDocumentQuery(client, CallType.REFRESH, limit, Mainoffset);
             super.onPostExecute(aVoid);
         }
     }
@@ -154,16 +154,16 @@ public class CompanyDocumentsActivity extends SalesforceActivity implements View
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            DoCompanyDocumentQuery(client, SFServiceCall.LOADMORE, Mainoffset, limit);
+            DoCompanyDocumentQuery(client, CallType.LOADMORE, Mainoffset, limit);
             super.onPostExecute(aVoid);
         }
     }
 
-    private void DoCompanyDocumentQuery(final RestClient client, final SFServiceCall serviceCall, final int limit, final int offset) {
+    private void DoCompanyDocumentQuery(final RestClient client, final CallType serviceCall, final int limit, final int offset) {
         DoRequest(serviceCall, limit, offset);
     }
 
-    private void DoRequest(final SFServiceCall serviceCall, final int limit, final int offset) {
+    private void DoRequest(final CallType serviceCall, final int limit, final int offset) {
 
         final int n = offset;
 
@@ -217,7 +217,7 @@ public class CompanyDocumentsActivity extends SalesforceActivity implements View
                         }
                     });
                 } else {
-                    DoRequest(SFServiceCall.FIRSTTIME, limit, Mainoffset += 50);
+                    DoRequest(CallType.FIRSTTIME, limit, Mainoffset += 50);
                 }
             }
 
@@ -228,10 +228,10 @@ public class CompanyDocumentsActivity extends SalesforceActivity implements View
         });
     }
 
-    private void checkServiceCall(SFServiceCall serviceCall) {
-//        if (serviceCall == SFServiceCall.REFRESH) {
+    private void checkServiceCall(CallType serviceCall) {
+//        if (serviceCall == CallType.REFRESH) {
 //            mSwipeRefreshLayout.setRefreshing(false);
-//        } else if (serviceCall == SFServiceCall.LOADMORE) {
+//        } else if (serviceCall == CallType.LOADMORE) {
 //            lstCo
 //        }
 

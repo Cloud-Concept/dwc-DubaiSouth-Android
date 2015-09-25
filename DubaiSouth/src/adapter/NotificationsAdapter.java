@@ -66,17 +66,17 @@ public class NotificationsAdapter extends ClickableListAdapter {
         }
 
         if (notificationManagement.getCase_Process_Name().equals(services[0])) {
-            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.drawable.notification_visa));
+            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.notification_visa));
         } else if (notificationManagement.getCase_Process_Name().equals(services[1])) {
-            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.drawable.notification_noc));
+            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.notification_noc));
         } else if (notificationManagement.getCase_Process_Name().equals(services[2])) {
-            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.drawable.renew_license));
+            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.renew_license));
         } else if (notificationManagement.getCase_Process_Name().equals(services[3])) {
-            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.drawable.notification_license));
+            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.notification_license));
         } else if (notificationManagement.getCase_Process_Name().equals(services[4])) {
-            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.drawable.notification_registration));
+            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.notification_registration));
         } else if (notificationManagement.getCase_Process_Name().equals(services[5])) {
-            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.drawable.notification_leasing));
+            mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.notification_leasing));
         }
 
         if (notificationManagement.getCaseNotification().getCase_Rating_Score() == null) {

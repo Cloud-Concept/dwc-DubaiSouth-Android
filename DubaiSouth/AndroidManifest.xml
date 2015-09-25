@@ -25,7 +25,7 @@
 	<application
 		android:name=".DWCApp"
 		android:allowBackup="true"
-		android:icon="@drawable/ic_launcher"
+		android:icon="@mipmap/dwc_launcher"
 		android:label="@string/app_name"
 
 		android:manageSpaceActivity="com.salesforce.androidsdk.ui.ManageSpaceActivity"

@@ -20,7 +20,7 @@
             android:layout_gravity="top|right"
             android:gravity="center"
             android:visibility="gone"
-            android:background="@drawable/notification_image3">
+            android:background="@mipmap/notification_image3">
 
 
 

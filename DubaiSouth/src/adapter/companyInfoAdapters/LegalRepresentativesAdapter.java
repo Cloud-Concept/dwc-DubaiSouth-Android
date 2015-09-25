@@ -65,7 +65,7 @@ public class LegalRepresentativesAdapter extends ClickableListAdapter {
         holder.tvStartDate.setText(legalRepresentative.getLegal_Representative_Start_Date() == null ? "" : legalRepresentative.getLegal_Representative_Start_Date());
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(legalRepresentative.getLegalRepresentativeLookup().getPersonal_Photo()), holder._smartEmployeeImage);
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
-        _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         holder._horizontalServices.setAdapter(new HorizontalListViewAdapter(legalRepresentative, activity, context, _items));
     }
 

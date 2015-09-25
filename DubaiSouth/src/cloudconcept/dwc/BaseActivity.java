@@ -92,7 +92,7 @@ public abstract class BaseActivity extends SalesforceActivity implements View.On
         imageMenu = (ImageView) findViewById(R.id.imageMenu);
         badgeNotifications = (BadgeButton) findViewById(R.id.btnNotifications);
         badgeNotifications.setBadgeDrawable(getResources().getDrawable(
-                R.drawable.notification_image3));
+                R.mipmap.notification_image3));
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         tabBarHome = (RelativeLayout) findViewById(R.id.relativeTabBarHome);
@@ -108,7 +108,7 @@ public abstract class BaseActivity extends SalesforceActivity implements View.On
         ListView list = (ListView) findViewById(R.id.left_drawer);
         ArrayList<NavDrawerItem> _drawerItems = new ArrayList<NavDrawerItem>();
         String[] TITLES = getResources().getStringArray(R.array.drawer_list);
-        int[] Icons = new int[]{R.drawable.slide_home, R.drawable.slide_dashboard, R.drawable.slide_myrequest, R.drawable.slide_visas_cards, R.drawable.slide_company_info, R.drawable.slide_reports, R.drawable.slide_company_documents, R.drawable.slide_need_help, R.drawable.slide_logout};
+        int[] Icons = new int[]{R.mipmap.slide_home, R.mipmap.slide_dashboard, R.mipmap.slide_myrequest, R.mipmap.slide_visas_cards, R.mipmap.slide_company_info, R.mipmap.slide_reports, R.mipmap.slide_company_documents, R.mipmap.slide_need_help, R.mipmap.slide_logout};
         for (int i = 0; i < TITLES.length; i++) {
             NavDrawerItem _item = new NavDrawerItem();
             _item.setTitle(TITLES[i]);

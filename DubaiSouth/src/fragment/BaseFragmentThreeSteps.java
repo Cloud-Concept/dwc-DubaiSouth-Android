@@ -158,7 +158,7 @@ public abstract class BaseFragmentThreeSteps extends Fragment implements View.On
                 fragmentManager.beginTransaction()
                         .replace(R.id.content, getSecondFragment())
                         .commitAllowingStateLoss();
-                btnNOC1.setBackgroundResource(R.drawable.bullet_success);
+                btnNOC1.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC1.setText("");
                 btnNOC2.setSelected(true);
                 btnNext.setText("Submit");
@@ -169,7 +169,7 @@ public abstract class BaseFragmentThreeSteps extends Fragment implements View.On
                 fragmentManager.beginTransaction()
                         .replace(R.id.content, getThirdFragment())
                         .commitAllowingStateLoss();
-                btnNOC2.setBackgroundResource(R.drawable.bullet_success);
+                btnNOC2.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC2.setText("");
                 btnNOC3.setSelected(true);
                 btnBack.setVisibility(View.GONE);

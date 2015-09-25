@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient 
-        android:startColor="#ececed" 
-        android:endColor="#74777f"
-        android:angle="270"
-     />
-</shape><!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/drawable-xlarge/sf__header_right_border.xml --><!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SalesforceSDK/unspecified/res/drawable-xlarge-v4/sf__header_right_border.xml -->

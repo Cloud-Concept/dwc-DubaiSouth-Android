@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-  android:src="@drawable/sf__nav_shadow"
-  android:tileMode="repeat"
-/>
-<!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SalesforceSDK/res/drawable-xlarge/sf__header_drop_shadow.xml --><!-- From: file:/D:/Cloud%20Concept/dwc-DubaiSouth-Android/forcedroid/libs/SmartStore/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SalesforceSDK/unspecified/res/drawable-xlarge-v4/sf__header_drop_shadow.xml -->

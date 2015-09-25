@@ -72,7 +72,7 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
         if (mo.getPersonal_Photo__c() != null && !mo.getPersonal_Photo__c().equals(""))
             Utilities.setUserPhoto(activity, mo.getPersonal_Photo__c(), mvh._smartEmployeeImage);
 
-        _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
 
 //        mvh.item.setOnClickListener(new OnClickListener(mvh) {
 //

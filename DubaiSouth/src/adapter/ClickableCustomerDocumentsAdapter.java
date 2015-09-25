@@ -62,9 +62,9 @@ public class ClickableCustomerDocumentsAdapter extends ClickableListAdapter {
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         if (company_documents__c.getAttachment_Id__c() != null && !company_documents__c.getAttachment_Id__c().equals("")) {
-            _items.add(new ServiceItem("Preview", R.drawable.preview));
+            _items.add(new ServiceItem("Preview", R.mipmap.preview));
         }
-        _items.add(new ServiceItem("Edit", R.drawable.edit));
+        _items.add(new ServiceItem("Edit", R.mipmap.edit));
 
         mvh.horizontalServices.setAdapter(new HorizontalListViewAdapter(company_documents__c, activity, context, _items));
 

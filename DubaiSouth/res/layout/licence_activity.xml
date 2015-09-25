@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="5dp">
+    android:layout_marginTop="5dp"
+    android:orientation="horizontal">
+
     <CheckBox
         android:id="@+id/licenseselected"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_gravity="center"
-        android:visibility="invisible"
-         />
+        android:layout_weight="1"
+        android:visibility="invisible" />
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="4"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/tvLabelItem"
             android:layout_width="match_parent"
@@ -24,6 +27,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_label" />
+
         <TextView
             android:id="@+id/tvValueItem"
             android:layout_width="match_parent"
@@ -34,21 +38,22 @@
             android:textSize="@dimen/text_size_label" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
+        android:gravity="right"
 
-        android:gravity="right">
+        android:orientation="vertical">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancel"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        android:background="@drawable/ic_action_cancel"/>
+        <ImageButton
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_action_cancel"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

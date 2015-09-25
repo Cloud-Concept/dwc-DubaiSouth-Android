@@ -43,7 +43,7 @@
         android:layout_marginRight="10dp"
         android:padding="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/search_edit_text_background"
+        android:background="@mipmap/search_edit_text_background"
         android:gravity="left"
         android:textColor="@color/black"
         android:textColorHint="@color/light_grey" />

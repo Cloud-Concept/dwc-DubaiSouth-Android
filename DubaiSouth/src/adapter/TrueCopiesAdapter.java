@@ -47,13 +47,13 @@ public class TrueCopiesAdapter extends RecyclerView.Adapter<TrueCopiesAdapter.Vi
 
         if (data.get(position).getAvailable_for_Preview__c()) {
             if (!data.get(position).getEService_Administration__r().getService_VF_Page__c().contains("<ContractId>") && !data.get(position).getEService_Administration__r().getService_VF_Page__c().contains("<tenId>")) {
-                _items.add(new ServiceItem("Preview", R.drawable.preview));
+                _items.add(new ServiceItem("Preview", R.mipmap.preview));
             }
 
         }
 
         if (data.get(position).getOriginal_can_be_Requested__c()) {
-            _items.add(new ServiceItem("Request True Copy", R.drawable.copy));
+            _items.add(new ServiceItem("Request True Copy", R.mipmap.copy));
         }
 
         holder.horizontalServices.setAdapter(new HorizontalListViewAdapter(data.get(position), activity, context, _items));

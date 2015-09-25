@@ -53,7 +53,7 @@ public class PayAndSubmit extends Fragment{
         TextView ref = (TextView) view.findViewById(R.id.refnumber);
 
         ref.setText(activity.getCaseNumber());
-      image.setImageResource(R.drawable.renew_license);
+      image.setImageResource(R.mipmap.renew_license);
 
         DrawLayout(inflater);
         return view;

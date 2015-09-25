@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent">
-<View
-    android:id="@+id/view"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@color/myPrimaryColor"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/myPrimaryColor" />
+
     <EditText
 
         android:id="@+id/search"
@@ -17,26 +20,28 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:hint="Search"
-        android:textColorHint="@color/light_grey"
+        android:background="@mipmap/search_edit_text_background"
         android:gravity="center"
+        android:hint="Search"
         android:textColor="@color/black"
-        android:background="@drawable/search_edit_text_background" />
+        android:textColorHint="@color/light_grey" />
+
     <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
         android:id="@+id/activity_main_swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
-        app:direction="both"
-        android:background="@color/white_green">
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activities"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/list_selector"
-        android:divider="@color/dwc_blue_color"
-        android:dividerHeight=".5dp"
-        android:footerDividersEnabled="false" />
+        android:background="@color/white_green"
+        app:direction="both">
+
+        <ListView
+            android:id="@+id/activities"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/list_selector"
+            android:divider="@color/dwc_blue_color"
+            android:dividerHeight=".5dp"
+            android:footerDividersEnabled="false" />
     </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 </LinearLayout>

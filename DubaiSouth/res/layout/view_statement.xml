@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Spinner
         android:id="@+id/spinnerViewStatementFilter"
@@ -12,13 +12,12 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:background="@drawable/spinner_background"
-        android:gravity="center"
-       />
+        android:background="@mipmap/spinner_background"
+        android:gravity="center" />
 
     <com.malinskiy.superrecyclerview.SuperRecyclerView
-        android:id="@+id/list"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_empty="@layout/emptyview"
@@ -26,6 +25,6 @@
         app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
         app:recyclerClipToPadding="false"
         app:recyclerPadding="16dp"
-        app:scrollbarStyle="insideInset"/>
+        app:scrollbarStyle="insideInset" />
 
 </LinearLayout>

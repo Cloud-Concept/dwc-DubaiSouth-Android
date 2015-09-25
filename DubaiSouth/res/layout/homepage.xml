@@ -20,7 +20,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/homepage_top_logo" />
+            android:background="@mipmap/homepage_top_logo" />
 
         <Button
             android:id="@+id/btnLogout"
@@ -29,7 +29,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="12dp"
-            android:background="@drawable/logout_image"
+            android:background="@mipmap/logout_image"
             android:onClick="onLogoutClick" />
 
         <Button
@@ -191,7 +191,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="26dp"
-                                android:src="@drawable/dashboard_image" />
+                                android:src="@mipmap/dashboard_image" />
 
                             <custom.CorisandeRegularTextView
                                 android:layout_width="wrap_content"
@@ -227,7 +227,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="10dp"
-                                android:src="@drawable/employee_image" />
+                                android:src="@mipmap/employee_image" />
 
                             <custom.CorisandeRegularTextView
                                 android:layout_width="wrap_content"
@@ -274,7 +274,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
-                                    android:src="@drawable/myrequest_image" />
+                                    android:src="@mipmap/myrequest_image" />
 
                                 <custom.CorisandeRegularTextView
                                     android:id="@+id/textView1"
@@ -309,7 +309,7 @@
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
                                     android:layout_centerHorizontal="true"
-                                    android:background="@drawable/notification_image1"
+                                    android:background="@mipmap/notification_image1"
                                     android:gravity="center"
                                     android:text="1"
                                     android:textColor="@color/white"
@@ -358,10 +358,10 @@
                                     android:layout_alignParentTop="true"
                                     android:layout_alignRight="@+id/tvBalance"
                                     android:layout_marginLeft="8dp"
-                                    android:layout_marginTop="13dp"
+                                    android:layout_marginTop="6dp"
                                     android:text="CURRENT BALANCE"
                                     android:textColor="@color/white"
-                                    android:textSize="9sp"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
 
                                 <custom.CorisandeLightTextView
@@ -372,7 +372,7 @@
                                     android:layout_marginLeft="8dp"
                                     android:layout_marginRight="8dp"
                                     android:layout_marginTop="7dp"
-                                    android:text="165,480 AED"
+                                    android:text=""
                                     android:textColor="@color/white"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
@@ -386,11 +386,11 @@
                                     android:layout_marginLeft="8dp"
                                     android:layout_marginRight="8dp"
                                     android:layout_marginTop="7dp"
-                                    android:background="@drawable/view_statement_background"
+                                    android:background="@mipmap/view_statement_background"
                                     android:gravity="center"
                                     android:text="View Statement"
                                     android:textColor="@color/developing_color"
-                                    android:textSize="10sp"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
 
                                 <ImageView
@@ -402,7 +402,7 @@
                                     android:layout_marginLeft="8dp"
                                     android:layout_marginRight="8dp"
                                     android:layout_marginTop="7dp"
-                                    android:background="@drawable/divider2" />
+                                    android:background="@mipmap/divider2" />
                             </RelativeLayout>
                         </RelativeLayout>
                     </LinearLayout>
@@ -443,7 +443,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/reports_image" />
+                                android:src="@mipmap/reports_image" />
 
                             <custom.CorisandeRegularTextView
                                 android:id="@+id/textView100"
@@ -487,7 +487,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
-                                    android:src="@drawable/companyinfo_image" />
+                                    android:src="@mipmap/companyinfo_image" />
 
                                 <custom.CorisandeRegularTextView
                                     android:id="@+id/textView101"
@@ -537,7 +537,7 @@
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="9dp"
-                                    android:src="@drawable/needhelp_image" />
+                                    android:src="@mipmap/needhelp_image" />
 
                                 <custom.CorisandeRegularTextView
                                     android:id="@+id/textView20"
@@ -574,7 +574,7 @@
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="9dp"
-                                    android:src="@drawable/documents_image" />
+                                    android:src="@mipmap/documents_image" />
 
                                 <custom.CorisandeRegularTextView
                                     android:id="@+id/textView5"
@@ -612,7 +612,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="9dp"
-                                android:src="@drawable/quickaccess_image" />
+                                android:src="@mipmap/quickaccess_image" />
 
                             <custom.CorisandeRegularTextView
                                 android:id="@+id/textView6"

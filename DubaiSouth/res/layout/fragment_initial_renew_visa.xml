@@ -40,7 +40,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -106,7 +106,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -139,7 +139,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -173,7 +173,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -206,7 +206,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -239,7 +239,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -271,7 +271,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -303,7 +303,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -335,7 +335,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -367,7 +367,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -400,7 +400,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -433,7 +433,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -466,7 +466,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -500,7 +500,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -532,7 +532,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_edit_text_background"
+                android:background="@mipmap/search_edit_text_background"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
@@ -563,7 +563,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_background"
+                android:background="@mipmap/spinner_background"
                 android:gravity="center" />
 
 
@@ -587,14 +587,13 @@
             </LinearLayout>
 
 
-
             <Spinner
                 android:id="@+id/placeofissue"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_background"
+                android:background="@mipmap/spinner_background"
                 android:gravity="center" />
         </LinearLayout>
     </ScrollView>

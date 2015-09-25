@@ -181,9 +181,9 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
                     fragmentManager.beginTransaction()
                             .replace(R.id.content, getThirdFragment())
                             .commitAllowingStateLoss();
-                    btnNOC1.setBackgroundResource(R.drawable.bullet_success);
+                    btnNOC1.setBackgroundResource(R.mipmap.bullet_success);
                     btnNOC1.setText("");
-                    btnNOC2.setBackgroundResource(R.drawable.bullet_success);
+                    btnNOC2.setBackgroundResource(R.mipmap.bullet_success);
                     btnNOC2.setText("");
                     btnNOC3.setSelected(true);
                     btnNext.setText("Submit");
@@ -195,7 +195,7 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
                     fragmentManager.beginTransaction()
                             .replace(R.id.content, getSecondFragment())
                             .commitAllowingStateLoss();
-                    btnNOC1.setBackgroundResource(R.drawable.bullet_success);
+                    btnNOC1.setBackgroundResource(R.mipmap.bullet_success);
                     btnNOC1.setText("");
                     btnNOC2.setSelected(true);
                     status = 2;
@@ -206,10 +206,10 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
                 fragmentManager.beginTransaction()
                         .replace(R.id.content, getThirdFragment())
                         .commitAllowingStateLoss();
-                btnNOC1.setBackgroundResource(R.drawable.bullet_success);
+                btnNOC1.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC1.setText("");
                 btnNext.setText("Pay/Submit");
-                btnNOC2.setBackgroundResource(R.drawable.bullet_success);
+                btnNOC2.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC2.setText("");
                 btnNOC3.setSelected(true);
                 status = 3;
@@ -223,7 +223,7 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
                 fragmentTransaction
                         .replace(R.id.content, getFourthFragment())
                         .commitAllowingStateLoss();
-                btnNOC3.setBackgroundResource(R.drawable.bullet_success);
+                btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC3.setText("");
                 btnNOC4.setSelected(true);
                 btnBack.setVisibility(View.GONE);
@@ -296,7 +296,7 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
         fragmentTransaction
                 .replace(R.id.content, payAndSubmitFragmnet)
                 .commitAllowingStateLoss();
-        btnNOC3.setBackgroundResource(R.drawable.bullet_success);
+        btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
         btnNOC3.setText("");
         btnNext.setText("Pay & Submit");
         btnNOC4.setSelected(true);

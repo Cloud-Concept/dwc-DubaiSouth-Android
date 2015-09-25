@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/tab_bar_home" />
+                android:background="@mipmap/tab_bar_home" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/tab_bar_request" />
+                android:background="@mipmap/tab_bar_request" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/tab_bar_reports" />
+                android:background="@mipmap/tab_bar_reports" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/tab_bar_dashboard" />
+                android:background="@mipmap/tab_bar_dashboard" />
 
             <TextView
                 android:layout_width="wrap_content"

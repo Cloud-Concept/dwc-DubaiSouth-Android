@@ -72,17 +72,17 @@ public class ShowDetailsMyRequestsActivity extends Activity implements View.OnCl
 
         if (myRequest.getType() != null) {
             if (myRequest.getType().equals(services[0])) {
-                imageRequestType.setBackgroundResource(R.drawable.notification_visa);
+                imageRequestType.setBackgroundResource(R.mipmap.notification_visa);
             } else if (myRequest.getType().equals(services[1])) {
-                imageRequestType.setBackgroundResource(R.drawable.notification_noc);
+                imageRequestType.setBackgroundResource(R.mipmap.notification_noc);
             } else if (myRequest.getType().equals(services[2])) {
-                imageRequestType.setBackgroundResource(R.drawable.notification_license);
+                imageRequestType.setBackgroundResource(R.mipmap.notification_license);
             } else if (myRequest.getType().equals(services[3])) {
-                imageRequestType.setBackgroundResource(R.drawable.notification_card_icon);
+                imageRequestType.setBackgroundResource(R.mipmap.notification_card_icon);
             } else if (myRequest.getType().equals(services[4])) {
-                imageRequestType.setBackgroundResource(R.drawable.notification_registration);
+                imageRequestType.setBackgroundResource(R.mipmap.notification_registration);
             } else if (myRequest.getType().equals(services[5])) {
-                imageRequestType.setBackgroundResource(R.drawable.notification_leasing);
+                imageRequestType.setBackgroundResource(R.mipmap.notification_leasing);
             }
         }
 

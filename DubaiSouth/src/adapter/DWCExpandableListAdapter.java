@@ -123,10 +123,10 @@ public class DWCExpandableListAdapter extends BaseExpandableListAdapter {
         HorizontalListView _horizontalServices = (HorizontalListView) convertView.findViewById(R.id.horizontalServices);
         if (classname.equals("PermanentEmployeeFragment")) {
             if (_visas.get(groupPosition).getVisa_Validity_Status__c().equals("Issued")) {
-                _items.add(new ServiceItem("New NOC", R.drawable.noc_service_image));
+                _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
             }
 
-            _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
+            _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
             _horizontalServices.setAdapter(new HorizontalListViewAdapter(_visas.get(groupPosition),act, context, _items));
         }
 

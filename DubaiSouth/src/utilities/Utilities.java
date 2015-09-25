@@ -126,7 +126,7 @@
 //                .withMessageColor("#FFFFFFFF")
 //                .withDialogColor(act.getResources().getColor(R.color.dwc_blue_color))
 //                .withIcon(
-//                        act.getResources().getDrawable(R.drawable.ic_launcher))
+//                        act.getResources().getDrawable(R.mipmap.ic_launcher))
 //                .withDuration(300).withEffect(Effectstype.Newspager)
 //                .withButton1Text("OK").withButton2Text("Cancel")
 //                .isCancelableOnTouchOutside(true)
@@ -151,7 +151,7 @@
 //                .withMessageColor("#FFFFFFFF")
 //                .withDialogColor(act.getResources().getColor(R.color.dwc_blue_color))
 //                .withIcon(
-//                        act.getResources().getDrawable(R.drawable.ic_launcher))
+//                        act.getResources().getDrawable(R.mipmap.ic_launcher))
 //                .withDuration(300).withEffect(Effectstype.Slidetop)
 //                .withButton1Text("OK").withButton2Text("Cancel")
 //                .isCancelableOnTouchOutside(true)
@@ -168,14 +168,14 @@
 //    public static void showloadingDialog(Activity activity) {
 //
 //
-//        CircularProgressBarDrawable drawable = new CircularProgressBarDrawable();
-//        drawable.setColors(new int[]{0xffff0000, 0xffff00a8, 0xffb400ff, 0xff2400ff, 0xff008aff,
+//        CircularProgressBarDrawable mipmap = new CircularProgressBarDrawable();
+//        mipmap.setColors(new int[]{0xffff0000, 0xffff00a8, 0xffb400ff, 0xff2400ff, 0xff008aff,
 //                0xff00ffe4, 0xff00ff60, 0xff0cff00, 0xffa8ff00, 0xffffc600, 0xffff3600, 0xffff0000});
 //
 //        _progress = new ProgressDialog(activity);
 //        _progress.setMessage("Loading ...");
 //        _progress.setCancelable(false);
-//        _progress.setProgressDrawable(drawable);
+//        _progress.setProgressDrawable(mipmap);
 //        _progress.setMax(100);
 //        _progress.setProgress(100);
 //
@@ -250,7 +250,7 @@
 //                e.printStackTrace();
 //            }
 //        } else {
-//            smartImageView.setImageDrawable(act.getResources().getDrawable(R.drawable.avatar));
+//            smartImageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.avatar));
 //        }
 //    }
 //
@@ -302,7 +302,7 @@
 //                e.printStackTrace();
 //            }
 //        } else {
-//            smartImageView.setImageDrawable(act.getResources().getDrawable(R.drawable.avatar));
+//            smartImageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.avatar));
 //        }
 //    }
 //
@@ -1630,31 +1630,31 @@
 //                ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 //                for (int j = 0; j < services.length; j++) {
 //                    if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOC".toLowerCase())) {
-//                        _items.add(new ServiceItem("New NOC", R.drawable.noc_service_image));
+//                        _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
-//                        _items.add(new ServiceItem("Address Change", R.drawable.address_change_service));
+//                        _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameChange".toLowerCase())) {
-//                        _items.add(new ServiceItem("Name Change", R.drawable.name_change_service));
+//                        _items.add(new ServiceItem("Name Change", R.mipmap.name_change_service));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
-//                        _items.add(new ServiceItem("License Renewal", R.drawable.renew_license));
+//                        _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
-//                        _items.add(new ServiceItem("Renew License Activity", R.drawable.renew_license));
+//                        _items.add(new ServiceItem("Renew License Activity", R.mipmap.renew_license));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
-//                        _items.add(new ServiceItem("Cancel Visa", R.drawable.cancel_visa));
+//                        _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
-//                        _items.add(new ServiceItem("New Company NOC", R.drawable.company_noc));
+//                        _items.add(new ServiceItem("New Company NOC", R.mipmap.company_noc));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameReservation".toLowerCase())) {
-//                        _items.add(new ServiceItem("Name Reservation", R.drawable.name_change_service));
+//                        _items.add(new ServiceItem("Name Reservation", R.mipmap.name_change_service));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameChange".toLowerCase())) {
-//                        _items.add(new ServiceItem("Name Change", R.drawable.reports_myrequests));
+//                        _items.add(new ServiceItem("Name Change", R.mipmap.reports_myrequests));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CapitalChange".toLowerCase())) {
-//                        _items.add(new ServiceItem("Capital Change", R.drawable.reports_myrequests));
+//                        _items.add(new ServiceItem("Capital Change", R.mipmap.reports_myrequests));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
-//                        _items.add(new ServiceItem("Address Change", R.drawable.reports_myrequests));
+//                        _items.add(new ServiceItem("Address Change", R.mipmap.reports_myrequests));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ChangeLicenseActivity".toLowerCase())) {
-//                        _items.add(new ServiceItem("Change License Activity", R.drawable.notification_license));
+//                        _items.add(new ServiceItem("Change License Activity", R.mipmap.notification_license));
 //                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
-//                        _items.add(new ServiceItem("Cancel License", R.drawable.name_change_service));
+//                        _items.add(new ServiceItem("Cancel License", R.mipmap.name_change_service));
 //                    }
 //                }
 //
@@ -2289,7 +2289,7 @@ public class Utilities {
                 .withMessageColor("#FFFFFFFF")
                 .withDialogColor(act.getResources().getColor(R.color.dwc_blue_color))
                 .withIcon(
-                        act.getResources().getDrawable(R.drawable.ic_launcher))
+                        act.getResources().getDrawable(R.mipmap.dwc_launcher))
                 .withDuration(300).withEffect(Effectstype.Newspager)
                 .withButton1Text("OK").withButton2Text("Cancel")
                 .isCancelableOnTouchOutside(true)
@@ -2314,7 +2314,7 @@ public class Utilities {
                 .withMessageColor("#FFFFFFFF")
                 .withDialogColor(act.getResources().getColor(R.color.dwc_blue_color))
                 .withIcon(
-                        act.getResources().getDrawable(R.drawable.ic_launcher))
+                        act.getResources().getDrawable(R.mipmap.dwc_launcher))
                 .withDuration(300).withEffect(Effectstype.Slidetop)
                 .withButton1Text("OK").withButton2Text("Cancel")
                 .isCancelableOnTouchOutside(true)
@@ -2331,14 +2331,14 @@ public class Utilities {
     public static void showloadingDialog(Activity activity) {
 
 
-        CircularProgressBarDrawable drawable = new CircularProgressBarDrawable();
-        drawable.setColors(new int[]{0xffff0000, 0xffff00a8, 0xffb400ff, 0xff2400ff, 0xff008aff,
+        CircularProgressBarDrawable mipmap = new CircularProgressBarDrawable();
+        mipmap.setColors(new int[]{0xffff0000, 0xffff00a8, 0xffb400ff, 0xff2400ff, 0xff008aff,
                 0xff00ffe4, 0xff00ff60, 0xff0cff00, 0xffa8ff00, 0xffffc600, 0xffff3600, 0xffff0000});
 
         _progress = new ProgressDialog(activity);
         _progress.setMessage("Loading ...");
         _progress.setCancelable(false);
-        _progress.setProgressDrawable(drawable);
+        _progress.setProgressDrawable(mipmap);
         _progress.setMax(100);
         _progress.setProgress(100);
 
@@ -2417,7 +2417,7 @@ public class Utilities {
                 e.printStackTrace();
             }
         } else {
-            smartImageView.setImageDrawable(act.getResources().getDrawable(R.drawable.avatar));
+            smartImageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.avatar));
         }
     }
 
@@ -2469,7 +2469,7 @@ public class Utilities {
                 e.printStackTrace();
             }
         } else {
-            smartImageView.setImageDrawable(act.getResources().getDrawable(R.drawable.avatar));
+            smartImageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.avatar));
         }
     }
 
@@ -3797,31 +3797,31 @@ public class Utilities {
                 ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
                 for (int j = 0; j < services.length; j++) {
                     if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOC".toLowerCase())) {
-                        _items.add(new ServiceItem("New NOC", R.drawable.noc_service_image));
+                        _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Address Change", R.drawable.address_change_service));
+                        _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Change", R.drawable.name_change_service));
+                        _items.add(new ServiceItem("Name Change", R.mipmap.name_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
-                        _items.add(new ServiceItem("License Renewal", R.drawable.renew_license));
+                        _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Renew License Activity", R.drawable.renew_license));
+                        _items.add(new ServiceItem("Renew License Activity", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel Visa", R.drawable.cancel_visa));
+                        _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
-                        _items.add(new ServiceItem("New Company NOC", R.drawable.company_noc));
+                        _items.add(new ServiceItem("New Company NOC", R.mipmap.company_noc));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameReservation".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Reservation", R.drawable.name_change_service));
+                        _items.add(new ServiceItem("Name Reservation", R.mipmap.name_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Change", R.drawable.reports_myrequests));
+                        _items.add(new ServiceItem("Name Change", R.mipmap.reports_myrequests));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CapitalChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Capital Change", R.drawable.reports_myrequests));
+                        _items.add(new ServiceItem("Capital Change", R.mipmap.reports_myrequests));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Address Change", R.drawable.reports_myrequests));
+                        _items.add(new ServiceItem("Address Change", R.mipmap.reports_myrequests));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ChangeLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Change License Activity", R.drawable.notification_license));
+                        _items.add(new ServiceItem("Change License Activity", R.mipmap.notification_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel License", R.drawable.name_change_service));
+                        _items.add(new ServiceItem("Cancel License", R.mipmap.name_change_service));
                     }
                 }
 

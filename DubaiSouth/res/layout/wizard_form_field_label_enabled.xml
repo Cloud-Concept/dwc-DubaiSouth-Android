@@ -42,6 +42,6 @@ android:gravity="top"
         android:textColorHint="@color/light_grey"
         android:gravity="center"
         android:textColor="@color/black"
-        android:background="@drawable/search_edit_text_background" />
+        android:background="@mipmap/search_edit_text_background" />
 
 </RelativeLayout>
