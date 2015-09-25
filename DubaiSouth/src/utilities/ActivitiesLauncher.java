@@ -9,9 +9,11 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
+import activity.AccessCardShowDetailsActivity;
 import activity.CompanyDocumentsActivity;
 import activity.DirectorShowDetailsActivity;
 import activity.EmployeeListActivity;
+import activity.LegalRepresentativesShowDetailsActivity;
 import activity.ReportsActivity;
 import activity.ShowDetailsMyRequestsActivity;
 import activity.ViewStatementShowDetails;
@@ -45,6 +47,7 @@ import model.Contract_DWC__c;
 import model.Directorship;
 import model.EServices_Document_Checklist__c;
 import model.FreeZonePayment;
+import model.LegalRepresentative;
 import model.MyRequest;
 import model.ShareOwnership;
 import model.User;
@@ -338,6 +341,26 @@ public class ActivitiesLauncher {
         intent = new Intent(context, DirectorShowDetailsActivity.class);
         gson = new Gson();
         String ObjectAsStr = gson.toJson(directorship);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("object", ObjectAsStr);
+        context.startActivity(intent);
+    }
+
+    public static void openAccessCardShowDetailsActivity(Context context, Card_Management__c card) {
+        intent = new Intent(context, AccessCardShowDetailsActivity.class);
+        gson = new Gson();
+        String ObjectAsStr = gson.toJson(card);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("object", ObjectAsStr);
+        context.startActivity(intent);
+    }
+
+    public static void openLegalRepresentativesShowDetailsActivity(Context context, LegalRepresentative legalRepresentative) {
+        intent = new Intent(context, LegalRepresentativesShowDetailsActivity.class);
+        gson = new Gson();
+        String ObjectAsStr = gson.toJson(legalRepresentative);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("object", ObjectAsStr);

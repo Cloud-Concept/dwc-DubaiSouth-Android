@@ -86,19 +86,19 @@ public class AccessCardAdapter extends ClickableListAdapter {
 
         _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
 
-        holder.item.setOnClickListener(new OnClickListener(holder) {
-
-            public void onClick(View v, ViewHolder viewHolder) {
-                if (viewHolder != null) {
-                    AccessCardViewHolder myViewHolder = (AccessCardViewHolder) viewHolder;
-                    if (!myViewHolder.item.isOpened()) {
-                        myViewHolder.item.show();
-                    } else {
-                        myViewHolder.item.hide();
-                    }
-                }
-            }
-        });
+//        holder.item.setOnClickListener(new OnClickListener(holder) {
+//
+//            public void onClick(View v, ViewHolder viewHolder) {
+//                if (viewHolder != null) {
+//                    AccessCardViewHolder myViewHolder = (AccessCardViewHolder) viewHolder;
+//                    if (!myViewHolder.item.isOpened()) {
+//                        myViewHolder.item.show();
+//                    } else {
+//                        myViewHolder.item.hide();
+//                    }
+//                }
+//            }
+//        });
 
         holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_cardManagement,act, context, _items));
     }

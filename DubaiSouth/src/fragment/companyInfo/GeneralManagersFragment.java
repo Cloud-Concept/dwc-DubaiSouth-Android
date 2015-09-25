@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
@@ -24,6 +23,7 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import adapter.companyInfoAdapters.GeneralManagersAdapter;
 import cloudconcept.dwc.R;
+import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.ManagementMember;
 import model.SFServiceCall;
@@ -37,7 +37,7 @@ public class GeneralManagersFragment extends Fragment {
     private static final String ARG_TEXT = "GeneralManagersFragment";
     ArrayList<ManagementMember> _members;
     private SwipyRefreshLayout swipyRefreshLayout;
-    private ListView lvGeneralManagers;
+    private ExpandableLayoutListView lvGeneralManagers;
     private int offset = 0;
     private int limit = 10;
     private String soqlQuery;
@@ -62,7 +62,7 @@ public class GeneralManagersFragment extends Fragment {
 
     private void InitializeViews(View view) {
         swipyRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
-        lvGeneralManagers = (ListView) view.findViewById(R.id.expandableLayoutListView);
+        lvGeneralManagers = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
         swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
 
             @Override
@@ -122,7 +122,7 @@ public class GeneralManagersFragment extends Fragment {
                                 }
 
                                 lastReponseString = response.toString();
-                                lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.general_managers_item, _members));
+                                lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.general_managers_whole_item, _members));
                             }
 
                             @Override

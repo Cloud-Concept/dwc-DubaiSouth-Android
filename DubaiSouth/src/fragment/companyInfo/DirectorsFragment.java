@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
@@ -24,6 +23,7 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import adapter.companyInfoAdapters.DirectorsAdapter;
 import cloudconcept.dwc.R;
+import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.Directorship;
 import model.SFServiceCall;
@@ -38,7 +38,7 @@ public class DirectorsFragment extends Fragment {
     ArrayList<Directorship> directorships;
     String lastReponseString = "";
     private SwipyRefreshLayout swipyRefreshLayout;
-    private ListView lvDirectors;
+    private ExpandableLayoutListView lvDirectors;
     private int offset = 0;
     private int limit = 10;
     private String soqlQuery;
@@ -62,7 +62,7 @@ public class DirectorsFragment extends Fragment {
 
     private void InitializeViews(View view) {
         swipyRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
-        lvDirectors = (ListView) view.findViewById(R.id.expandableLayoutListView);
+        lvDirectors = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
         swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
 
             @Override
@@ -120,6 +120,12 @@ public class DirectorsFragment extends Fragment {
                                 }
                                 lastReponseString = response.toString();
                                 lvDirectors.setAdapter(new DirectorsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, directorships));
+//                                lvDirectors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                                    @Override
+//                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                                        lvDirectors.performItemClick(view, position, id);
+//                                    }
+//                                });
                             }
 
                             @Override

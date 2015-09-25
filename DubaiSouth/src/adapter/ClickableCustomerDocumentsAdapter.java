@@ -52,7 +52,7 @@ public class ClickableCustomerDocumentsAdapter extends ClickableListAdapter {
         Company_Documents__c company_documents__c = (Company_Documents__c) mvh.data;
         mvh.tvCompanyDocumentName.setText(company_documents__c.getName());
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
-        if (!Utilities.stringNotNull(company_documents__c.getCreatedDate().getTime().toString()).equals("")) {
+        if (company_documents__c.getCreatedDate() != null && !Utilities.stringNotNull(company_documents__c.getCreatedDate().getTime().toString()).equals("")) {
             String strDate = sdfDate.format(company_documents__c.getCreatedDate().getTime());
             mvh.tvDate.setText("Date:" + strDate);
         } else {
@@ -68,24 +68,25 @@ public class ClickableCustomerDocumentsAdapter extends ClickableListAdapter {
 
         mvh.horizontalServices.setAdapter(new HorizontalListViewAdapter(company_documents__c, activity, context, _items));
 
-        mvh.item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mvh != null) {
-                    if (!mvh.item.isOpened()) {
-                        mvh.item.show();
-                    } else {
-                        mvh.item.hide();
-                    }
-                }
-            }
-        });
+//        mvh.item.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mvh != null) {
+//                    if (!mvh.item.isOpened()) {
+//                        mvh.item.show();
+//                    } else {
+//                        mvh.item.hide();
+//                    }
+//                }
+//            }
+//        });
     }
 
     public boolean addAll(ArrayList<Company_Documents__c> strings) {
 
         boolean returnedProgress = false;
         int startIndex = companyDocuments.size();
+        ArrayList<Company_Documents__c> company_documents__cs = new ArrayList<>();
         for (int i = 0; i < strings.size(); i++) {
             boolean found = false;
             for (int j = 0; j < companyDocuments.size(); j++) {
@@ -94,18 +95,15 @@ public class ClickableCustomerDocumentsAdapter extends ClickableListAdapter {
                     break;
                 }
                 if (!found) {
-                    companyDocuments.add(strings.get(i));
-                    returnedProgress = true;
+                    company_documents__cs.add(strings.get(i));
                 }
             }
         }
-        if (returnedProgress) {
-            companyDocuments.addAll(startIndex, strings);
+        if (company_documents__cs.size() > 0) {
+            companyDocuments.addAll(company_documents__cs);
             notifyDataSetChanged();
-            return true;
-        } else {
-            return returnedProgress;
         }
+        return returnedProgress;
     }
 
 

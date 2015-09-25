@@ -20,11 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:padding="10dp"
         android:layout_alignStart="@+id/textView24"
         android:layout_below="@+id/textView24"
         android:layout_marginRight="22dp"
         android:layout_marginStart="22dp"
-        android:background="@drawable/abc_edit_text_material"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_background"
         android:imeOptions="actionNext"
         android:singleLine="true" />
 
@@ -47,9 +49,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/textView24"
         android:layout_below="@+id/textView24"
+        android:padding="10dp"
         android:layout_marginRight="22dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="22dp"
-        android:background="@drawable/abc_edit_text_material"
+        android:background="@drawable/edit_text_background"
         android:imeOptions="actionNext"
         android:singleLine="true" />
 
@@ -73,8 +77,10 @@
         android:layout_alignStart="@+id/textView24"
         android:layout_below="@+id/textView24"
         android:layout_marginRight="22dp"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="22dp"
-        android:background="@drawable/abc_edit_text_material"
+        android:background="@drawable/edit_text_background"
         android:imeOptions="actionDone"
         android:singleLine="true" />
 

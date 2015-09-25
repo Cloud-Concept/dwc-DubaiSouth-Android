@@ -50,6 +50,7 @@ import model.Company_Documents__c;
 import model.Contract_DWC__c;
 import model.Directorship;
 import model.EServices_Document_Checklist__c;
+import model.LegalRepresentative;
 import model.ServiceItem;
 import model.ShareOwnership;
 import model.User;
@@ -152,6 +153,8 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                         ActivitiesLauncher.openCardActivity(context, card, "3");
                     } else if (tvServiceName.getText().toString().equals("Replace Card")) {
                         ActivitiesLauncher.openCardActivity(context, card, "4");
+                    } else if (tvServiceName.getText().toString().equals("Show Details")) {
+                        ActivitiesLauncher.openAccessCardShowDetailsActivity(context, card);
                     }
                 } else if (object instanceof ShareOwnership) {
                     ShareOwnership shareHolder = (ShareOwnership) object;
@@ -236,14 +239,19 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                             }
                         });
                     }
-                }else if(object instanceof Directorship){
+                } else if (object instanceof Directorship) {
                     final Directorship directorship = (Directorship) object;
 //                    final Directorship _user = (Directorship) object;
                     if (tvServiceName.getText().toString().equals("Show Details")) {
 //                        ActivitiesLauncher.openLicenseCancellationActivity(context);
-                        ActivitiesLauncher.openDirectorShowDetailsActivity(context,directorship);
+                        ActivitiesLauncher.openDirectorShowDetailsActivity(context, directorship);
                     } else if (tvServiceName.getText().toString().equals("Director Removal")) {
                         ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Director Removal", object);
+                    }
+                } else if (object instanceof LegalRepresentative) {
+                    final LegalRepresentative legalRepresentative = (LegalRepresentative) object;
+                    if (tvServiceName.getText().toString().equals("Show Details")) {
+                        ActivitiesLauncher.openLegalRepresentativesShowDetailsActivity(context, legalRepresentative);
                     }
                 }
             }

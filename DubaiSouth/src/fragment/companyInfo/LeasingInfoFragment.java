@@ -37,6 +37,7 @@ import java.util.Set;
 import RestAPI.SFResponseManager;
 import adapter.LeasingInfoAdapter;
 import cloudconcept.dwc.R;
+import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.Contract_DWC__c;
 import model.User;
@@ -48,7 +49,7 @@ public class LeasingInfoFragment extends Fragment {
 
     private static final String ARG_TEXT = "LeasingInfoFragment";
     SwipyRefreshLayout swipyRefreshLayout;
-    ListView lvLeasingInfoItems;
+    ExpandableLayoutListView lvLeasingInfoItems;
     RestRequest restRequest;
     private String result;
     private TextView tvNoEmployees;
@@ -90,7 +91,7 @@ public class LeasingInfoFragment extends Fragment {
 //        soql = builder.toString();
 
         swipyRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
-        lvLeasingInfoItems = (ListView) view.findViewById(R.id.expandableLayoutListView);
+        lvLeasingInfoItems = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
         tvNoEmployees = (TextView) view.findViewById(R.id.tvNoEmployees);
         new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
             @Override

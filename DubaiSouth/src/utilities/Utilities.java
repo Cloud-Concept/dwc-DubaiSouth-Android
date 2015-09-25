@@ -2193,6 +2193,9 @@ import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
+import com.salesforce.androidsdk.smartstore.app.SalesforceSDKManagerWithSmartStore;
+import com.salesforce.androidsdk.smartstore.store.IndexSpec;
+import com.salesforce.androidsdk.smartstore.store.SmartStore;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -4314,5 +4317,49 @@ public class Utilities {
 //        }
 //        return isValid;
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public static SmartStore registerUserSoup(){
+        SalesforceSDKManagerWithSmartStore sdkManager = SalesforceSDKManagerWithSmartStore.getInstance();
+        SmartStore smartStore = sdkManager.getSmartStore();
+        IndexSpec[] User_INDEX_SPEC = {
+                new IndexSpec("ContactId", SmartStore.Type.string),
+                new IndexSpec("Contact.Name", SmartStore.Type.string),
+                new IndexSpec("Contact.Personal_Photo__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Id", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Account_Balance__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Portal_Balance__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Name", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Arabic_Account_Name__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.License_Number_Formula__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.BillingCity", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Company_Registration_Date__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Legal_Form__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Registration_Number_Value__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Phone", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Fax", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Email__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Mobile__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.PRO_Email__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.PRO_Mobile_Number__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.BillingStreet", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.BillingPostalCode", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.BillingCountry", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.BillingState", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.Id", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.License_Issue_Date__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.License_Expiry_Date__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.Commercial_Name__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.Commercial_Name_Arabic__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.License_Number_Value__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.Validity_Status__c", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.RecordType.Id", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.RecordType.Name", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.RecordType.DeveloperName", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Current_License_Number__r.RecordType.SObjectType", SmartStore.Type.string),
+                new IndexSpec("Contact.Account.Company_Logo__c", SmartStore.Type.string)
+        };
+        smartStore.registerSoup("User", User_INDEX_SPEC);
+        return smartStore;
     }
 }

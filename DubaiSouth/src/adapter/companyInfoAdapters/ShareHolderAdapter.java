@@ -74,19 +74,19 @@ public class ShareHolderAdapter extends ClickableListAdapter {
         holder.tvStartDate.setText(_ShareHolder.getOwnership_Start_Date__c() == null ? "" : _ShareHolder.getOwnership_Start_Date__c());
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(_ShareHolder.get_shareholder().getPersonalPhoto()), holder._smartEmployeeImage);
 
-        holder.item.setOnClickListener(new OnClickListener(holder) {
-
-            public void onClick(View v, ViewHolder viewHolder) {
-                if (viewHolder != null) {
-                    ShareHoldersViewHolder myViewHolder = (ShareHoldersViewHolder) viewHolder;
-                    if (!myViewHolder.item.isOpened()) {
-                        myViewHolder.item.show();
-                    } else {
-                        myViewHolder.item.hide();
-                    }
-                }
-            }
-        });
+//        holder.item.setOnClickListener(new OnClickListener(holder) {
+//
+//            public void onClick(View v, ViewHolder viewHolder) {
+//                if (viewHolder != null) {
+//                    ShareHoldersViewHolder myViewHolder = (ShareHoldersViewHolder) viewHolder;
+//                    if (!myViewHolder.item.isOpened()) {
+//                        myViewHolder.item.show();
+//                    } else {
+//                        myViewHolder.item.hide();
+//                    }
+//                }
+//            }
+//        });
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         _items.add(new ServiceItem("Share Holder", R.drawable.renew_visa, objects));

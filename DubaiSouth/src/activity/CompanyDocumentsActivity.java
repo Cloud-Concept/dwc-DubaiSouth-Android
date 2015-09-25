@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,17 +21,11 @@ import com.salesforce.androidsdk.ui.sfnative.SalesforceActivity;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 
-import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import adapter.CompanyDocumentsActivityAdapter;
-import adapter.CompanyDocumentsAdapter;
 import cloudconcept.dwc.R;
-import custom.PullAndLoadListView;
-import custom.PullToRefreshListView;
 import dataStorage.StoreData;
 import exceptionHandling.ExceptionHandler;
 import model.Attachment;

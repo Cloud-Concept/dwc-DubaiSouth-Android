@@ -69,7 +69,7 @@
             android:background="@color/white_green">
 
 
-            <ListView
+            <custom.expandableView.ExpandableLayoutListView
                 android:id="@+id/expandableLayoutListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -80,7 +80,7 @@
                 android:dividerHeight="2dp"
                 android:footerDividersEnabled="false">
 
-            </ListView>
+            </custom.expandableView.ExpandableLayoutListView>
 
         </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 

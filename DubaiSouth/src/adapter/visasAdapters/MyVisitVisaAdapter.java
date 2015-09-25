@@ -74,19 +74,19 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
 
         _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
 
-        mvh.item.setOnClickListener(new OnClickListener(mvh) {
-
-            public void onClick(View v, ViewHolder viewHolder) {
-                if (viewHolder != null) {
-                    VisitVisaViewHolder myViewHolder = (VisitVisaViewHolder) viewHolder;
-                    if (!myViewHolder.item.isOpened()) {
-                        myViewHolder.item.show();
-                    } else {
-                        myViewHolder.item.hide();
-                    }
-                }
-            }
-        });
+//        mvh.item.setOnClickListener(new OnClickListener(mvh) {
+//
+//            public void onClick(View v, ViewHolder viewHolder) {
+//                if (viewHolder != null) {
+//                    VisitVisaViewHolder myViewHolder = (VisitVisaViewHolder) viewHolder;
+//                    if (!myViewHolder.item.isOpened()) {
+//                        myViewHolder.item.show();
+//                    } else {
+//                        myViewHolder.item.hide();
+//                    }
+//                }
+//            }
+//        });
         mvh._horizontalListView.setAdapter(new HorizontalListViewAdapter(mo,activity, context, _items));
     }
 

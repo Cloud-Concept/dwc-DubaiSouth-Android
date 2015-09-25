@@ -208,6 +208,12 @@
 			android:screenOrientation="portrait"
 			android:windowSoftInputMode="stateAlwaysHidden|stateHidden|adjustPan"></activity>
 
+		<activity
+			android:name="activity.AccessCardShowDetailsActivity"
+			android:label="@string/title_activity_main_noc"
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="stateAlwaysHidden|stateHidden|adjustPan"></activity>
+
 	</application>
 
 </manifest>

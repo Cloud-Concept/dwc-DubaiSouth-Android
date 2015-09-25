@@ -3,12 +3,11 @@ package fragment.companyDocumentsScreen;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
@@ -17,6 +16,10 @@ import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -24,8 +27,11 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import adapter.ClickableCustomerDocumentsAdapter;
 import cloudconcept.dwc.R;
+import custom.expandableView.ExpandableLayoutListView;
+import dataStorage.StoreData;
 import fragmentActivity.HomeCompanyDocumentsActivity;
 import model.Company_Documents__c;
+import utilities.CallType;
 import utilities.Utilities;
 
 /**
@@ -36,12 +42,11 @@ public class CustomerDocumentsFragment2 extends Fragment {
     private static final String ARG_TEXT = "CustomerDocumentsFragment2";
     private ArrayList<Company_Documents__c> company_documents__cs;
     private static ArrayList<Company_Documents__c> companyDocuments;
-    private static ListView lstCustomerDocuments;
+    private static ExpandableLayoutListView lstCustomerDocuments;
     private SwipyRefreshLayout mSwipeRefreshLayout;
     private static HomeCompanyDocumentsActivity activity;
     private int offset = 0;
     private int limit = 10;
-    private boolean iscalledFromRefresh = false;
     private RestRequest restRequest;
     private static ClickableCustomerDocumentsAdapter adapter;
 
@@ -58,77 +63,104 @@ public class CustomerDocumentsFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.certificates_agreements, container, false);
         InitializeViews(view);
-        Utilities.showloadingDialog(getActivity());
-        CallCustomerDocumentsService(CallMethod.FIRSTTIME, offset, limit);
+        CallCustomerDocumentsService(CallType.FIRSTTIME, offset, limit);
         return view;
     }
 
     private void InitializeViews(View view) {
+        companyDocuments = new ArrayList<>();
         activity = (HomeCompanyDocumentsActivity) getActivity();
-        lstCustomerDocuments = (ListView) view.findViewById(R.id.lstTrueCopies);
+        lstCustomerDocuments = (ExpandableLayoutListView) view.findViewById(R.id.lstTrueCopies);
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
-                Log.d("MainActivity", "Refresh triggered at "
-                        + (direction == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
-                    iscalledFromRefresh = true;
                     offset = 0;
-                    CallCustomerDocumentsService(CallMethod.REFRESH, offset, limit);
+                    CallCustomerDocumentsService(CallType.REFRESH, offset, limit);
                 } else {
-                    iscalledFromRefresh = false;
                     offset += limit;
-                    CallCustomerDocumentsService(CallMethod.LOADMORE, offset, limit);
+                    CallCustomerDocumentsService(CallType.LOADMORE, offset, limit);
                 }
             }
         });
-        companyDocuments = new ArrayList<>();
     }
 
-    private synchronized void CallCustomerDocumentsService(final CallMethod method, final int offset, final int limit) {
+    private synchronized void CallCustomerDocumentsService(final CallType method, final int offset, final int limit) {
+        if (method == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse().equals("")) {
+            try {
+                Utilities.showloadingDialog(getActivity());
+                JSONArray jsonArray = new JSONArray(new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse());
+                company_documents__cs = new ArrayList<>();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    Gson gson = new Gson();
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    Company_Documents__c company_documents__c = gson.fromJson(jsonObject.toString(), Company_Documents__c.class);
+                    company_documents__cs.add(company_documents__c);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (adapter == null) {
+                companyDocuments.addAll(company_documents__cs);
+                adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
+                        R.layout.company_document_item_row_screen, companyDocuments);
+                lstCustomerDocuments.setAdapter(adapter);
+                Utilities.dismissLoadingDialog();
+            } else {
+                Utilities.dismissLoadingDialog();
+                adapter.addAll(company_documents__cs);
+            }
+        } else {
+            if (method == CallType.FIRSTTIME) {
+                Utilities.showloadingDialog(getActivity());
+            }
+            String soql = SoqlStatements.constructCustomerDocumentsQuery(activity.getUser().get_contact().get_account().getID(), offset, limit);
+            try {
+                restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(getActivity());
+                        return;
+                    } else {
+                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                            @Override
+                            public void onSuccess(RestRequest request, final RestResponse response) {
+                                company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObject(response.toString());
+                                if (company_documents__cs.size() > 0) {
+                                    Gson gson = new Gson();
+                                    String str = gson.toJson(company_documents__cs);
+                                    new StoreData(getActivity().getApplicationContext()).saveCustomerDocumentsResponse(str);
+                                }
+                                if (method == CallType.REFRESH || method == CallType.LOADMORE) {
+                                    mSwipeRefreshLayout.setRefreshing(false);
+                                } else if (method == CallType.FIRSTTIME) {
+                                    Utilities.dismissLoadingDialog();
+                                }
+                                if (adapter == null) {
+                                    companyDocuments.addAll(company_documents__cs);
+                                    adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
+                                            R.layout.company_document_item_row_screen, companyDocuments);
+                                    lstCustomerDocuments.setAdapter(adapter);
+                                } else {
+                                    adapter.addAll(company_documents__cs);
+                                }
+                            }
 
-        String soql = SoqlStatements.constructCustomerDocumentsQuery(activity.getUser().get_contact().get_account().getID(), offset, limit);
-        try {
-            restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-            @Override
-            public void authenticatedRestClient(RestClient client) {
-                if (client == null) {
-                    SalesforceSDKManager.getInstance().logout(getActivity());
-                    return;
-                } else {
-                    client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
-                        @Override
-                        public void onSuccess(RestRequest request, final RestResponse response) {
-                            if (method == CallMethod.REFRESH || method == CallMethod.LOADMORE) {
-                                mSwipeRefreshLayout.setRefreshing(false);
-                            } else if (method == CallMethod.FIRSTTIME) {
+                            @Override
+                            public void onError(Exception exception) {
                                 Utilities.dismissLoadingDialog();
                             }
-                            company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObject(response.toString());
-
-                            if (adapter == null) {
-                                companyDocuments.addAll(company_documents__cs);
-                                adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
-                                        R.layout.company_document_item_row_screen, companyDocuments);
-                                lstCustomerDocuments.setAdapter(adapter);
-                            } else {
-                                adapter.addAll(company_documents__cs);
-                            }
-                        }
-
-                        @Override
-                        public void onError(Exception exception) {
-                            Utilities.dismissLoadingDialog();
-                        }
-                    });
+                        });
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     public static void setNewCompanyDocuments(Company_Documents__c company_documents__c, int position) {
@@ -136,12 +168,5 @@ public class CustomerDocumentsFragment2 extends Fragment {
         adapter = new ClickableCustomerDocumentsAdapter(activity, activity.getApplicationContext(),
                 R.layout.company_document_item_row_screen, companyDocuments);
         lstCustomerDocuments.setAdapter(adapter);
-    }
-
-
-    enum CallMethod {
-        REFRESH,
-        LOADMORE,
-        FIRSTTIME
     }
 }

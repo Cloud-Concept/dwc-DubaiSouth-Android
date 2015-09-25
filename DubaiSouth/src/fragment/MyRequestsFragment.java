@@ -34,9 +34,9 @@ import custom.PullAndLoadListView;
 import custom.PullToRefreshListView;
 import dataStorage.StoreData;
 import model.MyRequest;
-import model.SFServiceCall;
 import model.User;
 import utilities.ActivitiesLauncher;
+import utilities.CallType;
 import utilities.Utilities;
 
 /**
@@ -182,7 +182,7 @@ public class MyRequestsFragment extends Fragment {
         });
     }
 
-    private void CallMyRequestsService(final SFServiceCall callType, String status2, String request_type2, int limit, int offset) {
+    private void CallMyRequestsService(final CallType callType, String status2, String request_type2, int limit, int offset) {
 
         Gson gson = new Gson();
         User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
@@ -223,9 +223,9 @@ public class MyRequestsFragment extends Fragment {
                                     pullandloadMyRequests.setOnLoadMoreListener(null);
                                 }
                                 loadMoreResponse = result.toString();
-                                if (callType == SFServiceCall.LOADMORE) {
+                                if (callType == CallType.LOADMORE) {
                                     pullandloadMyRequests.onLoadMoreComplete();
-                                } else if (callType == SFServiceCall.REFRESH) {
+                                } else if (callType == CallType.REFRESH) {
                                     pullandloadMyRequests.onRefreshComplete();
                                 }
 
@@ -345,7 +345,7 @@ public class MyRequestsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            CallMyRequestsService(SFServiceCall.REFRESH, status, request_type, Integer.parseInt(SoqlStatements.LIMIT), offset);
+            CallMyRequestsService(CallType.REFRESH, status, request_type, Integer.parseInt(SoqlStatements.LIMIT), offset);
             super.onPostExecute(aVoid);
         }
 
@@ -375,7 +375,7 @@ public class MyRequestsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            CallMyRequestsService(SFServiceCall.LOADMORE, status, request_type, Integer.parseInt(SoqlStatements.LIMIT), offset);
+            CallMyRequestsService(CallType.LOADMORE, status, request_type, Integer.parseInt(SoqlStatements.LIMIT), offset);
             super.onPostExecute(aVoid);
         }
 

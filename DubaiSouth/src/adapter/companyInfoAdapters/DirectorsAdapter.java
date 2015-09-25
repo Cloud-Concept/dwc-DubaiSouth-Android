@@ -74,19 +74,19 @@ public class DirectorsAdapter extends ClickableListAdapter {
             _items.add(new ServiceItem("Director Removal", R.drawable.reports_myrequests));
         }
 
-        holder.item.setOnClickListener(new ClickableListAdapter.OnClickListener(holder) {
-
-            public void onClick(View v, ViewHolder viewHolder) {
-                if (viewHolder != null) {
-                    DirectorViewHolder myViewHolder = (DirectorViewHolder) viewHolder;
-                    if (!myViewHolder.item.isOpened()) {
-                        myViewHolder.item.show();
-                    } else {
-                        myViewHolder.item.hide();
-                    }
-                }
-            }
-        });
+//        holder.item.setOnClickListener(new ClickableListAdapter.OnClickListener(holder) {
+//
+//            public void onClick(View v, ViewHolder viewHolder) {
+//                if (viewHolder != null) {
+//                    DirectorViewHolder myViewHolder = (DirectorViewHolder) viewHolder;
+//                    if (!myViewHolder.item.isOpened()) {
+//                        myViewHolder.item.show();
+//                    } else {
+//                        myViewHolder.item.hide();
+//                    }
+//                }
+//            }
+//        });
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(_directorship.get_director().getPersonal_Photo()), holder._smartEmployeeImage);
         holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_directorship,activity, context, _items));
     }

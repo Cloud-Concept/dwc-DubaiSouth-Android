@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
@@ -29,12 +27,13 @@ import java.util.Arrays;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
-import adapter.visasAdapters.PermanentEmployeeListAdapter;
 import adapter.SpinnerAdapter;
+import adapter.visasAdapters.PermanentEmployeeListAdapter;
 import cloudconcept.dwc.R;
-import custom.CustomViewPager;
+import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.Visa;
+import utilities.CallType;
 import utilities.Utilities;
 
 /**
@@ -43,9 +42,8 @@ import utilities.Utilities;
 public class PermanentEmployeeFragment extends Fragment {
 
     private static final String ARG_TEXT = "PermanentEmployee";
-    static String strFilter;
-    public boolean iscalledFromRefresh = false;
-    ListView expandableLayoutListView;
+    String strFilter;
+    ExpandableLayoutListView expandableLayoutListView;
     SwipyRefreshLayout mSwipeRefreshLayout;
     Spinner spinnerFilterPermanentEmployee;
     EditText etSearch;
@@ -75,41 +73,68 @@ public class PermanentEmployeeFragment extends Fragment {
         _visas = new ArrayList<Visa>();
         _Filteredvisas = new ArrayList<Visa>();
         InitializeViews(view);
-        CallPermanentEmployeeService(true, iscalledFromRefresh, strFilter);
+        CallPermanentEmployeeService(strFilter, CallType.FIRSTTIME);
         return view;
     }
 
     private void InitializeViews(View view) {
 
-        expandableLayoutListView = (ListView) view.findViewById(R.id.expandableLayoutListView);
+        expandableLayoutListView = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
         spinnerFilterPermanentEmployee = (Spinner) view.findViewById(R.id.spinner);
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         etSearch = (EditText) view.findViewById(R.id.etSearch);
-        iscalledFromRefresh = false;
-        if (strFilter == null)
+        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+                Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
+        spinnerFilterPermanentEmployee.setAdapter(dataAdapter);
+        strFilter = new StoreData(getActivity().getApplicationContext()).getPermanentEmployeeSpinnerFilterValue();
+        if (strFilter.equals("")) {
+            spinnerFilterPermanentEmployee.setSelection(1, true);
             strFilter = visa_validity_status[1];
+            new StoreData(getActivity().getApplicationContext()).setPermanentEmployeeSpinnerFilterValue(strFilter);
+        } else {
+            if (strFilter.equals("All")) {
+                spinnerFilterPermanentEmployee.setSelection(0);
+            } else if (strFilter.equals("Issued")) {
+                spinnerFilterPermanentEmployee.setSelection(1);
+            } else if (strFilter.equals("Expired")) {
+                spinnerFilterPermanentEmployee.setSelection(2);
+            } else if (strFilter.equals("Cancelled")) {
+                spinnerFilterPermanentEmployee.setSelection(3);
+            } else if (strFilter.equals("Under Process")) {
+                spinnerFilterPermanentEmployee.setSelection(4);
+            } else {
+                spinnerFilterPermanentEmployee.setSelection(5);
+            }
+        }
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
-                Log.d("MainActivity", "Refresh triggered at "
-                        + (direction == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
-                iscalledFromRefresh = true;
-                CallPermanentEmployeeService(true, iscalledFromRefresh, strFilter);
+                if (direction == SwipyRefreshLayoutDirection.TOP) {
+                    _visas.clear();
+                    if (_Filteredvisas != null) {
+                        _Filteredvisas.clear();
+                    }
+                    CallPermanentEmployeeService(strFilter, CallType.REFRESH);
+                } else {
+                    CallPermanentEmployeeService(strFilter, CallType.LOADMORE);
+                }
             }
         });
 
-        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-                Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
-        spinnerFilterPermanentEmployee.setAdapter(dataAdapter);
-        spinnerFilterPermanentEmployee.setSelection(1, true);
         spinnerFilterPermanentEmployee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                strFilter = visa_validity_status[position];
-                iscalledFromRefresh = false;
-                CallPermanentEmployeeService(true, iscalledFromRefresh, strFilter);
+                if (!strFilter.equals(visa_validity_status[position])) {
+                    strFilter = visa_validity_status[position];
+                    new StoreData(getActivity().getApplicationContext()).setPermanentEmployeeSpinnerFilterValue(strFilter);
+                    _visas.clear();
+                    if (_Filteredvisas != null) {
+                        _Filteredvisas.clear();
+                    }
+                    CallPermanentEmployeeService(strFilter, CallType.SPINNETCHANGEDDATA);
+                }
             }
 
             @Override
@@ -118,23 +143,97 @@ public class PermanentEmployeeFragment extends Fragment {
         });
     }
 
-    public void CallPermanentEmployeeService(boolean isNew, final boolean iscalledFromRefresh, String visa_validity_status) {
-        soqlQuery = SoqlStatements.getInstance().constructPermanentEmployeeSoqlStatement(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), visa_validity_status, limit, offset);
-        try {
-            restRequest = RestRequest.getRequestForQuery(
-                    getActivity().getString(R.string.api_version), soqlQuery);
+    @Override
+    public void onPause() {
+        spinnerFilterPermanentEmployee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            if (isNew == true) {
-                _visas.clear();
-                offset = 0;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        super.onPause();
+    }
+
+    public void CallPermanentEmployeeService(String visa_validity_status, final CallType callType) {
+        if (callType == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getPermanentEmployeeResponse().equals("")) {
+            ArrayList<Visa> _Returnedvisas = SFResponseManager.parseVisaData(new StoreData(getActivity().getApplicationContext()).getPermanentEmployeeResponse());
+            if (_visas.size() == 0) {
+                _visas.addAll(_Returnedvisas);
             } else {
-                offset += limit - 1;
+                for (int i = 0; i < _Returnedvisas.size(); i++) {
+                    if (_visas.size() > 0) {
+                        boolean isFound = false;
+                        for (int j = 0; j < _visas.size(); j++) {
+                            if (_Returnedvisas.get(i).getID().equals(_visas.get(j).getID())) {
+                                isFound = true;
+                                break;
+                            }
+                        }
+                        if (!isFound) {
+                            _visas.add(_Returnedvisas.get(i));
+                        }
+                    }
+                }
             }
 
-            if (iscalledFromRefresh == false) {
-                Utilities.showloadingDialog(getActivity());
-            }
+            adapter = new PermanentEmployeeListAdapter(getActivity(), getActivity().getApplicationContext(),
+                    R.layout.item_row_permanent_employee, _visas);
+            expandableLayoutListView.setAdapter(adapter);
+            _Filteredvisas.clear();
 
+            etSearch.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (!s.toString().toLowerCase().equals("")) {
+                        _Filteredvisas.clear();
+                        for (int i = 0; i < _visas.size(); i++) {
+                            if (_visas.get(i).getApplicant_Full_Name__c().toLowerCase().contains(s.toString().toLowerCase())) {
+                                _Filteredvisas.add(_visas.get(i));
+                            }
+                        }
+                    } else {
+                        _Filteredvisas.clear();
+                        _Filteredvisas.addAll(_visas);
+                    }
+
+                    adapter = new PermanentEmployeeListAdapter(getActivity(), getActivity().getApplicationContext(),
+                            R.layout.item_row_permanent_employee, _Filteredvisas);
+                    expandableLayoutListView.setAdapter(adapter);
+                }
+            });
+        } else {
+            soqlQuery = SoqlStatements.getInstance().constructPermanentEmployeeSoqlStatement(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), visa_validity_status, limit, offset);
+            try {
+                restRequest = RestRequest.getRequestForQuery(
+                        getActivity().getString(R.string.api_version), soqlQuery);
+
+                if (callType == CallType.FIRSTTIME || callType == CallType.REFRESH || callType == CallType.SPINNETCHANGEDDATA) {
+                    offset = 0;
+                } else {
+                    offset += limit;
+                }
+
+                if (callType == CallType.SPINNETCHANGEDDATA) {
+                    Utilities.showloadingDialog(getActivity());
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                 @Override
                 public void authenticatedRestClient(RestClient client) {
@@ -147,11 +246,12 @@ public class PermanentEmployeeFragment extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse result) {
                                 try {
-                                    if (iscalledFromRefresh == false) {
+                                    if (callType == CallType.SPINNETCHANGEDDATA) {
                                         Utilities.dismissLoadingDialog();
                                     } else {
                                         mSwipeRefreshLayout.setRefreshing(false);
                                     }
+                                    new StoreData(getActivity().getApplicationContext()).savePermanentEmployeeResponse(result.toString());
                                     ArrayList<Visa> _Returnedvisas = SFResponseManager.parseVisaData(result.toString());
                                     if (_visas.size() == 0) {
                                         _visas.addAll(_Returnedvisas);
@@ -160,7 +260,7 @@ public class PermanentEmployeeFragment extends Fragment {
                                             if (_visas.size() > 0) {
                                                 boolean isFound = false;
                                                 for (int j = 0; j < _visas.size(); j++) {
-                                                    if (_Returnedvisas.get(i).getApplicant_Full_Name__c().equals(_visas.get(j).getApplicant_Full_Name__c()) && _Returnedvisas.get(i).getPassport_Number__c().equals(_visas.get(j).getPassport_Number__c())) {
+                                                    if (_Returnedvisas.get(i).getID().equals(_visas.get(j).getID())) {
                                                         isFound = true;
                                                         break;
                                                     }
@@ -172,7 +272,7 @@ public class PermanentEmployeeFragment extends Fragment {
                                         }
                                     }
 
-                                    adapter = new PermanentEmployeeListAdapter(getActivity(),getActivity().getApplicationContext(),
+                                    adapter = new PermanentEmployeeListAdapter(getActivity(), getActivity().getApplicationContext(),
                                             R.layout.item_row_permanent_employee, _visas);
                                     expandableLayoutListView.setAdapter(adapter);
                                     _Filteredvisas.clear();
@@ -190,7 +290,7 @@ public class PermanentEmployeeFragment extends Fragment {
 
                                         @Override
                                         public void afterTextChanged(Editable s) {
-                                            if (!s.toString().toLowerCase().equals("")) {
+                                            if (!s.equals("")) {
                                                 _Filteredvisas.clear();
                                                 for (int i = 0; i < _visas.size(); i++) {
                                                     if (_visas.get(i).getApplicant_Full_Name__c().toLowerCase().contains(s.toString().toLowerCase())) {
@@ -202,7 +302,7 @@ public class PermanentEmployeeFragment extends Fragment {
                                                 _Filteredvisas.addAll(_visas);
                                             }
 
-                                            adapter = new PermanentEmployeeListAdapter(getActivity(),getActivity().getApplicationContext(),
+                                            adapter = new PermanentEmployeeListAdapter(getActivity(), getActivity().getApplicationContext(),
                                                     R.layout.item_row_permanent_employee, _Filteredvisas);
                                             expandableLayoutListView.setAdapter(adapter);
                                         }
@@ -220,8 +320,6 @@ public class PermanentEmployeeFragment extends Fragment {
                     }
                 }
             });
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
         }
     }
 }

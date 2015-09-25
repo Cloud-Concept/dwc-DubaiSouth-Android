@@ -107,19 +107,19 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         }
 
         _items.add(new ServiceItem("Show Details", R.drawable.service_show_details));
-        mvh.item.setOnClickListener(new OnClickListener(mvh) {
-
-            public void onClick(View v, ViewHolder viewHolder) {
-                if (viewHolder != null) {
-                    VisaViewHolder myViewHolder = (VisaViewHolder) viewHolder;
-                    if (!myViewHolder.item.isOpened()) {
-                        myViewHolder.item.show();
-                    } else {
-                        myViewHolder.item.hide();
-                    }
-                }
-            }
-        });
+//        mvh.item.setOnClickListener(new OnClickListener(mvh) {
+//
+//            public void onClick(View v, ViewHolder viewHolder) {
+//                if (viewHolder != null) {
+//                    VisaViewHolder myViewHolder = (VisaViewHolder) viewHolder;
+//                    if (!myViewHolder.item.isOpened()) {
+//                        myViewHolder.item.show();
+//                    } else {
+//                        myViewHolder.item.hide();
+//                    }
+//                }
+//            }
+//        });
 
         mvh._horizontalListView.setAdapter(new HorizontalListViewAdapter(mo,act, context, _items));
 //        mvh._horizontalListView.setOnTouchListener(new View.OnTouchListener() {

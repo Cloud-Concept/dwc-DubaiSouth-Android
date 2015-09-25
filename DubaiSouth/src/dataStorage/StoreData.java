@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import java.util.Arrays;
+
 public class StoreData {
     private Context context;
     String DATABASE_NAME = "DWC";
@@ -207,4 +209,99 @@ public class StoreData {
         return b;
 
     }
+
+    public void savePermanentEmployeeResponse(String s) {
+        editor.putString("permanentEmployeeResponse", s);
+        editor.commit();
+    }
+
+    public String getPermanentEmployeeResponse() {
+        String b = sharedPreferences.getString("permanentEmployeeResponse",
+                "");
+        return b;
+    }
+
+    public void setPermanentEmployeeSpinnerFilterValue(String strFilter) {
+
+        editor.putString("PermanentEmployeeSpinnerFilterValue", strFilter);
+        editor.commit();
+    }
+
+    public String getPermanentEmployeeSpinnerFilterValue() {
+        String b = sharedPreferences.getString("PermanentEmployeeSpinnerFilterValue",
+                "");
+        return b;
+    }
+
+    public void saveAccessCardResponse(String s) {
+        editor.putString("AccessCardResponse", s);
+        editor.commit();
+    }
+
+
+    public String getAccessCardResponse() {
+        String b = sharedPreferences.getString("AccessCardResponse",
+                "");
+        return b;
+    }
+
+    public void setAccessCardSpinnerFilterValue(String strFilter) {
+
+        editor.putString("AccessCardSpinnerFilterValue", strFilter);
+        editor.commit();
+    }
+
+    public String getAccessCardSpinnerFilterValue() {
+        String b = sharedPreferences.getString("AccessCardSpinnerFilterValue",
+                "");
+        return b;
+    }
+
+    public void saveVisitVisaResponse(String s) {
+        editor.putString("VisitVisaResponse", s);
+        editor.commit();
+    }
+
+    public String getVisitVisaResponse() {
+        String b = sharedPreferences.getString("VisitVisaResponse",
+                "");
+        return b;
+    }
+
+    public void setVisitVisaSpinnerFilterValue(String strFilter) {
+
+        editor.putString("VisitVisaSpinnerFilterValue", strFilter);
+        editor.commit();
+    }
+
+    public String getVisitVisaSpinnerFilterValue() {
+        String b = sharedPreferences.getString("VisitVisaSpinnerFilterValue",
+                "");
+        return b;
+    }
+
+
+    public void saveCertificatesAgreementsResponse(String s) {
+        editor.putString("CertificatesAgreements", s);
+        editor.commit();
+    }
+
+    public String getCertificatesAgreementsResponse() {
+        String b = sharedPreferences.getString("CertificatesAgreements",
+                "");
+        return b;
+    }
+
+    public void saveCustomerDocumentsResponse(String s) {
+        editor.putString("CustomerDocumentsResponse", s);
+        editor.commit();
+    }
+
+    public String getCustomerDocumentsResponse() {
+        String b = sharedPreferences.getString("CustomerDocumentsResponse",
+                "");
+        return b;
+    }
+
+
 }

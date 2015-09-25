@@ -54,37 +54,37 @@ public class CertificatesAdapter extends ClickableListAdapter {
 
         ArrayList<ServiceItem> _items = new ArrayList<>();
 
+        if (eServices_document_checklist__c.getOriginal_can_be_Requested__c()) {
+            _items.add(new ServiceItem("Request True Copy", R.drawable.copy));
+        }
+
         if (eServices_document_checklist__c.getAvailable_for_Preview__c()) {
             if (!eServices_document_checklist__c.getEService_Administration__r().getService_VF_Page__c().contains("<ContractId>") && !eServices_document_checklist__c.getEService_Administration__r().getService_VF_Page__c().contains("<tenId>")) {
                 _items.add(new ServiceItem("Preview", R.drawable.preview));
             }
         }
 
-        if (eServices_document_checklist__c.getOriginal_can_be_Requested__c()) {
-            _items.add(new ServiceItem("Request True Copy", R.drawable.copy));
-        }
-
         mvh.horizontalServices.setAdapter(new HorizontalListViewAdapter(eServices_document_checklist__c, activity, context, _items));
 
-        mvh.item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mvh != null) {
-                    if (!mvh.item.isOpened()) {
-                        mvh.item.show();
-                    } else {
-                        mvh.item.hide();
-                    }
-                }
-            }
-        });
+//        mvh.item.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mvh != null) {
+//                    if (!mvh.item.isOpened()) {
+//                        mvh.item.show();
+//                    } else {
+//                        mvh.item.hide();
+//                    }
+//                }
+//            }
+//        });
 
     }
 
     public boolean addAll(ArrayList<EServices_Document_Checklist__c> strings) {
 
         boolean returnedProgress = false;
-        int startIndex = eServices_document_checklist__cs.size();
+        ArrayList<EServices_Document_Checklist__c> eServices_document_checklist__cs1 = new ArrayList<>();
         for (int i = 0; i < strings.size(); i++) {
             boolean found = false;
             for (int j = 0; j < eServices_document_checklist__cs.size(); j++) {
@@ -93,18 +93,15 @@ public class CertificatesAdapter extends ClickableListAdapter {
                     break;
                 }
                 if (!found) {
-                    eServices_document_checklist__cs.add(strings.get(i));
-                    returnedProgress = true;
+                    eServices_document_checklist__cs1.add(strings.get(i));
                 }
             }
         }
-        if (returnedProgress) {
-            eServices_document_checklist__cs.addAll(startIndex, strings);
+        if (eServices_document_checklist__cs1.size() > 0) {
+            eServices_document_checklist__cs.addAll(eServices_document_checklist__cs1);
             notifyDataSetChanged();
-            return true;
-        } else {
-            return returnedProgress;
         }
+        return returnedProgress;
     }
 
 

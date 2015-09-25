@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
@@ -26,6 +25,7 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import adapter.ShareHolderAdapter;
 import cloudconcept.dwc.R;
+import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.SFServiceCall;
 import model.ShareOwnership;
@@ -40,7 +40,7 @@ public class ShareholdersFragment extends Fragment {
     int limit = 10;
     int offset = 0;
     private SwipyRefreshLayout swipyRefreshLayout;
-    private ListView lvShareholders;
+    private ExpandableLayoutListView lvShareholders;
     private String soqlQuery;
     private RestRequest restRequest;
     private boolean iscalledFromRefresh = false;
@@ -64,7 +64,7 @@ public class ShareholdersFragment extends Fragment {
 
     private void InitializeViews(View view) {
         swipyRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
-        lvShareholders = (ListView) view.findViewById(R.id.expandableLayoutListView);
+        lvShareholders = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
         swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
 
             @Override

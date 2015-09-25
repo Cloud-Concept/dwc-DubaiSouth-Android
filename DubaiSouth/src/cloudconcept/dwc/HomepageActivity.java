@@ -432,7 +432,6 @@ public class HomepageActivity extends Activity implements
     }
 
     private void InitializeViews() {
-
         _badgeButton = (BadgeButton) findViewById(R.id.btnBadgeCount);
         _badgeButton.setBadgeDrawable(getResources().getDrawable(
                 R.drawable.notification_image3));
@@ -631,6 +630,7 @@ public class HomepageActivity extends Activity implements
                         }
                     });
                     sendNotificationCountRequestInAnotherThread(_user, client);
+                    senCompanyInfoRequestInAnotherThread(client);
                 }
             }).start();
         } else {
@@ -737,6 +737,59 @@ public class HomepageActivity extends Activity implements
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+
+    public void senCompanyInfoRequestInAnotherThread(RestClient client) {
+        String soql = SoqlStatements.soql_company_info + "\'" + new StoreData(this.getApplicationContext()).getUserID() + "\'";
+
+        RestRequest restRequest = null;
+        try {
+            restRequest = RestRequest.getRequestForQuery(
+                    getString(R.string.api_version), soql);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+            @Override
+            public void onSuccess(RestRequest request, RestResponse result) {
+                try {
+                    new StoreData(getApplicationContext()).setHomepageScreenInfo(result.toString());
+                    new StoreData(getApplicationContext()).setIsHomepageDataLoaded(true);
+                    final User _user = SFResponseManager.parseCompanyRestResponse(result.toString());
+                    Gson gson = new Gson();
+                    String json = gson.toJson(_user);
+                    Utilities.setUserPhoto(HomepageActivity.this, _user.get_contact().get_account().getCompany_Logo(), smartCompanyImage);
+                    new StoreData(getApplicationContext()).setUserDataAsString(json);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            setCompanyUICOmponents(_user);
+                        }
+                    });
+                } catch (Exception e) {
+                    onError(e);
+                }
+            }
+
+            @Override
+            public void onError(Exception exception) {
+                Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+                finish();
+            }
+        });
+    }
+
+    private void setCompanyUICOmponents(User _user) {
+        new StoreData(getApplicationContext()).setUsername(_user.get_contact().getName());
+        findViewById(R.id.root).setVisibility(View.VISIBLE);
+        if (Utilities._progress != null && Utilities.getIsProgressLoading()) {
+            Utilities.dismissLoadingDialog();
+        }
+        tvCompanyName.setText(_user.get_contact().get_account().getName());
+        tvLicenseNumber.setText(_user.get_contact().get_account().getLicenseNumberFormula());
+        tvLicenseExpiry.setText(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date());
+        tvBalance.setText(_user.get_contact().get_account().getPortalBalance() + " AED");
     }
 
     public void setUICOmponents(User _user, int notificationCount) {
