@@ -51,6 +51,7 @@ import model.Contract_DWC__c;
 import model.Directorship;
 import model.EServices_Document_Checklist__c;
 import model.LegalRepresentative;
+import model.ManagementMember;
 import model.ServiceItem;
 import model.ShareOwnership;
 import model.User;
@@ -252,6 +253,11 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                     final LegalRepresentative legalRepresentative = (LegalRepresentative) object;
                     if (tvServiceName.getText().toString().equals("Show Details")) {
                         ActivitiesLauncher.openLegalRepresentativesShowDetailsActivity(context, legalRepresentative);
+                    }
+                } else if (object instanceof ManagementMember) {
+                    final ManagementMember managementMember = (ManagementMember) object;
+                    if (tvServiceName.getText().toString().equals("Show Details")) {
+                        ActivitiesLauncher.openGeneralManagersShowDetailsActivity(context, managementMember);
                     }
                 }
             }

@@ -48,6 +48,7 @@ import model.Directorship;
 import model.EServices_Document_Checklist__c;
 import model.FreeZonePayment;
 import model.LegalRepresentative;
+import model.ManagementMember;
 import model.MyRequest;
 import model.ShareOwnership;
 import model.User;
@@ -364,6 +365,18 @@ public class ActivitiesLauncher {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("object", ObjectAsStr);
+        intent.putExtra("objectType", "LegalRepresentative");
+        context.startActivity(intent);
+    }
+
+    public static void openGeneralManagersShowDetailsActivity(Context context, ManagementMember managementMember) {
+        intent = new Intent(context, LegalRepresentativesShowDetailsActivity.class);
+        gson = new Gson();
+        String ObjectAsStr = gson.toJson(managementMember);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("object", ObjectAsStr);
+        intent.putExtra("objectType", "ManagementMember");
         context.startActivity(intent);
     }
 }
