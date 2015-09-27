@@ -300,7 +300,8 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
         Map<String, Object> serviceFields = activity.getServiceFields();
 //        serviceFields = new HashMap<String, Object>();
         serviceFields.put("RecordTypeId", activity.getCardRecordTypeId());
-        serviceFields.put("Card_Type__c", activity.getCardType().replaceAll(" ", "_"));
+        serviceFields.put("Card_Type__c", activity.getCardType().replaceAll("_", " "));
+        serviceFields.put("Account__c",activity.getUser().get_contact().get_account().getID());
         if (activity.getType().equals("3"))
             serviceFields.put("Renewal_For__c", activity.getCard().getId());
         else if (activity.getType().equals("4"))
@@ -463,6 +464,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         Date resultdate = new Date(yourmilliseconds);
         fields.put("Cancellation_Date__c", sdf.format(resultdate));
+
         try {
             restRequest = RestRequest.getRequestForUpdate(activity.getString(R.string.api_version), "Card_Management__c", activity.getCard().getId(), fields);
             client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {

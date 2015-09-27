@@ -319,6 +319,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
         serviceFields.put("RecordTypeId", activity.getCardRecordTypeId());
         serviceFields.put("Request__c", activity.getInsertedCaseId());
         serviceFields.put("Card_Type__c", activity.getCardType().replace("_"," "));
+
             /* Load dynamic fetching */
 
         for (FormField field : activity.get_webForm().get_formFields()) {
