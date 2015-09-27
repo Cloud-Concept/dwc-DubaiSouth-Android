@@ -37,8 +37,6 @@ import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
 import fragment.BaseFragmentFiveSteps;
-import fragment.BaseServiceFragment;
-import fragment.Cards.CancelCard.CancelCardInitialPage;
 import fragment.Cards.NOCAttachmentPage;
 import fragment.Cards.PayAndSubmit;
 import fragmentActivity.CardActivity;
@@ -54,6 +52,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
     CardActivity activity;
     private RestRequest restRequest;
+    NiftyDialogBuilder builder;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -83,7 +82,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
-        return ThankYou.newInstance(msg,fee,mail);
+        return ThankYou.newInstance(msg, fee, mail);
     }
 
     @Override
@@ -113,33 +112,33 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                 } else {
                     super.onClick(v);
                 }
-            }else if(getStatus()==4)
-                Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
+            } else if (getStatus() == 4)
+                builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
             else {
                 super.onClick(v);
             }
         } else if (v == btnBack || v == btnBackTransparent) {
 
-                if (getStatus() == 3) {
+            if (getStatus() == 3) {
+                activity.setInsertedCaseId(null);
+                activity.setInsertedServiceId(null);
+            } else if (getStatus() == 4) {
+                if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
+                    setStatus(3);
                     activity.setInsertedCaseId(null);
                     activity.setInsertedServiceId(null);
-                } else if (getStatus() == 4) {
-                    if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
-                        setStatus(3);
-                        activity.setInsertedCaseId(null);
-                        activity.setInsertedServiceId(null);
-                        btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                        btnNOC3.setSelected(false);
-                        btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
-                        btnNOC3.setGravity(Gravity.CENTER);
-                        btnNOC3.setText("3");
-                        btnNext.setText(("Next"));
-                        btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                        btnNOC4.setSelected(false);
-                        btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
-                        btnNOC4.setGravity(Gravity.CENTER);
-                        btnNOC4.setText("4");
-                    }
+                    btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                    btnNOC3.setSelected(false);
+                    btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
+                    btnNOC3.setGravity(Gravity.CENTER);
+                    btnNOC3.setText("3");
+                    btnNext.setText(("Next"));
+                    btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                    btnNOC4.setSelected(false);
+                    btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
+                    btnNOC4.setGravity(Gravity.CENTER);
+                    btnNOC4.setText("4");
+                }
 
 
             }
@@ -167,7 +166,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     private boolean required() {
         boolean result = true;
         for (FormField field : activity.get_webForm().get_formFields()) {
-            if (field.isRequired()&&!field.isHidden()) {
+            if (field.isRequired() && !field.isHidden()) {
                 String name = field.getName();
                 String stringValue = "";
                 Field[] fields = Card_Management__c.class.getFields();
@@ -318,7 +317,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
         serviceFields = new HashMap<String, Object>();
         serviceFields.put("RecordTypeId", activity.getCardRecordTypeId());
         serviceFields.put("Request__c", activity.getInsertedCaseId());
-        serviceFields.put("Card_Type__c", activity.getCardType().replace("_"," "));
+        serviceFields.put("Card_Type__c", activity.getCardType().replace("_", " "));
             /* Load dynamic fetching */
 
         for (FormField field : activity.get_webForm().get_formFields()) {
@@ -436,7 +435,6 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     }
 
 
-
     private void PerfromParentNext() {
         super.onClick(btnNext);
     }
@@ -445,14 +443,13 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
         @Override
         public void onClick(View v) {
-
+            builder.dismiss();
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                 @Override
                 public void authenticatedRestClient(final RestClient client) {
                     if (client == null) {
                         System.exit(0);
                     } else {
-
                         new GetPickLists(client).execute();
 //
 
@@ -504,8 +501,6 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
 
 
             return null;

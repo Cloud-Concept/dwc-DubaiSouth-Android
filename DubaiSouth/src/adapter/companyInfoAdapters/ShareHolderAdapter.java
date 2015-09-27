@@ -89,7 +89,7 @@ public class ShareHolderAdapter extends ClickableListAdapter {
 //        });
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
-        _items.add(new ServiceItem("Share Holder", R.mipmap.renew_visa, objects));
+        _items.add(new ServiceItem("Share Transfer", R.mipmap.share_transfer, objects));
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_ShareHolder,activity, context, _items));
 

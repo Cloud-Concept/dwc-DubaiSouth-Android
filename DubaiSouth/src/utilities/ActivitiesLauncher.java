@@ -379,4 +379,15 @@ public class ActivitiesLauncher {
         intent.putExtra("objectType", "ManagementMember");
         context.startActivity(intent);
     }
+
+    public static void openShareHolderShowDetailsActivity(Context context, ShareOwnership shareHolder) {
+        intent = new Intent(context, LegalRepresentativesShowDetailsActivity.class);
+        gson = new Gson();
+        String ObjectAsStr = gson.toJson(shareHolder);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("object", ObjectAsStr);
+        intent.putExtra("objectType", "ShareHolder");
+        context.startActivity(intent);
+    }
 }

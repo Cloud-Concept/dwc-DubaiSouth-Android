@@ -3815,17 +3815,17 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
                         _items.add(new ServiceItem("New Company NOC", R.mipmap.company_noc));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameReservation".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Reservation", R.mipmap.name_change_service));
+                        _items.add(new ServiceItem("Name Reservation", R.mipmap.name_reservation));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Change", R.mipmap.reports_myrequests));
+                        _items.add(new ServiceItem("Name Change", R.mipmap.name_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CapitalChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Capital Change", R.mipmap.reports_myrequests));
+                        _items.add(new ServiceItem("Capital Change", R.mipmap.capital_change));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Address Change", R.mipmap.reports_myrequests));
+                        _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ChangeLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Change License Activity", R.mipmap.notification_license));
+                        _items.add(new ServiceItem("Change License Activity", R.mipmap.change_license_activity));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel License", R.mipmap.name_change_service));
+                        _items.add(new ServiceItem("Cancel License", R.mipmap.cancel_card));
                     }
                 }
 

@@ -2,8 +2,8 @@ package fragmentActivity.NOCScreen;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -36,18 +36,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import RestAPI.JSONConstants;
 import RestAPI.SoqlStatements;
+import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
 import dataStorage.StoreData;
+import fragment.BaseServiceFragment;
 import model.Company_Documents__c;
 import model.FormField;
 import model.NOC__c;
-import cloudconcept.dwc.R;
-import fragment.BaseServiceFragment;
 import model.Receipt_Template__c;
-import model.Request;
 import model.User;
 import model.WebForm;
 import model._case;
@@ -66,6 +64,7 @@ public class NocMainFragment extends BaseServiceFragment {
     private Receipt_Template__c eServiceAdministration;
     private RestRequest restRequest;
     String serviceFieldCaseObjectName;
+    NiftyDialogBuilder builder;
 
     Gson gson;
     int i = 0;
@@ -145,7 +144,7 @@ public class NocMainFragment extends BaseServiceFragment {
                     Utilities.showToast(getActivity(), "Please fill all attachments");
                 }
             } else if (BaseServiceFragment.status == 4) {
-                Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
+                builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
 
                 super.onClick(v);
             } else {
@@ -179,11 +178,11 @@ public class NocMainFragment extends BaseServiceFragment {
     }
 
     private boolean required() {
-        boolean result=true;
-        for(FormField field: _webForm.get_formFields()){
-            if(field.isRequired()){
-                String name=field.getName();
-                String stringValue="";
+        boolean result = true;
+        for (FormField field : _webForm.get_formFields()) {
+            if (field.isRequired()) {
+                String name = field.getName();
+                String stringValue = "";
                 Field[] fields = NOC__c.class.getFields();
                 for (int j = 0; j < fields.length; j++)
                     if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
@@ -191,15 +190,15 @@ public class NocMainFragment extends BaseServiceFragment {
                             stringValue = (String) fields[j].get(_noc);
                         } catch (IllegalAccessException e) {
                             e.printStackTrace();
-                        }catch(ClassCastException e){
+                        } catch (ClassCastException e) {
                             e.printStackTrace();
-                            if(field.getType().equals("DOUBLE")){
+                            if (field.getType().equals("DOUBLE")) {
                                 try {
-                                    if(fields[j].getDouble(_noc)==0.0) {
+                                    if (fields[j].getDouble(_noc) == 0.0) {
                                         result = false;
                                         return false;
-                                    }else {
-                                        stringValue=String.valueOf(fields[j].getDouble(_noc));
+                                    } else {
+                                        stringValue = String.valueOf(fields[j].getDouble(_noc));
                                     }
                                 } catch (IllegalAccessException e1) {
                                     e1.printStackTrace();
@@ -207,11 +206,11 @@ public class NocMainFragment extends BaseServiceFragment {
                             }
                         }
 
-                if(stringValue==null){
-                    result=false;
+                if (stringValue == null) {
+                    result = false;
                     return false;
-                }else if(stringValue.equals("")){
-                    result=false;
+                } else if (stringValue.equals("")) {
+                    result = false;
                     return false;
                 }
             }
@@ -253,7 +252,6 @@ public class NocMainFragment extends BaseServiceFragment {
     public static void set_noc(NOC__c _noc) {
         _noc = _noc;
     }
-
 
 
     public void createCaseRecord() {
@@ -536,7 +534,7 @@ public class NocMainFragment extends BaseServiceFragment {
 
         @Override
         public void onClick(View v) {
-
+            builder.dismiss();
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                 @Override
                 public void authenticatedRestClient(final RestClient client) {
@@ -595,8 +593,6 @@ public class NocMainFragment extends BaseServiceFragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
 
 
             return null;

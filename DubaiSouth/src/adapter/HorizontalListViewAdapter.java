@@ -159,8 +159,10 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                     }
                 } else if (object instanceof ShareOwnership) {
                     ShareOwnership shareHolder = (ShareOwnership) object;
-                    if (tvServiceName.getText().toString().equals("Share Holder")) {
+                    if (tvServiceName.getText().toString().equals("Share Transfer")) {
                         ActivitiesLauncher.openShareHolderActivity(context, shareHolder, "2", _items.get(position).getObjects());
+                    } else if (tvServiceName.getText().toString().equals("Show Details")) {
+                        ActivitiesLauncher.openShareHolderShowDetailsActivity(context,shareHolder);
                     }
                 } else if (object instanceof EServices_Document_Checklist__c) {
                     EServices_Document_Checklist__c eServices_document_checklist__c = (EServices_Document_Checklist__c) object;
