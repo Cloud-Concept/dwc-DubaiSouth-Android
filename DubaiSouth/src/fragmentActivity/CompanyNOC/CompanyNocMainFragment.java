@@ -265,15 +265,14 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
         eServiceAdministration = Utilities.geteServiceAdministration();
         if (eServiceAdministration != null) {
             Map<String, Object> caseFields = getCaseFields();
-            caseFields.put("Service_Requested__c", eServiceAdministration.getId());
+            caseFields.put("Service_Requested__c", eServiceAdministration.getID());
             caseFields.put("AccountId", user.get_contact().get_account().getID());
             caseFields.put("RecordTypeId", caseRecordTypeId);
             caseFields.put("Status", "Draft");
             caseFields.put("Type", "NOC Services");
             caseFields.put("Origin", "Mobile");
             caseFields.put("isCourierRequired__c", false);
-//            caseFields.put("Employee_Ref__c", NocActivity.get_visa().get_visaHolder().getID());
-            caseFields.put("Service_Requested__c", eServiceAdministration.getID());
+//           caseFields.put("Employee_Ref__c", user.get_contact().get_account().g);
 //            caseFields.put("Visa_Ref__c",NocActivity.get_visa().getID());
 
             setCaseFields(caseFields);
@@ -370,7 +369,8 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
 
         Map<String, Object> serviceFields = getServiceFields();
         serviceFields.put("Request__c", caseRecordTypeId);
-        serviceFields.put("Document_Name__c",new StoreData(getActivity()).getNocType());
+        serviceFields.put("Document_Name__c",eServiceAdministration.getService_Identifier__c());
+        serviceFields.put("Current_Sponsor__c", user.get_contact().get_account().getID());
         for(FormField field: _webForm.get_formFields()) {
             if (field.getType().equals("CUSTOMTEXT")||field.isCalculated()) {
 
