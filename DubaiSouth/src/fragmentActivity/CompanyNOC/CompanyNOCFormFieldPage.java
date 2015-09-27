@@ -162,7 +162,6 @@ public class CompanyNOCFormFieldPage extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse result) {
                                 visaJson=SFResponseManager.parseJsonVisaData(result.toString());
-                                Utilities.dismissLoadingDialog();
                                 formFields=_webFormFields.get_formFields();
                                 new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                                     @Override
@@ -208,7 +207,6 @@ public class CompanyNOCFormFieldPage extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Utilities.showloadingDialog(getActivity());
         }
 
         @Override
@@ -272,9 +270,9 @@ public class CompanyNOCFormFieldPage extends Fragment {
         @Override
         protected void onPostExecute(Map<String,List<String>> aVoid) {
             super.onPostExecute(aVoid);
-            Utilities.dismissLoadingDialog();
-            Utilities.DrawFormFieldsOnLayout(getActivity(), getActivity().getApplicationContext(), linearAddForms, formFields, _currentVisa, visaJson, parameters,CompanyNocMainFragment._noc);
 
+            Utilities.DrawFormFieldsOnLayout(getActivity(), getActivity().getApplicationContext(), linearAddForms, formFields, _currentVisa, visaJson, parameters, CompanyNocMainFragment._noc);
+            Utilities.dismissLoadingDialog();
         }
     }
     public static String convertJsonStringToString(JSONArray jsonArray){

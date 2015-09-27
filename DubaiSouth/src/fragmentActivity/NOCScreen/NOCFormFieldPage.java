@@ -155,7 +155,6 @@ public class NOCFormFieldPage extends Fragment {
                             public void onSuccess(RestRequest request, RestResponse result) {
                                 _currentVisa = SFResponseManager.parseVisaData(result.toString()).get(0);
                                 visaJson = SFResponseManager.parseJsonVisaData(result.toString());
-                                Utilities.dismissLoadingDialog();
                                 formFields = _webFormFields.get_formFields();
                                 new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                                     @Override
@@ -201,7 +200,6 @@ public class NOCFormFieldPage extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Utilities.showloadingDialog(getActivity());
         }
 
         @Override
@@ -265,9 +263,9 @@ public class NOCFormFieldPage extends Fragment {
         @Override
         protected void onPostExecute(Map<String, List<String>> aVoid) {
             super.onPostExecute(aVoid);
-            Utilities.dismissLoadingDialog();
-            Utilities.DrawFormFieldsOnLayout(getActivity(), getActivity().getApplicationContext(), linearAddForms, formFields, _currentVisa, visaJson, parameters, NocMainFragment._noc);
 
+            Utilities.DrawFormFieldsOnLayout(getActivity(), getActivity().getApplicationContext(), linearAddForms, formFields, _currentVisa, visaJson, parameters, NocMainFragment._noc);
+            Utilities.dismissLoadingDialog();
         }
     }
 

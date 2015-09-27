@@ -161,8 +161,8 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
             }
         } else {
             if (BaseServiceFragment.status == 3) {
-                CompanyNocMainFragment.insertedServiceId = null;
-                CompanyNocMainFragment.insertedCaseId = null;
+//                CompanyNocMainFragment.insertedServiceId = null;
+//                CompanyNocMainFragment.insertedCaseId = null;
             } else if (BaseServiceFragment.status == 4) {
                 if (CompanyNOCAttachmentPage._companyDocuments == null || CompanyNOCAttachmentPage._companyDocuments.size() == 0) {
                     BaseServiceFragment.status = 3;
@@ -344,6 +344,9 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                if(response.toString().equals("")){
+                                    createServiceRecord(insertedCaseId);
+                                }
                             }
                         }
 
@@ -421,6 +424,8 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
                                 updateCaseRecord(insertedCaseId, insertedServiceId);
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                if(response.toString().equals(""))
+                                    PerfromParentNext(btnNext);
                             }
                             Utilities.dismissLoadingDialog();
                         }

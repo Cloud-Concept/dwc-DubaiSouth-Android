@@ -122,8 +122,8 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
         } else if (v == btnBack || v == btnBackTransparent) {
 
                 if (getStatus() == 3) {
-                    activity.setInsertedCaseId(null);
-                    activity.setInsertedServiceId(null);
+//                    activity.setInsertedCaseId(null);
+//                    activity.setInsertedServiceId(null);
                 } else if (getStatus() == 4) {
                     if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
                         setStatus(3);
@@ -258,6 +258,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                         @Override
                         public void onSuccess(RestRequest request, RestResponse response) {
                             try {
+                                Log.d("result",response.toString());
                                 JSONObject jsonObject = new JSONObject(response.toString());
                                 activity.setInsertedCaseId(jsonObject.getString("id"));
 
@@ -279,6 +280,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                                             createCardRecord();
                                         } catch (JSONException e) {
                                             e.printStackTrace();
+
                                         }
 
                                     }
@@ -292,6 +294,9 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                if(response.toString().equals("")){
+                                    createCardRecord();
+                                }
                             }
                         }
 
@@ -377,6 +382,8 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                                 updateCaseRecord(activity.getInsertedCaseId(), activity.getInsertedServiceId());
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                if(response.toString().equals(""))
+                                PerfromParentNext();
                             }
                             Utilities.dismissLoadingDialog();
                         }

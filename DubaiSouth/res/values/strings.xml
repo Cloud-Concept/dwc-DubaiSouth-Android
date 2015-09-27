@@ -84,7 +84,7 @@
     # %s.</string>
     <string name="ServiceThankYouMessagePayment">We can confirm that we have received the payment of AED %s</string>
     <string name="ServiceThankYouMessageNOCNote">You will receive e-copy of your NOC shortly on %s</string>
-     <string name="ServiceThankYouMessageCards">Your account will be debited AED %s (including AED 10 knowledge
+     <string name="ServiceThankYouMessageCards">We can Confirm that we have received the payment of AED %s (including AED 10 knowledge
     fee)</string>
 
     <string name="NeedHelpThankYouMessage">Dear Customer\r\n\r\nThank you for providing a valuable feedback.

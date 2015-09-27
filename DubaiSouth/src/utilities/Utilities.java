@@ -2169,6 +2169,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
@@ -4081,7 +4082,7 @@ public class Utilities {
                 if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
                     try {
                         if (f.getType().equals("DOUBLE"))
-                            fields[j].set(_noc, Double.parseDouble(text));
+                            fields[j].set(_noc, Double.parseDouble(TextUtils.isEmpty(editable.toString()) ? "0" : editable.toString()));
                         else
                             fields[j].set(_noc, text);
 
