@@ -16,9 +16,7 @@ import android.widget.TextView;
 
 import RestAPI.RelatedServiceType;
 import cloudconcept.dwc.R;
-import dataStorage.StoreData;
-import fragmentActivity.BaseFragmentActivity;
-import fragmentActivity.ChangeAndRemovalActivity;
+import custom.customdialog.NiftyDialogBuilder;
 import utilities.Utilities;
 
 /**
@@ -38,6 +36,7 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
     public Button btnNOC4;
     View line1, line2, line3, line4, line5, line6;
     private Button btnClose;
+    NiftyDialogBuilder builder;
 
     public int getStatus() {
         return status;
@@ -267,11 +266,6 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
 
         @Override
         public void onClick(View v) {
-//            status = 1;
-//            new StoreData(getActivity().getApplicationContext()).saveNocType("");
-//            new StoreData(getActivity().getApplicationContext()).saveNOCAuthorityType("");
-//            new StoreData(getActivity().getApplicationContext()).saveNOCLanguage("");
-//            new StoreData(getActivity().getApplicationContext()).setIsLoadedInitialEmployeeNOCPage(false);
             getActivity().finish();
         }
     };

@@ -68,6 +68,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
     private Receipt_Template__c eServiceAdministration;
     private RestRequest restRequest;
     String serviceFieldCaseObjectName;
+    NiftyDialogBuilder builder;
 
     Gson gson;
     int i = 0;
@@ -151,7 +152,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
                     Utilities.showToast(getActivity(), "Please fill all attachments");
                 }
             } else if (BaseServiceFragment.status == 4) {
-                Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
+                builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
 
                 super.onClick(v);
             }else{
@@ -586,7 +587,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
 
         @Override
         public void onClick(View v) {
-
+            builder.dismiss();
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                 @Override
                 public void authenticatedRestClient(final RestClient client) {

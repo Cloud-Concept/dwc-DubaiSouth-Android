@@ -148,8 +148,7 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
                     Utilities.showLongToast(getActivity(), "Please fill all attachments");
                 }
             } else if (status == 3) {
-                DoSubmitRequest();
-
+                builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
             } else {
                 super.onClick(v);
             }
@@ -157,6 +156,25 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
             super.onClick(v);
         }
     }
+
+    private View.OnClickListener listenerOkPay = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            builder.dismiss();
+            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        System.exit(0);
+                    } else {
+                        DoSubmitRequest();
+                    }
+                }
+            });
+
+        }
+    };
 
     private void DoSubmitRequest() {
         new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {

@@ -21,6 +21,7 @@
         android:id="@+id/tvContractName"
         android:layout_marginLeft="10dp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_marginRight="10dp"
         android:layout_alignTop="@+id/imageView2"
         android:layout_alignParentEnd="true"
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Unit Name:"
+        android:textColor="@color/black"
         android:id="@+id/textView22"
         android:layout_below="@+id/tvContractName"
         android:layout_alignStart="@+id/tvContractName" />
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
+        android:textColor="@color/black"
         android:layout_marginLeft="5dp"
         android:id="@+id/tvUnitName"
         android:layout_below="@+id/tvContractName"
@@ -51,6 +54,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Contract Type:"
+        android:textColor="@color/black"
         android:id="@+id/textView23"
         android:layout_below="@+id/tvUnitName"
         android:layout_alignStart="@+id/tvContractName" />
@@ -61,6 +65,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
         android:layout_marginLeft="5dp"
+        android:textColor="@color/black"
         android:id="@+id/tvContractType"
         android:layout_below="@+id/tvUnitName"
         android:layout_alignEnd="@+id/tvUnitName"
@@ -72,6 +77,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Expiry Date:"
         android:id="@+id/textView21"
+        android:textColor="@color/black"
         android:layout_below="@+id/textView23"
         android:layout_alignStart="@+id/textView23" />
 
@@ -81,6 +87,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
         android:layout_marginLeft="5dp"
+        android:textColor="@color/black"
         android:id="@+id/tvExpiryDate"
         android:layout_below="@+id/textView23"
         android:layout_alignStart="@+id/tvUnitName"
@@ -91,6 +98,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Status:"
+        android:textColor="@color/black"
         android:id="@+id/textView25"
         android:layout_below="@+id/textView21"
         android:layout_alignStart="@+id/textView21" />
@@ -100,6 +108,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
+        android:textColor="@color/black"
         android:layout_marginLeft="5dp"
         android:id="@+id/tvStatus"
         android:layout_below="@+id/tvExpiryDate"

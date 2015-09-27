@@ -54,6 +54,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
     CardActivity activity;
     private RestRequest restRequest;
+    NiftyDialogBuilder builder;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -91,9 +92,9 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                 } else {
                     super.onClick(v);
                 }
-            } else if (getStatus() == 4)
-                Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
-            else {
+            } else if (getStatus() == 4) {
+                builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
+            } else {
                 super.onClick(v);
             }
         } else if (v == btnBack || v == btnBackTransparent) {
@@ -139,7 +140,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                     if (client == null) {
                         System.exit(0);
                     } else {
-
+                        builder.dismiss();
                         new GetPickLists(client).execute();
 //
 
@@ -453,7 +454,6 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
             e.printStackTrace();
         }
     }
-
 
 
     private void CallCancelCardWebService(RestClient client) {

@@ -54,6 +54,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
     CardActivity activity;
     private RestRequest restRequest;
+    NiftyDialogBuilder builder;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -446,7 +447,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
         @Override
         public void onClick(View v) {
-
+            builder.dismiss();
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                 @Override
                 public void authenticatedRestClient(final RestClient client) {
