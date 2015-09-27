@@ -3003,38 +3003,21 @@ public class Utilities {
                                                 formFieldLabelrequired.setVisibility(View.VISIBLE);
                                             String stringValue = "";
                                             String name = field.getName();
-//                                            if (name.equals("eCopy_Receiver_Email__c")) {
-//                                                String user = new StoreData(applicationContext).getUserDataAsString();
-//                                                Gson g = new Gson();
-//                                                User u = g.fromJson(user, User.class);
-//                                                stringValue = u.get_contact().get_account().getEmail();
-//                                                Field[] fields = EServices_Document_Checklist__c.class.getFields();
-//                                                for (int j = 0; j < fields.length; j++)
-//                                                    if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-//                                                        try {
-//                                                            fields[j].set(eServices_document_checklist__c, stringValue);
-//                                                        } catch (IllegalAccessException e) {
-//                                                            e.printStackTrace();
-//                                                        }
-//                                            } else {
-//                                                Field[] fields = EServices_Document_Checklist__c.class.getFields();
-//                                                for (int j = 0; j < fields.length; j++)
-//                                                    if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-//                                                        try {
-//                                                            stringValue = (String) fields[j].get(eServices_document_checklist__c);
-//                                                        } catch (IllegalAccessException e) {
-//                                                            e.printStackTrace();
-//                                                        }
-//                                            }
-
+                                            Gson gson = new Gson();
+                                            User user = gson.fromJson(new StoreData(view.getContext()).getUserDataAsString(), User.class);
                                             Field[] fields = EServices_Document_Checklist__c.class.getFields();
                                             for (int j = 0; j < fields.length; j++)
                                                 if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
                                                     try {
                                                         stringValue = (String) fields[j].get(eServices_document_checklist__c);
+                                                        if (stringValue == null || stringValue.equals("")) {
+                                                            stringValue = user.get_contact().get_account().getEmail();
+                                                        }
+                                                        fields[j].set(eServices_document_checklist__c, stringValue);
                                                     } catch (IllegalAccessException e) {
                                                         e.printStackTrace();
                                                     }
+
 
                                             etEmail.setText(stringValue);
                                             etEmail.setTag(field);
@@ -3149,16 +3132,16 @@ public class Utilities {
                                 tvHeader.setText("REQUEST INFORMATION");
                                 linearLayout.addView(view);
 
-                                View view2 = inflater.inflate(R.layout.wizard_form_field_label_enabled, null, false);
-
-                                EditText etEmail = (EditText) view2.findViewById(R.id.formFieldvalue);
-                                TextView tvLabel = (TextView) view2.findViewById(R.id.formFieldLabel);
-
-                                tvLabel.setText("E-Service Price");
-                                etEmail.setText(Amount + " AED.");
-                                etEmail.setKeyListener(null);
-
-                                linearLayout.addView(view2);
+//                                View view2 = inflater.inflate(R.layout.wizard_form_field_label_enabled, null, false);
+//
+//                                EditText etEmail = (EditText) view2.findViewById(R.id.formFieldvalue);
+//                                TextView tvLabel = (TextView) view2.findViewById(R.id.formFieldLabel);
+//
+//                                tvLabel.setText("E-Service Price");
+//                                etEmail.setText(Amount + " AED.");
+//                                etEmail.setKeyListener(null);
+//
+//                                linearLayout.addView(view2);
 
 
                                 View view3 = inflater.inflate(R.layout.wizard_form_field_label_enabled, null, false);
@@ -4025,9 +4008,9 @@ public class Utilities {
         private View view;
         EServices_Document_Checklist__c eServices_document_checklist__c;
 
-        private GenericTextWatcherEServiceDocument(View view, EServices_Document_Checklist__c _noc) {
+        private GenericTextWatcherEServiceDocument(View view, EServices_Document_Checklist__c eServices_document_checklist__c) {
             this.view = view;
-            this.eServices_document_checklist__c = _noc;
+            this.eServices_document_checklist__c = eServices_document_checklist__c;
         }
 
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
