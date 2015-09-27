@@ -36,6 +36,9 @@
     <string name="title_activity_baseac">Baseac</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_parent">ParentActivity</string>
+    <string name="noc_type">NOC Type</string>
+    <string name="authority_type">Choose Authority</string>
+    <string name="language_type">Choose Language</string>
 
     <string name="prompt">Choose Filter</string>
     <string name="title1">Permanent Employee</string>

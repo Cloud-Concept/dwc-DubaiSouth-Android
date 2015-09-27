@@ -57,6 +57,7 @@ public class GeneralManagersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shareholders, container, false);
         InitializeViews(view);
+        CallGeneralManagersService(CallType.FIRSTTIME, offset, limit);
         return view;
     }
 
@@ -68,73 +69,84 @@ public class GeneralManagersFragment extends Fragment {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
                 if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
-                    if (offset > 0) {
-                        limit = offset;
-                        offset = 0;
-                    }
-                    CallGeneralManagersService(true, CallType.REFRESH);
-                } else if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.BOTTOM) {
-                    CallGeneralManagersService(true, CallType.LOADMORE);
+                    offset = 0;
+                    CallGeneralManagersService(CallType.REFRESH, offset, limit);
+                } else {
+                    offset += limit;
+                    CallGeneralManagersService(CallType.LOADMORE, offset, limit);
                 }
             }
         });
-
-        CallGeneralManagersService(true, CallType.FIRSTTIME);
     }
 
-    private void CallGeneralManagersService(boolean b, final CallType serviceCall) {
-        Gson gson = new Gson();
+    private void CallGeneralManagersService(final CallType serviceCall, int offset, int limit) {
+        if (serviceCall == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getGeneralManagersResponse().equals("")) {
+            _members = new ArrayList<ManagementMember>();
+            _members = SFResponseManager.parseManagementMemberObject(new StoreData(getActivity().getApplicationContext()).getGeneralManagersResponse());
+            if (_members.size() > 0) {
+                lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, _members));
+            }
+        } else {
+            Gson gson = new Gson();
+            User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
+            soqlQuery = SoqlStatements.getInstance().constructGeneralManagersQuery(_user.get_contact().get_account().getID(), limit, offset);
+            try {
+                restRequest = RestRequest.getRequestForQuery(
+                        getActivity().getString(R.string.api_version), soqlQuery);
 
-        User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-        if (serviceCall == CallType.LOADMORE) {
-            offset += 10;
-            limit = 10;
+                new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
 
-        }
-        soqlQuery = SoqlStatements.getInstance().constructGeneralManagersQuery(_user.get_contact().get_account().getID(), limit, offset);
-        try {
-            restRequest = RestRequest.getRequestForQuery(
-                    getActivity().getString(R.string.api_version), soqlQuery);
+                    @Override
+                    public void authenticatedRestClient(RestClient client) {
+                        if (client == null) {
+                            SalesforceSDKManager.getInstance().logout(getActivity());
+                            return;
+                        } else {
+                            client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
 
-            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-
-                @Override
-                public void authenticatedRestClient(RestClient client) {
-                    if (client == null) {
-                        SalesforceSDKManager.getInstance().logout(getActivity());
-                        return;
-                    } else {
-                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
-
-                            @Override
-                            public void onSuccess(RestRequest request, RestResponse response) {
-
-                                if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
-                                    swipyRefreshLayout.setRefreshing(false);
-
-                                if (serviceCall == CallType.LOADMORE) {
-                                    if (lastReponseString.equals("") || !lastReponseString.equals(response.toString())) {
-                                        _members.addAll(SFResponseManager.parseManagementMemberObject(response.toString()));
+                                @Override
+                                public void onSuccess(RestRequest request, RestResponse response) {
+                                    if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
+                                        swipyRefreshLayout.setRefreshing(false);
+                                    if (serviceCall == CallType.LOADMORE) {
+                                        ArrayList<ManagementMember> managementMembers = SFResponseManager.parseManagementMemberObject(response.toString());
+                                        if (managementMembers.size() > 0) {
+                                            new StoreData(getActivity().getApplicationContext()).setGeneralManagersResponse(response.toString());
+                                            for (int i = 0; i < managementMembers.size(); i++) {
+                                                boolean found = false;
+                                                for (int j = 0; j < _members.size(); j++) {
+                                                    if (managementMembers.get(i).getID().equals(_members.get(j).getID())) {
+                                                        found = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (!found) {
+                                                    _members.add(managementMembers.get(i));
+                                                }
+                                            }
+                                            lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.general_managers_whole_item, _members));
+                                        }
+                                    } else {
+                                        _members = new ArrayList<ManagementMember>();
+                                        _members = SFResponseManager.parseManagementMemberObject(response.toString());
+                                        if (_members.size() > 0) {
+                                            new StoreData(getActivity().getApplicationContext()).setGeneralManagersResponse(response.toString());
+                                            lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.general_managers_whole_item, _members));
+                                        }
                                     }
-                                } else {
-                                    _members = new ArrayList<ManagementMember>();
-                                    _members = SFResponseManager.parseManagementMemberObject(response.toString());
                                 }
 
-                                lastReponseString = response.toString();
-                                lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.general_managers_whole_item, _members));
-                            }
+                                @Override
+                                public void onError(Exception exception) {
 
-                            @Override
-                            public void onError(Exception exception) {
-
-                            }
-                        });
+                                }
+                            });
+                        }
                     }
-                }
-            });
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+                });
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

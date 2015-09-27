@@ -57,6 +57,7 @@ public class LegalRepresentativesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.legal_representatives, container, false);
         InitializeViews(view);
+        CallLegalRepresentativesService(CallType.FIRSTTIME, offset, limit);
         return view;
     }
 
@@ -69,70 +70,84 @@ public class LegalRepresentativesFragment extends Fragment {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
                 if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
-                    if (offset > 0) {
-                        limit = offset;
-                        offset = 0;
-                    }
-                    CallLegalRepresentativesService(true, CallType.REFRESH);
-                } else if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.BOTTOM) {
-                    CallLegalRepresentativesService(true, CallType.LOADMORE);
+                    offset = 0;
+                    CallLegalRepresentativesService(CallType.REFRESH, offset, limit);
+                } else {
+                    offset += limit;
+                    CallLegalRepresentativesService(CallType.LOADMORE, offset, limit);
                 }
             }
         });
-
-        CallLegalRepresentativesService(true, CallType.FIRSTTIME);
     }
 
-    private void CallLegalRepresentativesService(boolean b, final CallType serviceCall) {
-        Gson gson = new Gson();
-        User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-        if (serviceCall == CallType.LOADMORE) {
-            offset += 10;
-            limit = 10;
-        }
-        soqlQuery = SoqlStatements.getInstance().constructLegalRepresentativeQuery(_user.get_contact().get_account().getID(), limit, offset);
-        try {
-            restRequest = RestRequest.getRequestForQuery(
-                    getActivity().getString(R.string.api_version), soqlQuery);
-            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+    private void CallLegalRepresentativesService(final CallType serviceCall, int offset, int limit) {
+        if (serviceCall == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getLegalRepresentativesResponse().equals("")) {
+            legalRepresentatives = new ArrayList<LegalRepresentative>();
+            legalRepresentatives = SFResponseManager.parseLegalRepresentativesObject(new StoreData(getActivity().getApplicationContext()).getLegalRepresentativesResponse());
+            if (legalRepresentatives.size() > 0) {
+                lvLegalRepresentatives.setAdapter(new LegalRepresentativesAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.legal_representatives_item, legalRepresentatives));
+            }
+        } else {
+            Gson gson = new Gson();
+            User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
+            soqlQuery = SoqlStatements.getInstance().constructLegalRepresentativeQuery(_user.get_contact().get_account().getID(), limit, offset);
+            try {
+                restRequest = RestRequest.getRequestForQuery(
+                        getActivity().getString(R.string.api_version), soqlQuery);
+                new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
 
-                @Override
-                public void authenticatedRestClient(RestClient client) {
-                    if (client == null) {
-                        SalesforceSDKManager.getInstance().logout(getActivity());
-                        return;
-                    } else {
-                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                    @Override
+                    public void authenticatedRestClient(RestClient client) {
+                        if (client == null) {
+                            SalesforceSDKManager.getInstance().logout(getActivity());
+                            return;
+                        } else {
+                            client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
 
-                            @Override
-                            public void onSuccess(RestRequest request, RestResponse response) {
+                                @Override
+                                public void onSuccess(RestRequest request, RestResponse response) {
 
-                                if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
-                                    swipyRefreshLayout.setRefreshing(false);
-
-                                if (serviceCall == CallType.LOADMORE) {
-                                    if (lastReponseString.equals("") || !lastReponseString.equals(response.toString())) {
-                                        legalRepresentatives.addAll(SFResponseManager.parseLegalRepresentativesObject(response.toString()));
+                                    if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
+                                        swipyRefreshLayout.setRefreshing(false);
+                                    if (serviceCall == CallType.LOADMORE) {
+                                        ArrayList<LegalRepresentative> legalRepresentatives1 = SFResponseManager.parseLegalRepresentativesObject(response.toString());
+                                        if (legalRepresentatives1.size() > 0) {
+                                            new StoreData(getActivity().getApplicationContext()).setLegalRepresentativesResponse(response.toString());
+                                            for (int i = 0; i < legalRepresentatives1.size(); i++) {
+                                                boolean found = false;
+                                                for (int j = 0; j < legalRepresentatives.size(); j++) {
+                                                    if (legalRepresentatives1.get(i).getID().equals(legalRepresentatives.get(j).getID())) {
+                                                        found = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (!found) {
+                                                    legalRepresentatives.add(legalRepresentatives1.get(i));
+                                                }
+                                            }
+                                            lvLegalRepresentatives.setAdapter(new LegalRepresentativesAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.legal_representatives_item, legalRepresentatives));
+                                        }
+                                    } else {
+                                        legalRepresentatives = new ArrayList<LegalRepresentative>();
+                                        legalRepresentatives = SFResponseManager.parseLegalRepresentativesObject(response.toString());
+                                        if (legalRepresentatives.size() > 0) {
+                                            new StoreData(getActivity().getApplicationContext()).setLegalRepresentativesResponse(response.toString());
+                                            lvLegalRepresentatives.setAdapter(new LegalRepresentativesAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.legal_representatives_item, legalRepresentatives));
+                                        }
                                     }
-                                } else {
-                                    legalRepresentatives = new ArrayList<LegalRepresentative>();
-                                    legalRepresentatives = SFResponseManager.parseLegalRepresentativesObject(response.toString());
                                 }
 
-                                lastReponseString = response.toString();
-                                lvLegalRepresentatives.setAdapter(new LegalRepresentativesAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.legal_representatives_item, legalRepresentatives));
-                            }
+                                @Override
+                                public void onError(Exception exception) {
 
-                            @Override
-                            public void onError(Exception exception) {
-
-                            }
-                        });
+                                }
+                            });
+                        }
                     }
-                }
-            });
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+                });
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

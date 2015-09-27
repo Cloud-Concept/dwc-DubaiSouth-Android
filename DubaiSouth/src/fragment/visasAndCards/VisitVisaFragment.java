@@ -43,7 +43,7 @@ public class VisitVisaFragment extends Fragment {
 
     private static final String ARG_TEXT = "VisitVisa";
 
-     String strFilter;
+    String strFilter;
     ExpandableLayoutListView expandableLayoutListView;
     SwipyRefreshLayout mSwipeRefreshLayout;
     Spinner spinnerFilterPermanentEmployee;
@@ -220,7 +220,7 @@ public class VisitVisaFragment extends Fragment {
                     offset += limit;
                 }
 
-                if (callType == CallType.SPINNETCHANGEDDATA || callType == CallType.FIRSTTIME) {
+                if (callType == CallType.SPINNETCHANGEDDATA) {
                     Utilities.showloadingDialog(getActivity());
                 }
                 new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
@@ -234,7 +234,7 @@ public class VisitVisaFragment extends Fragment {
                                 @Override
                                 public void onSuccess(RestRequest request, RestResponse result) {
                                     try {
-                                        if (callType == CallType.SPINNETCHANGEDDATA || callType == CallType.FIRSTTIME) {
+                                        if (callType == CallType.SPINNETCHANGEDDATA) {
                                             Utilities.dismissLoadingDialog();
                                         } else {
                                             mSwipeRefreshLayout.setRefreshing(false);

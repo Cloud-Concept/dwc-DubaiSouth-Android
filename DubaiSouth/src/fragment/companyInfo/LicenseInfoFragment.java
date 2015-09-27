@@ -72,58 +72,68 @@ public class LicenseInfoFragment extends Fragment {
 
     public void sendRequest(final View view, RestClient client, final Activity act, String soql) throws UnsupportedEncodingException {
 
-        final RestRequest restRequest = RestRequest.getRequestForQuery(
-                act.getApplicationContext().getString(R.string.api_version), soql);
-
-        final String[] response = {""};
-
-        new ClientManager(act, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(act, new ClientManager.RestClientCallback() {
-            @Override
-            public void authenticatedRestClient(final RestClient client) {
-                if (client == null) {
-                    SalesforceSDKManager.getInstance().logout(act);
-                    return;
-                } else {
-                    Utilities.showloadingDialog(act);
-                    client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
-                        @Override
-                        public void onSuccess(RestRequest request, RestResponse result) {
-                            try {
-                                _licenses = SFResponseManager.parseLicenseActivityObject(result.toString());
-                                String soqlRenewal = SoqlStatements.getInstance().constructRenewalLicenseQuery(_user.get_contact().get_account().get_currentLicenseNumber().getId());
-                                final RestRequest restRequestGetRenewalLicense = RestRequest.getRequestForQuery(act.getString(R.string.api_version), soqlRenewal);
-                                client.sendAsync(restRequestGetRenewalLicense, new RestClient.AsyncRequestCallback() {
-                                    @Override
-                                    public void onSuccess(RestRequest request, RestResponse response) {
-                                        Utilities.dismissLoadingDialog();
-                                        try {
-                                            String Invoices = SFResponseManager.parseRenewalRequest(response.toString());
-                                            InitializeViews(view, _licenses, Invoices);
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onError(Exception exception) {
-
-                                    }
-                                });
-
-                            } catch (Exception e) {
-                                onError(e);
-                            }
-                        }
-
-                        @Override
-                        public void onError(Exception exception) {
-                            Utilities.dismissLoadingDialog();
-                            response[0] = "";
-                        }
-                    });
-                }
+        if (!new StoreData(getActivity().getApplicationContext()).getLicenseActivityResponse().equals("") && !new StoreData(getActivity().getApplicationContext()).getInvoicesResponse().equals("")) {
+            try {
+                _licenses = SFResponseManager.parseLicenseActivityObject(new StoreData(getActivity().getApplicationContext()).getLicenseActivityResponse());
+                String Invoices = SFResponseManager.parseRenewalRequest(new StoreData(getActivity().getApplicationContext()).getInvoicesResponse());
+                InitializeViews(view, _licenses, Invoices);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        });
+        } else {
+            final RestRequest restRequest = RestRequest.getRequestForQuery(
+                    act.getApplicationContext().getString(R.string.api_version), soql);
+
+            final String[] response = {""};
+
+            new ClientManager(act, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(act, new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(act);
+                        return;
+                    } else {
+                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                            @Override
+                            public void onSuccess(RestRequest request, RestResponse result) {
+                                try {
+                                    _licenses = SFResponseManager.parseLicenseActivityObject(result.toString());
+                                    new StoreData(getActivity().getApplicationContext()).setLicenseActivityResponse(result.toString());
+                                    String soqlRenewal = SoqlStatements.getInstance().constructRenewalLicenseQuery(_user.get_contact().get_account().get_currentLicenseNumber().getId());
+                                    final RestRequest restRequestGetRenewalLicense = RestRequest.getRequestForQuery(act.getString(R.string.api_version), soqlRenewal);
+                                    client.sendAsync(restRequestGetRenewalLicense, new RestClient.AsyncRequestCallback() {
+                                        @Override
+                                        public void onSuccess(RestRequest request, RestResponse response) {
+                                            try {
+                                                String Invoices = SFResponseManager.parseRenewalRequest(response.toString());
+                                                new StoreData(getActivity().getApplicationContext()).setInvoicesResponse(response.toString());
+                                                InitializeViews(view, _licenses, Invoices);
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onError(Exception exception) {
+
+                                        }
+                                    });
+
+                                } catch (Exception e) {
+                                    onError(e);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Exception exception) {
+                                Utilities.dismissLoadingDialog();
+                                response[0] = "";
+                            }
+                        });
+                    }
+                }
+            });
+        }
     }
 
     private void InitializeViews(View view, ArrayList<LicenseActivity> _licenses, String invoices) {
@@ -143,10 +153,12 @@ public class LicenseInfoFragment extends Fragment {
         _views.add(new DWCView(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date(), ItemType.VALUE));
 
         _views.add(new DWCView("Activity Information", ItemType.HEADER));
-        for (int i = 0; i < _licenses.size(); i++) {
-            _views.add(new DWCView(_licenses.get(i).get_originalBusinessActivity().getName(), ItemType.LABEL));
-            _views.add(new DWCView(_licenses.get(i).get_originalBusinessActivity().getBusinessActivityName(), ItemType.VALUE));
-            _views.add(new DWCView("", ItemType.LINE));
+        if (_licenses != null && _licenses.size() > 0) {
+            for (int i = 0; i < _licenses.size(); i++) {
+                _views.add(new DWCView(_licenses.get(i).get_originalBusinessActivity().getName(), ItemType.LABEL));
+                _views.add(new DWCView(_licenses.get(i).get_originalBusinessActivity().getBusinessActivityName(), ItemType.VALUE));
+                _views.add(new DWCView("", ItemType.LINE));
+            }
         }
 
         String services = "";

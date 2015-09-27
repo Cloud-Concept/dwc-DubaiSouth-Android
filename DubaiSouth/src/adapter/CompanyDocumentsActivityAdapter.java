@@ -14,7 +14,6 @@ import java.util.Date;
 
 import cloudconcept.dwc.R;
 import model.Company_Documents__c;
-import utilities.Utilities;
 
 /**
  * Created by Abanoub Wagdy on 8/18/2015.
@@ -66,11 +65,11 @@ public class CompanyDocumentsActivityAdapter extends BaseAdapter {
             Date date = filteredCompanyDocuments.get(position).getCreatedDate().getTime();
             SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String strDate = sdfDate.format(date);
-            tvDate.setText(strDate);
+            tvDate.setText(strDate.substring(0, 10));
         }
-        if(String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()).equals("NaN")){
+        if (String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()).equals("NaN")) {
             tvVersion.setText("");
-        }else{
+        } else {
             tvVersion.setText(String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()));
         }
 

@@ -141,9 +141,9 @@ public class MaterialSpinner extends Spinner implements ValueAnimator.AnimatorUp
         initFloatingLabelAnimator();
         initOnItemSelectedListener();
         initAdapter(context);
-
-        //Erase the drawable selector not to be affected by new size (extra paddings)
-        setBackgroundResource(R.drawable.my_background);
+//
+//        //Erase the drawable selector not to be affected by new size (extra paddings)
+//        setBackgroundResource(R.mipmap.spinner_background);
 
     }
 
@@ -187,7 +187,7 @@ public class MaterialSpinner extends Spinner implements ValueAnimator.AnimatorUp
         lastPosition = -1;
         currentNbErrorLines = minNbErrorLines;
 
-        setGravity(Gravity.CENTER);
+        setGravity(Gravity.CENTER_VERTICAL);
 
     }
 

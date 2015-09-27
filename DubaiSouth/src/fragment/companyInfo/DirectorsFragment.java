@@ -57,6 +57,7 @@ public class DirectorsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shareholders, container, false);
         InitializeViews(view);
+        CallDirectorsService(CallType.FIRSTTIME, offset, limit);
         return view;
     }
 
@@ -68,76 +69,85 @@ public class DirectorsFragment extends Fragment {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
                 if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
-                    if (offset > 0) {
-                        limit = offset;
-                        offset = 0;
-                    }
-                    CallDirectorsService(true, CallType.REFRESH);
-                } else if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.BOTTOM) {
-                    CallDirectorsService(true, CallType.LOADMORE);
+                    offset = 0;
+                    CallDirectorsService(CallType.REFRESH, offset, limit);
+                } else {
+                    offset += limit;
+                    CallDirectorsService(CallType.LOADMORE, offset, limit);
                 }
             }
         });
-
-        CallDirectorsService(true, CallType.FIRSTTIME);
     }
 
-    private void CallDirectorsService(boolean b, final CallType serviceCall) {
-        Gson gson = new Gson();
-        User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-        if (serviceCall == CallType.LOADMORE) {
-            offset += 10;
-            limit = 10;
-        }
-        soqlQuery = SoqlStatements.getInstance().constructDirectorsQuery(_user.get_contact().get_account().getID(), limit, offset);
-        try {
-            restRequest = RestRequest.getRequestForQuery(
-                    getActivity().getString(R.string.api_version), soqlQuery);
+    private void CallDirectorsService(final CallType serviceCall, int offset, int limit) {
+        if (serviceCall == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getDirectorsResponse().equals("")) {
+            directorships = new ArrayList<Directorship>();
+            directorships = SFResponseManager.parseDirectionshipObject(new StoreData(getActivity().getApplicationContext()).getDirectorsResponse());
+            if (directorships.size() > 0) {
+                lvDirectors.setAdapter(new DirectorsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, directorships));
+            }
+        }else{
+            Gson gson = new Gson();
+            User _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
+            soqlQuery = SoqlStatements.getInstance().constructDirectorsQuery(_user.get_contact().get_account().getID(), limit, offset);
+            try {
+                restRequest = RestRequest.getRequestForQuery(
+                        getActivity().getString(R.string.api_version), soqlQuery);
 
-            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
 
-                @Override
-                public void authenticatedRestClient(RestClient client) {
-                    if (client == null) {
-                        SalesforceSDKManager.getInstance().logout(getActivity());
-                        return;
-                    } else {
-                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                    @Override
+                    public void authenticatedRestClient(RestClient client) {
+                        if (client == null) {
+                            SalesforceSDKManager.getInstance().logout(getActivity());
+                            return;
+                        } else {
+                            client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
 
-                            @Override
-                            public void onSuccess(RestRequest request, RestResponse response) {
+                                @Override
+                                public void onSuccess(RestRequest request, RestResponse response) {
 
-                                if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
-                                    swipyRefreshLayout.setRefreshing(false);
-
-                                if (serviceCall == CallType.LOADMORE) {
-                                    if (lastReponseString.equals("") || !lastReponseString.equals(response.toString())) {
-                                        directorships.addAll(SFResponseManager.parseDirectionshipObject(response.toString()));
+                                    if (serviceCall == CallType.LOADMORE || serviceCall == CallType.REFRESH)
+                                        swipyRefreshLayout.setRefreshing(false);
+                                    if (serviceCall == CallType.LOADMORE) {
+                                        ArrayList<Directorship> directorships1 = SFResponseManager.parseDirectionshipObject(response.toString());
+                                        if (directorships1.size() > 0) {
+                                            new StoreData(getActivity().getApplicationContext()).setDirectorsResponse(response.toString());
+                                            for (int i = 0; i < directorships1.size(); i++) {
+                                                boolean found = false;
+                                                for (int j = 0; j < directorships.size(); j++) {
+                                                    if (directorships1.get(i).getID().equals(directorships.get(j).getID())) {
+                                                        found = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (!found) {
+                                                    directorships.add(directorships1.get(i));
+                                                }
+                                            }
+                                            lvDirectors.setAdapter(new DirectorsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, directorships));
+                                        }
+                                    } else {
+                                        directorships = new ArrayList<Directorship>();
+                                        directorships = SFResponseManager.parseDirectionshipObject(response.toString());
+                                        if (directorships.size() > 0) {
+                                            new StoreData(getActivity().getApplicationContext()).setDirectorsResponse(response.toString());
+                                            lvDirectors.setAdapter(new DirectorsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, directorships));
+                                        }
                                     }
-                                } else {
-                                    directorships = new ArrayList<Directorship>();
-                                    directorships = SFResponseManager.parseDirectionshipObject(response.toString());
                                 }
-                                lastReponseString = response.toString();
-                                lvDirectors.setAdapter(new DirectorsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, directorships));
-//                                lvDirectors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                                    @Override
-//                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                                        lvDirectors.performItemClick(view, position, id);
-//                                    }
-//                                });
-                            }
 
-                            @Override
-                            public void onError(Exception exception) {
+                                @Override
+                                public void onError(Exception exception) {
 
-                            }
-                        });
+                                }
+                            });
+                        }
                     }
-                }
-            });
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+                });
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

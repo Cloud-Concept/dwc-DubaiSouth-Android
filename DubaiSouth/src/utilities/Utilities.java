@@ -2346,7 +2346,11 @@ public class Utilities {
     }
 
     public static boolean getIsProgressLoading() {
-        return _progress.isShowing();
+        if (_progress != null) {
+            return _progress.isShowing();
+        } else {
+            return false;
+        }
     }
 
     public static void showloadingDialog(Activity activity, String text) {
@@ -2511,7 +2515,7 @@ public class Utilities {
                             } catch (IllegalAccessException e) {
                                 e.printStackTrace();
                             }
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
 
 
@@ -2540,7 +2544,7 @@ public class Utilities {
                             e.printStackTrace();
                         }
                 tvValue.setText(stringValue);
-                if(!field.isHidden())
+                if (!field.isHidden())
                     linearLayout.addView(view);
 
 
@@ -2565,7 +2569,7 @@ public class Utilities {
                     View view = inflater.inflate(R.layout.wizard_form_field_header, null, false);
                     TextView tvHeader = (TextView) view.findViewById(R.id.formFieldheader);
                     tvHeader.setText(field.getMobileLabel());
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
 
                 } else if (field.getType().equals("PICKLIST")) {
@@ -2604,7 +2608,7 @@ public class Utilities {
 
                         }
                     });
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
 
                 } else if (field.getType().equals("REFERENCE")) {
@@ -2630,7 +2634,7 @@ public class Utilities {
                                 if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
                                     try {
                                         fields[j].set(_noc, ((CardActivity) act).getCountries().get(position).getId());
-                                        Nationality nationality=new Nationality();
+                                        Nationality nationality = new Nationality();
                                         nationality.setId(((CardActivity) act).getCountries().get(position).getId());
                                         nationality.setName(((CardActivity) act).getCountries().get(position).getNationality_Name__c());
                                         _noc.setNationality__r(nationality);
@@ -2647,7 +2651,7 @@ public class Utilities {
 
                         }
                     });
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
 
 
@@ -2678,7 +2682,7 @@ public class Utilities {
 
                         }
                     });
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
 
                 } else if (field.getType().equals("EMAIL")) {
@@ -2718,7 +2722,7 @@ public class Utilities {
 
                     etEmail.addTextChangedListener(new GenericTextWatcherCard(etEmail, _noc));
                     tvLabel.setText(field.getMobileLabel());
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
                 } else if (field.getType().equals("DOUBLE")) {
                     View view = inflater.inflate(R.layout.wizard_form_field_label_enabled, null, false);
@@ -2736,7 +2740,7 @@ public class Utilities {
                     etEmail.setInputType(InputType.TYPE_CLASS_NUMBER);
                     etEmail.addTextChangedListener(new GenericTextWatcherCard(etEmail, _noc));
                     tvLabel.setText(field.getMobileLabel());
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
                 } else if (field.getType().equals("STRING")) {
                     View view = inflater.inflate(R.layout.wizard_form_field_label_enabled, null, false);
@@ -2754,7 +2758,7 @@ public class Utilities {
                     etEmail.addTextChangedListener(new GenericTextWatcherCard(etEmail, _noc));
                     tvLabel.setText(field.getMobileLabel());
                     etEmail.setHint(field.getMobileLabel());
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
                 } else if (field.getType().equals("DATE")) {
                     String name = field.getName();
@@ -2796,7 +2800,7 @@ public class Utilities {
                                 e.printStackTrace();
                             }
                     tvValue.setText(stringValue);
-                    if(!field.isHidden())
+                    if (!field.isHidden())
                         linearLayout.addView(view);
 
                 }
@@ -2824,7 +2828,7 @@ public class Utilities {
                         } catch (IllegalAccessException e) {
                             e.printStackTrace();
                         }
-                if(!field.isHidden())
+                if (!field.isHidden())
                     linearLayout.addView(view);
             }
         }
@@ -4319,7 +4323,7 @@ public class Utilities {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public static SmartStore registerUserSoup(){
+    public static SmartStore registerUserSoup() {
         SalesforceSDKManagerWithSmartStore sdkManager = SalesforceSDKManagerWithSmartStore.getInstance();
         SmartStore smartStore = sdkManager.getSmartStore();
         IndexSpec[] User_INDEX_SPEC = {

@@ -337,4 +337,93 @@ public class StoreData {
                 "");
         return b;
     }
+
+    public void setCompanyDocumentFromAttachment(String s) {
+        editor.putString("CompanyDocumentFromAttachment", s);
+        editor.commit();
+    }
+
+    public String getCompanyDocumentFromAttachment() {
+        String b = sharedPreferences.getString("CompanyDocumentFromAttachment",
+                "");
+        return b;
+    }
+
+    public void setLeasingInfoResponse(String s) {
+        editor.putString("LeasingInfoResponse", s);
+        editor.commit();
+    }
+
+    public String getLeasingInfoResponse() {
+        String b = sharedPreferences.getString("LeasingInfoResponse",
+                "");
+        return b;
+    }
+
+    public void setShareholdersResponse(String s) {
+        editor.putString("ShareholdersResponse", s);
+        editor.commit();
+    }
+
+    public String getShareholdersResponse() {
+        String b = sharedPreferences.getString("ShareholdersResponse",
+                "");
+        return b;
+    }
+
+    public void setDirectorsResponse(String s) {
+        editor.putString("DirectorsResponse", s);
+        editor.commit();
+    }
+
+    public String getDirectorsResponse() {
+        String b = sharedPreferences.getString("DirectorsResponse",
+                "");
+        return b;
+    }
+
+    public void setGeneralManagersResponse(String s) {
+        editor.putString("GeneralManagersResponse", s);
+        editor.commit();
+    }
+
+    public String getGeneralManagersResponse() {
+        String b = sharedPreferences.getString("GeneralManagersResponse",
+                "");
+        return b;
+    }
+
+    public void setLegalRepresentativesResponse(String s) {
+        editor.putString("LegalRepresentativesResponse", s);
+        editor.commit();
+    }
+
+    public String getLegalRepresentativesResponse() {
+        String b = sharedPreferences.getString("LegalRepresentativesResponse",
+                "");
+        return b;
+    }
+
+    public void setLicenseActivityResponse(String s) {
+        editor.putString("LicenseActivityResponse", s);
+        editor.commit();
+    }
+
+    public String getLicenseActivityResponse() {
+        String b = sharedPreferences.getString("LicenseActivityResponse",
+                "");
+        return b;
+    }
+
+    public void setInvoicesResponse(String s) {
+        editor.putString("InvoicesResponse", s);
+        editor.commit();
+    }
+
+
+    public String getInvoicesResponse() {
+        String b = sharedPreferences.getString("InvoicesResponse",
+                "");
+        return b;
+    }
 }

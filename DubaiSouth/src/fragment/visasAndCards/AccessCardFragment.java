@@ -245,7 +245,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
                     offset += limit;
                 }
 
-                if (callType == CallType.FIRSTTIME || callType == CallType.SPINNETCHANGEDDATA) {
+                if (callType == CallType.SPINNETCHANGEDDATA) {
                     Utilities.showloadingDialog(getActivity());
                 }
                 new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
@@ -259,7 +259,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
                                 @Override
                                 public void onSuccess(RestRequest request, RestResponse result) {
                                     try {
-                                        if (callType == CallType.FIRSTTIME || callType == CallType.SPINNETCHANGEDDATA) {
+                                        if (callType == CallType.SPINNETCHANGEDDATA) {
                                             Utilities.dismissLoadingDialog();
                                         } else {
                                             mSwipeRefreshLayout.setRefreshing(false);

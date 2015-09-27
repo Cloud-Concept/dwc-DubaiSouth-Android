@@ -494,7 +494,9 @@ public class HomepageActivity extends Activity implements
                     return;
                 } else {
                     try {
-                        Utilities.showloadingDialog(HomepageActivity.this);
+                        if (!new StoreData(HomepageActivity.this.getApplicationContext()).getIsHomepageDataLoaded()) {
+                            Utilities.showloadingDialog(HomepageActivity.this);
+                        }
                         new StoreData(getApplicationContext()).saveUserID(SalesforceSDKManager.getInstance().getUserAccountManager().getCurrentUser().getUserId());
                         sendRequestCompanyInfo(HomepageActivity.this, client);
                     } catch (UnsupportedEncodingException e) {

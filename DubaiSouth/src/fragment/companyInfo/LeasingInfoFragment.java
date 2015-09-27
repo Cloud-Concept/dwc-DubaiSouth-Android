@@ -8,11 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -41,6 +41,8 @@ import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.Contract_DWC__c;
 import model.User;
+import utilities.CallType;
+import utilities.Utilities;
 
 /**
  * Created by Abanoub on 7/2/2015.
@@ -48,12 +50,11 @@ import model.User;
 public class LeasingInfoFragment extends Fragment {
 
     private static final String ARG_TEXT = "LeasingInfoFragment";
-    SwipyRefreshLayout swipyRefreshLayout;
+    SwipyRefreshLayout mSwipeRefreshLayout;
     ExpandableLayoutListView lvLeasingInfoItems;
     RestRequest restRequest;
     private String result;
     private TextView tvNoEmployees;
-    //    String soql = "select IS_BC_Contract__c , id , name , Contract_Type__c , Activated_Date__c , Total_Rent_Price__c , Contract_Duration__c , Rent_Start_date__c , Contract_Duration_Year_Month__c , Contract_Start_Date__c ,Contract_Expiry_Date__c from Contract_DWC__C where Status__c = 'Active' and Tenant__c = ";
     private User user;
     int offset = 0;
     int limit = 10;
@@ -77,7 +78,40 @@ public class LeasingInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.leasing_info_fragment, container, false);
         InitializeViews(view);
+        DoRequest(CallType.FIRSTTIME);
         return view;
+    }
+
+    private void DoRequest(CallType callType) {
+        if (callType == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getLeasingInfoResponse().equals("")) {
+            contract_dwc__cs.addAll(SFResponseManager.parseLeasingContractResponse(new StoreData(getActivity().getApplicationContext()).getLeasingInfoResponse()));
+            ArrayList<Contract_DWC__c> contracts = new ArrayList<>();
+            for (Contract_DWC__c contract_dwc__c : contract_dwc__cs) {
+                boolean found = false;
+                for (Contract_DWC__c contract_dwc__c1 : contracts) {
+                    if (contract_dwc__c1.getID().equals(contract_dwc__c.getID())) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    contracts.add(contract_dwc__c);
+                }
+            }
+            lvLeasingInfoItems.setAdapter(new LeasingInfoAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.leasing_info_item, contracts));
+        } else {
+            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(getActivity());
+                        return;
+                    } else {
+                        new LeasingInfoTask(CallType.FIRSTTIME, client, offset, limit).execute();
+                    }
+                }
+            });
+        }
     }
 
     private void InitializeViews(View view) {
@@ -85,44 +119,42 @@ public class LeasingInfoFragment extends Fragment {
         Gson gson = new Gson();
         user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
         contract_dwc__cs = new HashSet<>();
-//        StringBuilder builder = new StringBuilder(1000);
-//        builder.append(soql);
-//        builder.append("\'" + user.get_contact().get_account().getID() + "\'");
-//        soql = builder.toString();
-
-        swipyRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
-        lvLeasingInfoItems = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
-        tvNoEmployees = (TextView) view.findViewById(R.id.tvNoEmployees);
-        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+        mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
             @Override
-            public void authenticatedRestClient(final RestClient client) {
-                if (client == null) {
-                    System.exit(0);
+            public void onRefresh(SwipyRefreshLayoutDirection direction) {
+                if (direction == SwipyRefreshLayoutDirection.TOP) {
+                    offset = 0;
+                    contract_dwc__cs.clear();
+                    new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                        @Override
+                        public void authenticatedRestClient(final RestClient client) {
+                            if (client == null) {
+                                SalesforceSDKManager.getInstance().logout(getActivity());
+                                return;
+                            } else {
+                                new LeasingInfoTask(CallType.REFRESH, client, offset, limit).execute();
+                            }
+                        }
+                    });
                 } else {
-                    new LeasingInfoTask(client, offset, limit).execute();
-//                    try {
-//                        restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
-//                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
-//                            @Override
-//                            public void onSuccess(RestRequest request, RestResponse response) {
-//
-//                                Log.d("response", response.toString());
-//                            }
-//
-//                            @Override
-//                            public void onError(Exception exception) {
-//                                VolleyError volleyError = (VolleyError) exception;
-//                                NetworkResponse response = volleyError.networkResponse;
-//                                String json = new String(response.data);
-//                                Log.d("", json);
-//                            }
-//                        });
-//                    } catch (UnsupportedEncodingException e) {
-//                        e.printStackTrace();
-//                    }
+                    offset += limit;
+                    new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                        @Override
+                        public void authenticatedRestClient(final RestClient client) {
+                            if (client == null) {
+                                SalesforceSDKManager.getInstance().logout(getActivity());
+                                return;
+                            } else {
+                                new LeasingInfoTask(CallType.LOADMORE, client, offset, limit).execute();
+                            }
+                        }
+                    });
                 }
             }
         });
+        lvLeasingInfoItems = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
+        tvNoEmployees = (TextView) view.findViewById(R.id.tvNoEmployees);
     }
 
     public class LeasingInfoTask extends AsyncTask<Void, Void, Void> {
@@ -130,11 +162,23 @@ public class LeasingInfoFragment extends Fragment {
         private final RestClient client;
         private int offset;
         private int limit;
+        CallType callType;
 
-        public LeasingInfoTask(RestClient client, int offset, int limit) {
+        public LeasingInfoTask(CallType callType, RestClient client, int offset, int limit) {
             this.client = client;
             this.limit = limit;
             this.offset = offset;
+            this.callType = callType;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            if (callType == CallType.FIRSTTIME) {
+                if (Utilities.getIsProgressLoading() == false) {
+                    Utilities.showloadingDialog(getActivity());
+                }
+            }
+            super.onPreExecute();
         }
 
         @Override
@@ -178,12 +222,30 @@ public class LeasingInfoFragment extends Fragment {
                 tvNoEmployees.setVisibility(View.VISIBLE);
             } else {
                 tvNoEmployees.setVisibility(View.GONE);
+                new StoreData(getActivity().getApplicationContext()).setLeasingInfoResponse(result.toString());
                 contract_dwc__cs.addAll(SFResponseManager.parseLeasingContractResponse(result.toString()));
                 ArrayList<Contract_DWC__c> contracts = new ArrayList<>();
                 for (Contract_DWC__c contract_dwc__c : contract_dwc__cs) {
-                    contracts.add(contract_dwc__c);
+                    boolean found = false;
+                    for (Contract_DWC__c contract_dwc__c1 : contracts) {
+                        if (contract_dwc__c1.getID().equals(contract_dwc__c.getID())) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        contracts.add(contract_dwc__c);
+                    }
                 }
                 lvLeasingInfoItems.setAdapter(new LeasingInfoAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.leasing_info_item, contracts));
+            }
+
+            if (Utilities.getIsProgressLoading()) {
+                Utilities.dismissLoadingDialog();
+            }
+
+            if (callType == CallType.LOADMORE || callType == CallType.REFRESH) {
+                mSwipeRefreshLayout.setRefreshing(false);
             }
         }
     }
