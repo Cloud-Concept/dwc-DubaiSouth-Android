@@ -115,7 +115,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                     super.onClick(v);
                 }
             }else if(getStatus()==4)
-                Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
+                builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
             else {
                 super.onClick(v);
             }
