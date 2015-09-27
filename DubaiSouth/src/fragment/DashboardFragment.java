@@ -59,7 +59,7 @@ public class DashboardFragment extends Fragment {
                     webView.setWebChromeClient(new WebChromeClient() {
                         public void onProgressChanged(WebView view, int progress) {
 
-                            getActivity().setProgress(progress * 1000);
+//                            getActivity().setProgress(progress * 1000);
                         }
                     });
 
