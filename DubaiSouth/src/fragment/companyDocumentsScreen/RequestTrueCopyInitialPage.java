@@ -289,7 +289,13 @@ public class RequestTrueCopyInitialPage extends Fragment {
     }
 
     private void ProcessTitle(WebForm webForm) {
-        BaseFragmentThreeSteps.setTitle(webForm.getName());
+        String name = webForm.getName();
+        String[] str = name.split(" ");
+        String title = "";
+        for (int i = 1; i < str.length; i++) {
+            title += str[i] + " ";
+        }
+        BaseFragmentThreeSteps.setTitle(title.substring(0, title.length() - 1));
     }
 
     public class GetPickLists extends AsyncTask<List<FormField>, Void, Map<String, List<String>>> {
@@ -367,9 +373,8 @@ public class RequestTrueCopyInitialPage extends Fragment {
         protected void onPostExecute(Map<String, List<String>> aVoid) {
             super.onPostExecute(aVoid);
             Utilities.dismissLoadingDialog();
-            //  Call Draw
+
             Utilities.DrawFormFieldsOnLayout(getActivity(), getActivity().getApplicationContext(), linearAddForms, webForm.get_formFields(), parameters, eServices_document_checklist__c, eServices_document_checklist__c.geteService_Administration__r());
-            ///////////////////////
         }
     }
 

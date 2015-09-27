@@ -62,23 +62,23 @@
         android:id="@+id/textView61"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView59"
-        android:layout_below="@+id/textView59"
         android:layout_marginTop="10dp"
         android:text="Status:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/textView64"
+        android:layout_alignStart="@+id/textView59" />
 
     <TextView
         android:id="@+id/textView64"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView61"
-        android:layout_below="@+id/textView61"
         android:layout_marginTop="10dp"
         android:text="Total Amount:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/textView59"
+        android:layout_alignStart="@+id/textView59" />
 
     <TextView
         android:id="@+id/tvStatus"
@@ -114,7 +114,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView64"
+        android:layout_below="@+id/textView61"
         android:layout_marginTop="10dp">
 
         <LinearLayout
