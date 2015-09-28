@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
@@ -15,10 +14,6 @@ import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -77,6 +72,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
+                    company_documents__cs.clear();
                     CallCustomerDocumentsService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
@@ -88,28 +84,25 @@ public class CustomerDocumentsFragment2 extends Fragment {
 
     private synchronized void CallCustomerDocumentsService(final CallType method, final int offset, final int limit) {
         if (method == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse().equals("")) {
-            try {
-                Utilities.showloadingDialog(getActivity());
-                JSONArray jsonArray = new JSONArray(new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse());
-                company_documents__cs = new ArrayList<>();
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    Gson gson = new Gson();
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    Company_Documents__c company_documents__c = gson.fromJson(jsonObject.toString(), Company_Documents__c.class);
-                    company_documents__cs.add(company_documents__c);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                JSONArray jsonArray = new JSONArray(new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse());
+//                company_documents__cs = new ArrayList<>();
+//                for (int i = 0; i < jsonArray.length(); i++) {
+//
+//                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                    Company_Documents__c company_documents__c = gson.fromJson(jsonObject.toString(), Company_Documents__c.class);
+//                    company_documents__cs.add(company_documents__c);
+//                }
+            String str = new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse();
+            company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObjectWithGson(str);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
             if (adapter == null) {
                 companyDocuments.addAll(company_documents__cs);
                 adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
                         R.layout.company_document_item_row_screen, companyDocuments);
                 lstCustomerDocuments.setAdapter(adapter);
-                Utilities.dismissLoadingDialog();
-            } else {
-                Utilities.dismissLoadingDialog();
-                adapter.addAll(company_documents__cs);
             }
         } else {
             if (method == CallType.FIRSTTIME) {
@@ -132,11 +125,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, final RestResponse response) {
                                 company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObjectWithGson(response.toString());
-                                if (company_documents__cs.size() > 0) {
-                                    Gson gson = new Gson();
-                                    String str = gson.toJson(company_documents__cs);
-                                    new StoreData(getActivity().getApplicationContext()).saveCustomerDocumentsResponse(str);
-                                }
+                                new StoreData(getActivity().getApplicationContext()).saveCustomerDocumentsResponse(response.toString());
                                 if (method == CallType.REFRESH || method == CallType.LOADMORE) {
                                     mSwipeRefreshLayout.setRefreshing(false);
                                 } else if (method == CallType.FIRSTTIME) {
@@ -148,6 +137,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
                                             R.layout.company_document_item_row_screen, companyDocuments);
                                     lstCustomerDocuments.setAdapter(adapter);
                                 } else {
+
                                     adapter.addAll(company_documents__cs);
                                 }
                             }
