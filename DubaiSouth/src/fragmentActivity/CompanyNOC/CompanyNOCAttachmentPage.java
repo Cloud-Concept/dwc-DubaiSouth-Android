@@ -78,6 +78,7 @@ public class CompanyNOCAttachmentPage extends Fragment {
         InitializeViews(view);
         act = getActivity();
         _companyDocuments = new ArrayList<Company_Documents__c>();
+
         PerformCompanyDocumentsRequest(CompanyNocMainFragment.nocRecordTypeId);
         return view;
     }
