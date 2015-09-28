@@ -87,7 +87,7 @@ public class PayAndSubmit extends Fragment {
         TextView tvLabel = (TextView) v.findViewById(R.id.pay_title);
         TextView tvValue = (TextView) v.findViewById(R.id.pay_text);
         tvLabel.setText("Total Amount" + "\t:");
-        tvValue.setText(activity.geteServiceAdministration().getTotal_Amount__c()+"AED");
+        tvValue.setText(activity.getTotal()+"AED");
         newLicenseActivities.addView(v);
 
     }

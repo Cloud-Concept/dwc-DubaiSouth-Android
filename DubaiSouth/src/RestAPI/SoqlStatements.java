@@ -302,7 +302,7 @@ public class SoqlStatements {
     }
 
     public static String getCaseNumberQuery(String caseId) {
-        String SQL = "select CaseNumber,Service_Requested__c from Case where Id='%s'";
+        String SQL = "select CaseNumber,Service_Requested__c,Invoice__r.Amount__c from Case where Id='%s'";
         return String.format(SQL, caseId);
     }
 
