@@ -172,28 +172,28 @@ public class LoginActivity extends AccountAuthenticatorActivity
      *
      **************************************************************************************************/
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(salesforceR.menuLogin(), menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int itemId = item.getItemId();
-		if (itemId == salesforceR.idItemClearCookies()) {
-        	onClearCookiesClick(null);
-        	return true;
-        } else if (itemId == salesforceR.idItemPickServer()) {
-        	onPickServerClick(null);
-        	return true;
-        } else if (itemId == salesforceR.idItemReload()) {
-        	onReloadClick(null);
-        	return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(salesforceR.menuLogin(), menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int itemId = item.getItemId();
+//		if (itemId == salesforceR.idItemClearCookies()) {
+//        	onClearCookiesClick(null);
+//        	return true;
+//        } else if (itemId == salesforceR.idItemPickServer()) {
+//        	onPickServerClick(null);
+//        	return true;
+//        } else if (itemId == salesforceR.idItemReload()) {
+//        	onReloadClick(null);
+//        	return true;
+//        } else {
+//            return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     /**************************************************************************************************
      *
