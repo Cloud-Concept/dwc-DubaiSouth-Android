@@ -127,8 +127,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                 } else if (getStatus() == 4) {
                     if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
                         setStatus(3);
-                        activity.setInsertedCaseId(null);
-                        activity.setInsertedServiceId(null);
+
                         btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                         btnNOC3.setSelected(false);
                         btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
