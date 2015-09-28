@@ -83,10 +83,20 @@ public class NOCAttachmentPage extends Fragment {
         InitializeViews(view);
         if (getActivity() instanceof CardActivity)
             activity = (CardActivity) getActivity();
-
+if(activity.getType().equals("2")){
+    return view;
+}
         _companyDocuments = new ArrayList<Company_Documents__c>();
         PerformCompanyDocumentsRequest(activity.getInsertedServiceId());
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(activity.getType().equals("2")){
+            PerfromParentNext();
+        }
     }
 
     private void PerformCompanyDocumentsRequest(String nocRecordTypeId) {
