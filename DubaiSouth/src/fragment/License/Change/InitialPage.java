@@ -127,7 +127,7 @@ public class InitialPage extends Fragment {
                 if (flag)
                     activity.get_licenses().add(oBA);
                 else
-                    Utilities.showLongToast(activity, "Don't Duplicate Activities");
+                    Utilities.showLongToast(activity, "This Activity has been selected before");
               reload();
             }
         }
