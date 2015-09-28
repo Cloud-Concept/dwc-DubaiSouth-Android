@@ -711,6 +711,74 @@ public class SFResponseManager {
 
     }
 
+    public static ArrayList<Receipt_Template__c> parseReceiptObjectResponse2(String s) {
+
+//        ArrayList<Receipt_Template__c> receipt_template__cs = new ArrayList<>();
+//        Receipt_Template__c receipt_template__c;
+//
+//        JSONObject jsonFullResponse = null;
+//        try {
+//            jsonFullResponse = new JSONObject(s);
+//            JSONArray jsonArrayRecords = jsonFullResponse.getJSONArray(JSONConstants.RECORDS);
+//            for (int i = 0; i < jsonArrayRecords.length(); i++) {
+//                receipt_template__c = new Receipt_Template__c();
+//                JSONObject jsonObject = jsonArrayRecords.getJSONObject(i);
+//                ObjectReader or = new ObjectMapper().reader().withType(
+//                        Receipt_Template__c.class);
+//                try {
+//                    receipt_template__c = or.readValue(jsonObject.toString());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                receipt_template__cs.add(receipt_template__c);
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return receipt_template__cs;
+
+//        ArrayList<Receipt_Template__c> receipt_template__cs = new ArrayList<>();
+//
+//        try {
+//            receipt_template__cs = new ObjectMapper().readValue(s.toString(), new TypeReference<Collection<Receipt_Template__c>>() {
+//            });
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return receipt_template__cs;
+        Gson gson;
+        ArrayList<Receipt_Template__c> receiptTemplates = new ArrayList<Receipt_Template__c>();
+        ArrayList<EServices_Document_Checklist__c> eServicesDocumentChecklistses = new ArrayList<EServices_Document_Checklist__c>();
+        try {
+            JSONObject jsonFullResponse = new JSONObject(s);
+            JSONArray jsonArrayRecords = jsonFullResponse.getJSONArray(JSONConstants.RECORDS);
+            for (int i = 0; i < jsonArrayRecords.length(); i++) {
+                gson = new Gson();
+                eServicesDocumentChecklistses = new ArrayList<EServices_Document_Checklist__c>();
+                JSONObject jsonObject = jsonArrayRecords.getJSONObject(i);
+                Receipt_Template__c receiptTemplate = gson.fromJson(jsonObject.toString(), Receipt_Template__c.class);
+                Log.d("object", jsonObject.toString());
+                receiptTemplate.setTotal_Amount__c(jsonObject.getDouble("Total_Amount__c"));
+                JSONObject jsoneServices_Document_Checklists = jsonObject.getJSONObject("eServices_Document_Checklists__r");
+                JSONArray jArrayeServices_Document_ChecklistsRecords = jsoneServices_Document_Checklists.getJSONArray(JSONConstants.RECORDS);
+                for (int j = 0; j < jArrayeServices_Document_ChecklistsRecords.length(); j++) {
+                    gson = new Gson();
+                    JSONObject jsonEServicesDocumentChecklistsItem = jArrayeServices_Document_ChecklistsRecords.getJSONObject(j);
+                    EServices_Document_Checklist__c eServicesDocumentChecklists = gson.fromJson(jsonEServicesDocumentChecklistsItem.toString(), EServices_Document_Checklist__c.class);
+                    eServicesDocumentChecklistses.add(eServicesDocumentChecklists);
+                }
+                receiptTemplate.seteServices_document_checklist__c(eServicesDocumentChecklistses);
+                receiptTemplates.add(receiptTemplate);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return receiptTemplates;
+    }
+
     public static ArrayList<MyRequest> parseMyRequestsResponse(String s) {
 
         Gson gson;

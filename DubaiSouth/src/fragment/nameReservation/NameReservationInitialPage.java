@@ -35,9 +35,13 @@ public class NameReservationInitialPage extends Fragment {
 
     private void InitializeViews(View view) {
         tvErrorMessage = (TextView) view.findViewById(R.id.tvErrorMessage);
+        activity = (NameReservationActivity) getActivity();
         etChoice1 = (EditText) view.findViewById(R.id.etChoice1);
         etChoice2 = (EditText) view.findViewById(R.id.etChoice2);
         etChoice3 = (EditText) view.findViewById(R.id.etChoice3);
+        activity.setChoice1Text("");
+        activity.setChoice2Text("");
+        activity.setChoice3Text("");
         activity = (NameReservationActivity) getActivity();
         etChoice1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -108,7 +112,7 @@ public class NameReservationInitialPage extends Fragment {
                 builder.append(texts[i] + "\n");
             }
             tvErrorMessage.setText(builder.toString());
-        }else{
+        } else {
             tvErrorMessage.setText(result);
         }
     }
