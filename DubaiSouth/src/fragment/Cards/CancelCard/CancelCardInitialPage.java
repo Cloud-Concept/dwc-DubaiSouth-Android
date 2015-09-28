@@ -3,6 +3,7 @@ package fragment.Cards.CancelCard;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.VolleyError;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -190,7 +193,10 @@ public class CancelCardInitialPage extends Fragment {
 
                         @Override
                         public void onError(Exception exception) {
-                            Utilities.showToast(getActivity(), RestMessages.getInstance().getErrorMessage());
+                            VolleyError volleyError = (VolleyError) exception;
+                            NetworkResponse response = volleyError.networkResponse;
+                            String json = new String(response.data);
+                            Log.d("", json);
                             Utilities.dismissLoadingDialog();
                             getActivity().finish();
                         }
@@ -235,7 +241,12 @@ public class CancelCardInitialPage extends Fragment {
 
                             @Override
                             public void onError(Exception exception) {
+                                VolleyError volleyError = (VolleyError) exception;
+                                NetworkResponse response = volleyError.networkResponse;
+                                String json = new String(response.data);
+                                Log.d("", json);
                                 Utilities.dismissLoadingDialog();
+                                getActivity().finish();
                             }
                         });
                     }
