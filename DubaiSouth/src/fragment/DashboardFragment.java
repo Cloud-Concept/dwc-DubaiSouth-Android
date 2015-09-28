@@ -43,8 +43,10 @@ public class DashboardFragment extends Fragment {
             @Override
             public void authenticatedRestClient(RestClient client) {
                 if (client == null) {
+
                     SalesforceSDKManager.getInstance().logout(getActivity());
                     return;
+
                 } else {
 
                     final Gson gson = new Gson();

@@ -2201,10 +2201,13 @@ import com.salesforce.androidsdk.smartstore.store.SmartStore;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
@@ -2226,6 +2229,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -3799,19 +3803,23 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
-                        _items.add(new ServiceItem("New Company NOC", R.mipmap.company_noc));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameReservation".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Reservation", R.mipmap.name_reservation));
+                        _items.add(new ServiceItem("New NOC", R.mipmap.company_noc));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ReserveName".toLowerCase())) {
+                        _items.add(new ServiceItem("Reserve Name", R.mipmap.name_reservation));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Change", R.mipmap.name_change_service));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CapitalChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Capital Change", R.mipmap.capital_change));
+                        _items.add(new ServiceItem("Name Change", R.mipmap.name_change));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ChangeCapital".toLowerCase())) {
+                        _items.add(new ServiceItem("Change Capital", R.mipmap.capital_change));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ChangeLicenseActivity".toLowerCase())) {
                         _items.add(new ServiceItem("Change License Activity", R.mipmap.change_license_activity));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel License", R.mipmap.cancel_card));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelCard".toLowerCase())) {
+                        _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ReplaceCard".toLowerCase())) {
+                        _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewCard".toLowerCase())) {
+                        _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
                     }
                 }
 
@@ -4362,5 +4370,23 @@ public class Utilities {
         } else {
             return Amount;
         }
+    }
+
+    public static String getFrontDoorUrl(RestClient client,String url, boolean isAbsUrl) {
+        String frontDoorUrl = client.getClientInfo().getInstanceUrlAsString() + "/secur/frontdoor.jsp?";
+        List<NameValuePair> params = new LinkedList<NameValuePair>();
+        params.add(new BasicNameValuePair("sid", client.getAuthToken()));
+
+		/*
+		 * We need to use the absolute URL in some cases and relative URL in some
+		 * other cases, because of differences between instance URL and community
+		 * URL. Community URL can be custom and the logic of determining which
+		 * URL to use is in the 'resolveUrl' method in 'ClientInfo'.
+		 */
+        url = (isAbsUrl ? url : client.getClientInfo().resolveUrl(url).toString());
+        params.add(new BasicNameValuePair("retURL", url));
+        params.add(new BasicNameValuePair("display", "touch"));
+        frontDoorUrl += URLEncodedUtils.format(params, "UTF-8");
+        return frontDoorUrl;
     }
 }

@@ -150,6 +150,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -159,22 +160,6 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
                 ActivitiesLauncher.openNewCardActivity(getActivity().getApplicationContext(), "1");
             }
         });
-    }
-
-    @Override
-    public void onPause() {
-        spinnerFilterAccessCard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        super.onPause();
     }
 
     public void CallAccessCardService(String visa_validity_status, final CallType callType) {
@@ -246,7 +231,9 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
                 }
 
                 if (callType == CallType.SPINNETCHANGEDDATA) {
-                    Utilities.showloadingDialog(getActivity());
+                    if (!Utilities.getIsProgressLoading()) {
+                        Utilities.showloadingDialog(getActivity());
+                    }
                 }
                 new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                     @Override

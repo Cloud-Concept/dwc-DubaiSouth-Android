@@ -322,7 +322,7 @@ public class SoqlStatements {
         return soql;
     }
 
-    public static String constructCustomerDocumentsQuery(String accountId, int offset, int limit) {
+    public static String constructCustomerDocumentsQuery(String accountId, int limit, int offset) {
         String soql = String.format(soql_get_customer_documents, accountId, limit, offset);
         return soql;
     }

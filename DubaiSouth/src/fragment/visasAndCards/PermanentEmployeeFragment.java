@@ -111,10 +111,6 @@ public class PermanentEmployeeFragment extends Fragment {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
-                    _visas.clear();
-                    if (_Filteredvisas != null) {
-                        _Filteredvisas.clear();
-                    }
                     CallPermanentEmployeeService(strFilter, CallType.REFRESH);
                 } else {
                     CallPermanentEmployeeService(strFilter, CallType.LOADMORE);
@@ -246,6 +242,12 @@ public class PermanentEmployeeFragment extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse result) {
                                 try {
+                                    if (callType == CallType.REFRESH) {
+                                        _visas.clear();
+                                        if (_Filteredvisas != null) {
+                                            _Filteredvisas.clear();
+                                        }
+                                    }
                                     if (callType == CallType.SPINNETCHANGEDDATA || callType == CallType.FIRSTTIME) {
                                         Utilities.dismissLoadingDialog();
                                     } else {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/header"
@@ -18,132 +19,173 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:gravity="center"
-            android:text="Show Details"
+            android:text="Access Card"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/imageView"
-        android:layout_marginTop="10dp"
-        android:background="@mipmap/new_card"
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_below="@+id/header"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:background="@mipmap/new_card" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView68"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/imageView"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:layout_toStartOf="@+id/imageView"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Name:"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvName"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignBottom="@+id/textView68"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_toEndOf="@+id/imageView"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Small Text"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView72"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignEnd="@+id/textView68"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/textView68"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Type:"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvType"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignStart="@+id/tvName"-->
+    <!--android:layout_alignTop="@+id/textView72"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Small Text"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView75"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignEnd="@+id/textView72"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/textView72"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Passport Number:"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvPassportNumber"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignStart="@+id/tvType"-->
+    <!--android:layout_alignTop="@+id/textView75"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Small Text"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView77"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignEnd="@+id/textView75"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/textView75"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Status:"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvStatus"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignStart="@+id/tvPassportNumber"-->
+    <!--android:layout_alignTop="@+id/textView77"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Small Text"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView70"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignEnd="@+id/textView77"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Card Expiry:"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvCardExpiry"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignStart="@+id/tvStatus"-->
+    <!--android:layout_alignTop="@+id/textView70"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Small Text"-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:layout_below="@+id/header"
-        android:layout_centerHorizontal="true" />
+        android:background="@color/noc_top_background">
 
-    <TextView
+        <include
+            android:id="@+id/view"
+            layout="@layout/custom_rounded2" />
+
+        <TextView
+            android:id="@+id/tvCardOwnerName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Name:"
-        android:gravity="center"
-        android:id="@+id/textView68"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/imageView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/tvName"
-        android:gravity="center"
-        android:layout_alignBottom="@+id/textView68"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Type:"
-        android:gravity="center"
-        android:id="@+id/textView72"
-        android:layout_below="@+id/textView68"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/textView68" />
+        android:layout_below="@+id/top">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:gravity="center"
-        android:id="@+id/tvType"
-        android:layout_alignTop="@+id/textView72"
-        android:layout_alignStart="@+id/tvName"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Passport Number:"
-        android:id="@+id/textView75"
-        android:layout_below="@+id/textView72"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/textView72" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/tvPassportNumber"
-        android:gravity="center"
-        android:layout_alignTop="@+id/textView75"
-        android:layout_alignStart="@+id/tvType"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Status:"
-        android:id="@+id/textView77"
-        android:layout_below="@+id/textView75"
-        android:gravity="center"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/textView75" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/tvStatus"
-        android:layout_alignTop="@+id/textView77"
-        android:layout_alignStart="@+id/tvPassportNumber"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Card Expiry:"
-        android:id="@+id/textView70"
-        android:gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/textView77"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:gravity="center"
-        android:id="@+id/tvCardExpiry"
-        android:layout_alignTop="@+id/textView70"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/tvStatus" />
+        <LinearLayout
+            android:id="@+id/linearAddForms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
 </RelativeLayout>

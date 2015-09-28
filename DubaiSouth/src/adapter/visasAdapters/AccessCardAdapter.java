@@ -37,7 +37,7 @@ public class AccessCardAdapter extends ClickableListAdapter {
     @Override
     protected ViewHolder createHolder(View v) {
 
-        TextView tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry;
+        TextView tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry, tvCardNumber;
         RoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
@@ -47,12 +47,13 @@ public class AccessCardAdapter extends ClickableListAdapter {
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvStatus = (TextView) relativeHeader.findViewById(R.id.tvStatus);
         tvCardExpiry = (TextView) relativeHeader.findViewById(R.id.tvCardExpiry);
+        tvCardNumber = (TextView) relativeHeader.findViewById(R.id.tvCardNumber);
         _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
 
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
 
-        AccessCardViewHolder holder = new AccessCardViewHolder(tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry, _smartEmployeeImage, item, _horizontalServices);
+        AccessCardViewHolder holder = new AccessCardViewHolder(tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry, tvCardNumber, _smartEmployeeImage, item, _horizontalServices);
 
         return holder;
     }
@@ -62,7 +63,7 @@ public class AccessCardAdapter extends ClickableListAdapter {
 
         AccessCardViewHolder holder = (AccessCardViewHolder) h;
         Card_Management__c _cardManagement = (Card_Management__c) holder.data;
-
+        holder.tvCardNumber.setText(Utilities.stringNotNull(_cardManagement.getCard_Number__c()));
         holder.tvFullName.setText(Utilities.stringNotNull(_cardManagement.getFull_Name__c()));
         holder.tvType.setText(Utilities.stringNotNull(_cardManagement.getCard_Type__c()));
         holder.tvPassportNumber.setText(Utilities.stringNotNull(_cardManagement.getPassport_Number__c()));
@@ -100,23 +101,24 @@ public class AccessCardAdapter extends ClickableListAdapter {
 //            }
 //        });
 
-        holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_cardManagement,act, context, _items));
+        holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_cardManagement, act, context, _items));
     }
 
     static class AccessCardViewHolder extends ViewHolder {
 
-        TextView tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry;
+        TextView tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry, tvCardNumber;
         RoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public AccessCardViewHolder(TextView tvFullName, TextView tvType, TextView tvPassportNumber, TextView tvStatus, TextView tvCardExpiry, RoundedImageView i, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public AccessCardViewHolder(TextView tvFullName, TextView tvType, TextView tvPassportNumber, TextView tvStatus, TextView tvCardExpiry, TextView tvCardNumber, RoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
             this.tvType = tvType;
             this.tvPassportNumber = tvPassportNumber;
             this.tvStatus = tvStatus;
             this.tvCardExpiry = tvCardExpiry;
-            this._smartEmployeeImage = i;
+            this.tvCardNumber = tvCardNumber;
+            this._smartEmployeeImage = _smartEmployeeImage;
             this.item = item;
             this._horizontalListView = _horizontalListView;
         }

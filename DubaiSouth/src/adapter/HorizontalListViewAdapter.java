@@ -200,15 +200,15 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "License Renewal");
                     } else if (tvServiceName.getText().toString().equals("License Renewal")) {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "Renewal License");
-                    } else if (tvServiceName.getText().toString().equals("New Company NOC")) {
+                    } else if (tvServiceName.getText().toString().equals("New NOC")) {
                         ActivitiesLauncher.openCompanyNocActivity(context);
                     } else if (tvServiceName.getText().toString().equals("Address Change")) {
                         ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Address Change", object);
                     } else if (tvServiceName.getText().toString().equals("Name Change")) {
                         ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Name Change", object);
-                    } else if (tvServiceName.getText().toString().equals("Capital Change")) {
-                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Capital Change", object);
-                    } else if (tvServiceName.getText().toString().equals("Name Reservation")) {
+                    } else if (tvServiceName.getText().toString().equals("Change Capital")) {
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Change Capital", object);
+                    } else if (tvServiceName.getText().toString().equals("Reserve Name")) {
                         ActivitiesLauncher.openNameReservationActivity(context);
                     }
                 } else if (object instanceof Contract_DWC__c) {

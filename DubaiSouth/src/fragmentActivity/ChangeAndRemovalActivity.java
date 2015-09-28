@@ -186,7 +186,7 @@ public class ChangeAndRemovalActivity extends FragmentActivity {
             MethodName = "CreateRequestNameChange";
             SubmitMethodName = "SubmitRequestNameChange";
 
-        } else if (getIntent().getExtras().getString("MethodType").equals("Capital Change")) {
+        } else if (getIntent().getExtras().getString("MethodType").equals("Change Capital")) {
 
             MethodName = "CreateRequestCapitalChange";
             SubmitMethodName = "SubmitRequestCapitalChange";

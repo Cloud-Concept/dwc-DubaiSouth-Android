@@ -87,7 +87,7 @@ public class CompanyInfoInnerFragment extends Fragment {
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Billing Address", ItemType.LABEL));
         _views.add(new DWCView(_user.get_contact().get_account().getBillingStreet().equals("null") || _user.get_contact().get_account().getBillingStreet() == null ? "" : _user.get_contact().get_account().getBillingStreet(), ItemType.VALUE));
-        _views.add(new DWCView("New NOC Company,Address Change,Name Change,Name Reservation,Capital Change", ItemType.HORIZONTAL_LIST_VIEW));
+        _views.add(new DWCView("New NOC Company,Address Change,Name Change,Reserve Name,Change Capital", ItemType.HORIZONTAL_LIST_VIEW));
         View viewItems = Utilities.drawViewsOnLayout(getActivity(),_user, getActivity().getApplicationContext(), _views);
         linearLayout.removeAllViews();
         linearLayout.addView(viewItems);
