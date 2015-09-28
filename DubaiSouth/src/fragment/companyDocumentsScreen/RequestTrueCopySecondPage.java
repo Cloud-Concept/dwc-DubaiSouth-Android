@@ -23,6 +23,7 @@ import fragmentActivity.RequestTrueCopyActivity;
 import model.EServices_Document_Checklist__c;
 import model.FormField;
 import model.User;
+import utilities.Utilities;
 
 /**
  * Created by Abanoub Wagdy on 9/12/2015.
@@ -62,7 +63,7 @@ public class RequestTrueCopySecondPage extends Fragment {
         Date resultdate = new Date(yourmilliseconds);
         tvDate.setText(sdf.format(resultdate));
         tvStatus.setText(String.valueOf(activity.getCaseFields().get("Status")));
-        tvTotalAmount.setText(String.valueOf(activity.geteServices_document_checklist__c().geteService_Administration__r().getTotal_Amount__c())+" AED.");
+        tvTotalAmount.setText(Utilities.processAmount(String.valueOf(activity.geteServices_document_checklist__c().geteService_Administration__r().getTotal_Amount__c()))+" AED.");
         tvRefNumber.setText(activity.getCaseNumber());
         DrawLayout(inflater);
     }

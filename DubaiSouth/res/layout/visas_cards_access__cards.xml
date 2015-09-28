@@ -97,7 +97,8 @@
             android:id="@+id/activity_main_swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:background="@color/white_green"
             app:direction="both">
 
@@ -106,7 +107,6 @@
                 android:id="@+id/expandableLayoutListView"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="15dp"
                 android:background="@drawable/list_selector"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="2dp"

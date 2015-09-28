@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import cloudconcept.dwc.R;
 import fragmentActivity.RequestTrueCopyActivity;
+import utilities.Utilities;
 
 /**
  * Created by Abanoub Wagdy on 9/12/2015.
@@ -42,9 +43,7 @@ public class RequestTrueCopyThirdPage extends Fragment {
         tvThankYou = (TextView) view.findViewById(R.id.tvThankyou);
         btnClose = (Button) view.findViewById(R.id.btnClose);
         btnClose.setVisibility(View.GONE);
-        String Message = String.format(getString(R.string.ServiceThankYouMessage), activity.getCaseNumber()) + "\n" + String.format(getString(R.string.ServiceThankYouMessagePayment), activity.geteServices_document_checklist__c().geteService_Administration__r().getTotal_Amount__c() + " including Knowledge Fee of AED 10");
+        String Message = "Thank You" + "\n\n" + String.format(getString(R.string.ServiceThankYouMessage), activity.getCaseNumber()) + "\n" + String.format(getString(R.string.ServiceThankYouMessagePayment), Utilities.processAmount(String.valueOf(activity.geteServices_document_checklist__c().geteService_Administration__r().getTotal_Amount__c())) + " (including Knowledge Fee of AED 10)");
         tvThankYou.setText(Message);
-        RequestTrueCopyFragment fragment = (RequestTrueCopyFragment) getParentFragment();
-        fragment.setTitle("Thank You");
     }
 }

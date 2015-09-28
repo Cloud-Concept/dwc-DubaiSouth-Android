@@ -628,7 +628,7 @@ public class HomepageActivity extends Activity implements
                             tvCompanyName.setText(_user.get_contact().get_account().getName());
                             tvLicenseNumber.setText(_user.get_contact().get_account().getLicenseNumberFormula());
                             tvLicenseExpiry.setText(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date());
-                            tvBalance.setText(_user.get_contact().get_account().getPortalBalance() + " AED");
+                            tvBalance.setText(Utilities.processAmount(_user.get_contact().get_account().getPortalBalance()) + " AED");
                         }
                     });
                     sendNotificationCountRequestInAnotherThread(_user, client);
@@ -791,7 +791,7 @@ public class HomepageActivity extends Activity implements
         tvCompanyName.setText(_user.get_contact().get_account().getName());
         tvLicenseNumber.setText(_user.get_contact().get_account().getLicenseNumberFormula());
         tvLicenseExpiry.setText(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date());
-        tvBalance.setText(_user.get_contact().get_account().getPortalBalance() + " AED");
+        tvBalance.setText(Utilities.processAmount(_user.get_contact().get_account().getPortalBalance()) + " AED");
     }
 
     public void setUICOmponents(User _user, int notificationCount) {
@@ -804,7 +804,7 @@ public class HomepageActivity extends Activity implements
         tvCompanyName.setText(_user.get_contact().get_account().getName());
         tvLicenseNumber.setText(_user.get_contact().get_account().getLicenseNumberFormula());
         tvLicenseExpiry.setText(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date());
-        tvBalance.setText(_user.get_contact().get_account().getPortalBalance() + " AED");
+        tvBalance.setText(Utilities.processAmount(_user.get_contact().get_account().getPortalBalance()) + " AED");
         if (notificationCount == 0) {
             _badgeButton.hideBadge();
         } else {
