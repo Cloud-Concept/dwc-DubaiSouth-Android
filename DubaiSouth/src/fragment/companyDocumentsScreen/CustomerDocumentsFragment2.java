@@ -93,7 +93,8 @@ public class CustomerDocumentsFragment2 extends Fragment {
 //                    Company_Documents__c company_documents__c = gson.fromJson(jsonObject.toString(), Company_Documents__c.class);
 //                    company_documents__cs.add(company_documents__c);
 //                }
-            company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObjectWithGson(new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse());
+            String str = new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse();
+            company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObjectWithGson(str);
 //            } catch (JSONException e) {
 //                e.printStackTrace();
 //            }
@@ -102,7 +103,6 @@ public class CustomerDocumentsFragment2 extends Fragment {
                 adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
                         R.layout.company_document_item_row_screen, companyDocuments);
                 lstCustomerDocuments.setAdapter(adapter);
-                Utilities.dismissLoadingDialog();
             }
         } else {
             if (method == CallType.FIRSTTIME) {
