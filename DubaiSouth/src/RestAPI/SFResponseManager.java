@@ -692,15 +692,18 @@ public class SFResponseManager {
                 Log.d("object", jsonObject.toString());
                 receiptTemplate.setTotal_Amount__c(jsonObject.getDouble("Total_Amount__c"));
                 receiptTemplate.setNo_of_Upload_Docs__c(jsonObject.getInt("No_of_Upload_Docs__c"));
-                JSONObject jsoneServices_Document_Checklists = jsonObject.getJSONObject("eServices_Document_Checklists__r");
-                JSONArray jArrayeServices_Document_ChecklistsRecords = jsoneServices_Document_Checklists.getJSONArray(JSONConstants.RECORDS);
-                for (int j = 0; j < jArrayeServices_Document_ChecklistsRecords.length(); j++) {
-                    gson = new Gson();
-                    JSONObject jsonEServicesDocumentChecklistsItem = jArrayeServices_Document_ChecklistsRecords.getJSONObject(j);
-                    EServices_Document_Checklist__c eServicesDocumentChecklists = gson.fromJson(jsonEServicesDocumentChecklistsItem.toString(), EServices_Document_Checklist__c.class);
-                    eServicesDocumentChecklistses.add(eServicesDocumentChecklists);
+                if(receiptTemplate.getNo_of_Upload_Docs__c()>0) {
+                    JSONObject jsoneServices_Document_Checklists = jsonObject.getJSONObject("eServices_Document_Checklists__r");
+                    JSONArray jArrayeServices_Document_ChecklistsRecords = jsoneServices_Document_Checklists.getJSONArray(JSONConstants.RECORDS);
+                    for (int j = 0; j < jArrayeServices_Document_ChecklistsRecords.length(); j++) {
+                        gson = new Gson();
+                        JSONObject jsonEServicesDocumentChecklistsItem = jArrayeServices_Document_ChecklistsRecords.getJSONObject(j);
+                        EServices_Document_Checklist__c eServicesDocumentChecklists = gson.fromJson(jsonEServicesDocumentChecklistsItem.toString(), EServices_Document_Checklist__c.class);
+                        eServicesDocumentChecklistses.add(eServicesDocumentChecklists);
+                    }
+                    receiptTemplate.seteServices_document_checklist__c(eServicesDocumentChecklistses);
+
                 }
-                receiptTemplate.seteServices_document_checklist__c(eServicesDocumentChecklistses);
                 receiptTemplates.add(receiptTemplate);
             }
         } catch (JSONException e) {

@@ -264,9 +264,10 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
         protected void onPostExecute(String aVoid) {
             super.onPostExecute(aVoid);
             Utilities.dismissLoadingDialog();
+            NiftyDialogBuilder
+                    .getInstance(getActivity()).dismiss();
             if (aVoid != null) {
-                NiftyDialogBuilder
-                        .getInstance(getActivity()).dismiss();
+
                 {
                     activity.setInsertedCaseId(aVoid);
 
@@ -321,7 +322,8 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
                 }
 
 
-            }
+            }else
+                Utilities.showLongToast(activity,result.replace("\"",""));
 
         }
     }

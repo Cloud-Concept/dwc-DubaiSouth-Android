@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,9 @@ import cloudconcept.dwc.R;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
+import dataStorage.StoreData;
 import model.ServiceItem;
+import model.User;
 import model.Visa;
 import utilities.Utilities;
 
@@ -73,7 +77,12 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
             Utilities.setUserPhoto(activity, mo.getPersonal_Photo__c(), mvh._smartEmployeeImage);
 
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
-
+        User user = new Gson().fromJson(new StoreData(context).getUserDataAsString(), User.class);
+        boolean manager=mo.getVisa_Holder__c().equals(user.get_contact().get_account().getID());
+        if((mo.getVisa_Validity_Status__c().equals("Issued")||mo.getVisa_Validity_Status__c().equals("Under Process")||mo.getVisa_Validity_Status__c().equals("Under Renewal"))&&(mo.getVisa_Type__c().equals("Employment")||mo.getVisa_Type__c().equals("Visit")|| mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External"))&&!manager)
+        {
+            _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
+        }
 //        mvh.item.setOnClickListener(new OnClickListener(mvh) {
 //
 //            public void onClick(View v, ViewHolder viewHolder) {

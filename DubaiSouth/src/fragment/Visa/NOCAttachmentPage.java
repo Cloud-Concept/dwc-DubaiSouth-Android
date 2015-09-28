@@ -38,7 +38,9 @@ import adapter.CompanyDocumentsAdapter;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
 import fragment.BaseFragmentFiveSteps;
-import fragment.Cards.PayAndSubmit;
+import fragment.BaseFragmentFourSteps;
+import fragment.BaseFragmentFourStepsNew;
+import fragment.Visa.Cancel.PayAndSubmitCancelVisa;
 import fragmentActivity.CardActivity;
 import fragmentActivity.VisaActivity;
 import model.Company_Documents__c;
@@ -329,9 +331,10 @@ public class NOCAttachmentPage extends Fragment {
 //        PerfromParentNext(BaseServiceFragment.btnNext);
 //        c.onClick(BaseServiceFragment.btnNext);
 //        NocMainFragment
-
-        ((BaseFragmentFiveSteps) getParentFragment()).gotoPayAndSubmitFragment(PayAndSubmit.newInstance(activity.getType()));
-
+if(getParentFragment() instanceof BaseFragmentFiveSteps)
+        ((BaseFragmentFiveSteps) getParentFragment()).gotoPayAndSubmitFragment(fragment.Cards.PayAndSubmit.newInstance(activity.getType()));
+        else if((getParentFragment() instanceof BaseFragmentFourStepsNew )&& activity.getType().equals("Cancel"))
+    ((BaseFragmentFourStepsNew) getParentFragment()).gotoPayAndSubmitFragment(PayAndSubmitCancelVisa.newInstance(activity.getType()));
     }
 
     private void InitializeViews(View view) {
