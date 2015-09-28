@@ -20,13 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="550e52e7-d4e9-4956-b9f2-c1173b7fe10d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/BaseFragmentThreeSteps.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/BaseFragmentThreeSteps.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyInitialPage.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyInitialPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_currency_label_enabled.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopySecondPage.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopySecondPage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyThirdPage.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyThirdPage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/true_copy_second_page.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/true_copy_second_page.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_request_true_copy_enabled.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_request_true_copy_enabled.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/visas_cards_access__cards.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/visas_cards_access__cards.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="dwc-DubaiSouth-Android.iws" />
@@ -55,43 +54,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RequestTrueCopyInitialPage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyInitialPage.java">
+      <file leaf-file-name="AccessCardFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/AccessCardFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.2280703">
-              <caret line="290" column="48" selection-start-line="290" selection-start-column="48" selection-end-line="290" selection-end-column="48" />
-              <folding>
-                <element signature="e#3930#3961#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestTrueCopyThirdPage.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyThirdPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30857143">
-              <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CertificatesAndAgreementsFragment2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/CertificatesAndAgreementsFragment2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="128" column="37" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivitiesLauncher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/ActivitiesLauncher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="279" column="49" selection-start-line="279" selection-start-column="49" selection-end-line="279" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.15714286">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -7557,8 +7524,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/RenewPassport/PayAndSubmit.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/NOCScreen/NocPayAndSubmit.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/item_row.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/my_requests.xml" />
@@ -7577,7 +7542,6 @@
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyInfo/LegalRepresentativesFragment.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/dataStorage/StoreData.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyInfo/LicenseInfoFragment.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/AccessCardFragment.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/VisitVisaFragment.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/values/strings.xml" />
@@ -7602,12 +7566,15 @@
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/new_card_first_page.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/Cards/NewCard/MainNewCardFragment.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_request_true_copy_enabled.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/BaseFragmentThreeSteps.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopySecondPage.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/true_copy_second_page.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyThirdPage.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyInitialPage.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_currency_label_enabled.xml" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopySecondPage.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyThirdPage.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/visas_cards_access__cards.xml" />
       </list>
     </option>
   </component>
@@ -7643,10 +7610,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -7729,12 +7694,32 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="companyDocumentsScreen" />
+              <option name="myItemId" value="visasAndCards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dwc-DubaiSouth-Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DubaiSouth" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dwc" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -7963,7 +7948,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="3226" height="1754" extended-state="6" />
+    <frame x="-13" y="-13" width="3226" height="1754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -8070,7 +8055,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java</url>
-          <line>2996</line>
+          <line>2997</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -8082,7 +8067,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java</url>
-          <line>3011</line>
+          <line>3012</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
@@ -8095,49 +8080,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/Cards/CancelCard/CancelCardInitialPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42385322">
-          <caret line="58" column="56" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/Cards/NewCard/NewCardFormFieldPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21192661">
-          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/QuickAccessFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="44" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
-          <folding>
-            <element signature="e#2420#2637#0" expanded="false" />
-            <element signature="e#2636#2637#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/NOCScreen/NOCInitialPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="309" column="37" selection-start-line="309" selection-start-column="37" selection-end-line="309" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/NameReservationFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="42" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/ChangeAndRemovalServiceFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.64859635">
@@ -8155,10 +8097,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33301064">
           <caret line="532" column="0" selection-start-line="532" selection-start-column="0" selection-end-line="553" selection-end-column="6" />
-          <folding>
-            <element signature="e#23726#24486#0" expanded="false" />
-            <element signature="e#24485#24486#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -8166,12 +8104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-91.49123">
           <caret line="242" column="12" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
-          <folding>
-            <element signature="e#10186#10382#0" expanded="false" />
-            <element signature="e#10381#10382#0" expanded="false" />
-            <element signature="e#11382#11519#0" expanded="false" />
-            <element signature="e#11518#11519#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -8214,7 +8146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57961786">
           <caret line="91" column="36" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8230,7 +8161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.699727">
           <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8238,7 +8168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21019109">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8246,7 +8175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15013649">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8262,15 +8190,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7099166">
           <caret line="211" column="16" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/AccessCardFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="270" column="48" selection-start-line="270" selection-start-column="48" selection-end-line="270" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8279,8 +8198,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="109" column="49" selection-start-line="109" selection-start-column="49" selection-end-line="109" selection-end-column="49" />
           <folding>
-            <element signature="e#4623#5214#0" expanded="true" />
-            <element signature="e#5213#5214#0" expanded="true" />
+            <element signature="e#4623#5214#0" expanded="false" />
+            <element signature="e#5213#5214#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -8300,7 +8219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.67284524">
           <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8343,7 +8261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="237" column="60" selection-start-line="237" selection-start-column="60" selection-end-line="237" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8355,7 +8272,7 @@
         <state vertical-scroll-proportion="0.7862669">
           <caret line="53" column="39" selection-start-line="35" selection-start-column="6" selection-end-line="53" selection-end-column="39" />
           <folding>
-            <element signature="e#2824#2859#0" expanded="true" />
+            <element signature="e#2824#2859#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -8368,10 +8285,10 @@
         <state vertical-scroll-proportion="0.70212764">
           <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
           <folding>
-            <element signature="e#569#604#0" expanded="true" />
-            <element signature="e#640#675#0" expanded="true" />
-            <element signature="e#1427#1462#0" expanded="true" />
-            <element signature="e#1498#1533#0" expanded="true" />
+            <element signature="e#569#604#0" expanded="false" />
+            <element signature="e#640#675#0" expanded="false" />
+            <element signature="e#1427#1462#0" expanded="false" />
+            <element signature="e#1498#1533#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -8380,7 +8297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2519084">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8388,7 +8304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.027989822">
           <caret line="493" column="13" selection-start-line="493" selection-start-column="13" selection-end-line="493" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8396,7 +8311,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30788803">
           <caret line="518" column="68" selection-start-line="518" selection-start-column="68" selection-end-line="518" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8404,23 +8318,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.1942959">
           <caret line="126" column="46" selection-start-line="126" selection-start-column="46" selection-end-line="126" selection-end-column="46" />
-          <folding>
-            <element signature="e#2222#2223#0" expanded="false" />
-            <element signature="e#2281#2282#0" expanded="false" />
-            <element signature="e#2337#2338#0" expanded="false" />
-            <element signature="e#2450#2451#0" expanded="false" />
-            <element signature="e#2517#2518#0" expanded="false" />
-            <element signature="e#9369#9414#0" expanded="false" />
-            <element signature="e#9667#9712#0" expanded="false" />
-            <element signature="e#11003#11034#0" expanded="false" />
-            <element signature="e#15059#15104#0" expanded="false" />
-            <element signature="e#15382#15427#0" expanded="false" />
-            <element signature="e#15830#17489#0" expanded="false" />
-            <element signature="e#17488#17489#0" expanded="false" />
-            <element signature="e#17633#17649#0" expanded="false" />
-            <element signature="e#20550#20551#0" expanded="false" />
-            <element signature="e#20569#20570#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -8439,7 +8336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="76" column="31" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8451,30 +8347,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_enabled.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DubaiSouth/src/model/EServices_Document_Checklist__c.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33268481">
           <caret line="182" column="42" selection-start-line="182" selection-start-column="19" selection-end-line="182" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.7719297">
-          <caret line="4031" column="28" selection-start-line="4031" selection-start-column="28" selection-end-line="4031" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8489,30 +8365,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopySecondPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6978852">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/true_copy_first_page.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2955224">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/RequestTrueCopyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78571427">
           <caret line="83" column="60" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8520,7 +8376,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="279" column="49" selection-start-line="279" selection-start-column="49" selection-end-line="279" selection-end-column="49" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -8539,7 +8397,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="128" column="37" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -8548,16 +8408,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyInitialPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.2280703">
-          <caret line="290" column="48" selection-start-line="290" selection-start-column="48" selection-end-line="290" selection-end-column="48" />
-          <folding>
-            <element signature="e#3930#3961#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -8572,10 +8422,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/CustomerDocumentsFragment2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/true_copy_first_page.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_enabled.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_currency_label_enabled.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7044776">
+          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyInitialPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="376" column="29" selection-start-line="376" selection-start-column="29" selection-end-line="376" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/sdk/sources/android-22/java/text/Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23904762">
+          <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1571429">
+          <caret line="4358" column="59" selection-start-line="4358" selection-start-column="59" selection-end-line="4358" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopySecondPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69809526">
+          <caret line="65" column="168" selection-start-line="65" selection-start-column="168" selection-end-line="65" selection-end-column="168" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/RequestTrueCopyThirdPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30857143">
-          <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="343" selection-start-line="45" selection-start-column="343" selection-end-line="45" selection-end-column="343" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5659617">
+          <caret line="639" column="0" selection-start-line="639" selection-start-column="0" selection-end-line="639" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#40697#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/visas_cards_access__cards.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.638806">
+          <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/AccessCardFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15714286">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
         </state>
       </provider>

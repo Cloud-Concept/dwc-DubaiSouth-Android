@@ -2221,6 +2221,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -3145,13 +3146,14 @@ public class Utilities {
 //                                linearLayout.addView(view2);
 
 
-                                View view3 = inflater.inflate(R.layout.wizard_form_field_label_enabled, null, false);
+                                View view3 = inflater.inflate(R.layout.wizard_form_field_currency_label_enabled, null, false);
 
                                 EditText etEmail3 = (EditText) view3.findViewById(R.id.formFieldvalue);
                                 TextView tvLabel3 = (TextView) view3.findViewById(R.id.formFieldLabel);
 
                                 tvLabel3.setText("Total Amount To Pay");
-                                etEmail3.setText(TotalAmount + " AED.");
+                                etEmail3.setText(Utilities.processAmount(TotalAmount) + " AED.");
+
                                 etEmail3.setKeyListener(null);
 
                                 linearLayout.addView(view3);
@@ -4349,5 +4351,16 @@ public class Utilities {
         };
         smartStore.registerSoup("User", User_INDEX_SPEC);
         return smartStore;
+    }
+
+    public static String processAmount(String Amount) {
+        int length = Amount.length();
+        if (length > 3) {
+            NumberFormat format = NumberFormat.getCurrencyInstance();
+            Amount = format.format(Double.valueOf(Amount));
+            return Amount.substring(1, Amount.length() - 1);
+        } else {
+            return Amount;
+        }
     }
 }
