@@ -81,8 +81,10 @@ public class VisitVisaFragment extends Fragment {
         spinnerFilterPermanentEmployee = (Spinner) view.findViewById(R.id.spinner);
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         etSearch = (EditText) view.findViewById(R.id.etSearch);
+//        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+//                Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
         ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-                Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
+                Arrays.asList(visit_visa_validity_status));
         spinnerFilterPermanentEmployee.setAdapter(dataAdapter);
         strFilter = new StoreData(getActivity().getApplicationContext()).getVisitVisaSpinnerFilterValue();
         if (strFilter.equals("")) {
@@ -137,22 +139,6 @@ public class VisitVisaFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-    }
-
-    @Override
-    public void onPause() {
-        spinnerFilterPermanentEmployee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        super.onPause();
     }
 
     private void CallVisitVisaService(String strFilter, final CallType callType) {
