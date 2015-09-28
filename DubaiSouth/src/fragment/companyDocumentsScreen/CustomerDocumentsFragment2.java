@@ -46,7 +46,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
     private SwipyRefreshLayout mSwipeRefreshLayout;
     private static HomeCompanyDocumentsActivity activity;
     private int offset = 0;
-    private int limit = 10;
+    private int limit = 50;
     private RestRequest restRequest;
     private static ClickableCustomerDocumentsAdapter adapter;
 
@@ -115,7 +115,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
             if (method == CallType.FIRSTTIME) {
                 Utilities.showloadingDialog(getActivity());
             }
-            String soql = SoqlStatements.constructCustomerDocumentsQuery(activity.getUser().get_contact().get_account().getID(), offset, limit);
+            String soql = SoqlStatements.constructCustomerDocumentsQuery(activity.getUser().get_contact().get_account().getID(), limit, offset);
             try {
                 restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
             } catch (UnsupportedEncodingException e) {
@@ -131,7 +131,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
                         client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                             @Override
                             public void onSuccess(RestRequest request, final RestResponse response) {
-                                company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObject(response.toString());
+                                company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObjectWithGson(response.toString());
                                 if (company_documents__cs.size() > 0) {
                                     Gson gson = new Gson();
                                     String str = gson.toJson(company_documents__cs);

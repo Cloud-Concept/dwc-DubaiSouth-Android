@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Locale;
 
 import model.Account;
@@ -815,6 +816,61 @@ public class SFResponseManager {
             e.printStackTrace();
         }
         return webForm;
+    }
+
+    public static ArrayList<Company_Documents__c> parseCompanyDocumentObjectWithGson(String s) {
+
+        ArrayList<Company_Documents__c> company_documents = new ArrayList<Company_Documents__c>();
+        JSONObject jsonObject = null;
+        Gson gson;
+        Company_Documents__c company_documents__c;
+        try {
+            jsonObject = new JSONObject(s.toString());
+            Log.d("documents", s.toString());
+            JSONArray jsonArrayRecords = jsonObject.getJSONArray(JSONConstants.RECORDS);
+            if (jsonArrayRecords.length() > 0) {
+                for (int i = 0; i < jsonArrayRecords.length(); i++) {
+                    JSONObject jsonRecord = jsonArrayRecords.getJSONObject(i);
+                    company_documents__c = new Company_Documents__c();
+                    company_documents__c.setId(jsonRecord.getString("Id"));
+                    company_documents__c.setName(jsonRecord.getString("Name"));
+                    company_documents__c.setVersion__c(Double.valueOf(jsonRecord.getString("Version__c")));
+                    company_documents__c.setCustomer_Document__c(jsonRecord.getBoolean("Customer_Document__c"));
+                    company_documents__c.setAttachment_Id__c(jsonRecord.getString("Attachment_Id__c"));
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = null;
+                    try {
+                        date = format.parse(jsonRecord.getString("CreatedDate").substring(0, 10));
+                        System.out.println(date);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(date);
+                    company_documents__c.setCreatedDate(calendar);
+                    company_documents__c.setDocument_Type__c(jsonRecord.getString("Document_Type__c"));
+                    company_documents__c.setOriginal_Verified__c(jsonRecord.getBoolean("Original_Verified__c"));
+                    company_documents__c.setOriginal_Collected__c(jsonRecord.getBoolean("Original_Collected__c"));
+                    company_documents__c.setRequired_Original__c(jsonRecord.getBoolean("Required_Original__c"));
+                    company_documents__c.setVerified_Scan_Copy__c(jsonRecord.getBoolean("Verified_Scan_Copy__c"));
+                    company_documents__c.setUploaded__c(jsonRecord.getBoolean("Uploaded__c"));
+                    company_documents__c.setRequired_Scan_copy__c(jsonRecord.getBoolean("Required_Scan_copy__c"));
+                    JSONObject jsonRecordType = jsonRecord.getJSONObject("RecordType");
+                    RecordType recordType = new RecordType();
+                    recordType.setId(jsonRecordType.getString("Id"));
+                    recordType.setName(jsonRecordType.getString("Name"));
+                    recordType.setDeveloperName(jsonRecordType.getString("DeveloperName"));
+                    recordType.setSobjectType(jsonRecordType.getString("SobjectType"));
+                    company_documents__c.setRecordType(recordType);
+                    if (company_documents__c.getUploaded__c())
+                        company_documents.add(company_documents__c);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return company_documents;
     }
 
     public static ArrayList<Company_Documents__c> parseCompanyDocumentObject(String s) {

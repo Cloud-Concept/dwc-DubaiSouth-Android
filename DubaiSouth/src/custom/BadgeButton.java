@@ -3,8 +3,10 @@ package custom;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -67,6 +69,9 @@ public class BadgeButton extends FrameLayout {
         badgeText = (TextView) findViewById(R.id.badgebtn_txt);
         badgeView = (RelativeLayout) findViewById(R.id.badgebtn_rl);
         btnClickThrough = (Button) findViewById(R.id.badgebtn_btn);
+        badgeText.setFitsSystemWindows(true);
+        Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        badgeText.setMaxWidth(display.getWidth()/2);
 
         int count = attrs.getAttributeCount();
 

@@ -20,10 +20,34 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvCardNumberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvFullName"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/view"
+        android:text="Card Number:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_view_size" />
+
+    <TextView
+        android:id="@+id/tvCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvCardNumberLabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/tvCardNumberLabel"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_view_size"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCardNumberLabel"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/view"
         android:text="Type:"
