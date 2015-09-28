@@ -48,7 +48,7 @@ public class CancelCardInitialPage extends Fragment {
     EditText etCardType, etRecordToProcess;
     Card_Management__c card;
     CardActivity activity;
-    String query = "SELECT Id, Name,No_of_Upload_Docs__c, DeveloperName, SobjectType FROM RecordType WHERE (SobjectType = 'Case' AND DeveloperName = 'Access_Card_Request') OR (SObjectType = 'Card_Management__c')";
+    String query = "SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE (SobjectType = 'Case' AND DeveloperName = 'Access_Card_Request') OR (SObjectType = 'Card_Management__c')";
     private RestRequest restRequest;
     private String objectType;
     private String DeveloperName;
