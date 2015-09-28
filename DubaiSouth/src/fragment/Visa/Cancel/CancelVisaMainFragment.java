@@ -50,7 +50,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
 
     VisaActivity activity;
     private RestRequest restRequest;
-    public String eServiceAdmin = "SELECT ID, Name, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Service_Identifier__c ='%s'";
+    public String eServiceAdmin = "SELECT ID,No_of_Upload_Docs__c, Name, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Service_Identifier__c ='%s'";
 
     public String getServiceIdentifier() {
         return serviceIdentifier;

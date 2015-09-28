@@ -53,7 +53,7 @@ import utilities.Utilities;
 public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
     LicenseActivity activity;
     private RestRequest restRequest;
-    public String eServiceAdmin = "SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Id='%s'";
+    public String eServiceAdmin = "SELECT ID, Name, No_of_Upload_Docs__c,Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Id='%s'";
 
     @Nullable
     @Override

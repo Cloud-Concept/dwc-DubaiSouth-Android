@@ -26,6 +26,16 @@ public class Receipt_Template__c extends SObject implements java.io.Serializable
     @JsonProperty("attributes")
     attributes attributes;
 
+    public int getNo_of_Upload_Docs__c() {
+        return No_of_Upload_Docs__c;
+    }
+
+    public void setNo_of_Upload_Docs__c(int no_of_Upload_Docs__c) {
+        No_of_Upload_Docs__c = no_of_Upload_Docs__c;
+    }
+
+    @JsonProperty("No_of_Upload_Docs__c")
+public int No_of_Upload_Docs__c;
     public String getID() {
         return ID;
     }
