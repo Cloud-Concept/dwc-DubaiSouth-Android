@@ -122,8 +122,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
                         }
                     }
                 });
-                else
-                    Utilities.showLongToast(activity,"Please change the share Holder");
+
             }else if (getStatus() == 3) {
                 if (!isValidAttachments()) {
                     Utilities.showLongToast(activity, "Please fill all attachments");
@@ -168,7 +167,13 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
     }
 
     private boolean required() {
-        if(activity.getSelectedShareHolder()==null)return false;
+        if(activity.getSelectedShareHolder()==null){
+            Utilities.showLongToast(activity, "Please change the share Holder");
+            return false;}
+        else if(activity.getShareno()==0){
+            Utilities.showLongToast(activity,"There is no transferred shared");
+            return false;
+        }
         else return true;
     }
 
