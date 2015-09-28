@@ -158,8 +158,7 @@ public class NocMainFragment extends BaseServiceFragment {
             } else if (BaseServiceFragment.status == 4) {
                 if (NOCAttachmentPage._companyDocuments == null || NOCAttachmentPage._companyDocuments.size() == 0) {
                     BaseServiceFragment.status = 3;
-                    NocMainFragment.insertedServiceId = null;
-                    NocMainFragment.insertedCaseId = null;
+
                     btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                     btnNOC3.setSelected(false);
                     btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));

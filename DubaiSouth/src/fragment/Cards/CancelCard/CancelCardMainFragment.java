@@ -61,8 +61,10 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
         super.onViewCreated(view, savedInstanceState);
         activity = (CardActivity) getActivity();
 
-        if (activity.getType().equals("2"))
+        if (activity.getType().equals("2")) {
             tvTitle.setText("Cancel Card");
+            activity.setInsertedServiceId(activity.getCard().getId());
+        }
         else if (activity.getType().equals("3"))
             tvTitle.setText("Renew Card");
         else if (activity.getType().equals("4"))
@@ -100,13 +102,12 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
         } else if (v == btnBack || v == btnBackTransparent) {
 
             if (getStatus() == 3) {
-                activity.setInsertedCaseId(null);
-                activity.setInsertedServiceId(null);
+//                activity.setInsertedCaseId(null);
+//                activity.setInsertedServiceId(null);
             } else if (getStatus() == 4) {
                 if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
                     setStatus(3);
-                    activity.setInsertedCaseId(null);
-                    activity.setInsertedServiceId(null);
+
                     btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                     btnNOC3.setSelected(false);
                     btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
@@ -275,6 +276,9 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                if(response.toString().equals("")){
+                                    createCardRecord();
+                                }
                             }
                         }
 
@@ -300,6 +304,9 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
         Map<String, Object> serviceFields = activity.getServiceFields();
 //        serviceFields = new HashMap<String, Object>();
+        serviceFields.put("Request__c", activity.getInsertedCaseId());
+        serviceFields.put("Requested_From__c","Portal");
+
         serviceFields.put("RecordTypeId", activity.getCardRecordTypeId());
         serviceFields.put("Card_Type__c", activity.getCardType().replaceAll("_", " "));
         serviceFields.put("Account__c",activity.getUser().get_contact().get_account().getID());
@@ -378,7 +385,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
         new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
             @Override
-            public void authenticatedRestClient(RestClient client) {
+            public void authenticatedRestClient(final RestClient client) {
                 if (client == null) {
                     SalesforceSDKManager.getInstance().logout(getActivity());
                     return;
@@ -392,6 +399,14 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                                 updateCaseRecord(activity.getInsertedCaseId(), activity.getInsertedServiceId());
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                if(response.toString().equals(""))
+                                {
+                                    if (activity.getType().equals("2")) {
+                                        CallCancelCardWebService(client);
+                                    } else {
+                                        PerfromParentNext();
+                                    }
+                                }
                             }
                             Utilities.dismissLoadingDialog();
                         }
@@ -460,6 +475,8 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put("Status__c", "Cancelled");
+
+       // fields.put("Service_Identifier__c", activity.geteServiceAdministration().getService_Identifier__c());
         long yourmilliseconds = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         Date resultdate = new Date(yourmilliseconds);
