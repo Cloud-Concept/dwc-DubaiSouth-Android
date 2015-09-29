@@ -39,7 +39,7 @@ public class ThankYouPage extends Fragment {
 
     private void InitializeViews(View view) {
         tvThankyou = (TextView) view.findViewById(R.id.tvThankyou);
-        String str = "We Can Confirm that we have received your submission and your Ref No #" + activity.getCaseObject().getCaseNumber();
+        String str = "Thank You \n\n" + "We Can Confirm that we have received your submission and your Ref No #" + activity.getCaseObject().getCaseNumber();
         if (activity.getCaseObject().getInvoice__c() != null && !activity.getCaseObject().getInvoice__c().equals("")) {
             str += "\n\nYour Account will be debited AED " + activity.getCaseObject().getInvoice__c() + " (including AED 10 knowledge fee) and you will be notified when your payment is complete";
         }

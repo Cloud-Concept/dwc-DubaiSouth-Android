@@ -63,7 +63,7 @@ public class RequestTrueCopySecondPage extends Fragment {
         Date resultdate = new Date(yourmilliseconds);
         tvDate.setText(sdf.format(resultdate));
         tvStatus.setText(String.valueOf(activity.getCaseFields().get("Status")));
-        tvTotalAmount.setText(Utilities.processAmount(String.valueOf(activity.geteServices_document_checklist__c().geteService_Administration__r().getTotal_Amount__c()))+" AED.");
+        tvTotalAmount.setText(Utilities.processAmount(String.valueOf(activity.geteServices_document_checklist__c().geteService_Administration__r().getTotal_Amount__c())) + " AED.");
         tvRefNumber.setText(activity.getCaseNumber());
         DrawLayout(inflater);
     }
@@ -73,6 +73,9 @@ public class RequestTrueCopySecondPage extends Fragment {
         formFields = activity.getWebForm().get_formFields();
 
         for (FormField field : formFields) {
+            if (field.isHidden()) {
+                continue;
+            }
             if (field.getType().equals("CUSTOMTEXT")) {
 
                 View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);

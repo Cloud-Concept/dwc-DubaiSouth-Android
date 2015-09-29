@@ -1,98 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="20dp"
-        android:text="Choice 1"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/etChoice1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:padding="10dp"
-        android:layout_alignStart="@+id/textView24"
-        android:layout_below="@+id/textView24"
-        android:layout_marginRight="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="5dp"
-        android:background="@mipmap/edit_text_background"
-        android:imeOptions="actionNext"
-        android:singleLine="true" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="40dp"
+            android:text="Note:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:text="- Name Reservation service is only available for new LLC Companies."
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="20dp"
+            android:text="Choice 1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etChoice1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/textView24"
+            android:layout_below="@+id/textView24"
+            android:layout_marginRight="22dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/edit_text_background"
+            android:imeOptions="actionNext"
+            android:padding="10dp"
+            android:singleLine="true" />
 
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/editText"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="20dp"
-        android:text="Choice 2"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText"
+            android:layout_below="@+id/editText"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="20dp"
+            android:text="Choice 2"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/etChoice2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/textView24"
-        android:layout_below="@+id/textView24"
-        android:padding="10dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="22dp"
-        android:background="@mipmap/edit_text_background"
-        android:imeOptions="actionNext"
-        android:singleLine="true" />
+        <EditText
+            android:id="@+id/etChoice2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/textView24"
+            android:layout_below="@+id/textView24"
+            android:layout_marginRight="22dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/edit_text_background"
+            android:imeOptions="actionNext"
+            android:padding="10dp"
+            android:singleLine="true" />
 
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="20dp"
-        android:text="Choice 3"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText2"
+            android:layout_below="@+id/editText2"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="20dp"
+            android:text="Choice 3"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
-    <EditText
-        android:id="@+id/etChoice3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/textView24"
-        android:layout_below="@+id/textView24"
-        android:layout_marginRight="22dp"
-        android:padding="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="22dp"
-        android:background="@mipmap/edit_text_background"
-        android:imeOptions="actionDone"
-        android:singleLine="true" />
+        <EditText
+            android:id="@+id/etChoice3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/textView24"
+            android:layout_below="@+id/textView24"
+            android:layout_marginRight="22dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/edit_text_background"
+            android:imeOptions="actionDone"
+            android:padding="10dp"
+            android:singleLine="true" />
 
-    <TextView
-        android:id="@+id/tvErrorMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginStart="22dp"
-        android:textColor="@color/red"
-        android:layout_marginTop="50dp"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvErrorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText2"
+            android:layout_below="@+id/editText2"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="50dp"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/red" />
+    </LinearLayout>
+</ScrollView>

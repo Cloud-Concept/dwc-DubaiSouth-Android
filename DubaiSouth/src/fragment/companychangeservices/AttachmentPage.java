@@ -26,22 +26,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-import RestAPI.RestMessages;
-import RestAPI.SFResponseManager;
-import RestAPI.SoqlStatements;
 import activity.CompanyDocumentsActivity;
 import adapter.CompanyDocumentsAdapter;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
-import fragment.BaseFragmentFiveSteps;
-import fragment.Cards.PayAndSubmit;
 import fragment.ChangeAndRemovalServiceFragment;
-import fragmentActivity.CardActivity;
 import fragmentActivity.ChangeAndRemovalActivity;
 import model.Company_Documents__c;
 import model.EServices_Document_Checklist__c;
@@ -182,6 +174,17 @@ public class AttachmentPage extends Fragment {
                 } else {
                     companyDocuments.get(i).setHasAttachmentBefore(true);
                 }
+            }
+            if (activity.getMethodName().equals("CreateRequestCapitalChange")) {
+                if (Long.valueOf(activity.getNewShareCapital()) < 1000000) {
+                    for (int i = 0; i < companyDocuments.size(); i++) {
+                        if (companyDocuments.get(i).getName().contains("Attested Bank Statement")) {
+                            companyDocuments.remove(i);
+                            break;
+                        }
+                    }
+                }
+
             }
             lstAttachments.setAdapter(new CompanyDocumentsAdapter(getActivity().getApplicationContext(), companyDocuments));
             lstAttachments.setOnItemClickListener(new AdapterView.OnItemClickListener() {

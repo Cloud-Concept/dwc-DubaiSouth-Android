@@ -4,17 +4,106 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/name_reservation" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Name Reservation"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView44"
+        android:layout_marginTop="23dp"
+        android:layout_toStartOf="@+id/imageView4"
+        android:text="Ref Number:"
+        android:visibility="gone"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/textView45"
+        android:layout_marginTop="15dp"
+        android:text="Date:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView46"
+        android:layout_below="@+id/textView46"
+        android:layout_marginTop="15dp"
+        android:text="Status:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvRefNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView45"
+        android:layout_marginLeft="10dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignTop="@+id/textView47" />
+
+
+
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textView47"
+        android:layout_marginTop="10dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/textView111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:text="Request Information"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/textView111"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="15dp"
         android:text="Choice1:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvChoice1"
@@ -22,6 +111,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView28"
         android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_toEndOf="@+id/textView28"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -32,9 +123,10 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView28"
         android:layout_below="@+id/textView28"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="15dp"
         android:text="Choice2:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvChoice2"
@@ -43,6 +135,8 @@
         android:layout_alignBottom="@+id/textView30"
         android:layout_alignEnd="@+id/tvChoice1"
         android:layout_alignStart="@+id/tvChoice1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -52,9 +146,10 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView30"
         android:layout_below="@+id/textView30"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="Choice3:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvChoice3"
@@ -62,77 +157,57 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tvChoice2"
         android:layout_alignTop="@+id/textView32"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_toEndOf="@+id/textView32"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tvChoice3"
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView32"
+        android:layout_below="@+id/textView32"
         android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:text="Total:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView34"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Reservation of Business Name : "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tvTotalAmount"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/textView29"
+        android:layout_alignStart="@+id/tvChoice3"
+        android:layout_alignEnd="@+id/tvChoice3" />
 
-        <TextView
-            android:id="@+id/tvServiceFees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView34"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/textView34"
-            android:gravity="center"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/tvDate"
+        android:layout_alignTop="@+id/textView46"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView46" />
 
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView34"
-            android:layout_below="@+id/textView34"
-            android:layout_marginTop="32dp"
-            android:text="Knowledge Fees : "
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/tvKnowledgeServiceFees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/tvServiceFees"
-            android:layout_alignTop="@+id/textView36"
-            android:layout_toEndOf="@+id/textView36"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/textView29"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView36"
-            android:layout_below="@+id/textView36"
-            android:layout_marginTop="33dp"
-            android:text="Total:"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/tvTotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView29"
-            android:layout_alignEnd="@+id/tvKnowledgeServiceFees"
-            android:layout_toEndOf="@+id/textView29"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/tvStatus"
+        android:layout_above="@+id/view2"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView47" />
 
 
 </RelativeLayout>
