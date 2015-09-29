@@ -139,22 +139,6 @@ public class PermanentEmployeeFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onPause() {
-        spinnerFilterPermanentEmployee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        super.onPause();
-    }
-
     public void CallPermanentEmployeeService(String visa_validity_status, final CallType callType) {
         if (callType == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getPermanentEmployeeResponse().equals("")) {
             ArrayList<Visa> _Returnedvisas = SFResponseManager.parseVisaData(new StoreData(getActivity().getApplicationContext()).getPermanentEmployeeResponse());
