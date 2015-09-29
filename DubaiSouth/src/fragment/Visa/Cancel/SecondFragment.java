@@ -134,7 +134,7 @@ public class SecondFragment extends Fragment {
 
                 List<Visa> visa = SFResponseManager.parseVisaData(response.toString());
                 activity.setVisa(visa.get(0));
-                visaNumber.setText(activity.getVisa().getID());
+                visaNumber.setText(activity.getVisa().getName());
 
                 visaHolderName.setText(activity.getVisa().getVisa_Holder__r().getName() + "");
 

@@ -57,6 +57,15 @@ public class VisaActivity extends BaseFragmentActivity {
 
     private String visaRecordTypeId = null;
     private String caseNumber = null;
+String total;
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
 
     public CurrentPassport getNewPassport() {
         return newPassport;
