@@ -123,14 +123,23 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
                         DoCompanyAddressChangeRequest();
                     }
                 } else if (getRelatedService() == RelatedServiceType.RelatedServiceTypeCompanyCapitalChange) {
-                    if (Long.valueOf(activity.getNewShareCapital()) < 300000) {
-                        Utilities.showLongToast(getActivity(), "Your New Share Capital must be not less that 300000");
+                    if (activity.getNewShareCapital() == null || activity.getNewShareCapital().equals("")) {
+                        Utilities.showToast(getActivity(), "Please fill your new capital change");
                     } else {
-                        DoCapitalChangeRequest();
+                        if (Long.valueOf(activity.getNewShareCapital()) < 300000) {
+                            Utilities.showLongToast(getActivity(), "Your New Share Capital must be not less that 300000");
+                        } else {
+                            DoCapitalChangeRequest();
+                        }
                     }
-
                 } else if (getRelatedService() == RelatedServiceType.RelatedServiceTypeCompanyNameChange) {
-                    DoNameChangeRequest();
+                    if (activity.getCompanyName().equals(activity.getNewCompanyName()) || activity.getCompanyNameArabic().equals(activity.getNewCompanyNameArabic())) {
+                        Utilities.showToast(getActivity(), "New Company names should be different than before");
+                    } else if (activity.getNewCompanyName().equals("") || activity.getNewCompanyNameArabic().equals("")) {
+                        Utilities.showToast(getActivity(), "Please fill all the required fields");
+                    } else {
+                        DoNameChangeRequest();
+                    }
                 }
             } else if (status == 2) {
                 boolean isEmptyAttachment = false;
@@ -141,12 +150,15 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
                             break;
                         }
                     }
-                }
-                if (isEmptyAttachment == false) {
-                    super.onClick(v);
+                    if (isEmptyAttachment == false) {
+                        super.onClick(v);
+                    } else {
+                        Utilities.showLongToast(getActivity(), "Please fill all attachments");
+                    }
                 } else {
                     Utilities.showLongToast(getActivity(), "Please fill all attachments");
                 }
+
             } else if (status == 3) {
                 builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
             } else {

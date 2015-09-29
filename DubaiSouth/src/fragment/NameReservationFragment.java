@@ -2,31 +2,26 @@ package fragment;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
+import com.salesforce.androidsdk.rest.RestRequest;
+import com.salesforce.androidsdk.rest.RestResponse;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
@@ -36,13 +31,15 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 
+import RestAPI.SFResponseManager;
+import cloudconcept.dwc.R;
+import custom.customdialog.NiftyDialogBuilder;
 import dataStorage.StoreData;
 import fragment.nameReservation.NameReservationInitialPage;
 import fragment.nameReservation.NameReservationPayAndSubmit;
 import fragment.nameReservation.NameReservationThankYou;
+import model.Case;
 import model.User;
 import utilities.Utilities;
 
@@ -53,6 +50,8 @@ public class NameReservationFragment extends BaseFragmentThreeSteps {
 
     private String result;
     private User user;
+    private RestRequest restRequest;
+    private NiftyDialogBuilder builder;
 
     @Override
     public void onClick(View v) {
@@ -66,14 +65,23 @@ public class NameReservationFragment extends BaseFragmentThreeSteps {
                     DoMobileServiceUtilityWebService();
                 }
             } else if (getStatus() == 2) {
-                Gson gson = new Gson();
-                user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-                DoSubmitRequestNameReservation();
+                builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
             }
         } else {
             super.onClick(v);
         }
     }
+
+    private View.OnClickListener listenerOkPay = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            builder.dismiss();
+            Gson gson = new Gson();
+            user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
+            DoSubmitRequestNameReservation();
+        }
+    };
 
     private void DoSubmitRequestNameReservation() {
 
@@ -194,12 +202,10 @@ public class NameReservationFragment extends BaseFragmentThreeSteps {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Utilities.dismissLoadingDialog();
             if (result.contains("Success")) {
-                activity.setCaseNumber(result.substring(8, result.length() - 2));
-                PerformParentNext();
+                getCaseInfo(client, result.substring(8, result.length() - 1));
             } else {
-                Utilities.showLongToast(activity, "Please Check your internet connection");
+                Utilities.dismissLoadingDialog();
             }
         }
     }
@@ -291,10 +297,11 @@ public class NameReservationFragment extends BaseFragmentThreeSteps {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Utilities.dismissLoadingDialog();
             if (result.contains("Success")) {
+                Utilities.dismissLoadingDialog();
                 PerformParentNext();
             } else {
+                Utilities.dismissLoadingDialog();
                 NameReservationInitialPage.setErrorMessage(result);
             }
         }
@@ -312,5 +319,28 @@ public class NameReservationFragment extends BaseFragmentThreeSteps {
         bundle.putString("Fragment", text);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    private void getCaseInfo(final RestClient client, String caseId) {
+        String soql = "select id , CaseNumber , Service_Requested__c , Registration_Amendment__r.Service_Identifier__c , Registration_Amendment__c , Registration_Amendment__r.Require_Fees__c , Invoice__c , Invoice__r.Amount__c  from Case where Id=" + "\'" + caseId + "\'";
+        try {
+            restRequest = RestRequest.getRequestForQuery(activity.getString(R.string.api_version), soql);
+            client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                @Override
+                public void onSuccess(RestRequest request, RestResponse response) {
+                    Case caseDirectorRemoval = SFResponseManager.parseCaseObject(response.toString());
+                    activity.setCaseNumber(caseDirectorRemoval.getCaseNumber());
+                    Utilities.dismissLoadingDialog();
+                    PerformParentNext();
+                }
+
+                @Override
+                public void onError(Exception exception) {
+                    Utilities.dismissLoadingDialog();
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 }

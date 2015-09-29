@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@mipmap/notification_registration" />
+        android:background="@mipmap/address_change_service" />
 
     <TextView
         android:id="@+id/textView44"
@@ -18,9 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Registration Services"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="Address Change"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView45"
@@ -30,7 +31,7 @@
         android:layout_marginTop="23dp"
         android:layout_toStartOf="@+id/imageView4"
         android:text="Ref Number:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -41,7 +42,7 @@
         android:layout_below="@+id/textView45"
         android:layout_marginTop="15dp"
         android:text="Date:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -52,7 +53,7 @@
         android:layout_below="@+id/textView46"
         android:layout_marginTop="15dp"
         android:text="Status:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -115,7 +116,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:text="Current Address Information"
-                android:textSize="18sp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -133,6 +134,7 @@
                         android:text="Current Mobile:"
                         android:gravity="center"
                         android:layout_width="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
@@ -168,6 +170,7 @@
                         android:text="Current Fax:"
                         android:gravity="center"
                         android:layout_width="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
@@ -203,6 +206,7 @@
                         android:text="Current Email:"
                         android:gravity="center"
                         android:layout_width="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
@@ -237,6 +241,7 @@
                     <TextView
                         android:text="Current PO Box:"
                         android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -266,7 +271,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:text="New Address Information"
-                android:textSize="18sp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold" />
 
             <LinearLayout

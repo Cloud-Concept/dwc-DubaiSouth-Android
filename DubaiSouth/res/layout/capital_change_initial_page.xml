@@ -63,7 +63,7 @@
         android:layout_marginRight="21dp"
         android:inputType="number"
         android:text="450,000"
-        android:background="@mipmap/search_edit_text_background"
+        android:background="@mipmap/edit_text_background_disabled"
         android:layout_marginTop="10dp" />
 
     <TextView
@@ -87,6 +87,8 @@
         android:layout_marginRight="21dp"
         android:text="450,000"
         android:inputType="number"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:background="@mipmap/search_edit_text_background"
         android:layout_marginTop="10dp" />
 </LinearLayout>

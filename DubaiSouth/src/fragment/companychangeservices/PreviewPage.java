@@ -8,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import cloudconcept.dwc.R;
 import fragmentActivity.ChangeAndRemovalActivity;
+import utilities.Utilities;
 
 /**
  * Created by Abanoub Wagdy on 9/2/2015.
@@ -73,7 +76,7 @@ public class PreviewPage extends Fragment {
         tvTotalAmount = (TextView) view.findViewById(R.id.tvTotalAmount);
 
         tvNewShareCapital.setText(activity.getNewShareCapital());
-        tvTotalAmount.setText(activity.getCaseObject().getInvoice__c());
+        tvTotalAmount.setText(Utilities.processAmount(activity.getCaseObject().getInvoice__c())+" AED.");
     }
 
     private void InitializeNameChangeLayout(View view) {
@@ -88,9 +91,12 @@ public class PreviewPage extends Fragment {
         tvNewCompanyNameArabic = (TextView) view.findViewById(R.id.tvNewCompanyNameArabic);
 
         tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
-        tvDate.setText(Calendar.DAY_OF_MONTH + "-" + Calendar.MONTH + "-" + Calendar.YEAR);
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        tvDate.setText(strDate);
         tvStatus.setText("Draft");
-        tvTotalAmount.setText(activity.getCaseObject().getInvoice__c());
+        tvTotalAmount.setText(Utilities.processAmount(activity.getCaseObject().getInvoice__c())+" AED.");
 
         tvCompanyName.setText(activity.getCompanyName());
         tvCompanyNameArabic.setText(activity.getCompanyNameArabic());
@@ -113,7 +119,10 @@ public class PreviewPage extends Fragment {
         tvNewPoVox = (TextView) view.findViewById(R.id.tvNewPoBox);
 
         tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
-        tvDate.setText(Calendar.DAY_OF_MONTH + "-" + Calendar.MONTH + "-" + Calendar.YEAR);
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        tvDate.setText(strDate);
         tvStatus.setText("Draft");
         tvCurrentMobile.setText(activity.getCurrentMobile());
         tvCurrentEmail.setText(activity.getCurrentEmail());

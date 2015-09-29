@@ -53,10 +53,14 @@ public class CompanyDocumentsAdapter extends BaseAdapter {
 
         TextView tvAttachmentName = (TextView) convertView.findViewById(R.id.tvAttachmentName);
         tvAttachmentName.setText(companyDocuments.get(position).getName());
+        if (companyDocuments.get(position).getName().length() > 25) {
+            tvAttachmentName.setText(companyDocuments.get(position).getName().substring(0, 24) + "....");
+        }
+
 
         if (companyDocuments.get(position).getHasAttachment()) {
             tvAttachmentName.setBackgroundResource(R.mipmap.add_attachment_enabled);
-        }else{
+        } else {
             tvAttachmentName.setBackgroundResource(R.mipmap.add_attchment_disabled);
         }
 

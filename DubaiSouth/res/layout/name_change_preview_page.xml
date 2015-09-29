@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@mipmap/notification_registration" />
+        android:background="@mipmap/name_change" />
 
     <TextView
         android:id="@+id/textView44"
@@ -19,8 +19,8 @@
         android:layout_below="@+id/imageView4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Registration Services"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Name Change"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView45"
@@ -30,7 +30,7 @@
         android:layout_marginTop="23dp"
         android:layout_toStartOf="@+id/imageView4"
         android:text="Ref Number:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_below="@+id/textView45"
         android:layout_marginTop="15dp"
         android:text="Date:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -52,7 +52,7 @@
         android:layout_below="@+id/textView46"
         android:layout_marginTop="15dp"
         android:text="Status:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -63,7 +63,7 @@
         android:layout_below="@+id/textView47"
         android:layout_marginTop="15dp"
         android:text="Total Amount:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -126,8 +126,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:text="Current Company Name"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,6 +144,8 @@
                     <TextView
                         android:text="Company Name:"
                         android:gravity="center"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -178,6 +181,8 @@
                     <TextView
                         android:text="Current Name (Arabic):"
                         android:gravity="center"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -210,8 +215,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:text="New Company Name"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -228,6 +233,8 @@
                         android:text="Company Name:"
                         android:gravity="center"
                         android:layout_width="match_parent"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
@@ -262,6 +269,8 @@
                     <TextView
                         android:text="Company Name (Arabic):"
                         android:gravity="center"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 

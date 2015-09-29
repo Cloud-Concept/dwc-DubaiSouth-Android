@@ -39,7 +39,6 @@ public class InitialPage extends Fragment {
         if (activity.getMethodName().equals("CreateRequestAddressChange")) {
             view = inflater.inflate(R.layout.address_change_initial_page, container, false);
             InitializeAddressChangeLayout(view);
-
         } else if (activity.getMethodName().equals("CreateRequestNameChange")) {
             view = inflater.inflate(R.layout.name_change_initial_page, container, false);
             InitializeNameChangeLayout(view);
@@ -64,6 +63,7 @@ public class InitialPage extends Fragment {
 
         etShareCapital = (EditText) view.findViewById(R.id.etShareCapital);
         etNewShareCapital = (EditText) view.findViewById(R.id.etNewShareCapital);
+        etShareCapital.setKeyListener(null);
 
         etNewShareCapital.addTextChangedListener(new TextWatcher() {
             @Override
@@ -95,11 +95,13 @@ public class InitialPage extends Fragment {
         etNewCompanyName = (EditText) view.findViewById(R.id.etNewCompanyName);
         etNewCompanyNameArabic = (EditText) view.findViewById(R.id.etNewCompanyNameArabic);
 
-        etNewCompanyName.setText(activity.getUser().get_contact().get_account().getName());
-        etNewCompanyNameArabic.setText(activity.getUser().get_contact().get_account().getArabicAccountName());
+//        etNewCompanyName.setText(activity.getUser().get_contact().get_account().getName());
+//        etNewCompanyNameArabic.setText(activity.getUser().get_contact().get_account().getArabicAccountName());
 
         activity.setCompanyName(etCompanyName.getText().toString());
         activity.setCompanyNameArabic(etCompanyNameArabic.getText().toString());
+        activity.setNewCompanyName("");
+        activity.setNewCompanyNameArabic("");
 
         etNewCompanyName.addTextChangedListener(new TextWatcher() {
             @Override
