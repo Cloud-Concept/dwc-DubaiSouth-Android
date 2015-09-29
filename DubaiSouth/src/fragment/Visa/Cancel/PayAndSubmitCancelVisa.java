@@ -82,7 +82,7 @@ public class PayAndSubmitCancelVisa extends Fragment {
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
         tvLabel.setText("Total Amount" + "\t:");
-        tvValue.setText(activity.getTotal()+"AED");
+        tvValue.setText(activity.getTotal()==null?"0":activity.getTotal()+"AED");
         nocDetails.addView(view);
 
 
