@@ -3,6 +3,7 @@ package fragment.Cards.CancelCard;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.VolleyError;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -50,7 +53,7 @@ public class CancelCardInitialPage extends Fragment {
     private String objectType;
     private String DeveloperName;
     private ArrayList<Receipt_Template__c> eServiceAdministrations;
-    String CardQuery = "SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true AND Duration__c = " + "\'" + "%s" + "\'" + " AND Record_Type_Picklist__c = " + "\'" + "%s" + "\'";
+    String CardQuery = "SELECT ID, Name,No_of_Upload_Docs__c, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true AND Duration__c = " + "\'" + "%s" + "\'" + " AND Record_Type_Picklist__c = " + "\'" + "%s" + "\'";
     private TextView tvDuration;private Spinner spinnerDuration;
 
     @Nullable
@@ -190,7 +193,10 @@ public class CancelCardInitialPage extends Fragment {
 
                         @Override
                         public void onError(Exception exception) {
-                            Utilities.showToast(getActivity(), RestMessages.getInstance().getErrorMessage());
+                            VolleyError volleyError = (VolleyError) exception;
+                            NetworkResponse response = volleyError.networkResponse;
+                            String json = new String(response.data);
+                            Log.d("", json);
                             Utilities.dismissLoadingDialog();
                             getActivity().finish();
                         }
@@ -235,7 +241,12 @@ public class CancelCardInitialPage extends Fragment {
 
                             @Override
                             public void onError(Exception exception) {
+                                VolleyError volleyError = (VolleyError) exception;
+                                NetworkResponse response = volleyError.networkResponse;
+                                String json = new String(response.data);
+                                Log.d("", json);
                                 Utilities.dismissLoadingDialog();
+                                getActivity().finish();
                             }
                         });
                     }

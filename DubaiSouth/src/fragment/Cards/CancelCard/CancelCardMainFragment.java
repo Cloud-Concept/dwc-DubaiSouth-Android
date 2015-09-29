@@ -307,7 +307,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
         serviceFields.put("Request__c", activity.getInsertedCaseId());
         serviceFields.put("Requested_From__c","Portal");
 
-        serviceFields.put("RecordTypeId", activity.getCardRecordTypeId());
+        serviceFields.put("RecordTypeId", activity.getCard().getRecordType().getId());
         serviceFields.put("Card_Type__c", activity.getCardType().replaceAll("_", " "));
         serviceFields.put("Account__c",activity.getUser().get_contact().get_account().getID());
         if (activity.getType().equals("3"))

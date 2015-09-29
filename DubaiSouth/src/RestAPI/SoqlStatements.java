@@ -76,7 +76,7 @@ public class SoqlStatements {
             "AND RecordType.DeveloperName = 'Service_Request' AND NOC_Type__c " +
             "= 'Company' AND isAvailableOnPortal__c = true AND " +
             "New_Edit_VF_Generator__c != null";
-    public static final String soql_get__company_noc_service = "SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c," +
+    public static final String soql_get__company_noc_service = "SELECT ID, Name, Display_Name__c, No_of_Upload_Docs__c,Service_Identifier__c, Amount__c," +
             " Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, " +
             "Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c," +
             " Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r)" +
@@ -94,7 +94,7 @@ public class SoqlStatements {
 
     public static final String soql_get__employee_noc_service = "SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, " +
             "Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, " +
-            "Renewal_VF_Generator__c, Replace_VF_Generator__c, " +
+            "Renewal_VF_Generator__c, Replace_VF_Generator__c, No_of_Upload_Docs__c," +
             "Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, " +
             "Type__c, Language__c, Document_Type__c, Authority__c FROM " +
             "eServices_Document_Checklists__r where Template_Name_Link__c != null AND Language__c != null AND Authority__c != null and Gender__c in ( " + "\'" + "%s" + "\'" + "  )) FROM Receipt_Template__c WHERE " + "Is_Active__c = true " + "%s" + " ORDER BY Service_Identifier__c";
@@ -251,7 +251,7 @@ public class SoqlStatements {
             Log.d("sql", soql);
         } else {
             User user = (User) object;
-            soql = "SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true " + Company_WHERE_CLAUSE + " ORDER BY Service_Identifier__c";
+            soql = "SELECT ID, Name,No_of_Upload_Docs__c, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true " + Company_WHERE_CLAUSE + " ORDER BY Service_Identifier__c";
             Log.d("sql", soql);
         }
         return soql;

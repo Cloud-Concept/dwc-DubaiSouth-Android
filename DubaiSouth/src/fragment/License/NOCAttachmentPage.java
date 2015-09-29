@@ -80,10 +80,20 @@ public class NOCAttachmentPage extends Fragment {
         InitializeViews(view);
 
         activity = (LicenseActivity) getActivity();
-
+        if(!(activity.geteServiceAdministration().getNo_of_Upload_Docs__c()>0)){
+            return view;
+        }
         _companyDocuments = new ArrayList<Company_Documents__c>();
         PerformCompanyDocumentsRequest(activity.getUser().get_contact().get_account().get_currentLicenseNumber().getId());
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(!(activity.geteServiceAdministration().getNo_of_Upload_Docs__c()>0)){
+            PerfromParentNext();
+        }
     }
 
     private void PerformCompanyDocumentsRequest(String nocRecordTypeId) {

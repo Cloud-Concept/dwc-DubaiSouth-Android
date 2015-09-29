@@ -691,6 +691,7 @@ public class SFResponseManager {
                 Receipt_Template__c receiptTemplate = gson.fromJson(jsonObject.toString(), Receipt_Template__c.class);
                 Log.d("object", jsonObject.toString());
                 receiptTemplate.setTotal_Amount__c(jsonObject.getDouble("Total_Amount__c"));
+                receiptTemplate.setNo_of_Upload_Docs__c(jsonObject.getInt("No_of_Upload_Docs__c"));
                 JSONObject jsoneServices_Document_Checklists = jsonObject.getJSONObject("eServices_Document_Checklists__r");
                 JSONArray jArrayeServices_Document_ChecklistsRecords = jsoneServices_Document_Checklists.getJSONArray(JSONConstants.RECORDS);
                 for (int j = 0; j < jArrayeServices_Document_ChecklistsRecords.length(); j++) {

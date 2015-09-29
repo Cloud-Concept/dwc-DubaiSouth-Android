@@ -40,7 +40,7 @@ import utilities.Utilities;
 public class InitialPage extends Fragment {
     LicenseActivity activity;
     EditText servicePrice;
-    public String eServiceAdmin = "SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r WHERE Document_Required_for_Branch_or_LLC__c != '%s' AND Document_Type__c = 'Upload') FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = 'Annual License Renewal'";
+    public String eServiceAdmin = "SELECT ID, No_of_Upload_Docs__c,Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r WHERE Document_Required_for_Branch_or_LLC__c != '%s' AND Document_Type__c = 'Upload') FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = 'Annual License Renewal'";
     private RestRequest restRequest;
 
     public static Fragment newInstance() {

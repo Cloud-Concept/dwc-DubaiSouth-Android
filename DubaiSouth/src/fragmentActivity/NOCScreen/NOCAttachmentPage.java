@@ -82,9 +82,20 @@ public class NOCAttachmentPage extends Fragment {
         View view = inflater.inflate(R.layout.noc_attachment_page, container, false);
         InitializeViews(view);
         act = getActivity();
+        if(!(Utilities.geteServiceAdministration().getNo_of_Upload_Docs__c()>0)){
+            return view;
+        }
         _companyDocuments = new ArrayList<Company_Documents__c>();
         PerformCompanyDocumentsRequest(NocMainFragment.nocRecordTypeId);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(!(Utilities.geteServiceAdministration().getNo_of_Upload_Docs__c()>0)){
+            PerfromParentNext();
+        }
     }
 
     private void PerformCompanyDocumentsRequest(String nocRecordTypeId) {
