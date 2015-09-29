@@ -11,6 +11,7 @@ import cloudconcept.dwc.BaseActivity;
 import cloudconcept.dwc.R;
 import fragment.Cards.NewCard.MainNewCardFragment;
 import fragment.NameReservationFragment;
+import model.Case;
 
 /**
  * Created by Abanoub Wagdy on 8/31/2015.
@@ -20,6 +21,8 @@ public class NameReservationActivity extends FragmentActivity{
     private String choice1Text,choice2Text,choice3Text;
     private android.support.v4.app.FragmentManager fragmentManager;
     private String caseNumber;
+    private Case caseNameReservation;
+
 
     public String getCaseNumber() {
         return caseNumber;
@@ -62,4 +65,13 @@ public class NameReservationActivity extends FragmentActivity{
                 .replace(R.id.content_frame, NameReservationFragment.newInstance("NewCard"))
                 .commit();
     }
+
+    public void setCaseObject(Case caseDirectorRemoval) {
+        this.caseNameReservation = caseDirectorRemoval;
+    }
+
+    public Case getCaseNameReservation() {
+        return caseNameReservation;
+    }
+
 }

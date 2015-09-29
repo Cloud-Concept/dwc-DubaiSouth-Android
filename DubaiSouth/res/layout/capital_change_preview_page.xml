@@ -3,17 +3,125 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/capital_change" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="Capital Change"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView44"
+        android:layout_marginTop="23dp"
+        android:layout_toStartOf="@+id/imageView4"
+        android:text="Ref Number:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView45"
+        android:layout_below="@+id/textView45"
+        android:layout_marginTop="15dp"
+        android:text="Date:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView46"
+        android:layout_below="@+id/textView46"
+        android:layout_marginTop="15dp"
+        android:text="Status:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvRefNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView45"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/textView45"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textView46"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/textView45"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/tvDate"
+        android:layout_alignTop="@+id/textView47"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="Draft"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tvStatus"
+        android:layout_marginTop="10dp"
+        android:background="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="New Capital Information"
+        android:layout_below="@+id/view2"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView491"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:text="New Share Capital:"
+        android:layout_below="@+id/textView491"
         android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView49"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="41dp" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,6 +139,7 @@
         android:textSize="15sp"
         android:text="Total Amount:"
         android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView50"
         android:layout_below="@+id/tvNewShareCapital"
         android:layout_alignStart="@+id/textView49"

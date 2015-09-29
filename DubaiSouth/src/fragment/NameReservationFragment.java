@@ -330,6 +330,7 @@ public class NameReservationFragment extends BaseFragmentThreeSteps {
                 public void onSuccess(RestRequest request, RestResponse response) {
                     Case caseDirectorRemoval = SFResponseManager.parseCaseObject(response.toString());
                     activity.setCaseNumber(caseDirectorRemoval.getCaseNumber());
+                    activity.setCaseObject(caseDirectorRemoval);
                     Utilities.dismissLoadingDialog();
                     PerformParentNext();
                 }

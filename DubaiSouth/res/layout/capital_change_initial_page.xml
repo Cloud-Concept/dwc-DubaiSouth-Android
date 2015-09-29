@@ -85,7 +85,6 @@
         android:layout_height="40dp"
         android:layout_marginStart="21dp"
         android:layout_marginRight="21dp"
-        android:text="450,000"
         android:inputType="number"
         android:singleLine="true"
         android:imeOptions="actionDone"

@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import cloudconcept.dwc.R;
 import fragmentActivity.ChangeAndRemovalActivity;
@@ -72,11 +70,22 @@ public class PreviewPage extends Fragment {
     }
 
     private void InitializeCapitalChangeLayout(View view) {
+
+        tvNewShareCapital = (TextView) view.findViewById(R.id.tvNewShareCapital);
+        tvRefNumber = (TextView) view.findViewById(R.id.tvRefNumber);
+        tvDate = (TextView) view.findViewById(R.id.tvDate);
+        tvStatus = (TextView) view.findViewById(R.id.tvStatus);
         tvNewShareCapital = (TextView) view.findViewById(R.id.tvNewShareCapital);
         tvTotalAmount = (TextView) view.findViewById(R.id.tvTotalAmount);
 
         tvNewShareCapital.setText(activity.getNewShareCapital());
-        tvTotalAmount.setText(Utilities.processAmount(activity.getCaseObject().getInvoice__c())+" AED.");
+        tvTotalAmount.setText(Utilities.processAmount(activity.getCaseObject().getInvoice__c()) + " AED.");
+        tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        tvDate.setText(strDate);
+        tvStatus.setText("Draft");
     }
 
     private void InitializeNameChangeLayout(View view) {
@@ -96,7 +105,7 @@ public class PreviewPage extends Fragment {
         String strDate = sdfDate.format(now);
         tvDate.setText(strDate);
         tvStatus.setText("Draft");
-        tvTotalAmount.setText(Utilities.processAmount(activity.getCaseObject().getInvoice__c())+" AED.");
+        tvTotalAmount.setText(Utilities.processAmount(activity.getCaseObject().getInvoice__c()) + " AED.");
 
         tvCompanyName.setText(activity.getCompanyName());
         tvCompanyNameArabic.setText(activity.getCompanyNameArabic());
