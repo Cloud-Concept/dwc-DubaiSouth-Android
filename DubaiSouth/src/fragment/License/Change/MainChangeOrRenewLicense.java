@@ -410,7 +410,7 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
                                             Log.d("result", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
                                             activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
-
+activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c")+"");
                                             createVisaRecord(client);
                                         } catch (JSONException e) {
                                             e.printStackTrace();

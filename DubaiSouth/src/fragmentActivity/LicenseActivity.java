@@ -56,6 +56,15 @@ public class LicenseActivity extends BaseFragmentActivity {
     public void setService_Requested__c(String service_Requested__c) {
         this.service_Requested__c = service_Requested__c;
     }
+String total;
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
 
     private String service_Requested__c=null;
     public Gson getGson() {
