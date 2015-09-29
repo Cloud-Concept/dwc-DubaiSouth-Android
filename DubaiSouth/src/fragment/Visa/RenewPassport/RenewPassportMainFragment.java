@@ -99,7 +99,7 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
     }
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
-        return ThankYou.newInstance(msg, fee, mail);
+        return ThankYou.newInstance(msg, "", mail);
     }
     @Override
     public RelatedServiceType getRelatedService() {
@@ -203,6 +203,7 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
                     Utilities.showLongToast(activity, "Please fill all attachments");
                 } else {
                     super.onClick(v);
+                    btnNext.setText("Submit");
                 }
             } else if (getStatus() == 4)
                 Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");

@@ -17,7 +17,7 @@ public class SoqlStatements {
 
     public static final String LIMIT = "10";
 
-    public static final String renewVisaSQL = "SELECT Id,Visa_Holder__r.Name,Visa_Holder__r.Id,Applicant_Full_Name__c,Applicant_Full_Name_Arabic__c,Country_of_Birth__c,Applicant_Email__c,marital_Status__c,Applicant_Mobile_Number__c,mother_Name__c,religion__c,languages__c "
+    public static final String renewVisaSQL = "SELECT Id,Name ,Visa_Holder__r.Name,Visa_Holder__r.Id,Applicant_Full_Name__c,Applicant_Full_Name_Arabic__c,Country_of_Birth__c,Applicant_Email__c,marital_Status__c,Applicant_Mobile_Number__c,mother_Name__c,religion__c,languages__c "
             + ",Passport_Number__c,Applicant_Gender__c,Date_of_Birth__c,Job_Title_at_Immigration__r.Id,Place_of_Birth__c," +
             "Job_Title_at_Immigration__r.Name,Country_of_Birth__r.Name,Country_of_Birth__r.Id,qualification__c ,Previous_Nationality__c ,Passport_Issue_Country__c,Visa_Expiry_Date__c,Passport_Country__c,passport_Place_of_Issue__c,renewal_for_Visa__c,Employee_ID__c" +
             ",Current_Nationality__c,Qualification__r.Id,Qualification__r.Name,Current_Nationality__r.Id,Current_Nationality__r.Name,Passport_Expiry__c,monthly_Basic_Salary_in_AED__c,monthly_Allowances_in_AED__c,in_Country_Paid__c ,local_Amendment_Paid__c ,urgent_Processing_Paid__c "
