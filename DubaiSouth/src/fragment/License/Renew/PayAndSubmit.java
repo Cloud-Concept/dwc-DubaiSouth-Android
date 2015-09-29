@@ -45,7 +45,7 @@ public class PayAndSubmit extends Fragment{
         date.setText(sdf.format(resultdate));
 
         TextView total = (TextView) view.findViewById(R.id.total_Amount);
-        total.setText((activity.geteServiceAdministration().getTotal_Amount__c()) + " AED");
+        total.setText(activity.getTotal()==null?"0":activity.getTotal() + " AED");
         TextView person = (TextView) view.findViewById(R.id.personName);
 
         person.setVisibility(View.GONE);
