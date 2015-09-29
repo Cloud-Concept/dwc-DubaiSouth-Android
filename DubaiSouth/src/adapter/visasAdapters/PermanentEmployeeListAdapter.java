@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,7 +22,9 @@ import custom.CustomViewPager;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
+import dataStorage.StoreData;
 import model.ServiceItem;
+import model.User;
 import model.Visa;
 import utilities.AutomaticUtilities;
 import utilities.Utilities;
@@ -91,20 +95,61 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (mo.getVisa_Validity_Status__c().equals("Issued")) {
 
-            _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
-            _items.add(new ServiceItem("Renew Passport", R.mipmap.renew_license));
-            if (mo.getVisa_Type__c().equals("Employment") || mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External")) {
-                _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
-                _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
-            }
 
-        } else if (VisaDate != null) {
-            if (AutomaticUtilities.daysBetween(VisaDate, System.currentTimeMillis()) < 60) {
-                _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
-            }
+       if( mo.getVisa_Validity_Status__c().equals("Issued")) {
+           _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
+           _items.add(new ServiceItem("Renew Passport", R.mipmap.renew_license));
+       }
+
+        User user = new Gson().fromJson(new StoreData(context).getUserDataAsString(), User.class);
+        boolean manager=mo.getVisa_Holder__c().equals(user.get_contact().get_account().getID());
+        if((mo.getVisa_Validity_Status__c().equals("Issued")||mo.getVisa_Validity_Status__c().equals("Expired") )
+        &&
+        (mo.getVisa_Type__c().equals("Employment") || mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External")) ){
+            _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
         }
+
+
+
+        if((mo.getVisa_Validity_Status__c().equals("Issued")||mo.getVisa_Validity_Status__c().equals("Under Process")||mo.getVisa_Validity_Status__c().equals("Under Renewal"))&&(mo.getVisa_Type__c().equals("Employment")|| mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External"))&&!manager)
+        {
+            _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Deprecated By Ahmed Ahdel New Requirement Date:28/09/2015
+
+//
+//        if (mo.getVisa_Validity_Status__c().equals("Issued")) {
+//
+//            _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
+//            _items.add(new ServiceItem("Renew Passport", R.mipmap.renew_license));
+//            if (mo.getVisa_Type__c().equals("Employment") || mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External")) {
+//                _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
+//                _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
+//            }
+//
+//        } else if (VisaDate != null) {
+//            if (AutomaticUtilities.daysBetween(VisaDate, System.currentTimeMillis()) < 60) {
+//                _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
+//            }
+//        }
 
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
 //        mvh.item.setOnClickListener(new OnClickListener(mvh) {
