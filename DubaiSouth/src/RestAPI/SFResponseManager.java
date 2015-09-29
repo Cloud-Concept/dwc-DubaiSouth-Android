@@ -692,7 +692,9 @@ public class SFResponseManager {
                 Log.d("object", jsonObject.toString());
                 receiptTemplate.setTotal_Amount__c(jsonObject.getDouble("Total_Amount__c"));
                 receiptTemplate.setNo_of_Upload_Docs__c(jsonObject.getInt("No_of_Upload_Docs__c"));
-                if(receiptTemplate.getNo_of_Upload_Docs__c()>0) {
+
+
+                if(jsonObject.getString("eServices_Document_Checklists__r")!="null") {
                     JSONObject jsoneServices_Document_Checklists = jsonObject.getJSONObject("eServices_Document_Checklists__r");
                     JSONArray jArrayeServices_Document_ChecklistsRecords = jsoneServices_Document_Checklists.getJSONArray(JSONConstants.RECORDS);
                     for (int j = 0; j < jArrayeServices_Document_ChecklistsRecords.length(); j++) {
