@@ -719,7 +719,7 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
                 @Override
                 public void onSuccess(RestRequest request, RestResponse response) {
                     Utilities.dismissLoadingDialog();
-                    eServiceAdministration = SFResponseManager.parseReceiptObjectResponse(response.toString()).get(0);
+                    eServiceAdministration = SFResponseManager.parseReceiptObjectResponse2(response.toString()).get(0);
                     activity.setEServiceAdmin(eServiceAdministration);
                     PerformParentNext(btnNext);
                 }

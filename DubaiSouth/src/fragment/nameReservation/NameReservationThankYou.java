@@ -33,7 +33,7 @@ public class NameReservationThankYou extends Fragment {
         activity = (NameReservationActivity) getActivity();
         String ServiceThankYouMessage = String.format(getActivity().getString(R.string.ServiceThankYouMessage), activity.getCaseNumber());
         String ServiceThankYouMessageCards = String.format(getActivity().getString(R.string.ServiceThankYouReservation), "AED 510.00");
-        tv.setText(ServiceThankYouMessage+"\n"+ServiceThankYouMessageCards);
+        tv.setText(ServiceThankYouMessage + "\n" + ServiceThankYouMessageCards + "(including Knowledge Fees AED 10)");
     }
 
     public static NameReservationThankYou newInstance(String text) {
