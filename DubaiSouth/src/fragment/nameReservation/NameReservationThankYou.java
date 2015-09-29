@@ -31,9 +31,9 @@ public class NameReservationThankYou extends Fragment {
     private void InitializeViews(View view) {
         tv = (TextView) view.findViewById(R.id.tvThankyou);
         activity = (NameReservationActivity) getActivity();
-        String ServiceThankYouMessage = String.format(getActivity().getString(R.string.ServiceThankYouMessage), activity.getCaseNumber());
-        String ServiceThankYouMessageCards = String.format(getActivity().getString(R.string.ServiceThankYouReservation), "AED 510.00");
-        tv.setText(ServiceThankYouMessage + "\n" + ServiceThankYouMessageCards + "(including Knowledge Fees AED 10)");
+        String str = "Thank You \n\n" + "We Can Confirm that we have received your submission and your Ref No #" + activity.getCaseNumber();
+        str += "\n\nYour Account will be debited AED " + activity.getTotal_amount__c() + " (including AED 10 knowledge fee) and you will be notified when your payment is complete";
+        tv.setText(str);
     }
 
     public static NameReservationThankYou newInstance(String text) {

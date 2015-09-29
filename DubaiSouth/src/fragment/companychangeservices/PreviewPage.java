@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import cloudconcept.dwc.R;
@@ -62,11 +63,20 @@ public class PreviewPage extends Fragment {
     }
 
     private void InitializeDirectorRemovalLayout(View view) {
+
         tvDirectorName = (TextView) view.findViewById(R.id.tvDirecotName);
         tvTotalAmount = (TextView) view.findViewById(R.id.tvTotalAmount);
-
+        tvRefNumber = (TextView) view.findViewById(R.id.tvRefNumber);
+        tvDate = (TextView) view.findViewById(R.id.tvDate);
+        tvStatus = (TextView) view.findViewById(R.id.tvStatus);
         tvDirectorName.setText(activity.getDirectorship().get_director().getName());
-        tvTotalAmount.setText(activity.getCaseObject().getInvoice__c());
+        tvTotalAmount.setText(activity.getCaseObject().getInvoice__c() + " AED.");
+        tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
+        Date now = Calendar.getInstance().getTime();
+        String strDate = sdfDate.format(now);
+        tvDate.setText(strDate);
+        tvStatus.setText("Draft");
     }
 
     private void InitializeCapitalChangeLayout(View view) {
@@ -82,7 +92,7 @@ public class PreviewPage extends Fragment {
         tvTotalAmount.setText(Utilities.processAmount(activity.getCaseObject().getInvoice__c()) + " AED.");
         tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
-        Date now = new Date();
+        Date now = Calendar.getInstance().getTime();
         String strDate = sdfDate.format(now);
         tvDate.setText(strDate);
         tvStatus.setText("Draft");
@@ -101,7 +111,7 @@ public class PreviewPage extends Fragment {
 
         tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
-        Date now = new Date();
+        Date now = Calendar.getInstance().getTime();
         String strDate = sdfDate.format(now);
         tvDate.setText(strDate);
         tvStatus.setText("Draft");
@@ -129,7 +139,7 @@ public class PreviewPage extends Fragment {
 
         tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
-        Date now = new Date();
+        Date now = Calendar.getInstance().getTime();
         String strDate = sdfDate.format(now);
         tvDate.setText(strDate);
         tvStatus.setText("Draft");

@@ -79,6 +79,7 @@ public class NameReservationPayAndSubmit extends Fragment {
                     tvChoice3.setText(activity.getChoice3Text());
                     try {
                         tvTotal.setText(jsonObject1.getString("Total_Amount__c") + " AED.");
+                        activity.setTotalAmount(jsonObject1.getString("Total_Amount__c"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

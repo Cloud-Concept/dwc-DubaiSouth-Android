@@ -22,7 +22,15 @@ public class NameReservationActivity extends FragmentActivity{
     private android.support.v4.app.FragmentManager fragmentManager;
     private String caseNumber;
     private Case caseNameReservation;
+    private String total_amount__c;
 
+    public String getTotal_amount__c() {
+        return total_amount__c;
+    }
+
+    public void setTotal_amount__c(String total_amount__c) {
+        this.total_amount__c = total_amount__c;
+    }
 
     public String getCaseNumber() {
         return caseNumber;
@@ -74,4 +82,7 @@ public class NameReservationActivity extends FragmentActivity{
         return caseNameReservation;
     }
 
+    public void setTotalAmount(String total_amount__c) {
+        this.total_amount__c = total_amount__c;
+    }
 }

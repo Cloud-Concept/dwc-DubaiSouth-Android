@@ -2876,7 +2876,7 @@ public class Utilities {
                                         applicationContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
                                 for (FormField field : formFields) {
-                                    if (!field.isMobileAvailable()) {
+                                    if (!field.isMobileAvailable() || field.isHidden()) {
                                         continue;
                                     }
                                     if (field.getMobileLabel().equals("Account ID")) {
@@ -3794,9 +3794,7 @@ public class Utilities {
                         _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NameChange".toLowerCase())) {
-                        _items.add(new ServiceItem("Name Change", R.mipmap.name_change_service));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
+                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
                         _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
                         _items.add(new ServiceItem("Renew License Activity", R.mipmap.renew_license));
@@ -4372,13 +4370,13 @@ public class Utilities {
         }
     }
 
-    public static String getFrontDoorUrl(RestClient client,String url, boolean isAbsUrl) {
+    public static String getFrontDoorUrl(RestClient client, String url, boolean isAbsUrl) {
         String frontDoorUrl = client.getClientInfo().getInstanceUrlAsString() + "/secur/frontdoor.jsp?";
         List<NameValuePair> params = new LinkedList<NameValuePair>();
         params.add(new BasicNameValuePair("sid", client.getAuthToken()));
 
 		/*
-		 * We need to use the absolute URL in some cases and relative URL in some
+         * We need to use the absolute URL in some cases and relative URL in some
 		 * other cases, because of differences between instance URL and community
 		 * URL. Community URL can be custom and the logic of determining which
 		 * URL to use is in the 'resolveUrl' method in 'ClientInfo'.
