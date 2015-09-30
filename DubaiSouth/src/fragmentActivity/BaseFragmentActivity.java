@@ -11,6 +11,16 @@ import model.Receipt_Template__c;
 public class BaseFragmentActivity extends FragmentActivity {
     public static final int RESULT_LOAD_IMG_FROM_GALLERY = 2;
     public static final int RESULT_LOAD_IMG_FROM_CAMERA = 3;
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    String total;
     public Company_Documents__c company_documents__c;
     public Receipt_Template__c geteServiceAdministration() {
         return eServiceAdministration;

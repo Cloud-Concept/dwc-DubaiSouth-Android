@@ -276,6 +276,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                                             JSONObject jsonRecord = jsonArray.getJSONObject(0);
                                             Log.d("resultcase", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
+                                            activity.setTotal(activity.geteServiceAdministration().getTotal_Amount__c()+"");
                                             createCardRecord();
                                         } catch (JSONException e) {
                                             e.printStackTrace();

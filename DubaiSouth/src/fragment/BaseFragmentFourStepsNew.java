@@ -291,7 +291,7 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
 
         fragmentManager = getActivity().getSupportFragmentManager();
         String ServiceThankYouMessage = String.format(getActivity().getString(R.string.ServiceThankYouMessage), caseNumber);
-        String ServiceThankYouMessageCards = String.format(getActivity().getString(R.string.ServiceThankYouMessageCards), (activity.geteServiceAdministration().getTotal_Amount__c()));
+        String ServiceThankYouMessageCards = String.format(getActivity().getString(R.string.ServiceThankYouMessageCards), (activity.getTotal()==null?"0":activity.getTotal()));
         String ServiceThankYouMessageNOCNote = String.format(getActivity().getString(R.string.ServiceThankYouMessageNOCNote), RXEmail);
         fragmentManager.beginTransaction()
                 .replace(R.id.content, getFifthFragment(ServiceThankYouMessage, ServiceThankYouMessageCards, ""))
