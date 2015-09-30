@@ -23,6 +23,8 @@
         android:background="@mipmap/search_edit_text_background"
         android:gravity="center"
         android:hint="Search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         android:textColor="@color/black"
         android:textColorHint="@color/light_grey" />
 

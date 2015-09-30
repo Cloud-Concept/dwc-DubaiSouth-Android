@@ -10,10 +10,12 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,6 +55,7 @@ View view;
     RestRequest restRequest = null;
     EditText search;
     ListView activities;
+    String searchValue="";
     String SQL="select id , name, License_Type__c , Business_Activity_Name__c from Business_activity__c LIMIT %s OFFSET %s";
     ArrayList<OriginalBusinessActivity> oActivities,filtered;
     int offset=0,limit=10;
@@ -80,35 +83,38 @@ View view;
         search.clearFocus();
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                filtered = new ArrayList<OriginalBusinessActivity>();
-                if (!TextUtils.isEmpty(editable)) {
-
-                    for (int i = 0; i < oActivities.size(); i++) {
-                        if (oActivities.get(i).getName().toLowerCase().contains(editable.toString().toLowerCase()) || oActivities.get(i).getBusinessActivityName().toLowerCase().contains(editable.toString().toLowerCase()))
-                            filtered.add(oActivities.get(i));
-                    }
-                    activities.setAdapter(new MyAdapter(ActivitiesActivity.this, R.layout.licence_activity, 0, filtered));
-                }else{
-                    filtered.addAll(oActivities);
-                    activities.setAdapter(new MyAdapter(ActivitiesActivity.this, R.layout.licence_activity, 0, filtered));
-
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    performSearch(v.getText().toString());
+                    return true;
                 }
+                return false;
             }
         });
+
+//search.addTextChangedListener(new TextWatcher() {
+//    @Override
+//    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//    }
+//
+//    @Override
+//    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//    }
+//
+//    @Override
+//    public void afterTextChanged(Editable editable) {
+//        if(TextUtils.isEmpty(editable)) {
+//            filtered = new ArrayList<OriginalBusinessActivity>();
+//            filtered.addAll(oActivities);
+//            activities.setAdapter(new MyAdapter(ActivitiesActivity.this, R.layout.licence_activity, 0, filtered));
+//        }
+//    }
+//});
 
 
         view=findViewById(R.id.view);
@@ -123,6 +129,84 @@ View view;
         });
         CallActivitties(limit, offset);
     }
+
+    private void performSearch(String s) {
+        filtered = new ArrayList<OriginalBusinessActivity>();
+
+        if (!TextUtils.isEmpty(s)) {
+            searchValue=s;
+            String SQLSearch="select id , name, License_Type__c , Business_Activity_Name__c from Business_activity__c where name like'%"+searchValue+"%' or Business_Activity_Name__c like '%"+searchValue+"%'";
+
+//                    for (int i = 0; i < oActivities.size(); i++) {
+//                        if (oActivities.get(i).getName().toLowerCase().contains(editable.toString().toLowerCase()) || oActivities.get(i).getBusinessActivityName().toLowerCase().contains(editable.toString().toLowerCase()))
+//                            filtered.add(oActivities.get(i));
+//                    }
+
+            try {
+                restRequest = RestRequest.getRequestForQuery(
+                        getString(R.string.api_version), SQLSearch);
+                mSwipeRefreshLayout.setRefreshing(true);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            new ClientManager(ActivitiesActivity.this, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(ActivitiesActivity.this, new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(ActivitiesActivity.this);
+                        return;
+                    } else {
+//                    Utilities.showloadingDialog(ActivitiesActivity.this);
+                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                            @Override
+                            public void onSuccess(RestRequest request, RestResponse result) {
+                                JSONObject jsonLicenseActivities = null;
+                                try {
+                                    jsonLicenseActivities = new JSONObject(result.toString());
+                                    if (jsonLicenseActivities.optBoolean(JSONConstants.DONE) == true) {
+
+                                        JSONArray jRecords = jsonLicenseActivities.getJSONArray(JSONConstants.RECORDS);
+                                        for (int i = 0; i < jRecords.length(); i++) {
+                                            Gson gson = new Gson();
+
+                                            OriginalBusinessActivity _originalBusinessActivity = gson.fromJson(jRecords.getJSONObject(i).toString(), OriginalBusinessActivity.class);
+                                            filtered.add(_originalBusinessActivity);
+
+                                        }
+                                    }
+
+
+                                    search.setText("");
+                                    activities.setAdapter(new MyAdapter(ActivitiesActivity.this, R.layout.licence_activity, 0, filtered));
+
+                                    mSwipeRefreshLayout.setRefreshing(false);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                            @Override
+                            public void onError(Exception exception) {
+
+                            }
+                        });
+                    }
+                }
+            });
+
+
+
+
+
+
+        }else{
+            filtered.addAll(oActivities);
+            activities.setAdapter(new MyAdapter(ActivitiesActivity.this, R.layout.licence_activity, 0, filtered));
+
+        }
+    }
+
 
     private void CallActivitties( int limit,  int offset) {
 
