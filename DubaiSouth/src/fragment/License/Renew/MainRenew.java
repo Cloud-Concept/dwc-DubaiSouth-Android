@@ -31,6 +31,7 @@ import java.util.Map;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
 import fragment.BaseFragmentFiveSteps;
+import fragment.BaseFragmentFourStepsNew;
 import fragment.License.NOCAttachmentPage;
 import fragmentActivity.LicenseActivity;
 import fragmentActivity.NOCScreen.ThankYou;
@@ -39,7 +40,7 @@ import utilities.Utilities;
 /**
  * Created by M_Ghareeb on 9/15/2015.
  */
-public class MainRenew extends BaseFragmentFiveSteps {
+public class MainRenew extends BaseFragmentFourStepsNew {
 LicenseActivity activity;
 
     @Nullable
@@ -56,13 +57,10 @@ LicenseActivity activity;
         tvTitle.setText(activity.getType());
     }
 
-    @Override
-    public Fragment getInitialFragment() {
-        return InitialPage.newInstance();
-    }
+
 
     @Override
-    public Fragment getSecondFragment() {
+    public Fragment getInitialFragment() {
         return SecondFragment.newInstance();
     }
 
@@ -93,9 +91,7 @@ LicenseActivity activity;
     @Override
     public void onClick(View v) {
         if (v == btnNext) {
-            if (getStatus() == 1) {
-                super.onClick(v);
-            } else if (getStatus() == 2) {
+             if (getStatus() == 1) {
 
                     updateCase();
 
@@ -113,13 +109,11 @@ LicenseActivity activity;
         } else if (v == btnBack || v == btnBackTransparent) {
 
             if (getStatus() == 3) {
-                activity.setInsertedCaseId(null);
-                activity.setInsertedServiceId(null);
+
             } else if (getStatus() == 4) {
                 if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
                     setStatus(3);
-                    activity.setInsertedCaseId(null);
-                    activity.setInsertedServiceId(null);
+
                     btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                     btnNOC3.setSelected(false);
                     btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
