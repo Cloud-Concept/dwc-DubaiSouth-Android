@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -43,6 +45,7 @@ public class LicenseInfoFragment extends Fragment {
     public static ArrayList<LicenseActivity> _licenses;
     private String title;
     private User _user;
+    SwipyRefreshLayout swipyRefreshLayout;
 
     public static LicenseInfoFragment newInstance(String text) {
         LicenseInfoFragment fragment = new LicenseInfoFragment();
@@ -56,21 +59,33 @@ public class LicenseInfoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.company_info_inner_fragment, container, false);
+        final View view = inflater.inflate(R.layout.license_info_inner_fragment, container, false);
         _views.clear();
         title = getActivity().getApplicationContext().getResources().getString(R.string.title_license_info);
         Gson gson = new Gson();
         _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
+        swipyRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
+        swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
+                try {
+
+                    sendRequestFromRefresh(view, getActivity(), SoqlStatements.getInstance().constructLicenseInfoStatement(_user.get_contact().get_account().get_currentLicenseNumber().getId()));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         try {
             CurrentLicenseNumber licenseNumber = _user.get_contact().get_account().get_currentLicenseNumber();
-            sendRequest(view, null, getActivity(), SoqlStatements.getInstance().constructLicenseInfoStatement(_user.get_contact().get_account().get_currentLicenseNumber().getId()));
+            sendRequest(view, getActivity(), SoqlStatements.getInstance().constructLicenseInfoStatement(_user.get_contact().get_account().get_currentLicenseNumber().getId()));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return view;
     }
 
-    public void sendRequest(final View view, RestClient client, final Activity act, String soql) throws UnsupportedEncodingException {
+    public void sendRequest(final View view, final Activity act, String soql) throws UnsupportedEncodingException {
 
         if (!new StoreData(getActivity().getApplicationContext()).getLicenseActivityResponse().equals("") && !new StoreData(getActivity().getApplicationContext()).getInvoicesResponse().equals("")) {
             try {
@@ -134,6 +149,63 @@ public class LicenseInfoFragment extends Fragment {
                 }
             });
         }
+    }
+
+    public void sendRequestFromRefresh(final View view, final Activity act, String soql) throws UnsupportedEncodingException {
+        final RestRequest restRequest = RestRequest.getRequestForQuery(
+                act.getApplicationContext().getString(R.string.api_version), soql);
+
+        final String[] response = {""};
+
+        new ClientManager(act, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(act, new ClientManager.RestClientCallback() {
+            @Override
+            public void authenticatedRestClient(final RestClient client) {
+                if (client == null) {
+                    SalesforceSDKManager.getInstance().logout(act);
+                    return;
+                } else {
+                    client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                        @Override
+                        public void onSuccess(RestRequest request, RestResponse result) {
+                            try {
+                                _licenses = SFResponseManager.parseLicenseActivityObject(result.toString());
+                                new StoreData(getActivity().getApplicationContext()).setLicenseActivityResponse(result.toString());
+                                String soqlRenewal = SoqlStatements.getInstance().constructRenewalLicenseQuery(_user.get_contact().get_account().get_currentLicenseNumber().getId());
+                                final RestRequest restRequestGetRenewalLicense = RestRequest.getRequestForQuery(act.getString(R.string.api_version), soqlRenewal);
+                                client.sendAsync(restRequestGetRenewalLicense, new RestClient.AsyncRequestCallback() {
+                                    @Override
+                                    public void onSuccess(RestRequest request, RestResponse response) {
+                                        try {
+                                            String Invoices = SFResponseManager.parseRenewalRequest(response.toString());
+                                            swipyRefreshLayout.setRefreshing(false);
+                                            new StoreData(getActivity().getApplicationContext()).setInvoicesResponse(response.toString());
+                                            _views.clear();
+                                            InitializeViews(view, _licenses, Invoices);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Exception exception) {
+
+                                    }
+                                });
+
+                            } catch (Exception e) {
+                                onError(e);
+                            }
+                        }
+
+                        @Override
+                        public void onError(Exception exception) {
+                            Utilities.dismissLoadingDialog();
+                            response[0] = "";
+                        }
+                    });
+                }
+            }
+        });
     }
 
     private void InitializeViews(View view, ArrayList<LicenseActivity> _licenses, String invoices) {

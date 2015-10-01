@@ -53,8 +53,8 @@ public class CompanyDocumentsAdapter extends BaseAdapter {
 
         TextView tvAttachmentName = (TextView) convertView.findViewById(R.id.tvAttachmentName);
         tvAttachmentName.setText(companyDocuments.get(position).getName());
-        if (companyDocuments.get(position).getName().length() > 25) {
-            tvAttachmentName.setText(companyDocuments.get(position).getName().substring(0, 24) + "....");
+        if (companyDocuments.get(position).getName().length() > 27) {
+            tvAttachmentName.setText(companyDocuments.get(position).getName().substring(0, 26) + "....");
         }
 
 

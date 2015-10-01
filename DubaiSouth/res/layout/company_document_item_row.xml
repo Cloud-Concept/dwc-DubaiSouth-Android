@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/list_selector_hilight">
+    android:orientation="vertical">
 
 
     <TextView
@@ -11,10 +11,8 @@
         android:layout_height="35dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="dneiwdwe"
-
-        android:textColor="@color/black"
+        android:background="@drawable/add_attachment_selector"
         android:gravity="center"
-        android:background="@drawable/add_attachment_selector"/>
+        android:textColor="@color/black" />
 
 </RelativeLayout>

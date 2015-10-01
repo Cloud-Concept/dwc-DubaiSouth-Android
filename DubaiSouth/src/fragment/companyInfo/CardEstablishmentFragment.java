@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -42,6 +44,7 @@ public class CardEstablishmentFragment extends Fragment {
     String establishment_card_soql = "select Current_Establishment_Card__c , Current_Establishment_Card__r.Status__c , Current_Establishment_Card__r.Establishment_Card_Number__c , Current_Establishment_Card__r.Issue_Date__c , Current_Establishment_Card__r.Expiry_Date__c from Account where id = " + "\'" + "%s" + "\'";
     private RestRequest restRequest;
     private static User _user;
+    SwipyRefreshLayout swipyRefreshLayout;
 
     public static CardEstablishmentFragment newInstance(String text) {
         CardEstablishmentFragment fragment = new CardEstablishmentFragment();
@@ -54,10 +57,23 @@ public class CardEstablishmentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.company_info_inner_fragment, container, false);
+        View view = inflater.inflate(R.layout.license_info_inner_fragment, container, false);
         linearLayout = (LinearLayout) view.findViewById(R.id.content_linear);
         Gson gson = new Gson();
         _user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
+        swipyRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
+        swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
+                DoRequest(true);
+            }
+        });
+        DoRequest(false);
+        return view;
+    }
+
+    private void DoRequest(final boolean b) {
+
         if (_user.get_contact().get_account().getEstablishmentCard() == null) {
             new Thread(new Runnable() {
                 @Override
@@ -114,9 +130,68 @@ public class CardEstablishmentFragment extends Fragment {
                 }
             }).start();
         } else {
-            InitializeLayout();
+            if (b == true) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            establishment_card_soql = String.format(establishment_card_soql, _user.get_contact().get_account().getID());
+                            restRequest = RestRequest.getRequestForQuery(
+                                    getActivity().getString(R.string.api_version), establishment_card_soql);
+                            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+
+                                @Override
+                                public void authenticatedRestClient(RestClient client) {
+                                    if (client == null) {
+                                        SalesforceSDKManager.getInstance().logout(getActivity());
+                                        return;
+                                    } else {
+                                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                                            @Override
+                                            public void onSuccess(RestRequest request, RestResponse response) {
+                                                Log.d("", response.toString());
+                                                if (b == true) {
+                                                    swipyRefreshLayout.setRefreshing(false);
+                                                }
+                                                try {
+                                                    JSONObject json = new JSONObject(response.toString());
+                                                    JSONArray jRecords = json.getJSONArray(JSONConstants.RECORDS);
+                                                    JSONObject jsonRecord = jRecords.getJSONObject(0);
+                                                    EstablishmentCard establishmentCard = new EstablishmentCard();
+                                                    establishmentCard.setCurrent_Establishment_Card__c(jsonRecord.getString("Current_Establishment_Card__c"));
+                                                    establishmentCard.setIssue_Date__c(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Issue_Date__c"));
+                                                    establishmentCard.setExpiry_Date__c(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Expiry_Date__c"));
+                                                    establishmentCard.setStatus(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Status__c"));
+                                                    establishmentCard.setEstablishment_Card_Number__c(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Establishment_Card_Number__c"));
+                                                    _user.get_contact().get_account().setEstablishmentCard(establishmentCard);
+                                                    getActivity().runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            InitializeLayout();
+                                                        }
+                                                    });
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onError(Exception exception) {
+
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            } else {
+                InitializeLayout();
+            }
         }
-        return view;
     }
 
     private void InitializeLayout() {

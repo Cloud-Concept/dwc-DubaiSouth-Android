@@ -110,7 +110,6 @@ public class AttachmentPage extends Fragment {
         } else {
             ChangeAndRemovalServiceFragment fragment = (ChangeAndRemovalServiceFragment) getParentFragment();
             activity.setNoAttachments(true);
-//            fragment.setStatus(3);
             fragment.onClick(fragment.getButtonNext());
         }
     }

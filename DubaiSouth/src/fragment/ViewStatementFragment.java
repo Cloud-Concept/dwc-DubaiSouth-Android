@@ -253,7 +253,9 @@ public class ViewStatementFragment extends Fragment implements SwipeRefreshLayou
 
                                     @Override
                                     public void onError(Exception exception) {
-                                        Utilities.dismissLoadingDialog();
+                                        if(Utilities.getIsProgressLoading()){
+                                            Utilities.dismissLoadingDialog();
+                                        }
                                     }
                                 });
                             }
