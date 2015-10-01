@@ -248,7 +248,7 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
             try {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("caseId", activity.getInsertedCaseId());
-                map.put("LicenseOperationRecId",activity.getUser().get_contact().get_account().get_currentLicenseNumber().getId());
+//                map.put("LicenseOperationRecId",activity.getUser().get_contact().get_account().get_currentLicenseNumber().getId());
 
                 if (activity.getType().equals("Change License Activity")) {
                     ////// with condition
@@ -256,7 +256,7 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
                     map.put("licenseOperation", "ChangeInLicenseActivity");
                 } else if (activity.getType().equals("License Renewal")) {
                     map.put("actionType", "SubmitRequestLicenseRenewalWithChangeLicenseActivities");
-
+                    map.put("licenseOperation", "licenseRenewal");
                 }
 
                 entity = new StringEntity("{\"wrapper\":" + new JSONObject(map).toString() + "}", "UTF-8");

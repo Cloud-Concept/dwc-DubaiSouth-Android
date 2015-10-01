@@ -267,7 +267,7 @@
 //
 //            @Override
 //            public void onError(Exception exception) {
-//                Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+//                error=RestMessages.getInstance().getErrorMessage();
 //                finish();
 //            }
 //        });
@@ -298,7 +298,7 @@
 //
 //                @Override
 //                public void onError(Exception exception) {
-//                    Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+//                    error=RestMessages.getInstance().getErrorMessage();
 //                    finish();
 //                }
 //            });
@@ -338,7 +338,7 @@
 //
 //                @Override
 //                public void onError(Exception exception) {
-//                    Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+//                    error=RestMessages.getInstance().getErrorMessage();
 //                    finish();
 //                }
 //            });
@@ -369,6 +369,7 @@ package cloudconcept.dwc;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -420,6 +421,7 @@ public class HomepageActivity extends Activity implements
             new StoreData(getApplicationContext()).reset();
         }
     };
+    private String error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -660,7 +662,7 @@ public class HomepageActivity extends Activity implements
 
                 @Override
                 public void onError(Exception exception) {
-                    Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+                    error=RestMessages.getInstance().getErrorMessage();
                     finish();
                 }
             });
@@ -692,7 +694,7 @@ public class HomepageActivity extends Activity implements
 
                 @Override
                 public void onError(Exception exception) {
-                    Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+                    error=RestMessages.getInstance().getErrorMessage();
                     finish();
                 }
             });
@@ -732,7 +734,7 @@ public class HomepageActivity extends Activity implements
 
                 @Override
                 public void onError(Exception exception) {
-                    Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+                    error=RestMessages.getInstance().getErrorMessage();
                     finish();
                 }
             });
@@ -776,7 +778,8 @@ public class HomepageActivity extends Activity implements
 
             @Override
             public void onError(Exception exception) {
-                Utilities.showToast(HomepageActivity.this, RestMessages.getInstance().getErrorMessage());
+
+                error=RestMessages.getInstance().getErrorMessage();
                 finish();
             }
         });
@@ -820,5 +823,23 @@ public class HomepageActivity extends Activity implements
             _badgeButton.setBadgeText((notificationCount>99?99:notificationCount)<10?notificationCount + "":notificationCount+"");
             _badgeButton.showBadge();
         }
+    }
+
+    @Override
+    public void finish() {
+        setContentView(R.layout.splash);
+        Button close= (Button) findViewById(R.id.close);
+        TextView properMessage= (TextView) findViewById(R.id.properMessage);
+        close.setVisibility(View.VISIBLE);
+        properMessage.setVisibility(View.VISIBLE);
+        properMessage.setText(error);
+        close.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomepageActivity.super.finish();
+            }
+        });
+
+
     }
 }

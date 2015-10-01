@@ -279,6 +279,7 @@ if(activity.getType().equals("2")){
             lstAttachments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+//                    view.setSelected(true);
                     new BottomSheet.Builder(getActivity()).title("Choose Attachment Option").sheet(R.menu.list).listener(new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
