@@ -24,6 +24,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +33,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import RestAPI.JSONConstants;
 import RestAPI.RelatedServiceType;
 import RestAPI.SFResponseManager;
 import cloudconcept.dwc.R;
@@ -95,6 +97,8 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
             return RelatedServiceType.RelatedServiceTypeCompanyCapitalChange;
         } else if (activity.getMethodName().equals("CreateRequestDirectorRemoval")) {
             return RelatedServiceType.RelatedServiceTypeDirecorRemoval;
+        } else if (activity.getMethodName().equals("CreateEstablishmentCardRequest")) {
+            return RelatedServiceType.RelatedServiceTypeEstablishmentCard;
         } else {
             return null;
         }
@@ -140,6 +144,8 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
                     } else {
                         DoNameChangeRequest();
                     }
+                } else if (getRelatedService() == RelatedServiceType.RelatedServiceTypeEstablishmentCard) {
+                    DoEstablishmentCardRequest();
                 }
             } else if (status == 2) {
                 boolean isEmptyAttachment = false;
@@ -156,7 +162,11 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
                         Utilities.showLongToast(getActivity(), "Please fill all attachments");
                     }
                 } else {
-                    Utilities.showLongToast(getActivity(), "Please fill all attachments");
+                    if (activity.getisNoAttachment()) {
+                        super.onClick(v);
+                    } else {
+                        Utilities.showLongToast(getActivity(), "Please fill all attachments");
+                    }
                 }
 
             } else if (status == 3) {
@@ -167,6 +177,19 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
         } else {
             super.onClick(v);
         }
+    }
+
+    private void DoEstablishmentCardRequest() {
+        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+            @Override
+            public void authenticatedRestClient(final RestClient client) {
+                if (client == null) {
+                    System.exit(0);
+                } else {
+                    new CreateEstablishmentCardRequest(client).execute();
+                }
+            }
+        });
     }
 
     private View.OnClickListener listenerOkPay = new View.OnClickListener() {
@@ -517,6 +540,96 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
         }
     }
 
+    public class CreateEstablishmentCardRequest extends AsyncTask<Void, Void, Void> {
+
+        private RestClient client;
+
+        public CreateEstablishmentCardRequest(RestClient client) {
+            this.client = client;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            Utilities.showloadingDialog(activity);
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String attUrl = client.getClientInfo().resolveUrl("/services/apexrest/MobileServiceUtilityWebService").toString();
+            HttpClient tempClient = new DefaultHttpClient();
+            URI theUrl = null;
+            try {
+                JSONObject parent = new JSONObject();
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("AccountId", activity.getUser().get_contact().get_account().getID());
+                    jsonObject.put("cardId", activity.getCardId());
+                    if (activity.getServiceIdentifier().equals("Establishment Card Lost Fee")) {
+                        jsonObject.put("lostCard", false);
+                    } else {
+                        if (activity.getIsLostCardChecked()) {
+                            jsonObject.put("lostCard", true);
+                        } else {
+                            jsonObject.put("lostCard", false);
+                        }
+                    }
+                    jsonObject.put("actionType", "CreateEstablishmentCardRequest");
+                    jsonObject.put("serviceIdentifier", activity.getServiceIdentifier());
+                    parent.put("wrapper", jsonObject);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                theUrl = new URI(attUrl);
+                HttpPost getRequest = new HttpPost();
+
+                getRequest.setURI(theUrl);
+                getRequest.setHeader("Authorization", "Bearer " + client.getAuthToken());
+                HttpResponse httpResponse = null;
+                StringEntity se = null;
+                try {
+                    se = new StringEntity(parent.toString());
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+                getRequest.setEntity(se);
+                try {
+                    httpResponse = tempClient.execute(getRequest);
+                    StatusLine statusLine = httpResponse.getStatusLine();
+                    if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
+                        HttpEntity httpEntity = httpResponse.getEntity();
+                        Log.d("response", httpEntity.toString());
+                        if (httpEntity != null) {
+                            result = EntityUtils.toString(httpEntity);
+                            activity.setCaseId(result.substring(8, result.length() - 1));
+                        }
+                    } else {
+                        httpResponse.getEntity().getContent().close();
+                        throw new IOException(statusLine.getReasonPhrase());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if (result.contains("Success")) {
+                getCaseInfo(client);
+            } else {
+                Utilities.dismissLoadingDialog();
+            }
+        }
+    }
+
     public class CreateNameChangeRequest extends AsyncTask<Void, Void, Void> {
 
         private RestClient client;
@@ -692,9 +805,24 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
                 @Override
                 public void onSuccess(RestRequest request, RestResponse response) {
                     Case caseDirectorRemoval = SFResponseManager.parseCaseObject(response.toString());
-                    activity.setCaseObject(caseDirectorRemoval);
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        JSONArray jsonArray = jsonObject.getJSONArray(JSONConstants.RECORDS);
+                        JSONObject jsonRecord = jsonArray.getJSONObject(0);
+                        activity.setCaseObject(caseDirectorRemoval);
+                        if (jsonRecord.getJSONObject("Invoice__r") == null) {
+                            activity.setTotalAmount("0");
+                        } else {
+                            activity.setTotalAmount(jsonRecord.getJSONObject("Invoice__r").getString("Amount__c"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     if (activity.getMethodName().equals("CreateRequestAddressChange")) {
-                        Utilities.dismissLoadingDialog();
+                        if (Utilities.getIsProgressLoading()) {
+                            Utilities.dismissLoadingDialog();
+                        }
                         PerformParentNext(btnNext);
                     } else {
                         getEServiceAdminInfo(client, activity.getCaseObject().getService_Requested__c());
@@ -718,9 +846,11 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
             client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                 @Override
                 public void onSuccess(RestRequest request, RestResponse response) {
-                    Utilities.dismissLoadingDialog();
                     eServiceAdministration = SFResponseManager.parseReceiptObjectResponse2(response.toString()).get(0);
                     activity.setEServiceAdmin(eServiceAdministration);
+                    if (Utilities.getIsProgressLoading()) {
+                        Utilities.dismissLoadingDialog();
+                    }
                     PerformParentNext(btnNext);
                 }
 

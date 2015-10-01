@@ -95,24 +95,24 @@ public class AttachmentPage extends Fragment {
             } else {
                 company_documents__cs = activity.getCompanyDocuments();
             }
+            Utilities.showloadingDialog(activity);
+            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(getActivity());
+                        return;
+                    } else {
+                        CreateCompanyDocuments(client, company_documents__cs);
+                    }
+                }
+            });
         } else {
             ChangeAndRemovalServiceFragment fragment = (ChangeAndRemovalServiceFragment) getParentFragment();
-            fragment.setStatus(3);
+            activity.setNoAttachments(true);
+//            fragment.setStatus(3);
             fragment.onClick(fragment.getButtonNext());
         }
-
-        Utilities.showloadingDialog(activity);
-        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-            @Override
-            public void authenticatedRestClient(final RestClient client) {
-                if (client == null) {
-                    SalesforceSDKManager.getInstance().logout(getActivity());
-                    return;
-                } else {
-                    CreateCompanyDocuments(client, company_documents__cs);
-                }
-            }
-        });
     }
 
     private void CreateCompanyDocuments(final RestClient client, final ArrayList<Company_Documents__c> companyDocuments) {

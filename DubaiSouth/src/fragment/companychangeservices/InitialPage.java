@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.gc.materialdesign.views.Switch;
 
 import cloudconcept.dwc.R;
 import fragmentActivity.ChangeAndRemovalActivity;
-import model.Card_Management__c;
 import utilities.Utilities;
 
 /**
@@ -28,6 +28,9 @@ public class InitialPage extends Fragment {
     EditText etCompanyName, etCompanyNameArabic, etNewCompanyName, etNewCompanyNameArabic;
     EditText etShareCapital, etNewShareCapital;
     EditText etDirector;
+    TextView tvEstablishmentCard_CardNumber, tvEstablishmentCard_LicenseNumber, tvEstablishmentCard_IssueDate, tvEstablishmentCard_ExpiryDate, tvEstablishmentCard_Status;
+    private Switch switchView;
+    private TextView tvLabel;
 
 
     @Nullable
@@ -48,9 +51,48 @@ public class InitialPage extends Fragment {
         } else if (activity.getMethodName().equals("CreateRequestDirectorRemoval")) {
             view = inflater.inflate(R.layout.director_removal_initial_page, container, false);
             InitializeDirectorRemovalLayout(view);
+        } else if (activity.getMethodName().equals("CreateEstablishmentCardRequest")) {
+            view = inflater.inflate(R.layout.establishment_card_initial_page, container, false);
+            InitializeEstablishmentCardLayout(view);
+            activity.setisLostCardChecked(false);
         }
 
         return view;
+    }
+
+    private void InitializeEstablishmentCardLayout(View view) {
+
+        tvEstablishmentCard_CardNumber = (TextView) view.findViewById(R.id.tvCardNumber);
+        tvEstablishmentCard_ExpiryDate = (TextView) view.findViewById(R.id.tvExpiryDate);
+        tvEstablishmentCard_IssueDate = (TextView) view.findViewById(R.id.tvIssueDate);
+        tvEstablishmentCard_LicenseNumber = (TextView) view.findViewById(R.id.tvLicenseNumber);
+        tvEstablishmentCard_Status = (TextView) view.findViewById(R.id.tvStatus);
+        switchView = (Switch) view.findViewById(R.id.switchView);
+        tvLabel = (TextView) view.findViewById(R.id.tvLabel);
+
+        tvEstablishmentCard_CardNumber.setText(Utilities.stringNotNull(activity.getCardNumber()));
+        tvEstablishmentCard_ExpiryDate.setText(Utilities.stringNotNull(activity.getExpiryDate()));
+        tvEstablishmentCard_IssueDate.setText(Utilities.stringNotNull(activity.getIssueDate()));
+        tvEstablishmentCard_LicenseNumber.setText(Utilities.stringNotNull(activity.getLicenseNumber()));
+        tvEstablishmentCard_Status.setText(Utilities.stringNotNull(activity.getStatus()));
+
+        if (activity.getServiceIdentifier().equals("Establishment Card Lost Fee")) {
+            switchView.setVisibility(View.GONE);
+            tvLabel.setVisibility(View.GONE);
+        } else {
+            switchView.setVisibility(View.VISIBLE);
+            tvLabel.setVisibility(View.VISIBLE);
+            switchView.setOncheckListener(new Switch.OnCheckListener() {
+                @Override
+                public void onCheck(Switch aSwitch, boolean b) {
+                    if (b) {
+                        activity.setisLostCardChecked(true);
+                    } else {
+                        activity.setisLostCardChecked(false);
+                    }
+                }
+            });
+        }
     }
 
     private void InitializeDirectorRemovalLayout(View view) {

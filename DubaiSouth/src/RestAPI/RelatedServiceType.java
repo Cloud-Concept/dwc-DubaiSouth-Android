@@ -21,5 +21,6 @@ public enum RelatedServiceType {
     RelatedServiceTypeCompanyAddressChange,
     RelatedServiceTypeCompanyNameChange,
     RelatedServiceTypeDirecorRemoval,
-    RelatedServiceTypeCompanyCapitalChange
+    RelatedServiceTypeCompanyCapitalChange,
+    RelatedServiceTypeEstablishmentCard
 }

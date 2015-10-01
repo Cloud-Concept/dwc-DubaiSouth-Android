@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +30,8 @@ public class PreviewPage extends Fragment {
 
     TextView tvNewShareCapital;
     TextView tvDirectorName;
+    ImageView imageService;
+    private TextView tvServiceName;
 
     public static PreviewPage newInstance(String text) {
         PreviewPage fragment = new PreviewPage();
@@ -57,9 +60,35 @@ public class PreviewPage extends Fragment {
         } else if (activity.getMethodName().equals("CreateRequestDirectorRemoval")) {
             view = inflater.inflate(R.layout.director_removal_preview_page, container, false);
             InitializeDirectorRemovalLayout(view);
+        } else if (activity.getMethodName().equals("CreateEstablishmentCardRequest")) {
+            view = inflater.inflate(R.layout.establishment_card_preview_page, container, false);
+            InitializeEstablishmentCardLayout(view);
         }
 
         return view;
+    }
+
+    private void InitializeEstablishmentCardLayout(View view) {
+        tvServiceName = (TextView) view.findViewById(R.id.tvServiceName);
+        imageService = (ImageView) view.findViewById(R.id.imageView);
+        tvRefNumber = (TextView) view.findViewById(R.id.tvRefNumber);
+        tvStatus = (TextView) view.findViewById(R.id.tvStatus);
+        tvTotalAmount = (TextView) view.findViewById(R.id.tvTotalAmount);
+        if (activity.getServiceIdentifier().equals("Establishment Card Renewal Fee")) {
+            tvServiceName.setText("Renew Card Service");
+            imageService.setImageResource(R.mipmap.renew_card);
+
+        } else if (activity.getServiceIdentifier().equals("Establishment Card Lost Fee")) {
+            tvServiceName.setText("Lost Card Service");
+            imageService.setImageResource(R.mipmap.replace_card);
+
+        } else if (activity.getServiceIdentifier().equals("Establishment Card Cancellation Fee")) {
+            tvServiceName.setText("Cancel Card Service");
+            imageService.setImageResource(R.mipmap.cancel_card);
+        }
+        tvRefNumber.setText(activity.getCaseObject().getCaseNumber());
+        tvStatus.setText("Draft");
+        tvTotalAmount.setText(Utilities.processAmount(activity.getTotalAmount()) + " AED.");
     }
 
     private void InitializeDirectorRemovalLayout(View view) {

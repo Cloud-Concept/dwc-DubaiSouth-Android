@@ -93,5 +93,6 @@
     \r\n\r\n For any urgent enquiry, Call us at +971 4 816 0000 or use our online chat option</string>
     <string name="title_activity_main_noc">MainNocActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_card_establishment">Card Establishment</string>
 
 </resources>

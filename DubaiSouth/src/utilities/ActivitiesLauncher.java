@@ -3,7 +3,6 @@ package utilities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 
 import com.google.gson.Gson;
 
@@ -240,6 +239,14 @@ public class ActivitiesLauncher {
             Directorship directorship = (Directorship) object;
             Gson gson = new Gson();
             intent.putExtra("object", gson.toJson(directorship));
+        } else if (object instanceof User) {
+            User user = (User) object;
+            intent.putExtra("Current_Establishment_Card__c", user.get_contact().get_account().getEstablishmentCard().getCurrent_Establishment_Card__c());
+            intent.putExtra("CardNumber", user.get_contact().get_account().getEstablishmentCard().getEstablishment_Card_Number__c());
+            intent.putExtra("LicenseNumber", user.get_contact().get_account().get_currentLicenseNumber().getLicense_Number_Value());
+            intent.putExtra("IssueDate", user.get_contact().get_account().getEstablishmentCard().getIssue_Date__c());
+            intent.putExtra("ExpiryDate", user.get_contact().get_account().getEstablishmentCard().getExpiry_Date__c());
+            intent.putExtra("Status", user.get_contact().get_account().getEstablishmentCard().getStatus());
         }
         intent.putExtra("MethodType", s);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -299,9 +306,9 @@ public class ActivitiesLauncher {
         String str = gson.toJson(object);
         intent = new Intent(context, PreviewActivity.class);
         intent.putExtra("object", str);
-        if(object instanceof Company_Documents__c){
+        if (object instanceof Company_Documents__c) {
             intent.putExtra("type", "Company_Documents__c");
-        }else{
+        } else {
             intent.putExtra("type", "EServices_Document_Checklist__c");
         }
 
@@ -320,8 +327,8 @@ public class ActivitiesLauncher {
 
     public static void openChangeAndRemovalLicenceActivity(Context context, User _user, String s) {
         intent = new Intent(context, LicenseActivity.class);
-        intent.putExtra("user",_user);
-        intent.putExtra("type",s);
+        intent.putExtra("user", _user);
+        intent.putExtra("type", s);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);

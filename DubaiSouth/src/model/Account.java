@@ -89,6 +89,16 @@ public class Account implements Serializable {
     @JsonProperty("Company_Logo__c")
     private String Company_Logo;
 
+    EstablishmentCard establishmentCard;
+
+    public EstablishmentCard getEstablishmentCard() {
+        return establishmentCard;
+    }
+
+    public void setEstablishmentCard(EstablishmentCard establishmentCard) {
+        this.establishmentCard = establishmentCard;
+    }
+
     public String getCompany_Logo() {
         return Company_Logo;
     }

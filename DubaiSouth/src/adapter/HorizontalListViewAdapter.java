@@ -210,6 +210,12 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                         ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Change Capital", object);
                     } else if (tvServiceName.getText().toString().equals("Reserve Name")) {
                         ActivitiesLauncher.openNameReservationActivity(context);
+                    } else if (tvServiceName.getText().toString().equals("Renew Card")) {
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context,"Renew Card",object);
+                    } else if (tvServiceName.getText().toString().equals("Lost Card")) {
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context,"Lost Card",object);
+                    } else if (tvServiceName.getText().toString().equals("Cancel Card")) {
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context,"Cancel Card",object);
                     }
                 } else if (object instanceof Contract_DWC__c) {
                     final Contract_DWC__c contract_dwc__c = (Contract_DWC__c) object;

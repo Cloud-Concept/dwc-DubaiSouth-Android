@@ -33,7 +33,6 @@ import cloudconcept.dwc.R;
 import dataStorage.StoreData;
 import fragment.Cards.NOCAttachmentPage;
 import fragment.ChangeAndRemovalServiceFragment;
-import fragment.NameReservationFragment;
 import fragment.companychangeservices.AttachmentPage;
 import model.Case;
 import model.Company_Documents__c;
@@ -74,7 +73,81 @@ public class ChangeAndRemovalActivity extends FragmentActivity {
     private String companyNameArabic;
     private String newCompanyName;
     private String newCompanyNameArabic;
+    private String serviceIdentifier;
+    private String CardNumber;
+    private String LicenseNumber;
+    private String IssueDate;
+    private String ExpiryDate;
+    private String Status;
+    private boolean isLostCardChecked;
+    private String cardId;
+    private String TotalAmount;
+    private boolean isNoAttachment;
 
+    public boolean getisNoAttachment() {
+        return isNoAttachment;
+    }
+
+    public String getTotalAmount() {
+        return TotalAmount;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
+
+    public String getCardId() {
+        return cardId;
+    }
+
+
+    public String getCardNumber() {
+        return CardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        CardNumber = cardNumber;
+    }
+
+    public String getLicenseNumber() {
+        return LicenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        LicenseNumber = licenseNumber;
+    }
+
+    public String getIssueDate() {
+        return IssueDate;
+    }
+
+    public void setIssueDate(String issueDate) {
+        IssueDate = issueDate;
+    }
+
+    public String getExpiryDate() {
+        return ExpiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        ExpiryDate = expiryDate;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public String getServiceIdentifier() {
+        return serviceIdentifier;
+    }
+
+    public void setServiceIdentifier(String serviceIdentifier) {
+        this.serviceIdentifier = serviceIdentifier;
+    }
 
     public Receipt_Template__c geteServiceAdministration() {
         return eServiceAdministration;
@@ -197,6 +270,43 @@ public class ChangeAndRemovalActivity extends FragmentActivity {
             SubmitMethodName = "SubmitRequestDirectorRemoval";
             gson = new Gson();
             directorship = gson.fromJson(getIntent().getExtras().getString("object"), Directorship.class);
+        } else if (getIntent().getExtras().getString("MethodType").equals("Renew Card")) {
+
+            MethodName = "CreateEstablishmentCardRequest";
+            SubmitMethodName = "SubmitRequestEstablishmentCard";
+            serviceIdentifier = "Establishment Card Renewal Fee";
+            CardNumber = getIntent().getExtras().getString("CardNumber");
+            LicenseNumber = getIntent().getExtras().getString("LicenseNumber");
+            IssueDate = getIntent().getExtras().getString("IssueDate");
+            ExpiryDate = getIntent().getExtras().getString("ExpiryDate");
+            Status = getIntent().getExtras().getString("Status");
+            cardId = getIntent().getExtras().getString("Current_Establishment_Card__c");
+
+
+        } else if (getIntent().getExtras().getString("MethodType").equals("Lost Card")) {
+
+            MethodName = "CreateEstablishmentCardRequest";
+            SubmitMethodName = "SubmitRequestEstablishmentCard";
+            serviceIdentifier = "Establishment Card Lost Fee";
+            CardNumber = getIntent().getExtras().getString("CardNumber");
+            LicenseNumber = getIntent().getExtras().getString("LicenseNumber");
+            IssueDate = getIntent().getExtras().getString("IssueDate");
+            ExpiryDate = getIntent().getExtras().getString("ExpiryDate");
+            Status = getIntent().getExtras().getString("Status");
+            cardId = getIntent().getExtras().getString("Current_Establishment_Card__c");
+
+        } else if (getIntent().getExtras().getString("MethodType").equals("Cancel Card")) {
+
+            MethodName = "CreateEstablishmentCardRequest";
+            SubmitMethodName = "SubmitRequestEstablishmentCard";
+            serviceIdentifier = "Establishment Card Cancellation Fee";
+            CardNumber = getIntent().getExtras().getString("CardNumber");
+            LicenseNumber = getIntent().getExtras().getString("LicenseNumber");
+            IssueDate = getIntent().getExtras().getString("IssueDate");
+            ExpiryDate = getIntent().getExtras().getString("ExpiryDate");
+            Status = getIntent().getExtras().getString("Status");
+            cardId = getIntent().getExtras().getString("Current_Establishment_Card__c");
+
         }
 
         ScreenTitle = getIntent().getExtras().getString("MethodType");
@@ -475,5 +585,22 @@ public class ChangeAndRemovalActivity extends FragmentActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
+    }
+
+    public void setisLostCardChecked(boolean isLostCardChecked) {
+        this.isLostCardChecked = isLostCardChecked;
+    }
+
+    public boolean getIsLostCardChecked() {
+        return isLostCardChecked;
+    }
+
+
+    public void setTotalAmount(String string) {
+        this.TotalAmount = string;
+    }
+
+    public void setNoAttachments(boolean b) {
+        isNoAttachment = b;
     }
 }

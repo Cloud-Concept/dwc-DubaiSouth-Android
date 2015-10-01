@@ -3818,6 +3818,8 @@ public class Utilities {
                         _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewCard".toLowerCase())) {
                         _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
+                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LostCard".toLowerCase())) {
+                        _items.add(new ServiceItem("Lost Card", R.mipmap.renew_visa));
                     }
                 }
 
