@@ -106,7 +106,9 @@
             <custom.expandableView.ExpandableLayoutListView
                 android:id="@+id/expandableLayoutListView"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
+                android:stackFromBottom="false"
+                android:transcriptMode="alwaysScroll"
                 android:background="@drawable/list_selector"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="2dp"

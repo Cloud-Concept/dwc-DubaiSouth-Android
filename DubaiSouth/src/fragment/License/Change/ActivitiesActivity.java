@@ -56,7 +56,7 @@ View view;
     EditText search;
     ListView activities;
     String searchValue="";
-    String SQL="select id , name, License_Type__c , Business_Activity_Name__c from Business_activity__c LIMIT %s OFFSET %s";
+    String SQL="select id , name, License_Type__c , Business_Activity_Name__c from Business_activity__c where id in (select Original_Business_Activity__c from License_Activity__c where end_date__c=null) LIMIT %s OFFSET %s";
     ArrayList<OriginalBusinessActivity> oActivities,filtered;
     int offset=0,limit=10;
     SwipyRefreshLayout mSwipeRefreshLayout;
@@ -135,7 +135,7 @@ View view;
 
         if (!TextUtils.isEmpty(s)) {
             searchValue=s;
-            String SQLSearch="select id , name, License_Type__c , Business_Activity_Name__c from Business_activity__c where name like'%"+searchValue+"%' or Business_Activity_Name__c like '%"+searchValue+"%'";
+            String SQLSearch="select id , name, License_Type__c , Business_Activity_Name__c from Business_activity__c where where id in (select Original_Business_Activity__c from License_Activity__c where end_date__c=null) and ( name like'%"+searchValue+"%' or Business_Activity_Name__c like '%"+searchValue+"%')";
 
 //                    for (int i = 0; i < oActivities.size(); i++) {
 //                        if (oActivities.get(i).getName().toLowerCase().contains(editable.toString().toLowerCase()) || oActivities.get(i).getBusinessActivityName().toLowerCase().contains(editable.toString().toLowerCase()))

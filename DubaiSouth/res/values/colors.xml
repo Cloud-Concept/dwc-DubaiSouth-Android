@@ -55,5 +55,6 @@
     <color name="disabled_color">#44000000</color>
     <color name="error_color">#E7492E</color>
 
-
+    <color name="pressed_color">#4d90fe</color>
+    <color name="default_color">#ffffff</color>
 </resources>

@@ -165,13 +165,13 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
     }
 
     private boolean required() {
-        if (activity.getRemoved().size() == LicenseInfoFragment._licenses.size()&&(activity.get_licenses()==null|activity.get_licenses().size()==0)) {
+        if (activity.getRemoved().size() == LicenseInfoFragment._licenses.size() && (activity.get_licenses() == null | activity.get_licenses().size() == 0)) {
             Utilities.showLongToast(activity, "You cannot remove all activities");
             return false;
         } else {
-            if(activity.getRemoved().size()>0||activity.get_licenses().size()>0)
-            return true;
-            else{
+            if (activity.getRemoved().size() > 0 || activity.get_licenses().size() > 0)
+                return true;
+            else {
                 Utilities.showLongToast(activity, "No Activities Selected");
 
                 return false;
@@ -248,16 +248,16 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
             try {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("caseId", activity.getInsertedCaseId());
+//                map.put("LicenseOperationRecId",activity.getUser().get_contact().get_account().get_currentLicenseNumber().getId());
 
-
-                    if (activity.getType().equals("Change License Activity")) {
-                        ////// with condition
-                        map.put("actionType", "SubmitRequestChangeLicenseActivities");
-
-                    } else if (activity.getType().equals("License Renewal")) {
-                        map.put("actionType", "SubmitRequestLicenseRenewalWithChangeLicenseActivities");
-
-                    }
+                if (activity.getType().equals("Change License Activity")) {
+                    ////// with condition
+                    map.put("actionType", "SubmitRequestChangeLicenseActivities");
+                    map.put("licenseOperation", "ChangeInLicenseActivity");
+                } else if (activity.getType().equals("License Renewal")) {
+                    map.put("actionType", "SubmitRequestLicenseRenewalWithChangeLicenseActivities");
+                    map.put("licenseOperation", "licenseRenewal");
+                }
 
                 entity = new StringEntity("{\"wrapper\":" + new JSONObject(map).toString() + "}", "UTF-8");
                 entity.setContentType("application/json");
@@ -287,8 +287,8 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
             if (aVoid.equals("success")) {
 
                 getfifthfragment("", activity.getCaseNumber());
-            }else{
-                Utilities.showLongToast(activity,result==null?"Error":result.replace("\"",""));
+            } else {
+                Utilities.showLongToast(activity, result == null ? "Error" : result.replace("\"", ""));
             }
 
         }
@@ -318,29 +318,29 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
             Map<String, String> map = new HashMap<String, String>();
             map.put("AccountId", activity.getUser().get_contact().get_account().getID());
             map.put("licenseId", activity.getUser().get_contact().get_account().get_currentLicenseNumber().getId());
-           String  removedActivityIds="";
+            String removedActivityIds = "";
 
-            for(int i=0;i<activity.getRemoved().size();i++)
-                removedActivityIds+=((model.LicenseActivity)activity.getRemoved().toArray()[i]).getID()+",";
-            map.put("removedActivityIds", removedActivityIds.equals("")?removedActivityIds:removedActivityIds.substring(0, removedActivityIds.length() - 1) );
+            for (int i = 0; i < activity.getRemoved().size(); i++)
+                removedActivityIds += ((model.LicenseActivity) activity.getRemoved().toArray()[i]).getID() + ",";
+            map.put("removedActivityIds", removedActivityIds.equals("") ? removedActivityIds : removedActivityIds.substring(0, removedActivityIds.length() - 1));
 
-            String newActivityIds="";
-            for(int i=0;i<activity.get_licenses().size();i++)
-                newActivityIds+=activity.get_licenses().get(i).getID()+",";
-            map.put("newActivityIds", newActivityIds.equals("")?newActivityIds:newActivityIds.substring(0, newActivityIds.length()-1) );
-            String  currentLicBActivities="";
+            String newActivityIds = "";
+            for (int i = 0; i < activity.get_licenses().size(); i++)
+                newActivityIds += activity.get_licenses().get(i).getID() + ",";
+            map.put("newActivityIds", newActivityIds.equals("") ? newActivityIds : newActivityIds.substring(0, newActivityIds.length() - 1));
+            String currentLicBActivities = "";
 
-            for(int i=0;i<LicenseInfoFragment._licenses.size();i++)
-                currentLicBActivities+=LicenseInfoFragment._licenses.get(i).getID()+",";
+            for (int i = 0; i < LicenseInfoFragment._licenses.size(); i++)
+                currentLicBActivities += LicenseInfoFragment._licenses.get(i).getID() + ",";
 
 
-            map.put("currentLicBActivities", currentLicBActivities.equals("")?currentLicBActivities:currentLicBActivities.substring(0, currentLicBActivities.length()-1) );
+            map.put("currentLicBActivities", currentLicBActivities.equals("") ? currentLicBActivities : currentLicBActivities.substring(0, currentLicBActivities.length() - 1));
 
-            String  removedBusinessActivites="";
+            String removedBusinessActivites = "";
 
-            for(int i=0;i<activity.getRemoved().size();i++)
-                removedBusinessActivites+=((model.LicenseActivity)activity.getRemoved().toArray()[i]).get_originalBusinessActivity().getID()+",";
-            map.put("removedBusinessActivites", removedBusinessActivites.equals("")?removedBusinessActivites:removedBusinessActivites.substring(0, removedBusinessActivites.length()-1));
+            for (int i = 0; i < activity.getRemoved().size(); i++)
+                removedBusinessActivites += ((model.LicenseActivity) activity.getRemoved().toArray()[i]).get_originalBusinessActivity().getID() + ",";
+            map.put("removedBusinessActivites", removedBusinessActivites.equals("") ? removedBusinessActivites : removedBusinessActivites.substring(0, removedBusinessActivites.length() - 1));
             map.put("actionType", "CreateRequestPassportRenewal");
             if (activity.getType().equals("Change License Activity")) {
                 ////// with condition
@@ -408,7 +408,7 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
                                             Log.d("result", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
                                             activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
-activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c")+"");
+                                            activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c") + "");
                                             createVisaRecord(client);
                                         } catch (JSONException e) {
                                             e.printStackTrace();

@@ -63,6 +63,8 @@
             android:background="@drawable/list_selector"
             android:divider="@android:color/transparent"
             android:dividerHeight="2dp"
+            android:choiceMode="singleChoice"
+            android:listSelector="@drawable/list_selector_hilight"
             android:footerDividersEnabled="false">
 
         </ListView>
