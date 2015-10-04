@@ -241,12 +241,14 @@ public class ActivitiesLauncher {
             intent.putExtra("object", gson.toJson(directorship));
         } else if (object instanceof User) {
             User user = (User) object;
-            intent.putExtra("Current_Establishment_Card__c", user.get_contact().get_account().getEstablishmentCard().getCurrent_Establishment_Card__c());
-            intent.putExtra("CardNumber", user.get_contact().get_account().getEstablishmentCard().getEstablishment_Card_Number__c());
-            intent.putExtra("LicenseNumber", user.get_contact().get_account().get_currentLicenseNumber().getLicense_Number_Value());
-            intent.putExtra("IssueDate", user.get_contact().get_account().getEstablishmentCard().getIssue_Date__c());
-            intent.putExtra("ExpiryDate", user.get_contact().get_account().getEstablishmentCard().getExpiry_Date__c());
-            intent.putExtra("Status", user.get_contact().get_account().getEstablishmentCard().getStatus());
+            if (user.get_contact().get_account().getEstablishmentCard() != null) {
+                intent.putExtra("Current_Establishment_Card__c", user.get_contact().get_account().getEstablishmentCard().getCurrent_Establishment_Card__c());
+                intent.putExtra("CardNumber", user.get_contact().get_account().getEstablishmentCard().getEstablishment_Card_Number__c());
+                intent.putExtra("LicenseNumber", user.get_contact().get_account().get_currentLicenseNumber().getLicense_Number_Value());
+                intent.putExtra("IssueDate", user.get_contact().get_account().getEstablishmentCard().getIssue_Date__c());
+                intent.putExtra("ExpiryDate", user.get_contact().get_account().getEstablishmentCard().getExpiry_Date__c());
+                intent.putExtra("Status", user.get_contact().get_account().getEstablishmentCard().getStatus());
+            }
         }
         intent.putExtra("MethodType", s);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
