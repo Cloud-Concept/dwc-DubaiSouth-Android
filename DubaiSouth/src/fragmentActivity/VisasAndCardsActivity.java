@@ -19,6 +19,7 @@ public class VisasAndCardsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+
     }
 
     @Override
@@ -43,7 +44,7 @@ public class VisasAndCardsActivity extends BaseActivity {
 
     @Override
     public String getHeaderTitle() {
-        return getString(R.string.visas_cards);
+        return getString(R.string.visas_card);
     }
 
     @Override

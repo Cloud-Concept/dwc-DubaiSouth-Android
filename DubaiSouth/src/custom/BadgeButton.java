@@ -128,6 +128,8 @@ public class BadgeButton extends FrameLayout {
     @Override
     public void setOnClickListener(OnClickListener listener) {
         btnClickThrough.setOnClickListener(listener);
+        badgeView.setOnClickListener(listener);
+        badgeText.setOnClickListener(listener);
     }
 
     public void setBadgeText(String badgeTextString) {
