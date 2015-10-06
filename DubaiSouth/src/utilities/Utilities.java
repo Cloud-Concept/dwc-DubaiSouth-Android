@@ -2616,6 +2616,7 @@ public static String contactEmail="";
                     final String[] entries = field.getPicklistEntries().split(",");
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, entries);
                     adapter.setDropDownViewResource(R.layout.customtext);
+                    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                     spinner.setAdapter(adapter);
                     spinner.setSelection(0);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -2654,6 +2655,7 @@ public static String contactEmail="";
 //                    spinner.setHint(field.getMobileLabel());
                     NationalityAdapter adapter = new NationalityAdapter(act, android.R.layout.simple_list_item_1, 0, ((CardActivity) act).getCountries());
                     adapter.setDropDownViewResource(R.layout.customtext);
+//                    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                     spinner.setAdapter(adapter);
                     spinner.setSelection(0);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

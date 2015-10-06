@@ -78,7 +78,7 @@ public class CancelCardInitialPage extends Fragment {
         etCardType.setText(card.getCard_Type__c());
         etRecordToProcess.setText(card.getCard_Number__c());
         if (activity.getType().equals("3")) {
-            tvDuration.setVisibility(View.VISIBLE);
+//            tvDuration.setVisibility(View.VISIBLE);
             spinnerDuration.setVisibility(View.VISIBLE);
             if (activity.getCard().getCard_Type__c().equals(Card_Type_Elements[0])) {
 
