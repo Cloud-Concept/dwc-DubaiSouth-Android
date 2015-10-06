@@ -4,29 +4,55 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <custom.DWCRoundedImageView
-        android:id="@+id/imageView3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:src="@mipmap/lease_dlc_contract"></custom.DWCRoundedImageView>
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/header"
+        android:background="@color/noc_top_background">
 
-    <Button
-        android:id="@+id/btnRenewContract"
+        <custom.DWCRoundedImageView
+            android:id="@+id/view"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="10dip"
+            android:src="@mipmap/lease_dlc_contract"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="center">
+
+        </custom.DWCRoundedImageView>
+
+        <TextView
+            android:id="@+id/tvContractName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="31dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/cancel_rounded_corners"
-        android:padding="7dp"
-        android:text="Renew Contract"
-        android:textColor="@color/white"
-        android:visibility="gone" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/top">
 
+        <LinearLayout
+            android:id="@+id/linearAddForms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
 </RelativeLayout>
