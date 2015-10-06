@@ -13,6 +13,7 @@ import java.util.List;
 import adapter.ClickableListAdapter;
 import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
@@ -38,7 +39,7 @@ public class AccessCardAdapter extends ClickableListAdapter {
     protected ViewHolder createHolder(View v) {
 
         TextView tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry, tvCardNumber;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
         RelativeLayout relativeHeader = item.getHeaderLayout();
@@ -48,7 +49,7 @@ public class AccessCardAdapter extends ClickableListAdapter {
         tvStatus = (TextView) relativeHeader.findViewById(R.id.tvStatus);
         tvCardExpiry = (TextView) relativeHeader.findViewById(R.id.tvCardExpiry);
         tvCardNumber = (TextView) relativeHeader.findViewById(R.id.tvCardNumber);
-        _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
 
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
@@ -107,11 +108,11 @@ public class AccessCardAdapter extends ClickableListAdapter {
     static class AccessCardViewHolder extends ViewHolder {
 
         TextView tvFullName, tvType, tvPassportNumber, tvStatus, tvCardExpiry, tvCardNumber;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public AccessCardViewHolder(TextView tvFullName, TextView tvType, TextView tvPassportNumber, TextView tvStatus, TextView tvCardExpiry, TextView tvCardNumber, RoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public AccessCardViewHolder(TextView tvFullName, TextView tvType, TextView tvPassportNumber, TextView tvStatus, TextView tvCardExpiry, TextView tvCardNumber, DWCRoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
             this.tvType = tvType;
             this.tvPassportNumber = tvPassportNumber;

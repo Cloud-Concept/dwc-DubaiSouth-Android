@@ -264,7 +264,7 @@ public class ChangeAndRemovalActivity extends FragmentActivity {
             MethodName = "CreateRequestCapitalChange";
             SubmitMethodName = "SubmitRequestCapitalChange";
 
-        } else if (getIntent().getExtras().getString("MethodType").equals("Director Removal")) {
+        } else if (getIntent().getExtras().getString("MethodType").equals("Remove Director")) {
 
             MethodName = "CreateRequestDirectorRemoval";
             SubmitMethodName = "SubmitRequestDirectorRemoval";

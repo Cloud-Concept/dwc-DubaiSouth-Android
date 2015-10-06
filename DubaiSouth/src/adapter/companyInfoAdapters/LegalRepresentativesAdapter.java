@@ -12,6 +12,7 @@ import java.util.List;
 import adapter.ClickableListAdapter;
 import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
@@ -37,7 +38,7 @@ public class LegalRepresentativesAdapter extends ClickableListAdapter {
     protected ViewHolder createHolder(View v) {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
         RelativeLayout relativeHeader = item.getHeaderLayout();
@@ -47,7 +48,7 @@ public class LegalRepresentativesAdapter extends ClickableListAdapter {
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvRole = (TextView) relativeHeader.findViewById(R.id.tvRole);
         tvStartDate = (TextView) relativeHeader.findViewById(R.id.tvStartDate);
-        _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
         LegalRepresentativeViewHolder holder = new LegalRepresentativeViewHolder(tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate, _smartEmployeeImage,_horizontalServices);
@@ -72,16 +73,16 @@ public class LegalRepresentativesAdapter extends ClickableListAdapter {
     static class LegalRepresentativeViewHolder extends ViewHolder {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         HorizontalListView _horizontalServices;
 
-        public LegalRepresentativeViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvRole, TextView tvStartDate, RoundedImageView smartEmployeeImage, HorizontalListView _horizontalServices) {
+        public LegalRepresentativeViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvRole, TextView tvStartDate, DWCRoundedImageView _smartEmployeeImage, HorizontalListView _horizontalServices) {
             this.tvFullName = tvFullName;
             this.tvNationality = tvNationality;
             this.tvPassportNumber = tvPassportNumber;
             this.tvRole = tvRole;
             this.tvStartDate = tvStartDate;
-            this._smartEmployeeImage = smartEmployeeImage;
+            this._smartEmployeeImage = _smartEmployeeImage;
             this._horizontalServices = _horizontalServices;
         }
     }

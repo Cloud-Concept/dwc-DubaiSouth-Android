@@ -10,7 +10,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <custom.DWCRoundedImageView
             android:id="@+id/circleView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

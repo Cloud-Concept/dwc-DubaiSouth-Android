@@ -87,6 +87,9 @@ public class NewCardInitialPage extends Fragment {
                     activity.setCardType(CardType);
                 } else {
                     CardType = "";
+                    spinnerDuration.setEnabled(false);
+                    activity.setCardType(CardType);
+                    activity.setDuration("");
                 }
             }
 
@@ -105,7 +108,7 @@ public class NewCardInitialPage extends Fragment {
         spinnerDuration.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != -1) {
+                if (position != -1 && !CardType.equals("")) {
                     Utilities.showloadingDialog(getActivity());
                     activity.setDuration(elements[position]);
                     DoCardEServiceAdminQuery(CardQuery, CardType, activity.getDuration());

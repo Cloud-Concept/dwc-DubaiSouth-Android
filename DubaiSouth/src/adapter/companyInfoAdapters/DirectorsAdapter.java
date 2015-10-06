@@ -12,6 +12,7 @@ import java.util.List;
 import adapter.ClickableListAdapter;
 import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
@@ -40,7 +41,7 @@ public class DirectorsAdapter extends ClickableListAdapter {
     protected ViewHolder createHolder(View v) {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
         RelativeLayout relativeHeader = item.getHeaderLayout();
@@ -50,7 +51,7 @@ public class DirectorsAdapter extends ClickableListAdapter {
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvRole = (TextView) relativeHeader.findViewById(R.id.tvRole);
         tvStartDate = (TextView) relativeHeader.findViewById(R.id.tvStartDate);
-        _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
         DirectorViewHolder mvh = new DirectorViewHolder(tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate, _smartEmployeeImage, item, _horizontalServices);
@@ -71,7 +72,7 @@ public class DirectorsAdapter extends ClickableListAdapter {
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         if (directorships != null && directorships.size() > 1) {
-            _items.add(new ServiceItem("Director Removal", R.mipmap.reports_myrequests));
+            _items.add(new ServiceItem("Remove Director", R.mipmap.remove_directory));
         }
 
 //        holder.item.setOnClickListener(new ClickableListAdapter.OnClickListener(holder) {
@@ -94,11 +95,11 @@ public class DirectorsAdapter extends ClickableListAdapter {
     static class DirectorViewHolder extends ViewHolder {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public DirectorViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvRole, TextView tvStartDate, RoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public DirectorViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvRole, TextView tvStartDate, DWCRoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
             this.tvNationality = tvNationality;
             this.tvPassportNumber = tvPassportNumber;

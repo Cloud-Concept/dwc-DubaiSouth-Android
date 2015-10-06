@@ -4,20 +4,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
+    <custom.DWCRoundedImageView
         android:id="@+id/view"
-        layout="@layout/custom_rounded_image_view" />
+        android:orientation="vertical"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/avatar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="center">
+
+    </custom.DWCRoundedImageView>
 
     <TextView
         android:id="@+id/tvFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_alignTop="@+id/view"
-        android:layout_toEndOf="@+id/view"
         android:text=""
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/view" />
 
     <TextView
         android:id="@+id/tvCardNumberLabel"
@@ -25,11 +35,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvFullName"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/view"
         android:text="Card Number:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/text_view_size" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/tvCardNumber"
@@ -40,7 +51,7 @@
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/tvCardNumberLabel"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_view_size"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
     <TextView
@@ -50,10 +61,11 @@
         android:layout_below="@+id/tvCardNumberLabel"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/view"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Type:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/text_view_size" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/tvType"
@@ -63,6 +75,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView7"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/black"
         android:textSize="@dimen/text_view_size"
         android:textStyle="bold" />
@@ -74,10 +87,11 @@
         android:layout_below="@+id/textView7"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/view"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:text="passport Number:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/text_view_size" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/tvpassportNumber"
@@ -86,9 +100,9 @@
         android:layout_alignBaseline="@+id/textView8"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_toRightOf="@+id/textView8"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_view_size"
         android:textStyle="bold" />
 
     <TextView
@@ -98,10 +112,11 @@
         android:layout_below="@+id/textView8"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/view"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Status:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey"
-        android:textSize="12sp" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/tvStatus"
@@ -110,6 +125,7 @@
         android:layout_alignBaseline="@+id/textView9"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_toRightOf="@+id/textView9"
         android:textColor="@color/black"
         android:textSize="@dimen/text_view_size"
@@ -122,10 +138,11 @@
         android:layout_below="@+id/textView9"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/view"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Card Expiry:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/text_view_size" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/tvCardExpiry"
@@ -135,9 +152,16 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView10"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_view_size"
         android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textView10"
+        android:background="@color/grey" />
 
 
 </RelativeLayout>

@@ -14,6 +14,7 @@ import java.util.List;
 import adapter.ClickableListAdapter;
 import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
@@ -40,7 +41,7 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
     @Override
     protected ViewHolder createHolder(View v) {
         TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus, textView10;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
         RelativeLayout relativeHeader = item.getHeaderLayout();
@@ -49,7 +50,7 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvStatus = (TextView) relativeHeader.findViewById(R.id.tvStatus);
         textView10 = (TextView) relativeHeader.findViewById(R.id.textView10);
-        _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
         VisitVisaViewHolder holder = new VisitVisaViewHolder(tvFullName, tvPassportNumber, tvStatus, textView10, tvVisaExpiry, _smartEmployeeImage, item, _horizontalServices);
@@ -102,17 +103,17 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
     static class VisitVisaViewHolder extends ViewHolder {
 
         TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus, textView10;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public VisitVisaViewHolder(TextView tvFullName, TextView tvPassportNumber, TextView tvStatus, TextView textView10, TextView tvCardExpiry, RoundedImageView i, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public VisitVisaViewHolder(TextView tvFullName, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, TextView textView10, DWCRoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
+            this.tvVisaExpiry = tvVisaExpiry;
             this.tvPassportNumber = tvPassportNumber;
             this.tvStatus = tvStatus;
-            this.tvVisaExpiry = tvCardExpiry;
             this.textView10 = textView10;
-            this._smartEmployeeImage = i;
+            this._smartEmployeeImage = _smartEmployeeImage;
             this.item = item;
             this._horizontalListView = _horizontalListView;
         }

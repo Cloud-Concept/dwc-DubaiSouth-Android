@@ -3,9 +3,7 @@ package fragment;
 import com.blunderer.materialdesignlibrary.handlers.ViewPagerHandler;
 
 import custom.DWCViewPagerFragment;
-import fragment.companyDocumentsScreen.CertificatesAndAgreementsFragment;
 import fragment.companyDocumentsScreen.CertificatesAndAgreementsFragment2;
-import fragment.companyDocumentsScreen.CustomerDocumentsFragment;
 import fragment.companyDocumentsScreen.CustomerDocumentsFragment2;
 
 /**
@@ -21,8 +19,8 @@ public class CompanyDocumentsFragment extends DWCViewPagerFragment {
     @Override
     public ViewPagerHandler getViewPagerHandler() {
         return new ViewPagerHandler(getActivity())
-                .addPage("CERTIFICATES/AGREEMENTS", CertificatesAndAgreementsFragment2.newInstance("CertificatesAndAgreementsFragment"))
-                .addPage("CUSTOMER DOCUMENTS", CustomerDocumentsFragment2.newInstance("CustomerDocumentsFragment"));
+                .addPage("True Copies", CertificatesAndAgreementsFragment2.newInstance("CertificatesAndAgreementsFragment"))
+                .addPage("Customer Documents", CustomerDocumentsFragment2.newInstance("CustomerDocumentsFragment"));
     }
 
     @Override

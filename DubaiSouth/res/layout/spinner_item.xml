@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:gravity="left"
-    android:padding="5dip"
+    android:padding="3dip"
     android:text=""
     android:textColor="@color/black"
     android:textSize="@dimen/text_view_size_spinner" />

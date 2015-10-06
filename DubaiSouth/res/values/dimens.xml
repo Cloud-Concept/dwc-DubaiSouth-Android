@@ -15,7 +15,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_drawer_width">260dp</dimen>
     <dimen name="text_view_size">12sp</dimen>
-    <dimen name="text_view_size_spinner">15sp</dimen>
+    <dimen name="text_view_size_spinner">12sp</dimen>
     <dimen name="header_text_size">18sp</dimen>
     <dimen name="text_size_label">14sp</dimen>
     <dimen name="spinner_dimen">10dp</dimen>

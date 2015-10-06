@@ -12,6 +12,7 @@ import java.util.List;
 import adapter.ClickableListAdapter;
 import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
@@ -37,7 +38,7 @@ public class GeneralManagersAdapter extends ClickableListAdapter {
     protected ViewHolder createHolder(View v) {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         HorizontalListView horizontalListView;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
@@ -49,7 +50,7 @@ public class GeneralManagersAdapter extends ClickableListAdapter {
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvRole = (TextView) relativeHeader.findViewById(R.id.tvRole);
         tvStartDate = (TextView) relativeHeader.findViewById(R.id.tvStartDate);
-        _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
         GeneralManagerViewHolder holder = new GeneralManagerViewHolder(tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate, _smartEmployeeImage, _horizontalServices);
@@ -75,10 +76,10 @@ public class GeneralManagersAdapter extends ClickableListAdapter {
     static class GeneralManagerViewHolder extends ViewHolder {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvRole, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         HorizontalListView horizontalListView;
 
-        public GeneralManagerViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvRole, TextView tvStartDate, RoundedImageView _smartEmployeeImage, HorizontalListView horizontalListView) {
+        public GeneralManagerViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvRole, TextView tvStartDate, DWCRoundedImageView _smartEmployeeImage, HorizontalListView horizontalListView) {
             this.tvFullName = tvFullName;
             this.tvNationality = tvNationality;
             this.tvPassportNumber = tvPassportNumber;

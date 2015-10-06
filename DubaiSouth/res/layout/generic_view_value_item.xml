@@ -8,8 +8,9 @@
         android:id="@+id/tvValueItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="fbwifeiwhnfie"
+        android:padding="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/light_grey"
+        android:textColor="@color/grey"
         android:textSize="@dimen/text_size_label" />
 </LinearLayout>

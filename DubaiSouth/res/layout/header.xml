@@ -6,21 +6,29 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <include
+    <custom.DWCRoundedImageView
         android:id="@+id/view"
-        layout="@layout/custom_rounded2" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:scaleType="center"
+        android:src="@mipmap/avatar" />
+
 
     <TextView
+        android:id="@+id/tvProfileName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="mdoemdowe"
-        android:id="@+id/tvProfileName"
-        android:gravity="center"
         android:layout_below="@+id/view"
-        android:textColor="@color/dwc_blue_color"
-        android:padding="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="mdoemdowe"
+        android:textColor="@color/dwc_blue_color" />
 
 </RelativeLayout>

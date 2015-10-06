@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import model.MyRequest;
 import utilities.Utilities;
 
@@ -29,14 +30,15 @@ public class MyRequestsAdapter extends ClickableListAdapter {
         super(context, viewid, myRequests);
         this.context = context;
         this.act = act;
-        services = new String[]{"Visa Services", "NOC Services", "License Services", "Access Cards Services", "Registration Services", "Leasing Services"};
+        services = new String[]{"Visa Services", "NOC Services", "License Services", "Access Card Services", "Registration Services", "Leasing Services"};
         status_filter = new String[]{"Completed", "In Process", "Ready for collection", "Not Submitted", "Application Submitted", "Draft"};
     }
 
     @Override
     protected ViewHolder createHolder(View v) {
         TextView tvRefNumber, tvDate, tvRequestType, tvService, tvPersonName, tvCurrentStatus, tvPersonNameLabel;
-        ImageView imageView, bulletStatus;
+        ImageView bulletStatus;
+        DWCRoundedImageView imageView;
         tvRefNumber = (TextView) v.findViewById(R.id.tvRefNumber);
         tvDate = (TextView) v.findViewById(R.id.tvDate);
         tvRequestType = (TextView) v.findViewById(R.id.tvRequestType);
@@ -44,7 +46,7 @@ public class MyRequestsAdapter extends ClickableListAdapter {
         tvPersonName = (TextView) v.findViewById(R.id.tvPersonName);
         tvCurrentStatus = (TextView) v.findViewById(R.id.tvCurrentStatus);
         tvPersonNameLabel = (TextView) v.findViewById(R.id.tvPersonNameLabel);
-        imageView = (ImageView) v.findViewById(R.id.view);
+        imageView = (DWCRoundedImageView) v.findViewById(R.id.view);
         bulletStatus = (ImageView) v.findViewById(R.id.bulletStatus);
         MyRequestsViewHolder holder = new MyRequestsViewHolder(tvRefNumber, tvDate, tvRequestType, tvService, tvPersonName, tvCurrentStatus, tvPersonNameLabel, imageView, bulletStatus);
         return holder;
@@ -58,25 +60,16 @@ public class MyRequestsAdapter extends ClickableListAdapter {
 
         mvh.tvRefNumber.setText(Utilities.stringNotNull(myRequest.getCaseNumber()));
         if (!Utilities.stringNotNull(myRequest.getCreatedDate()).equals("")) {
-//            DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-//            try {
-//                Date date = format.parse(myRequest.getCreatedDate());
-//                String strDate = sdfDate.format(date);
-//                mvh.tvDate.setText(strDate);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
             String pattern = "yyyy-MM-dd'T'HH:mm:ss";
-            SimpleDateFormat dtf =new SimpleDateFormat(pattern);
+            SimpleDateFormat dtf = new SimpleDateFormat(pattern);
             try {
                 Date dateTime = dtf.parse(Utilities.stringNotNull(myRequest.getCreatedDate()));
                 pattern = "dd-MMM-yyyy hh:mm a";
-                dtf=new SimpleDateFormat(pattern);
+                dtf = new SimpleDateFormat(pattern);
                 mvh.tvDate.setText(dtf.format(dateTime));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
         } else {
             mvh.tvDate.setText("");
         }
@@ -121,9 +114,10 @@ public class MyRequestsAdapter extends ClickableListAdapter {
     static class MyRequestsViewHolder extends ViewHolder {
 
         TextView tvRefNumber, tvDate, tvRequestType, tvService, tvPersonName, tvCurrentStatus, tvPersonNameLabel;
-        ImageView imageMyRequest, bulletStatus;
+        ImageView bulletStatus;
+        DWCRoundedImageView imageMyRequest;
 
-        public MyRequestsViewHolder(TextView tvRefNumber, TextView tvDate, TextView tvRequestType, TextView tvService, TextView tvPersonName, TextView tvCurrentStatus, TextView tvPersonNameLabel, ImageView imageView, ImageView bulletStatus) {
+        public MyRequestsViewHolder(TextView tvRefNumber, TextView tvDate, TextView tvRequestType, TextView tvService, TextView tvPersonName, TextView tvCurrentStatus, TextView tvPersonNameLabel, DWCRoundedImageView imageMyRequest, ImageView bulletStatus) {
             this.tvRefNumber = tvRefNumber;
             this.tvDate = tvDate;
             this.tvRequestType = tvRequestType;
@@ -131,8 +125,8 @@ public class MyRequestsAdapter extends ClickableListAdapter {
             this.tvPersonName = tvPersonName;
             this.tvCurrentStatus = tvCurrentStatus;
             this.tvPersonNameLabel = tvPersonNameLabel;
-            this.imageMyRequest = imageView;
             this.bulletStatus = bulletStatus;
+            this.imageMyRequest = imageMyRequest;
         }
     }
 }

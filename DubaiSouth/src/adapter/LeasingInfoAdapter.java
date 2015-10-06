@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
@@ -40,7 +41,7 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
     protected ViewHolder createHolder(View v) {
 
         TextView tvContractName, tvUnitName, tvContractType, tvExpiryDate, tvStatus;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
 
@@ -51,7 +52,7 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
         tvExpiryDate = (TextView) relativeHeader.findViewById(R.id.tvExpiryDate);
         tvStatus = (TextView) relativeHeader.findViewById(R.id.tvStatus);
 
-        _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
 
         RelativeLayout relativeContent = item.getContentLayout();
 
@@ -105,11 +106,11 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
     static class ContractViewHolder extends ViewHolder {
 
         TextView tvContractName, tvUnitName, tvContractType, tvExpiryDate, tvStatus;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public ContractViewHolder(TextView tvContractName, TextView tvUnitName, TextView tvContractType, TextView tvExpiryDate, TextView tvStatus, RoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public ContractViewHolder(TextView tvContractName, TextView tvUnitName, TextView tvContractType, TextView tvExpiryDate, TextView tvStatus, DWCRoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvContractName = tvContractName;
             this.tvUnitName = tvUnitName;
             this.tvContractType = tvContractType;

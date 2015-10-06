@@ -37,8 +37,6 @@ import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
 import fragment.BaseFragmentFiveSteps;
-import fragment.BaseServiceFragment;
-import fragment.Cards.CancelCard.CancelCardInitialPage;
 import fragment.Cards.NOCAttachmentPage;
 import fragment.Cards.PayAndSubmit;
 import fragmentActivity.CardActivity;
@@ -84,7 +82,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
-        return ThankYou.newInstance(msg,fee,mail);
+        return ThankYou.newInstance(msg, fee, mail);
     }
 
     @Override
@@ -96,12 +94,18 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     public void onClick(View v) {
         if (v == btnNext) {
             if (getStatus() == 1) {
-                Map<String, String> parameters = activity.getParameters();
-                parameters.put("actName", Utilities.stringNotNull(activity.getUser().get_contact().get_account().getName()));
-                parameters.put("accountID", Utilities.stringNotNull(activity.getUser().get_contact().get_account().getID()));
-                parameters.put("Dur", activity.getDuration());
-                activity.setParameters(parameters);
-                super.onClick(v);
+                if (activity.getCardType() == null || activity.getCardType().equals("")) {
+                    Utilities.showToast(getActivity(), "Please choose valid card type");
+                } else if (activity.getDuration() == null || activity.getDuration().equals("")) {
+                    Utilities.showToast(getActivity(), "Please choose valid duration type");
+                } else {
+                    Map<String, String> parameters = activity.getParameters();
+                    parameters.put("actName", Utilities.stringNotNull(activity.getUser().get_contact().get_account().getName()));
+                    parameters.put("accountID", Utilities.stringNotNull(activity.getUser().get_contact().get_account().getID()));
+                    parameters.put("Dur", activity.getDuration());
+                    activity.setParameters(parameters);
+                    super.onClick(v);
+                }
             } else if (getStatus() == 2) {
                 if (required())
                     createCaseRecord();
@@ -114,34 +118,32 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                 } else {
                     super.onClick(v);
                 }
-            }else if(getStatus()==4)
+            } else if (getStatus() == 4)
                 builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
             else {
                 super.onClick(v);
             }
         } else if (v == btnBack || v == btnBackTransparent) {
 
-                if (getStatus() == 3) {
+            if (getStatus() == 3) {
 //                    activity.setInsertedCaseId(null);
 //                    activity.setInsertedServiceId(null);
-                } else if (getStatus() == 4) {
-                    if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
-                        setStatus(3);
+            } else if (getStatus() == 4) {
+                if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
+                    setStatus(3);
 
-                        btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                        btnNOC3.setSelected(false);
-                        btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
-                        btnNOC3.setGravity(Gravity.CENTER);
-                        btnNOC3.setText("3");
-                        btnNext.setText(("Next"));
-                        btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                        btnNOC4.setSelected(false);
-                        btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
-                        btnNOC4.setGravity(Gravity.CENTER);
-                        btnNOC4.setText("4");
-                    }
-
-
+                    btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                    btnNOC3.setSelected(false);
+                    btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
+                    btnNOC3.setGravity(Gravity.CENTER);
+                    btnNOC3.setText("3");
+                    btnNext.setText(("Next"));
+                    btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                    btnNOC4.setSelected(false);
+                    btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
+                    btnNOC4.setGravity(Gravity.CENTER);
+                    btnNOC4.setText("4");
+                }
             }
             super.onClick(v);
         } else {
@@ -167,7 +169,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     private boolean required() {
         boolean result = true;
         for (FormField field : activity.get_webForm().get_formFields()) {
-            if (field.isRequired()&&!field.isHidden()) {
+            if (field.isRequired() && !field.isHidden()) {
                 String name = field.getName();
                 String stringValue = "";
                 Field[] fields = Card_Management__c.class.getFields();
@@ -257,7 +259,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                         @Override
                         public void onSuccess(RestRequest request, RestResponse response) {
                             try {
-                                Log.d("result",response.toString());
+                                Log.d("result", response.toString());
                                 JSONObject jsonObject = new JSONObject(response.toString());
                                 activity.setInsertedCaseId(jsonObject.getString("id"));
 
@@ -276,7 +278,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                                             JSONObject jsonRecord = jsonArray.getJSONObject(0);
                                             Log.d("resultcase", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
-                                            activity.setTotal(activity.geteServiceAdministration().getTotal_Amount__c()+"");
+                                            activity.setTotal(activity.geteServiceAdministration().getTotal_Amount__c() + "");
                                             createCardRecord();
                                         } catch (JSONException e) {
                                             e.printStackTrace();
@@ -294,7 +296,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                if(response.toString().equals("")){
+                                if (response.toString().equals("")) {
                                     createCardRecord();
                                 }
                             }
@@ -324,7 +326,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
         serviceFields = new HashMap<String, Object>();
         serviceFields.put("RecordTypeId", activity.getCardRecordTypeId());
         serviceFields.put("Request__c", activity.getInsertedCaseId());
-        serviceFields.put("Card_Type__c", activity.getCardType().replace("_"," "));
+        serviceFields.put("Card_Type__c", activity.getCardType().replace("_", " "));
 
             /* Load dynamic fetching */
 
@@ -382,8 +384,8 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                                 updateCaseRecord(activity.getInsertedCaseId(), activity.getInsertedServiceId());
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                if(response.toString().equals(""))
-                                PerfromParentNext();
+                                if (response.toString().equals(""))
+                                    PerfromParentNext();
                             }
                             Utilities.dismissLoadingDialog();
                         }
@@ -443,7 +445,6 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
             e.printStackTrace();
         }
     }
-
 
 
     private void PerfromParentNext() {
@@ -513,8 +514,6 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
 
 
             return null;

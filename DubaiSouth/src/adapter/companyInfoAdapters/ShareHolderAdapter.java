@@ -1,7 +1,6 @@
 package adapter;
 
 import android.app.Activity;
-import android.app.Service;
 import android.content.Context;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -10,11 +9,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.ClickableListAdapter;
-import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
-import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
 import model.ServiceItem;
 import model.ShareOwnership;
@@ -33,14 +30,14 @@ public class ShareHolderAdapter extends ClickableListAdapter {
         super(context, viewid, objects);
         this.activity = activity;
         this.context = context;
-        this.objects= (ArrayList) objects;
+        this.objects = (ArrayList) objects;
     }
 
     @Override
     protected ViewHolder createHolder(View v) {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvOwnerShip, tvNumberOfShares, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
@@ -52,12 +49,12 @@ public class ShareHolderAdapter extends ClickableListAdapter {
         tvOwnerShip = (TextView) relativeHeader.findViewById(R.id.tvOwnership);
         tvNumberOfShares = (TextView) relativeHeader.findViewById(R.id.tvNumberOfShares);
         tvStartDate = (TextView) relativeHeader.findViewById(R.id.tvStartDate);
-        _smartEmployeeImage = (RoundedImageView) v.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) v.findViewById(R.id.view);
 
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
 
-        ShareHoldersViewHolder holder = new ShareHoldersViewHolder(tvFullName, tvNationality, tvPassportNumber, tvOwnerShip, tvNumberOfShares, tvStartDate, _smartEmployeeImage,item,_horizontalServices);
+        ShareHoldersViewHolder holder = new ShareHoldersViewHolder(tvFullName, tvNationality, tvPassportNumber, tvOwnerShip, tvNumberOfShares, tvStartDate, _smartEmployeeImage, item, _horizontalServices);
         return holder;
     }
 
@@ -89,20 +86,20 @@ public class ShareHolderAdapter extends ClickableListAdapter {
 //        });
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
-        _items.add(new ServiceItem("Share Transfer", R.mipmap.share_transfer, objects));
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
-        holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_ShareHolder,activity, context, _items));
+        _items.add(new ServiceItem("Share Transfer", R.mipmap.share_transfer, objects));
+        holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_ShareHolder, activity, context, _items));
 
     }
 
     static class ShareHoldersViewHolder extends ViewHolder {
 
         TextView tvFullName, tvNationality, tvPassportNumber, tvOwnerShip, tvNumberOfShares, tvStartDate;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public ShareHoldersViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvOwnerShip, TextView tvNumberOfShares, TextView tvStartDate, RoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public ShareHoldersViewHolder(TextView tvFullName, TextView tvNationality, TextView tvPassportNumber, TextView tvOwnerShip, TextView tvNumberOfShares, TextView tvStartDate, DWCRoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
             this.tvNationality = tvNationality;
             this.tvPassportNumber = tvPassportNumber;

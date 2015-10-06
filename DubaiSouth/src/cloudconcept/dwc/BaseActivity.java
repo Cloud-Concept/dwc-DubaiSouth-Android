@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import adapter.NavDrawerListAdapter;
 import custom.BadgeButton;
+import custom.DWCRoundedImageView;
 import custom.RoundedImageView;
 import dataStorage.StoreData;
 import model.NavDrawerItem;
@@ -120,7 +121,7 @@ public abstract class BaseActivity extends SalesforceActivity implements View.On
                 getApplicationContext().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View v = mInflater.inflate(R.layout.header, null);
         TextView tvTitle = (TextView) v.findViewById(R.id.tvProfileName);
-        RoundedImageView imageUser = (RoundedImageView) v.findViewById(R.id.view);
+        DWCRoundedImageView imageUser = (DWCRoundedImageView) v.findViewById(R.id.view);
         tvTitle.setText(new StoreData(getApplicationContext()).getUsername());
         Gson gson = new Gson();
         User user = gson.fromJson(new StoreData(getApplicationContext()).getUserDataAsString(), User.class);

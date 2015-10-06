@@ -399,4 +399,14 @@ public class ActivitiesLauncher {
         intent.putExtra("objectType", "ShareHolder");
         context.startActivity(intent);
     }
+
+    public static void openLeasingShowDetailsActivity(Context context, Contract_DWC__c contract_dwc__c) {
+        intent = new Intent(context, LeasingShowDetailsActivity.class);
+        gson = new Gson();
+        String ObjectAsStr = gson.toJson(contract_dwc__c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("object", ObjectAsStr);
+        context.startActivity(intent);
+    }
 }

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
@@ -46,7 +47,7 @@ public class MyRequestsFragment extends Fragment {
 
     private static Calendar calendar;
     String[] status_filter = new String[]{"All", "Completed", "In Process", "Ready For Collection", "Not Submitted"};
-    String[] request_type_filter = new String[]{"All", "Visa Services", "NOC Services", "License Services", "Access Cards Services", "Registration Services", "Leasing Services"};
+    String[] request_type_filter = new String[]{"All", "Visa Services", "NOC Services", "License Services", "Access Card Services", "Registration Services", "Leasing Services"};
     int offset = 0;
     int limit = 20;
     SwipyRefreshLayout mSwipeRefreshLayout;
@@ -90,10 +91,10 @@ public class MyRequestsFragment extends Fragment {
         spinnerStatusFilter = (Spinner) view.findViewById(R.id.spinnerStatus);
         spinnerRequestTypeFilter = (Spinner) view.findViewById(R.id.spinnerType);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, status_filter);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
         spinnerStatusFilter.setAdapter(adapter);
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, request_type_filter);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
         spinnerRequestTypeFilter.setAdapter(adapter);
 
         spinnerStatusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -103,9 +104,12 @@ public class MyRequestsFragment extends Fragment {
                 if (!status.equals(status_filter[position])) {
                     offset = 0;
                     InflatedRequests.clear();
+                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                     status = status_filter[position];
                     new StoreData(getActivity().getApplicationContext()).setMyRequestsStatus(status);
                     CallMyRequestsService(CallType.SPINNETCHANGEDDATA, status, request_type, limit, offset);
+                }else {
+                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                 }
             }
 
@@ -122,9 +126,12 @@ public class MyRequestsFragment extends Fragment {
                 if (!request_type.equals(request_type_filter[position])) {
                     offset = 0;
                     InflatedRequests.clear();
+                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                     request_type = request_type_filter[position];
                     new StoreData(getActivity().getApplicationContext()).setMyRequestsRequestType(request_type);
                     CallMyRequestsService(CallType.SPINNETCHANGEDDATA, status, request_type, limit, offset);
+                }else{
+                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                 }
             }
 

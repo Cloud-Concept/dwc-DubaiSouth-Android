@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <custom.RoundedImageView
+
+    <custom.DWCRoundedImageView
         android:id="@+id/imageView2"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -11,108 +13,117 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:background="@mipmap/lease_dlc_contract" />
+        android:src="@mipmap/lease_dlc_contract">
+
+    </custom.DWCRoundedImageView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
         android:id="@+id/tvContractName"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView2" />
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/imageView2"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Unit Name:"
-        android:textColor="@color/black"
         android:id="@+id/textView22"
-        android:layout_below="@+id/tvContractName"
-        android:layout_alignStart="@+id/tvContractName" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvContractName"
+        android:layout_below="@+id/tvContractName"
+        android:text="Unit Name:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
-        android:textColor="@color/black"
-        android:layout_marginLeft="5dp"
+        android:textColor="@color/black" />
+
+    <TextView
         android:id="@+id/tvUnitName"
-        android:layout_below="@+id/tvContractName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tvContractName"
-        android:layout_toEndOf="@+id/textView22" />
+        android:layout_below="@+id/tvContractName"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/textView22"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Contract Type:"
-        android:textColor="@color/black"
         android:id="@+id/textView23"
-        android:layout_below="@+id/tvUnitName"
-        android:layout_alignStart="@+id/tvContractName" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvContractName"
+        android:layout_below="@+id/tvUnitName"
+        android:text="Contract Type:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
-        android:layout_marginLeft="5dp"
-        android:textColor="@color/black"
+        android:textColor="@color/black" />
+
+    <TextView
         android:id="@+id/tvContractType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvUnitName"
         android:layout_below="@+id/tvUnitName"
-        android:layout_alignEnd="@+id/tvUnitName"
-        android:layout_toEndOf="@+id/textView23" />
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/textView23"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Expiry Date:"
         android:id="@+id/textView21"
-        android:textColor="@color/black"
-        android:layout_below="@+id/textView23"
-        android:layout_alignStart="@+id/textView23" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView23"
+        android:layout_below="@+id/textView23"
+        android:text="Expiry Date:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
-        android:layout_marginLeft="5dp"
-        android:textColor="@color/black"
+        android:textColor="@color/black" />
+
+    <TextView
         android:id="@+id/tvExpiryDate"
-        android:layout_below="@+id/textView23"
-        android:layout_alignStart="@+id/tvUnitName"
-        android:layout_alignEnd="@+id/tvUnitName" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Status:"
-        android:textColor="@color/black"
-        android:id="@+id/textView25"
-        android:layout_below="@+id/textView21"
-        android:layout_alignStart="@+id/textView21" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
-        android:textColor="@color/black"
-        android:layout_marginLeft="5dp"
-        android:id="@+id/tvStatus"
-        android:layout_below="@+id/tvExpiryDate"
         android:layout_alignEnd="@+id/tvUnitName"
-        android:layout_toEndOf="@+id/textView25" />
+        android:layout_alignStart="@+id/tvUnitName"
+        android:layout_below="@+id/textView23"
+        android:layout_marginLeft="5dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView21"
+        android:layout_below="@+id/textView21"
+        android:text="Status:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvUnitName"
+        android:layout_below="@+id/tvExpiryDate"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/textView25"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textView25"
+        android:background="@color/grey" />
 
 </RelativeLayout>

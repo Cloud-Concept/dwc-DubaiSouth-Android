@@ -162,7 +162,7 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                     if (tvServiceName.getText().toString().equals("Share Transfer")) {
                         ActivitiesLauncher.openShareHolderActivity(context, shareHolder, "2", _items.get(position).getObjects());
                     } else if (tvServiceName.getText().toString().equals("Show Details")) {
-                        ActivitiesLauncher.openShareHolderShowDetailsActivity(context,shareHolder);
+                        ActivitiesLauncher.openShareHolderShowDetailsActivity(context, shareHolder);
                     }
                 } else if (object instanceof EServices_Document_Checklist__c) {
                     EServices_Document_Checklist__c eServices_document_checklist__c = (EServices_Document_Checklist__c) object;
@@ -211,15 +211,16 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                     } else if (tvServiceName.getText().toString().equals("Reserve Name")) {
                         ActivitiesLauncher.openNameReservationActivity(context);
                     } else if (tvServiceName.getText().toString().equals("Renew Card")) {
-                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context,"Renew Card",object);
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Renew Card", object);
                     } else if (tvServiceName.getText().toString().equals("Lost Card")) {
-                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context,"Lost Card",object);
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Lost Card", object);
                     } else if (tvServiceName.getText().toString().equals("Cancel Card")) {
-                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context,"Cancel Card",object);
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Cancel Card", object);
                     }
                 } else if (object instanceof Contract_DWC__c) {
                     final Contract_DWC__c contract_dwc__c = (Contract_DWC__c) object;
                     if (tvServiceName.getText().toString().equals("Show Details")) {
+                        ActivitiesLauncher.openLeasingShowDetailsActivity(context, contract_dwc__c);
 
                     } else if (tvServiceName.getText().toString().equals("Renew Contract")) {
                         //Not BC Contract
@@ -254,8 +255,8 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                     if (tvServiceName.getText().toString().equals("Show Details")) {
 //                        ActivitiesLauncher.openLicenseCancellationActivity(context);
                         ActivitiesLauncher.openDirectorShowDetailsActivity(context, directorship);
-                    } else if (tvServiceName.getText().toString().equals("Director Removal")) {
-                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Director Removal", object);
+                    } else if (tvServiceName.getText().toString().equals("Remove Director")) {
+                        ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Remove Director", object);
                     }
                 } else if (object instanceof LegalRepresentative) {
                     final LegalRepresentative legalRepresentative = (LegalRepresentative) object;

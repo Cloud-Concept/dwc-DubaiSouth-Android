@@ -19,6 +19,7 @@ import adapter.ClickableListAdapter;
 import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
 import custom.CustomViewPager;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
@@ -47,7 +48,7 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
     protected ViewHolder createHolder(View v) {
 
         TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
 
@@ -56,7 +57,7 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         tvVisaExpiry = (TextView) relativeHeader.findViewById(R.id.tvVisaExpiry);
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvStatus = (TextView) relativeHeader.findViewById(R.id.tvStatus);
-        _smartEmployeeImage = (RoundedImageView) relativeHeader.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
 
         RelativeLayout relativeContent = item.getContentLayout();
 
@@ -187,11 +188,11 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
     static class VisaViewHolder extends ViewHolder {
 
         TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public VisaViewHolder(TextView tvFullName, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, RoundedImageView i, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public VisaViewHolder(TextView tvFullName, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, DWCRoundedImageView i, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
             this._smartEmployeeImage = i;
             this.tvPassportNumber = tvPassportNumber;

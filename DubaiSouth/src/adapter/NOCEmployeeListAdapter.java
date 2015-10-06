@@ -8,6 +8,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.RoundedImageView;
 import model.Visa;
 import utilities.Utilities;
@@ -30,12 +31,12 @@ public class NOCEmployeeListAdapter extends ClickableListAdapter {
     protected ViewHolder createHolder(View v) {
 
         TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
         tvFullName = (TextView) v.findViewById(R.id.tvFullName);
         tvVisaExpiry = (TextView) v.findViewById(R.id.tvVisaExpiry);
         tvPassportNumber = (TextView) v.findViewById(R.id.tvpassportNumber);
         tvStatus = (TextView) v.findViewById(R.id.tvStatus);
-        _smartEmployeeImage = (RoundedImageView) v.findViewById(R.id.view);
+        _smartEmployeeImage = (DWCRoundedImageView) v.findViewById(R.id.view);
         EmployeeListHolder holder = new EmployeeListHolder(tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus, _smartEmployeeImage);
         return holder;
     }
@@ -56,14 +57,14 @@ public class NOCEmployeeListAdapter extends ClickableListAdapter {
     static class EmployeeListHolder extends ViewHolder {
 
         TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus;
-        RoundedImageView _smartEmployeeImage;
+        DWCRoundedImageView _smartEmployeeImage;
 
-        public EmployeeListHolder(TextView tvFullName, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, RoundedImageView i) {
+        public EmployeeListHolder(TextView tvFullName, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, DWCRoundedImageView _smartEmployeeImage) {
             this.tvFullName = tvFullName;
-            this._smartEmployeeImage = i;
-            this.tvPassportNumber = tvPassportNumber;
             this.tvVisaExpiry = tvVisaExpiry;
+            this.tvPassportNumber = tvPassportNumber;
             this.tvStatus = tvStatus;
+            this._smartEmployeeImage = _smartEmployeeImage;
         }
     }
 }

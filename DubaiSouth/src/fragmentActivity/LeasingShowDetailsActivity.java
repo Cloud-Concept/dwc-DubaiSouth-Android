@@ -3,8 +3,9 @@ package fragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
 
-import com.gc.materialdesign.views.Button;
+import com.google.gson.Gson;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,13 +24,15 @@ public class LeasingShowDetailsActivity extends FragmentActivity {
 
     Contract_DWC__c contract_dwc__c;
     private Button btnRenewContract;
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_details_leasing_contract);
         btnRenewContract = (Button) findViewById(R.id.btnRenewContract);
-        contract_dwc__c = (Contract_DWC__c) getIntent().getExtras().get("contract");
+        gson = new Gson();
+        contract_dwc__c = gson.fromJson(getIntent().getExtras().getString("object"), Contract_DWC__c.class);
         Calendar cal1 = new GregorianCalendar();
         Calendar cal2 = new GregorianCalendar();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
@@ -47,7 +50,6 @@ public class LeasingShowDetailsActivity extends FragmentActivity {
             e.printStackTrace();
         }
         cal2.setTime(date2);
-
         int days = Utilities.daysBetween(date, date2);
         if (days <= 60) {
             btnRenewContract.setVisibility(View.VISIBLE);

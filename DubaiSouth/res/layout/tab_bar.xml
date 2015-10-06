@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:background="@color/black_night"
@@ -31,13 +31,14 @@
                 android:background="@mipmap/tab_bar_home" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageTabBarHome"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_marginTop="7dp"
                 android:text="Home"
-                android:textColor="@color/white" />
+                android:textColor="@color/grey" />
 
         </RelativeLayout>
 
@@ -57,13 +58,14 @@
                 android:background="@mipmap/tab_bar_request" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageTabBarRequest"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
                 android:text="Request"
-                android:textColor="@color/white" />
+                android:textColor="@color/grey" />
 
         </RelativeLayout>
 
@@ -87,9 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageTabBarReports"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:text="Reports"
-                android:textColor="@color/white" />
+                android:textColor="@color/grey" />
 
         </RelativeLayout>
 
@@ -115,7 +117,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="12dp"
                 android:text="Dashboard"
-                android:textColor="@color/white" />
+                android:textColor="@color/grey" />
 
         </RelativeLayout>
     </LinearLayout>

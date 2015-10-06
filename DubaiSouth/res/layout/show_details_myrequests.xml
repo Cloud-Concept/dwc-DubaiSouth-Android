@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Request Detials"
+            android:text="Request Details"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -67,6 +67,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Ref Number"
                 android:textStyle="bold" />
 
@@ -75,19 +76,21 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:gravity="center"
                 android:text="Date"
                 android:textStyle="bold" />
@@ -97,13 +100,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -112,6 +116,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Request Type"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -119,13 +124,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -134,6 +140,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Person Name"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -141,13 +148,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -156,15 +164,19 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Current Status"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvCurrentStatus"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_weight="1"
                 android:gravity="center" />
         </LinearLayout>
+
+
 
     </LinearLayout>
 
