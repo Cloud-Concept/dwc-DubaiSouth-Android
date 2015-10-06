@@ -58,7 +58,12 @@ public class ClickableCustomerDocumentsAdapter extends ClickableListAdapter {
         } else {
             mvh.tvDate.setText("");
         }
-        mvh.tvVersion.setText("Version: V." + String.valueOf(company_documents__c.getVersion__c()));
+        if (String.valueOf(company_documents__c.getVersion__c()).equals("NaN")) {
+            mvh.tvVersion.setText("");
+        } else {
+            mvh.tvVersion.setText("Version: V." + String.valueOf(company_documents__c.getVersion__c()));
+        }
+
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         if (company_documents__c.getAttachment_Id__c() != null && !company_documents__c.getAttachment_Id__c().equals("")) {

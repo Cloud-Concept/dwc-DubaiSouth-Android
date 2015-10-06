@@ -94,7 +94,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
 //                    company_documents__cs.add(company_documents__c);
 //                }
             String str = new StoreData(getActivity().getApplicationContext()).getCustomerDocumentsResponse();
-            company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObjectWithGson(str);
+            company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObject(str, true);
 //            } catch (JSONException e) {
 //                e.printStackTrace();
 //            }
@@ -124,7 +124,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
                         client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                             @Override
                             public void onSuccess(RestRequest request, final RestResponse response) {
-                                company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObjectWithGson(response.toString());
+                                company_documents__cs = (ArrayList<Company_Documents__c>) SFResponseManager.parseCompanyDocumentObject(response.toString(), true);
                                 new StoreData(getActivity().getApplicationContext()).saveCustomerDocumentsResponse(response.toString());
                                 if (method == CallType.REFRESH || method == CallType.LOADMORE) {
                                     mSwipeRefreshLayout.setRefreshing(false);
