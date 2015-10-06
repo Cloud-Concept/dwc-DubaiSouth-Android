@@ -260,17 +260,17 @@ public class SoqlStatements {
         String soql = "";
         if (status.equals("All") && type.equals("All")) {
             soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case WHERE " +
-                    "AccountId = " + "\'" + "%s" + "\'" + " LIMIT " + Limit + " OFFSET " + Offset;
+                    "AccountId = " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
             soql = String.format(soql, accountId);
         } else if (!status.equals("All") && !type.equals("All")) {
-            soql = String.format(soql_get_my_requests, accountId, status, type) + " LIMIT " + Limit + " OFFSET " + Offset;
+            soql = String.format(soql_get_my_requests, accountId, status, type) + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
         } else if (!status.equals("All") && type.equals("All")) {
             soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case " +
-                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Status LIKE " + "\'" + "%s" + "\'" + " LIMIT " + Limit + " OFFSET " + Offset;
+                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Status LIKE " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
             soql = String.format(soql, accountId, status);
         } else if (status.equals("All") && !type.equals("All")) {
             soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case " +
-                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Type LIKE " + "\'" + "%s" + "\'" + " LIMIT " + Limit + " OFFSET " + Offset;
+                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Type LIKE " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
 
             soql = String.format(soql, accountId, type);
         }

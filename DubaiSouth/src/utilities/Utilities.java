@@ -3297,7 +3297,7 @@ public static String contactEmail="";
                     linearLayout.addView(view);
 
                 } else if (field.getType().equals("EMAIL")) {
-
+                    getNocAndFields(visaJson, field, _noc);
                     View view = inflater.inflate(R.layout.wizard_form_field_edit_text_email, null, false);
                     EditText etEmail = (EditText) view.findViewById(R.id.etEmail);
                     TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);

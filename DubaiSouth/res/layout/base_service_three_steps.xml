@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/header"
-        android:layout_marginTop="@dimen/activity_top_margin"
+        android:background="@color/stepper_back"
         android:gravity="center|left"
         android:orientation="horizontal">
 
@@ -62,8 +62,8 @@
 
         <Button
             android:id="@+id/btnNOC1"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
@@ -80,8 +80,8 @@
 
         <Button
             android:id="@+id/btnNOC2"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
@@ -98,8 +98,8 @@
 
         <Button
             android:id="@+id/btnNOC3"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
