@@ -32,7 +32,7 @@
             <EditText
                 android:id="@+id/issueDate"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -63,7 +63,7 @@
             <EditText
                 android:id="@+id/expireDate"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -94,7 +94,7 @@
             <EditText
                 android:id="@+id/commercialName"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -125,7 +125,7 @@
             <EditText
                 android:id="@+id/commercialNameArabic"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -156,7 +156,7 @@
             <EditText
                 android:id="@+id/licenseNumber"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"

@@ -35,7 +35,7 @@
             <EditText
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -68,7 +68,7 @@
             <EditText
                 android:id="@+id/ArabicName"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -101,7 +101,7 @@
             <EditText
                 android:id="@+id/Gender"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -134,7 +134,7 @@
             <EditText
                 android:id="@+id/Dateofbirth"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -168,7 +168,7 @@
             <EditText
                 android:id="@+id/BirthCountry"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -201,7 +201,7 @@
             <EditText
                 android:id="@+id/PlaceCountry"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -234,7 +234,7 @@
             <EditText
                 android:id="@+id/Email"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -267,7 +267,7 @@
             <EditText
                 android:id="@+id/mobile"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -300,7 +300,7 @@
             <EditText
                 android:id="@+id/Maritalstatus"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -333,7 +333,7 @@
             <EditText
                 android:id="@+id/mothername"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -366,7 +366,7 @@
             <EditText
                 android:id="@+id/currentnationality"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -399,7 +399,7 @@
             <EditText
                 android:id="@+id/Previousnationality"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -432,7 +432,7 @@
             <EditText
                 android:id="@+id/religion"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -466,7 +466,7 @@
             <EditText
                 android:id="@+id/languagesspoken"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -501,7 +501,7 @@
             <EditText
                 android:id="@+id/passportno"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -534,7 +534,7 @@
             <EditText
                 android:id="@+id/dateofexpiry"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -568,7 +568,7 @@
             <EditText
                 android:id="@+id/countryofissue"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -603,7 +603,7 @@
             <EditText
                 android:id="@+id/placeofissue"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
