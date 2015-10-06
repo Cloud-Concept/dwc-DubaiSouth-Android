@@ -5,14 +5,14 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:addStatesFromChildren">true</item>
         <item name="android:adjustViewBounds">true</item>
-        <item name="android:dropDownListViewStyle">@style/mySpinnerStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerStyle</item>
     </style>
 
     <style name="DialogWindowTitle">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/text_color</item>
     </style>
-    <style name="mySpinnerStyle" parent="android:Widget.ListView.DropDown">
+    <style name="mySpinnerStyle" >
         <item name="android:divider">#ff0000</item>
         <item name="android:dividerHeight">5dp</item>
         <item name="android:textColor">#000</item>
@@ -27,6 +27,7 @@
         <item name="colorPrimary">@color/myPrimaryColor</item>
         <item name="colorPrimaryDark">@color/myPrimaryDarkColor</item>
         <item name="colorAccent">@color/myAccentColor</item>
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerStyle</item>
     </style>
 
     <style name="dialog_tran" parent="android:style/Theme.Dialog">
@@ -61,6 +62,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="windowActionBar">false</item>
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerStyle</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base"></style>
