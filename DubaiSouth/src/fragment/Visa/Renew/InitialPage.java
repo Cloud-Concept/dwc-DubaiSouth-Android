@@ -73,8 +73,8 @@ public class InitialPage extends Fragment {
     EditText Name, ArabicName, Gender, Dateofbirth, BirthCountry,
             PlaceCountry, Email, mobile, Maritalstatus, mothername,
             currentnationality, Previousnationality, religion, languagesspoken,
-            passportno, dateofexpiry;
-    Spinner countryofissue, placeofissue;
+            passportno, dateofexpiry,placeofissue;
+    Spinner countryofissue;
 
     @Nullable
     @Override
@@ -103,7 +103,7 @@ public class InitialPage extends Fragment {
         passportno = (EditText) view.findViewById(R.id.passportno);
         dateofexpiry = (EditText) view.findViewById(R.id.dateofexpiry);
         countryofissue = (Spinner) view.findViewById(R.id.countryofissue);
-        placeofissue = (Spinner) view.findViewById(R.id.placeofissue);
+        placeofissue = (EditText) view.findViewById(R.id.placeofissue);
 
 
         new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
@@ -264,6 +264,23 @@ public class InitialPage extends Fragment {
                         });
                         currentnationality.setText(activity.getVisa().getCurrent_Nationality__r().getName());
                         Previousnationality.setText(activity.getVisa().getPrevious_Nationality__r().getName());
+                        placeofissue.setText(activity.getVisa().getPassport_Place_of_Issue__c());
+                        placeofissue.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                            }
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                                activity.getVisa().setPassport_Place_of_Issue__c(editable.toString());
+                            }
+                        });
                         religion.setText(activity.getVisa().getReligion__c());
                         religion.addTextChangedListener(new TextWatcher() {
                             @Override
@@ -386,25 +403,7 @@ public class InitialPage extends Fragment {
                                                     });
 
 
-                                                    placeofissue.setAdapter(adapter);
-                                                    placeofissue.setSelection(0);
-                                                    placeofissue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                                                        @Override
-                                                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                                            CurrentNationality nationality=new CurrentNationality();
-                                                            nationality.setID(activity.getCountries().get(position).getId());
-                                                            nationality.setName(activity.getCountries().get(position).getNationality_Name__c());
-                                                            activity.getVisa().setPassport_Place_of_Issue__r(nationality);
-                                                            activity.getVisa().setPassport_Place_of_Issue__c(activity.getCountries().get(position).getNationality_Name__c());
-
-                                                        }
-
-                                                        @Override
-                                                        public void onNothingSelected(AdapterView<?> parent) {
-
-                                                        }
-                                                    });
                                                     Utilities.dismissLoadingDialog();
                                                 } catch (JSONException e) {
                                                     e.printStackTrace();

@@ -28,16 +28,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="Visa Number"
+                    android:text="Name"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/visaNumber"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -48,41 +48,6 @@
                 android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
-
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="Visa Holder Name"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/visaHolderName"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/label"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
-                android:enabled="false"
-                android:gravity="center"
-                android:inputType="numberDecimal"
-                android:textColor="@color/black"
-                android:textColorHint="@color/light_grey" />
-
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -103,10 +68,10 @@
             </LinearLayout>
 
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/passportNumber"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -116,8 +81,6 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
-
-
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -137,10 +100,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/visaExpiryDate"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -150,6 +113,137 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_grey" />
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Country of Issue"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText android:textSize="14sp"                android:id="@+id/visaHolderName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/search_edit_text_background"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey" />
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Occupation"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText android:textSize="14sp"
+                android:id="@+id/occupation"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/search_edit_text_background"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Qualification"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <EditText android:textSize="14sp"
+                
+                android:id="@+id/qualification"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/label"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/search_edit_text_background"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <LinearLayout

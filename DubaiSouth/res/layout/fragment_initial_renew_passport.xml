@@ -35,7 +35,7 @@
             <EditText
                 android:id="@+id/passportholder"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -68,7 +68,7 @@
             <EditText
                 android:id="@+id/oldpassportnumber"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -111,7 +111,7 @@
             <EditText
                 android:id="@+id/newpassportno"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -151,7 +151,7 @@
             <EditText
                 android:id="@+id/dateofissue"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -191,7 +191,7 @@
             <EditText
                 android:id="@+id/dateofexpiry"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -223,7 +223,7 @@
             <EditText
                 android:id="@+id/placeofissue"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -256,7 +256,7 @@
             <EditText
                 android:id="@+id/countryofissue"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"

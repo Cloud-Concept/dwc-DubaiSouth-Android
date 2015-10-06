@@ -27,6 +27,7 @@
 android:gravity="top"
         android:visibility="gone"
         android:text="*"
+        android:layout_marginLeft="2dp"
         android:textColor="@color/red"
         android:textSize="13sp" />
 </LinearLayout>
@@ -34,7 +35,7 @@ android:gravity="top"
     <EditText
         android:id="@+id/formFieldvalue"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/label"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

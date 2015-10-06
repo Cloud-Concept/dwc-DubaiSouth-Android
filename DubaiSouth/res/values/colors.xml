@@ -28,8 +28,8 @@
     <color name="black">#000000</color>
 
 
-    <color name="dwc_blue_color">#5ac0cc</color>
-    <color name="slide_menu_item_background">#5ac0cc</color>
+    <color name="dwc_blue_color">#23969F</color>
+    <color name="slide_menu_item_background">#23969F</color>
     <color name="header_background">#23969F</color>
 
     <color name="myDrawerBackground">#F2F2F2</color>

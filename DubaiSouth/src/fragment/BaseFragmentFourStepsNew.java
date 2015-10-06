@@ -83,7 +83,7 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
         btnNOC2 = (Button) view.findViewById(R.id.btnNOC2);
         btnNOC3 = (Button) view.findViewById(R.id.btnNOC3);
         btnNOC4 = (Button) view.findViewById(R.id.btnNOC4);
-        btnNOC5 = (Button) view.findViewById(R.id.btnNOC5);
+
 
         btnNOC1.setSelected(true);
         btnNOC1.setEnabled(true);
@@ -119,11 +119,11 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                 btnNOC1.setGravity(Gravity.CENTER);
                 btnNOC1.setText("1");
 
-                btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                btnNOC3.setSelected(false);
-                btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
-                btnNOC3.setGravity(Gravity.CENTER);
-                btnNOC3.setText("2");
+                btnNOC2.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                btnNOC2.setSelected(false);
+                btnNOC2.setTextColor(getActivity().getResources().getColor(R.color.white));
+                btnNOC2.setGravity(Gravity.CENTER);
+                btnNOC2.setText("2");
 
                 status = 1;
             } else if (status == 4) {
@@ -139,13 +139,13 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                 btnNOC3.setSelected(true);
                 btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
                 btnNOC3.setGravity(Gravity.CENTER);
-                btnNOC3.setText("2");
+                btnNOC3.setText("");
                 btnNext.setText("Next");
                 btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                 btnNOC4.setSelected(false);
                 btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
                 btnNOC4.setGravity(Gravity.CENTER);
-                btnNOC4.setText("3");
+                btnNOC4.setText("4");
 
                 status = 3;
 
@@ -182,7 +182,7 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                         .commitAllowingStateLoss();
                 btnNOC1.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC1.setText("");
-                btnNOC3.setSelected(true);
+                btnNOC2.setSelected(true);
                 status = 3;
             } else if (status == 3) {
                 if (frameLayout != null) {
@@ -194,11 +194,11 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                 fragmentTransaction
                         .replace(R.id.content, getFourthFragment())
                         .commitAllowingStateLoss();
-                btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
+                btnNOC2.setBackgroundResource(R.mipmap.bullet_success);
                 tvTitle.setText("Preview");
                 btnNext.setText("Pay & Submit");
-                btnNOC3.setText("");
-                btnNOC4.setSelected(true);
+                btnNOC2.setText("");
+                btnNOC3.setSelected(true);
                 status = 4;
             } else if (status == 4) {
 
@@ -281,11 +281,11 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
         fragmentTransaction
                 .replace(R.id.content, payAndSubmitFragmnet)
                 .commitAllowingStateLoss();
-        btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
-        btnNOC3.setText("");
+        btnNOC2.setBackgroundResource(R.mipmap.bullet_success);
+        btnNOC2.setText("");
         tvTitle.setText("Preview");
         btnNext.setText("Pay & Submit");
-        btnNOC4.setSelected(true);
+        btnNOC3.setSelected(true);
         status = 4;
     }
 

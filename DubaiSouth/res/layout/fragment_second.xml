@@ -34,10 +34,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/MonthlySalary"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -68,9 +68,10 @@
             </LinearLayout>
 
             <EditText
+                android:textSize="14sp"
                 android:id="@+id/MonthlyAllowance"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
