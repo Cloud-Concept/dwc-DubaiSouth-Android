@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/white_green"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -47,9 +48,9 @@
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/header"
-        android:layout_marginTop="@dimen/activity_top_margin"
+        android:background="@color/noc_top_background"
         android:gravity="center|left"
         android:orientation="horizontal">
 
@@ -57,13 +58,13 @@
             android:id="@+id/line1"
             android:layout_width="10dp"
             android:layout_height="1dp"
-            android:layout_weight="4"
+            android:layout_weight="1"
             android:background="@color/light_grey" />
 
         <Button
             android:id="@+id/btnNOC1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
@@ -80,8 +81,8 @@
 
         <Button
             android:id="@+id/btnNOC2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
@@ -98,8 +99,8 @@
 
         <Button
             android:id="@+id/btnNOC3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
@@ -117,8 +118,8 @@
 
         <Button
             android:id="@+id/btnNOC4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
@@ -129,9 +130,8 @@
             android:id="@+id/line5"
             android:layout_width="10dp"
             android:layout_height="1dp"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:background="@color/light_grey" />
-
 
     </LinearLayout>
 
@@ -141,7 +141,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/linearBottom"
         android:layout_below="@+id/linear"
-        android:background="@color/noc_below_background">
+        android:background="@color/white_green">
 
     </FrameLayout>
 

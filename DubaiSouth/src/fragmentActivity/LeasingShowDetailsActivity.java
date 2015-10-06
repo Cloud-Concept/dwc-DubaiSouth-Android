@@ -1,22 +1,24 @@
 package fragmentActivity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.ArrayList;
 
 import cloudconcept.dwc.BaseActivity;
 import cloudconcept.dwc.R;
 import model.Contract_DWC__c;
+import model.DWCView;
+import model.ItemType;
+import model.ServiceItem;
 import utilities.Utilities;
 
 /**
@@ -25,7 +27,6 @@ import utilities.Utilities;
 public class LeasingShowDetailsActivity extends BaseActivity {
 
     Contract_DWC__c contract_dwc__c;
-    private Button btnRenewContract;
     Gson gson;
 
     @Override
@@ -50,46 +51,80 @@ public class LeasingShowDetailsActivity extends BaseActivity {
 
     @Override
     public Fragment GetFragment() {
-        return null;
+        gson = new Gson();
+        contract_dwc__c = gson.fromJson(getIntent().getExtras().getString("object"), Contract_DWC__c.class);
+        Fragment fragment = leasingShowDetailsFragment.newInstance("leasingShowDetailsFragment", contract_dwc__c);
+        return fragment;
     }
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.show_details_leasing_contract);
-//        btnRenewContract = (Button) findViewById(R.id.btnRenewContract);
-//        gson = new Gson();
-//        contract_dwc__c = gson.fromJson(getIntent().getExtras().getString("object"), Contract_DWC__c.class);
-//        Calendar cal1 = new GregorianCalendar();
-//        Calendar cal2 = new GregorianCalendar();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-//        Date date = null;
-//        try {
-//            date = sdf.parse(contract_dwc__c.getContract_Expiry_Date__c().toString());
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        cal1.setTime(date);
-//        Date date2 = null;
-//        try {
-//            date2 = sdf.parse(Utilities.getCurrentTimeStamp().substring(0, 10));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        cal2.setTime(date2);
-//        int days = Utilities.daysBetween(date, date2);
-//        if (days <= 60) {
-//            btnRenewContract.setVisibility(View.VISIBLE);
-//            btnRenewContract.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
-//        } else {
-//            btnRenewContract.setVisibility(View.GONE);
-//        }
-//    }
+    public static class leasingShowDetailsFragment extends Fragment {
 
+        private static ArrayList<DWCView> _views;
+        private static String ARG_TEXT = "ShowDetails";
+        TextView tvContractName;
+        Gson gson = new Gson();
+        static Contract_DWC__c contract_dwc__c;
+        LinearLayout linearAddForms;
+        private static ArrayList<ServiceItem> _items;
 
+        public static leasingShowDetailsFragment newInstance(String details, Contract_DWC__c contract_dwc__c) {
+            leasingShowDetailsFragment fragment = new leasingShowDetailsFragment();
+            Bundle bundle = new Bundle();
+            _views = new ArrayList<DWCView>();
+            _items = new ArrayList<>();
+            bundle.putString(ARG_TEXT, details);
+            leasingShowDetailsFragment.contract_dwc__c = contract_dwc__c;
+            fragment.setArguments(bundle);
+            return fragment;
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.show_details_leasing_contract, container, false);
+            _views.clear();
+            InitializeViews(view);
+            return view;
+        }
+
+        private void InitializeViews(View view) {
+            tvContractName = (TextView) view.findViewById(R.id.tvContractName);
+            linearAddForms = (LinearLayout) view.findViewById(R.id.linearAddForms);
+            tvContractName.setText(contract_dwc__c.getName());
+            _views.add(new DWCView("Contract Details", ItemType.HEADER));
+            _views.add(new DWCView("Contract Type", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Type__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Contract Duration", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Duration__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Contract Number", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Number__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Start Date", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Start_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Expiry Date", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Expiry_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            String services = "";
+            if (contract_dwc__c.getContract_Expiry_Date__c() != null && !contract_dwc__c.getContract_Expiry_Date__c().equals("")) {
+                if (Utilities.daysDifference(contract_dwc__c.getContract_Expiry_Date__c()) < 60) {
+                    if (contract_dwc__c.IS_BC_Contract__c()) {
+                        services += "Renew BC Contract,";
+                    } else {
+                        services += "Renew Contract,";
+                    }
+                }
+            }
+//            services += "Cancel Contract,";
+            if (!services.equals("")) {
+                services = services.substring(0, services.length() - 1);
+                _views.add(new DWCView(services, ItemType.HORIZONTAL_LIST_VIEW));
+            }
+
+            View RenderedViewItems = Utilities.drawViewsOnLayout(getActivity(), contract_dwc__c, getActivity().getApplicationContext(), _views);
+            linearAddForms.addView(RenderedViewItems);
+        }
+    }
 }

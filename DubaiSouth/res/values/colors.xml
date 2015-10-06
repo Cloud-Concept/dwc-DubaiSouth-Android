@@ -30,7 +30,7 @@
 
     <color name="dwc_blue_color">#5ac0cc</color>
     <color name="slide_menu_item_background">#5ac0cc</color>
-    <color name="header_background">#5ac0cc</color>
+    <color name="header_background">#23969F</color>
 
     <color name="myDrawerBackground">#F2F2F2</color>
     <color name="myWindowBackground">#DEDEDE</color>
