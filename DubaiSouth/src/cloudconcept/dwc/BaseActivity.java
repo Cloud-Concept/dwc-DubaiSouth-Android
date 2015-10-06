@@ -38,7 +38,7 @@ import utilities.Utilities;
 
 public abstract class BaseActivity extends SalesforceActivity implements View.OnClickListener {
 
-    TextView tvTitle;
+   public TextView tvTitle;
     int notificationCount = 0;
     RelativeLayout tabBarHome, tabBarRequest, tabBarReport, tabBarDashboard;
     private FragmentManager fragmentManager;

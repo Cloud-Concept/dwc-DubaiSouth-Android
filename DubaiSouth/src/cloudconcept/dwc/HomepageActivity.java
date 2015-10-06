@@ -369,7 +369,6 @@ package cloudconcept.dwc;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -406,11 +405,11 @@ public class HomepageActivity extends Activity implements
     Button btnLogout, btnLogoutTrasparent;
     RelativeLayout relativeDashboard, relativeMyRequest, relativeNotifications,
             relativeVisasAndCards, relativeCompanyInfo, relativeReports,
-            relativeNeedHelp, relativeQuickAccess, relativeCompanyDocuments, relativeViewStatement;
+            relativeNeedHelp, notificationll, relativeQuickAccess, relativeCompanyDocuments, relativeViewStatement;
 
     Button btnViewStatement;
 
-    TextView tvCompanyName, tvLicenseNumber, tvLicenseExpiry, tvBalance;
+    TextView tvCompanyName, tvLicenseNumber, tvLicenseExpiry, tvBalance, tv10;
     ImageView imageDashboard, imageMyRequests, imageVisasAndCards, imageCompanyInfo, imageCompanyDocuments, imageQuickAccess, imageNeedHelp, imageReports, smartCompanyImage;
 
     private OnClickListener listenerOk1 = new OnClickListener() {
@@ -444,6 +443,7 @@ public class HomepageActivity extends Activity implements
         relativeDashboard = (RelativeLayout) findViewById(R.id.relativeDashboard);
         relativeMyRequest = (RelativeLayout) findViewById(R.id.relativeMyRequests);
         relativeNotifications = (RelativeLayout) findViewById(R.id.relativeNotifications);
+        notificationll = (RelativeLayout) findViewById(R.id.notificationll);
         relativeVisasAndCards = (RelativeLayout) findViewById(R.id.relativeVisasAndCards);
         relativeCompanyInfo = (RelativeLayout) findViewById(R.id.relativeCompanyInfo);
         relativeReports = (RelativeLayout) findViewById(R.id.relativeReports);
@@ -451,9 +451,9 @@ public class HomepageActivity extends Activity implements
         relativeQuickAccess = (RelativeLayout) findViewById(R.id.relativeQuickAccess);
         relativeCompanyDocuments = (RelativeLayout) findViewById(R.id.relativeCompanyDocuments);
         relativeViewStatement = (RelativeLayout) findViewById(R.id.relativeViewStatement);
-
+        tv10 = (TextView) findViewById(R.id.textView10);
         btnViewStatement = (Button) findViewById(R.id.btnViewStatement);
-
+        _badgeButton.setOnClickListener(this);
         imageCompanyDocuments = (ImageView) findViewById(R.id.imageCompanyDocuments);
         imageDashboard = (ImageView) findViewById(R.id.imageDashboard);
         imageMyRequests = (ImageView) findViewById(R.id.imageMyRequests);
@@ -466,6 +466,8 @@ public class HomepageActivity extends Activity implements
         relativeDashboard.setOnClickListener(this);
         relativeMyRequest.setOnClickListener(this);
         relativeNotifications.setOnClickListener(this);
+        notificationll.setOnClickListener(this);
+
         relativeVisasAndCards.setOnClickListener(this);
         relativeCompanyInfo.setOnClickListener(this);
         relativeReports.setOnClickListener(this);
@@ -572,7 +574,7 @@ public class HomepageActivity extends Activity implements
             ActivitiesLauncher.openMyRequestsActivity(getApplicationContext());
             imageMyRequests.setSelected(true);
 
-        } else if (v == relativeNotifications || v == _badgeButton) {
+        } else if (v == relativeNotifications | v == _badgeButton | v == notificationll | v == tv10| v.getId()==R.id.badgebtn_rl||v.getId()==R.id.badgebtn_btn) {
 
             ActivitiesLauncher.openNotificationsActivity(getApplicationContext());
             _badgeButton.setSelected(true);
@@ -662,7 +664,7 @@ public class HomepageActivity extends Activity implements
 
                 @Override
                 public void onError(Exception exception) {
-                    error=RestMessages.getInstance().getErrorMessage();
+                    error = RestMessages.getInstance().getErrorMessage();
                     finish();
                 }
             });
@@ -694,7 +696,7 @@ public class HomepageActivity extends Activity implements
 
                 @Override
                 public void onError(Exception exception) {
-                    error=RestMessages.getInstance().getErrorMessage();
+                    error = RestMessages.getInstance().getErrorMessage();
                     finish();
                 }
             });
@@ -734,7 +736,7 @@ public class HomepageActivity extends Activity implements
 
                 @Override
                 public void onError(Exception exception) {
-                    error=RestMessages.getInstance().getErrorMessage();
+                    error = RestMessages.getInstance().getErrorMessage();
                     finish();
                 }
             });
@@ -779,7 +781,7 @@ public class HomepageActivity extends Activity implements
             @Override
             public void onError(Exception exception) {
 
-                error=RestMessages.getInstance().getErrorMessage();
+                error = RestMessages.getInstance().getErrorMessage();
                 finish();
             }
         });
@@ -811,7 +813,7 @@ public class HomepageActivity extends Activity implements
         if (notificationCount == 0) {
             _badgeButton.hideBadge();
         } else {
-            _badgeButton.setBadgeText((notificationCount>99?99:notificationCount)<10?notificationCount + "":notificationCount+"");
+            _badgeButton.setBadgeText((notificationCount > 99 ? 99 : notificationCount) < 10 ? notificationCount + "" : notificationCount + "");
             _badgeButton.showBadge();
         }
     }
@@ -820,7 +822,7 @@ public class HomepageActivity extends Activity implements
         if (notificationCount == 0) {
             _badgeButton.hideBadge();
         } else {
-            _badgeButton.setBadgeText((notificationCount>99?99:notificationCount)<10?notificationCount + "":notificationCount+"");
+            _badgeButton.setBadgeText((notificationCount > 99 ? 99 : notificationCount) < 10 ? notificationCount + "" : notificationCount + "");
             _badgeButton.showBadge();
         }
     }
@@ -828,8 +830,8 @@ public class HomepageActivity extends Activity implements
     @Override
     public void finish() {
         setContentView(R.layout.splash);
-        Button close= (Button) findViewById(R.id.close);
-        TextView properMessage= (TextView) findViewById(R.id.properMessage);
+        Button close = (Button) findViewById(R.id.close);
+        TextView properMessage = (TextView) findViewById(R.id.properMessage);
         close.setVisibility(View.VISIBLE);
         properMessage.setVisibility(View.VISIBLE);
         properMessage.setText(error);
