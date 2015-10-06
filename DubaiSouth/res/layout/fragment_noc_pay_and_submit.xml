@@ -11,8 +11,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
             android:gravity="center"
             android:orientation="vertical">
 
@@ -26,20 +26,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="horizontal">
 
 
-                <TextView
+                <custom.CorisandeRegularTextView
                     android:id="@+id/labelPerson"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Person Name:"
+                    android:gravity="right"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="bold" />
+                     />
 
-                <TextView
+                <custom.CorisandeRegularTextView
                     android:id="@+id/personName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
@@ -51,19 +57,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <custom.CorisandeRegularTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Ref Number:"
+                    android:gravity="right"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="bold" />
+                     />
 
-                <TextView
+                <custom.CorisandeRegularTextView
                     android:id="@+id/refnumber"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
@@ -75,19 +87,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <custom.CorisandeRegularTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
                     android:layout_height="wrap_content"
                     android:text="Date:"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="bold" />
+                     />
 
-                <TextView
+                <custom.CorisandeRegularTextView
                     android:id="@+id/date"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
@@ -99,19 +117,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <custom.CorisandeRegularTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
                     android:layout_height="wrap_content"
-                    android:text="Total Amount"
+                    android:text="Total Amount:"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="bold" />
+                     />
 
-                <TextView
+                <custom.CorisandeRegularTextView
                     android:id="@+id/total_Amount"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
@@ -123,18 +147,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <custom.CorisandeRegularTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Status:"
+                    android:gravity="right"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="bold" />
+                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <custom.CorisandeRegularTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
@@ -142,6 +172,11 @@
 
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".25dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/grey"/>
 
 
         </LinearLayout>
@@ -149,12 +184,14 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+
             android:layout_weight="1">
 
             <LinearLayout
                 android:id="@+id/nocDetails"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="15dp"
                 android:orientation="vertical" />
         </ScrollView>
     </LinearLayout>

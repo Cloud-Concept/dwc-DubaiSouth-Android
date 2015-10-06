@@ -172,6 +172,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
                     btnNOC4.setGravity(Gravity.CENTER);
                     btnNOC4.setText("4");
                     btnNext.setText(("Next"));
+                    tvTitle.setText("Company NOC");
                     CompanyNocMainFragment.insertedServiceId = null;
                     CompanyNocMainFragment.insertedCaseId = null;
                     btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));

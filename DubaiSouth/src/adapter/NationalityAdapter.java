@@ -47,10 +47,10 @@ public class NationalityAdapter extends ArrayAdapter<Country__c> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.customtext, parent,false);
+            convertView = mInflater.inflate(R.layout.customtextnationality, parent,false);
         }
 
-        TextView tv = (TextView)convertView;
+        TextView tv = (TextView)convertView.findViewById(R.id.spinnertext);
         tv.setText(objects.get(position).getNationality_Name__c());
 
         return convertView;

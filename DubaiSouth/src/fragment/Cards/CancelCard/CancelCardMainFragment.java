@@ -113,6 +113,13 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                     btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
                     btnNOC3.setGravity(Gravity.CENTER);
                     btnNOC3.setText("3");
+                    if (activity.getType().equals("2")) {
+                        tvTitle.setText("Cancel Card");
+                    }
+                    else if (activity.getType().equals("3"))
+                        tvTitle.setText("Renew Card");
+                    else if (activity.getType().equals("4"))
+                        tvTitle.setText("Replace Card");
                     btnNext.setText(("Next"));
                     btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                     btnNOC4.setSelected(false);

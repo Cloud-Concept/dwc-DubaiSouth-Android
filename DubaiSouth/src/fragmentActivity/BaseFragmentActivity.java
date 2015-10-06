@@ -1,9 +1,14 @@
 package fragmentActivity;
 
 import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 
 import model.Company_Documents__c;
 import model.Receipt_Template__c;
+import utilities.AutomaticUtilities;
 
 /**
  * Created by M_Ghareeb on 8/25/2015.
@@ -35,4 +40,6 @@ public class BaseFragmentActivity extends FragmentActivity {
     public void onBackPressed() {
 
     }
+
+
 }

@@ -2174,8 +2174,10 @@ import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -2263,7 +2265,7 @@ import model.Visa;
 import model.WebForm;
 
 public class Utilities {
-
+public static String contactEmail="";
     static ProgressBar mProgressBar;
     public static ProgressDialog _progress;
     private static Receipt_Template__c eServiceAdministration;
@@ -2556,10 +2558,35 @@ public class Utilities {
 
             }
         }
-
+        setupUI(linearLayout,act);
 
     }
+    public static void setupUI(View view,final Activity act) {
 
+        //Set up touch listener for non-text box views to hide keyboard.
+        if(!(view instanceof EditText)) {
+
+            view.setOnTouchListener(new View.OnTouchListener() {
+
+                public boolean onTouch(View v, MotionEvent event) {
+                    AutomaticUtilities.hideSoftKeyboard(act);
+                    return false;
+                }
+
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+
+                View innerView = ((ViewGroup) view).getChildAt(i);
+
+                setupUI(innerView,act);
+            }
+        }
+    }
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, LinearLayout linearLayout, final ArrayList<FormField> formFields, Visa _visa, JSONObject visaJson, Map<String, String> parameters, final Card_Management__c _noc) {
 
         LayoutInflater inflater = (LayoutInflater)
@@ -2698,20 +2725,20 @@ public class Utilities {
                     TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);
                     String stringValue = "";
                     String name = field.getName();
-                    if (name.equals("NOC_Receiver_Email__c")) {
-                        String user = new StoreData(applicationContext).getUserDataAsString();
-                        Gson g = new Gson();
-                        User u = g.fromJson(user, User.class);
-                        stringValue = u.get_contact().get_account().getEmail();
-                        Field[] fields = Card_Management__c.class.getFields();
-                        for (int j = 0; j < fields.length; j++)
-                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-                                try {
-                                    fields[j].set(_noc, stringValue);
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                }
-                    } else {
+//                    if (name.equals("NOC_Receiver_Email__c")) {
+//                        String user = new StoreData(applicationContext).getUserDataAsString();
+//                        Gson g = new Gson();
+//                        User u = g.fromJson(user, User.class);
+//                        stringValue = contactEmail;
+//                        Field[] fields = Card_Management__c.class.getFields();
+//                        for (int j = 0; j < fields.length; j++)
+//                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+//                                try {
+//                                    fields[j].set(_noc, stringValue);
+//                                } catch (IllegalAccessException e) {
+//                                    e.printStackTrace();
+//                                }
+//                    } else {
                         Field[] fields = Card_Management__c.class.getFields();
                         for (int j = 0; j < fields.length; j++)
                             if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
@@ -2720,7 +2747,7 @@ public class Utilities {
                                 } catch (IllegalAccessException e) {
                                     e.printStackTrace();
                                 }
-                    }
+//                    }
 
                     etEmail.setText(stringValue);
                     etEmail.setTag(field);
@@ -2838,6 +2865,7 @@ public class Utilities {
                     linearLayout.addView(view);
             }
         }
+        setupUI(linearLayout,act);
     }
 
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, final LinearLayout linearLayout, final ArrayList<FormField> formFields, final Map<String, String> parameters, final EServices_Document_Checklist__c eServices_document_checklist__c, final Receipt_Template__c eService_administration__r) {
@@ -3177,6 +3205,8 @@ public class Utilities {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
+        setupUI(linearLayout,act);
     }
 
 
@@ -3273,20 +3303,20 @@ public class Utilities {
                     TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);
                     String stringValue = "";
                     String name = field.getName();
-                    if (name.equals("NOC_Receiver_Email__c")) {
-                        String user = new StoreData(applicationContext).getUserDataAsString();
-                        Gson g = new Gson();
-                        User u = g.fromJson(user, User.class);
-                        stringValue = u.get_contact().get_account().getEmail();
-                        Field[] fields = NOC__c.class.getFields();
-                        for (int j = 0; j < fields.length; j++)
-                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-                                try {
-                                    fields[j].set(_noc, stringValue);
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                }
-                    } else {
+//                    if (name.equals("NOC_Receiver_Email__c")) {
+//                        String user = new StoreData(applicationContext).getUserDataAsString();
+//                        Gson g = new Gson();
+//                        User u = g.fromJson(user, User.class);
+//                        stringValue = contactEmail;
+//                        Field[] fields = NOC__c.class.getFields();
+//                        for (int j = 0; j < fields.length; j++)
+//                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+//                                try {
+//                                    fields[j].set(_noc, stringValue);
+//                                } catch (IllegalAccessException e) {
+//                                    e.printStackTrace();
+//                                }
+//                    } else {
                         getNocAndFields(visaJson, field, _noc);
                         Field[] fields = NOC__c.class.getFields();
                         for (int j = 0; j < fields.length; j++)
@@ -3296,7 +3326,7 @@ public class Utilities {
                                 } catch (IllegalAccessException e) {
                                     e.printStackTrace();
                                 }
-                    }
+//                    }
 
                     etEmail.setText(stringValue);
                     etEmail.setTag(field);
@@ -3406,7 +3436,7 @@ public class Utilities {
 
         }
 
-
+        setupUI(linearLayout,act);
     }
 
     public static String[] formatStartAndEndDate(String filterItem) {

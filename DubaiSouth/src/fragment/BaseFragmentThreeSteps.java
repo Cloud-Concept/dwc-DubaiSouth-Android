@@ -161,6 +161,7 @@ public abstract class BaseFragmentThreeSteps extends Fragment implements View.On
                 btnNOC1.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC1.setText("");
                 btnNOC2.setSelected(true);
+                tvTitle.setText("Preview");
                 btnNext.setText("Pay/Submit");
                 status = 2;
             } else if (status == 2) {

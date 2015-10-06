@@ -73,7 +73,7 @@ public abstract class BaseFragmentFiveSteps extends Fragment implements View.OnC
         btnBackTransparent = (Button) view.findViewById(R.id.btnBackTransparent);
         btnBack = (ImageView) view.findViewById(R.id.btnBack);
         tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        tvTitle.setText("New Card");
+
 
         btnNext.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
@@ -185,6 +185,7 @@ public abstract class BaseFragmentFiveSteps extends Fragment implements View.OnC
                 btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
                 btnNOC4.setGravity(Gravity.CENTER);
                 btnNOC4.setText("4");
+                tvTitle.setText("Preview");
                 btnNext.setText("Pay & Submit");
                 btnCancel.setVisibility(View.VISIBLE);
                 btnNOC5.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
@@ -227,6 +228,7 @@ public abstract class BaseFragmentFiveSteps extends Fragment implements View.OnC
                         .replace(R.id.content, getFourthFragment())
                         .commitAllowingStateLoss();
                 btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
+                tvTitle.setText("Preview");
                 btnNext.setText("Pay & Submit");
                 btnNOC3.setText("");
                 btnNOC4.setSelected(true);
@@ -316,6 +318,7 @@ public abstract class BaseFragmentFiveSteps extends Fragment implements View.OnC
                 .commitAllowingStateLoss();
         btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
         btnNOC3.setText("");
+        tvTitle.setText("Preview");
         btnNext.setText("Pay & Submit");
         btnNOC4.setSelected(true);
         status = 4;
