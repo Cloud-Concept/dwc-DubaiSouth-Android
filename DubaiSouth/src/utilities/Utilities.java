@@ -2725,20 +2725,20 @@ public static String contactEmail="";
                     TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);
                     String stringValue = "";
                     String name = field.getName();
-//                    if (name.equals("NOC_Receiver_Email__c")) {
-//                        String user = new StoreData(applicationContext).getUserDataAsString();
-//                        Gson g = new Gson();
-//                        User u = g.fromJson(user, User.class);
-//                        stringValue = contactEmail;
-//                        Field[] fields = Card_Management__c.class.getFields();
-//                        for (int j = 0; j < fields.length; j++)
-//                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-//                                try {
-//                                    fields[j].set(_noc, stringValue);
-//                                } catch (IllegalAccessException e) {
-//                                    e.printStackTrace();
-//                                }
-//                    } else {
+                    if (name.equals("NOC_Receiver_Email__c")) {
+                        String user = new StoreData(applicationContext).getUserDataAsString();
+                        Gson g = new Gson();
+                        User u = g.fromJson(user, User.class);
+                        stringValue = contactEmail;
+                        Field[] fields = Card_Management__c.class.getFields();
+                        for (int j = 0; j < fields.length; j++)
+                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                                try {
+                                    fields[j].set(_noc, stringValue);
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                    } else {
                         Field[] fields = Card_Management__c.class.getFields();
                         for (int j = 0; j < fields.length; j++)
                             if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
@@ -2747,7 +2747,7 @@ public static String contactEmail="";
                                 } catch (IllegalAccessException e) {
                                     e.printStackTrace();
                                 }
-//                    }
+                    }
 
                     etEmail.setText(stringValue);
                     etEmail.setTag(field);
@@ -3297,26 +3297,26 @@ public static String contactEmail="";
                     linearLayout.addView(view);
 
                 } else if (field.getType().equals("EMAIL")) {
-                    getNocAndFields(visaJson, field, _noc);
+//                    getNocAndFields(visaJson, field, _noc);
                     View view = inflater.inflate(R.layout.wizard_form_field_edit_text_email, null, false);
                     EditText etEmail = (EditText) view.findViewById(R.id.etEmail);
                     TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);
                     String stringValue = "";
                     String name = field.getName();
-//                    if (name.equals("NOC_Receiver_Email__c")) {
-//                        String user = new StoreData(applicationContext).getUserDataAsString();
-//                        Gson g = new Gson();
-//                        User u = g.fromJson(user, User.class);
-//                        stringValue = contactEmail;
-//                        Field[] fields = NOC__c.class.getFields();
-//                        for (int j = 0; j < fields.length; j++)
-//                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-//                                try {
-//                                    fields[j].set(_noc, stringValue);
-//                                } catch (IllegalAccessException e) {
-//                                    e.printStackTrace();
-//                                }
-//                    } else {
+                    if (name.equals("NOC_Receiver_Email__c")) {
+                        String user = new StoreData(applicationContext).getUserDataAsString();
+                        Gson g = new Gson();
+                        User u = g.fromJson(user, User.class);
+                        stringValue = contactEmail;
+                        Field[] fields = NOC__c.class.getFields();
+                        for (int j = 0; j < fields.length; j++)
+                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                                try {
+                                    fields[j].set(_noc, stringValue);
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                    } else {
                         getNocAndFields(visaJson, field, _noc);
                         Field[] fields = NOC__c.class.getFields();
                         for (int j = 0; j < fields.length; j++)
@@ -3326,7 +3326,7 @@ public static String contactEmail="";
                                 } catch (IllegalAccessException e) {
                                     e.printStackTrace();
                                 }
-//                    }
+                    }
 
                     etEmail.setText(stringValue);
                     etEmail.setTag(field);
