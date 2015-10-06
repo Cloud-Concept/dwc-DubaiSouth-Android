@@ -33,11 +33,11 @@ public class ViewStatementShowDetails extends Activity {
         tvStatus = (TextView) findViewById(R.id.tvStatus);
         Gson gson = new Gson();
         FreeZonePayment freeZonePayment = gson.fromJson(getIntent().getExtras().getString("str"), FreeZonePayment.class);
-        if(freeZonePayment.getEffectOnAccount().equals("Debit")){
+        if (freeZonePayment.getEffectOnAccount().equals("Debit")) {
             imageShowDetails.setImageResource(R.mipmap.payment_debit);
             tvAmount.setText(Utilities.stringNotNull(freeZonePayment.getDebitAmount()) + " AED.");
             tvBalance.setText("");
-        }else{
+        } else {
             imageShowDetails.setImageResource(R.mipmap.payment_credit);
             tvAmount.setText(Utilities.stringNotNull(freeZonePayment.getCreditAmount()) + " AED.");
             tvBalance.setText(Utilities.stringNotNull(freeZonePayment.getClosingBalance()));
@@ -51,7 +51,6 @@ public class ViewStatementShowDetails extends Activity {
         });
 
         tvEmployeeName.setText(Utilities.stringNotNull(freeZonePayment.getEmployeeName()));
-
         tvDate.setText(!Utilities.stringNotNull(freeZonePayment.getCreatedDate()).equals("") ? Utilities.stringNotNull(freeZonePayment.getCreatedDate()).substring(0, 10) : "");
         tvStatus.setText(Utilities.stringNotNull(freeZonePayment.getStatus()));
     }

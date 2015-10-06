@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import custom.RoundedImageView;
 import exceptionHandling.ExceptionHandler;
 import model.Card_Management__c;
@@ -28,7 +29,7 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
     ArrayList<DWCView> _views;
     TextView tvCardOwnerName;
     private LinearLayout linearLayout;
-    RoundedImageView imageUser;
+    DWCRoundedImageView imageUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         setContentView(R.layout.show_details_access_card);
         tvCardOwnerName = (TextView) findViewById(R.id.tvCardOwnerName);
         linearLayout = (LinearLayout) findViewById(R.id.linearAddForms);
-        imageUser = (RoundedImageView) findViewById(R.id.view);
+        imageUser = (DWCRoundedImageView) findViewById(R.id.view);
         Gson gson = new Gson();
         Card_Management__c _cardManagement = gson.fromJson(getIntent().getExtras().getString("object"), Card_Management__c.class);
         if (_cardManagement.getPersonal_Photo__c() != null && !_cardManagement.getPersonal_Photo__c().equals(""))

@@ -83,7 +83,7 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
                 }
             }
         }
-//        _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_card));
+//        _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
 
         mvh.item.setOnClickListener(new ClickableListAdapter.OnClickListener(mvh) {
 

@@ -9,7 +9,7 @@
         android:id="@+id/relativeHeader"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/dwc_blue_color">
+        android:background="@color/header_background">
 
         <ImageView
             android:id="@+id/imageBack"

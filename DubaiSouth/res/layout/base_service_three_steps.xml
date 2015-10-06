@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/white_green"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -49,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/header"
-        android:background="@color/stepper_back"
+android:background="@color/noc_top_background"
         android:gravity="center|left"
         android:orientation="horizontal">
 
@@ -57,12 +58,12 @@
             android:id="@+id/line1"
             android:layout_width="10dp"
             android:layout_height="1dp"
-            android:layout_weight="4"
+            android:layout_weight="1"
             android:background="@color/light_grey" />
 
         <Button
             android:id="@+id/btnNOC1"
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
@@ -80,7 +81,7 @@
 
         <Button
             android:id="@+id/btnNOC2"
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
@@ -98,20 +99,19 @@
 
         <Button
             android:id="@+id/btnNOC3"
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/noc_selector"
             android:gravity="center"
             android:text="3"
-
             android:textColor="@color/white" />
 
         <View
             android:id="@+id/line4"
             android:layout_width="10dp"
             android:layout_height="1dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@color/light_grey" />
 
 
@@ -123,7 +123,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/linearBottom"
         android:layout_below="@+id/linear"
-        android:background="@color/noc_below_background">
+        android:background="@color/white_green">
 
     </FrameLayout>
 
@@ -131,20 +131,9 @@
         android:id="@+id/linearBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white_green"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin">
-
-        <Button
-            android:id="@+id/btnClose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:visibility="gone"
-            android:background="@drawable/next_rounded_corners"
-            android:text="Close"
-            android:textColor="@color/white" />
 
 
         <Button
@@ -172,6 +161,19 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/next_rounded_corners"
+        android:text="Close"
+        android:textColor="@color/white" />
 
 
 </RelativeLayout>

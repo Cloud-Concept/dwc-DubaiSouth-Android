@@ -25,6 +25,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/view" />
@@ -34,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvFullName"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/view"
@@ -50,16 +51,15 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/tvCardNumberLabel"
-        android:textColor="@color/black"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold" />
+        android:textColor="@color/grey"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCardNumberLabel"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/view"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
@@ -76,16 +76,14 @@
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView7"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_view_size"
-        android:textStyle="bold" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/view"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
@@ -102,15 +100,14 @@
         android:layout_marginRight="10dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_toRightOf="@+id/textView8"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView8"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/view"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
@@ -127,16 +124,14 @@
         android:layout_marginRight="10dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_toRightOf="@+id/textView9"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_view_size"
-        android:textStyle="bold" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/view"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
@@ -153,15 +148,16 @@
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView10"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+        android:textColor="@color/grey" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/textView10"
-        android:background="@color/grey" />
+        android:background="@color/noc_grey" />
 
 
 </RelativeLayout>

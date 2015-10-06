@@ -3850,6 +3850,12 @@ public static String contactEmail="";
                         _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
                     }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LostCard".toLowerCase())) {
                         _items.add(new ServiceItem("Lost Card", R.mipmap.renew_visa));
+                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewBCContract".toLowerCase())) {
+                        _items.add(new ServiceItem("Renew BC Contract", R.mipmap.renew_license));
+                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewContract".toLowerCase())) {
+                        _items.add(new ServiceItem("Renew Contract", R.mipmap.renew_license));
+                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelContract".toLowerCase())) {
+                        _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
                     }
                 }
 
