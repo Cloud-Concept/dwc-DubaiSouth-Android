@@ -64,7 +64,7 @@ public abstract class BaseServiceFragment extends Fragment implements View.OnCli
     View line1, line2, line3, line4, line5, line6;
     public static int status = 1;
     static FrameLayout frameLayout;
-    public TextView tvTitle;
+    public static TextView tvTitle;
 
     @Nullable
     @Override
@@ -239,12 +239,14 @@ public abstract class BaseServiceFragment extends Fragment implements View.OnCli
                         .replace(R.id.content, getFourthFragment())
                         .commitAllowingStateLoss();
                 btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
+                tvTitle.setText("Preview");
                 btnNext.setText("Pay & Submit");
                 btnNOC3.setText("");
                 btnNOC4.setSelected(true);
                 status = 4;
             } else if (status == 4) {
-
+btnBack.setVisibility(View.INVISIBLE);
+                btnBackTransparent.setVisibility(View.GONE);
             }else{
 
                 getActivity().finish();
@@ -327,6 +329,7 @@ public abstract class BaseServiceFragment extends Fragment implements View.OnCli
                 .commitAllowingStateLoss();
         btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
         btnNOC3.setText("");
+        tvTitle.setText("Preview");
         btnNext.setText("Pay & Submit");
         btnNOC4.setSelected(true);
         status = 4;

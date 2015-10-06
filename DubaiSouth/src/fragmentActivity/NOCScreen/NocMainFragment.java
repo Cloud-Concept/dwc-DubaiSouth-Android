@@ -112,6 +112,7 @@ public class NocMainFragment extends BaseServiceFragment {
         if (v == BaseServiceFragment.btnNext) {
             if (BaseServiceFragment.status == 1) {
                 if (NOCInitialPage.ValidateInput()) {
+
                     super.onClick(v);
                 } else {
                     Utilities.showLongToast(getActivity(), "Please fill all fields");
@@ -126,17 +127,8 @@ public class NocMainFragment extends BaseServiceFragment {
                 if (NOCAttachmentPage._companyDocuments.size() > 0) {
                     final ArrayList<Company_Documents__c> company_documents__cs = NOCAttachmentPage._companyDocuments;
                     if (NOCAttachmentPage.ValidateAttachments()) {
-                        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-                            @Override
-                            public void authenticatedRestClient(RestClient client) {
-                                if (client == null) {
-                                    SalesforceSDKManager.getInstance().logout(getActivity());
-                                    return;
-                                } else {
-                                    PerfromParentNext(BaseServiceFragment.btnNext);
-                                }
-                            }
-                        });
+                        PerfromParentNext(BaseServiceFragment.btnNext);
+
                     } else {
                         Utilities.showToast(getActivity(), "Please fill all attachments");
                     }
@@ -165,6 +157,7 @@ public class NocMainFragment extends BaseServiceFragment {
                     btnNOC3.setGravity(Gravity.CENTER);
                     btnNOC3.setText("3");
                     btnNext.setText(("Next"));
+                    tvTitle.setText("New Noc");
                     btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                     btnNOC4.setSelected(false);
                     btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));

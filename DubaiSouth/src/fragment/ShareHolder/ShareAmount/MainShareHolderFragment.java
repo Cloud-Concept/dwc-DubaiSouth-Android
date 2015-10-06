@@ -150,6 +150,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
                     btnNOC3.setGravity(Gravity.CENTER);
                     btnNOC3.setText("3");
                     btnNext.setText(("Next"));
+                    tvTitle.setText("Share Transfer");
                     btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                     btnNOC4.setSelected(false);
                     btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));

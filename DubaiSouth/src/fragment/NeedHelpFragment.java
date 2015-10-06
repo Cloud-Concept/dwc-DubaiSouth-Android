@@ -74,6 +74,7 @@ public class NeedHelpFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity= (NeedHelpActivity) getActivity();
+        activity.setupUI(view);
     }
 
     private void InitializeViews(View view) {

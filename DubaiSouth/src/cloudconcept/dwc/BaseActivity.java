@@ -7,9 +7,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -30,6 +35,7 @@ import dataStorage.StoreData;
 import model.NavDrawerItem;
 import model.User;
 import utilities.ActivitiesLauncher;
+import utilities.AutomaticUtilities;
 import utilities.Utilities;
 
 /**
@@ -89,6 +95,7 @@ public abstract class BaseActivity extends SalesforceActivity implements View.On
     }
 
     private void InitializeViews() {
+        setupUI(findViewById(R.id.basell));
         imageBack = (ImageView) findViewById(R.id.imageBack);
         imageMenu = (ImageView) findViewById(R.id.imageMenu);
         badgeNotifications = (BadgeButton) findViewById(R.id.btnNotifications);
@@ -315,6 +322,34 @@ public abstract class BaseActivity extends SalesforceActivity implements View.On
 
             ActivitiesLauncher.openDashboardActivity(getApplicationContext());
             finish();
+        }
+    }
+
+
+    public void setupUI(View view) {
+
+        //Set up touch listener for non-text box views to hide keyboard.
+        if(!(view instanceof EditText)) {
+
+            view.setOnTouchListener(new View.OnTouchListener() {
+
+                public boolean onTouch(View v, MotionEvent event) {
+                    AutomaticUtilities.hideSoftKeyboard(BaseActivity.this);
+                    return false;
+                }
+
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+
+                View innerView = ((ViewGroup) view).getChildAt(i);
+
+                setupUI(innerView);
+            }
         }
     }
 }

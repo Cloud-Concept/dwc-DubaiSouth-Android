@@ -58,6 +58,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity = (CardActivity) getActivity();
+        tvTitle.setText("New Card");
     }
 
     @Override
@@ -138,6 +139,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                     btnNOC3.setGravity(Gravity.CENTER);
                     btnNOC3.setText("3");
                     btnNext.setText(("Next"));
+                    tvTitle.setText("New Card");
                     btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
                     btnNOC4.setSelected(false);
                     btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
