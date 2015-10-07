@@ -136,10 +136,13 @@ public class SecondFragment extends Fragment {
 
                 List<Visa> visa = SFResponseManager.parseVisaData(response.toString());
                 activity.setVisa(visa.get(0));
-                try {
-                    visaNumber.setText(activity.getVisa().getApplicant_Full_Name__c());
 
+                    visaNumber.setText(activity.getVisa().getApplicant_Full_Name__c());
+try{
                     visaHolderName.setText(activity.getVisa().getPassport_Issue_Country__r().getName() + "");
+}catch (NullPointerException e){
+
+}
                     qualification.setText(activity.getVisa().getQualification__r().getName());
                     occupation.setText(activity.getVisa().getJob_Title_at_Immigration__r().getName());
                     passportNumber.setText(activity.getVisa().getPassport_Number__c());
@@ -151,9 +154,7 @@ public class SecondFragment extends Fragment {
                             activity.getVisa().Urgent_Stamping_Paid__c = b;
                         }
                     });
-                }catch (NullPointerException e){
 
-                }
                 Utilities.dismissLoadingDialog();
             }
 

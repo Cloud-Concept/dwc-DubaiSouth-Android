@@ -83,6 +83,7 @@ public class PermanentEmployeeFragment extends Fragment {
         spinnerFilterPermanentEmployee = (Spinner) view.findViewById(R.id.spinner);
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         etSearch = (EditText) view.findViewById(R.id.etSearch);
+        etSearch.clearFocus();
         ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
                 Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
         spinnerFilterPermanentEmployee.setAdapter(dataAdapter);
