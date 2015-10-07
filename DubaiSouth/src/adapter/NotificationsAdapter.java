@@ -2,15 +2,25 @@ package adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.salesforce.androidsdk.app.SalesforceSDKManager;
+import com.salesforce.androidsdk.rest.ClientManager;
+import com.salesforce.androidsdk.rest.RestClient;
+import com.salesforce.androidsdk.rest.RestRequest;
+import com.salesforce.androidsdk.rest.RestResponse;
+
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import cloudconcept.dwc.R;
 import model.NotificationManagement;
@@ -79,11 +89,49 @@ public class NotificationsAdapter extends ClickableListAdapter {
             mvh.imageView.setImageDrawable(act.getResources().getDrawable(R.mipmap.notification_leasing));
         }
 
-        if (notificationManagement.getCaseNotification().getCase_Rating_Score() == null) {
+        if (!notificationManagement.isFeedbackAllowed()) {
             mvh.ratingBar.setVisibility(View.GONE);
-        } else {
-            float ratingValue = Float.parseFloat(notificationManagement.getCaseNotification().getCase_Rating_Score());
+        } else  {
+            float ratingValue = Float.parseFloat(notificationManagement.getCaseNotification().getCase_Rating_Score()==null?"0":notificationManagement.getCaseNotification().getCase_Rating_Score());
+            mvh.ratingBar.setVisibility(View.VISIBLE);
             mvh.ratingBar.setRating(ratingValue);
+            mvh.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                    // Send the rating to back end
+                    Map<String, Object> caseFields = new HashMap<String, Object>();
+                    caseFields.put("Case_Rating_Score__c", v);
+                    try {
+
+                        final RestRequest restRequest = RestRequest.getRequestForUpdate(context.getString(R.string.api_version), "Case", ((NotificationManagement)mvh.data).getCaseNotification().getId(),caseFields);
+                        new ClientManager(context, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(act, new ClientManager.RestClientCallback() {
+                            @Override
+                            public void authenticatedRestClient(final RestClient client) {
+                                if (client == null) {
+                                    SalesforceSDKManager.getInstance().logout(act);
+                                    return;
+                                } else {
+                                    client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                                        @Override
+                                        public void onSuccess(RestRequest request, RestResponse response) {
+                                            Log.d("MyTag", "onSuccess "+response.toString());
+                                        }
+
+                                        @Override
+                                        public void onError(Exception exception) {
+                                            Log.d("MyTag", "onError ");
+                                        }
+                                    });
+                                }
+                            }
+                        });
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
         }
 
 

@@ -63,9 +63,9 @@ public class CompanyDocumentsActivityAdapter extends BaseAdapter {
             tvDate.setText("");
         } else {
             Date date = filteredCompanyDocuments.get(position).getCreatedDate().getTime();
-            SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
             String strDate = sdfDate.format(date);
-            tvDate.setText(strDate.substring(0, 10));
+            tvDate.setText(strDate.substring(0, 11));
         }
         if (String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()).equals("NaN")) {
             tvVersion.setText("");
