@@ -20,20 +20,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imageStatusDebitCredit"
+        android:textColor="@color/grey"
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/imageStatusDebitCredit"
         android:text="Employee Name:"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/tvEmployeeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/grey"
         android:layout_alignTop="@+id/tvEmployeeNameLabel"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_toEndOf="@+id/tvEmployeeNameLabel"
-        android:gravity="center"
+        android:gravity="left"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" />
 
@@ -44,8 +47,10 @@
         android:layout_below="@+id/tvEmployeeNameLabel"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="3dp"
+        android:textColor="@color/grey"
         android:layout_toEndOf="@+id/imageStatusDebitCredit"
         android:text="Date:"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -56,9 +61,9 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_toEndOf="@+id/tvDateLabel"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold" />
+        android:textColor="@color/grey"
+        android:gravity="left"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/tvAmountLabel"
@@ -66,9 +71,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDateLabel"
         android:layout_marginLeft="5dp"
+        android:textColor="@color/grey"
         android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/imageStatusDebitCredit"
         android:text="Amount:"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -79,10 +86,10 @@
         android:layout_alignTop="@+id/tvAmountLabel"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:textColor="@color/grey"
         android:layout_toEndOf="@+id/tvAmountLabel"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold" />
+        android:gravity="left"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/tvBalanceLabel"
@@ -90,6 +97,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="Balance:"
+        android:textStyle="bold"
+        android:textColor="@color/grey"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_below="@+id/tvAmountLabel"
         android:layout_toStartOf="@+id/tvAmount" />
@@ -99,12 +108,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvBalanceLabel"
+        android:textColor="@color/grey"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_toEndOf="@+id/tvBalanceLabel"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold" />
+        android:gravity="left"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,17 +121,20 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Status:"
         android:id="@+id/tvStatusLabel"
+        android:textColor="@color/grey"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/imageStatusDebitCredit"
         android:layout_below="@+id/tvBalanceLabel"
-        android:layout_alignStart="@+id/tvBalanceLabel"
         android:layout_marginTop="3dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:gravity="center"
+        android:gravity="left"
         android:id="@+id/tvStatus"
+        android:textColor="@color/grey"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/tvStatusLabel"

@@ -73,6 +73,8 @@ public class CertificatesAndAgreementsFragment2 extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
+                    adapter = null;
+                    eServiceDocumentChecklists.clear();
                     CallTrueCopiesService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
