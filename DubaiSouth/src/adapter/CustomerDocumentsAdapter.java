@@ -47,7 +47,7 @@ public class CustomerDocumentsAdapter extends RecyclerView.Adapter<CustomerDocum
         if (!Utilities.stringNotNull(data.get(position).getCreatedDate().getTime().toString()).equals("")) {
             SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
             String strDate = sdfDate.format(data.get(position).getCreatedDate().getTime());
-           // holder.tvDate.setText("Date:" +strDate.substring(0, 11));
+            holder.tvDate.setText("Date:" +strDate.substring(0, 11));
         } else {
             holder.tvDate.setText("");
         }

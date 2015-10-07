@@ -68,6 +68,7 @@ public class InitialPage extends Fragment {
                 if(value>Integer.parseInt(activity.getShareHolder().getNo_of_Shares__c()==null?"0":activity.getShareHolder().getNo_of_Shares__c())){
                     activity.setShareno(Integer.parseInt(activity.getShareHolder().getNo_of_Shares__c()));
                     NoofTransferredShares.setText(activity.getShareHolder().getNo_of_Shares__c());
+                    NoofTransferredShares.setSelection(activity.getShareHolder().getNo_of_Shares__c().length());
                 }else{
                     activity.setShareno(value);
                 }
