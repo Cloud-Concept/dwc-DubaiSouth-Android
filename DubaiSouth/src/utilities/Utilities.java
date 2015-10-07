@@ -2180,7 +2180,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -2559,13 +2558,14 @@ public class Utilities {
 
             }
         }
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
 
     }
-    public static void setupUI(View view,final Activity act) {
+
+    public static void setupUI(View view, final Activity act) {
 
         //Set up touch listener for non-text box views to hide keyboard.
-        if(!(view instanceof EditText)) {
+        if (!(view instanceof EditText)) {
 
             view.setOnTouchListener(new View.OnTouchListener() {
 
@@ -2584,10 +2584,11 @@ public class Utilities {
 
                 View innerView = ((ViewGroup) view).getChildAt(i);
 
-                setupUI(innerView,act);
+                setupUI(innerView, act);
             }
         }
     }
+
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, LinearLayout linearLayout, final ArrayList<FormField> formFields, Visa _visa, JSONObject visaJson, Map<String, String> parameters, final Card_Management__c _noc) {
 
         LayoutInflater inflater = (LayoutInflater)
@@ -2615,7 +2616,7 @@ public class Utilities {
                     tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
                     final String[] entries = field.getPicklistEntries().split(",");
-                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1,0, entries);
+                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1, 0, entries);
 
                     spinner.setAdapter(adapter);
                     spinner.setSelection(0);
@@ -2867,7 +2868,7 @@ public class Utilities {
                     linearLayout.addView(view);
             }
         }
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
     }
 
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, final LinearLayout linearLayout, final ArrayList<FormField> formFields, final Map<String, String> parameters, final EServices_Document_Checklist__c eServices_document_checklist__c, final Receipt_Template__c eService_administration__r) {
@@ -2930,7 +2931,7 @@ public class Utilities {
                                             tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
                                             final String[] entries = field.getPicklistEntries().split(",");
-                                            formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1,0, entries);
+                                            formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1, 0, entries);
                                             adapter.setDropDownViewResource(R.layout.customtext);
                                             spinner.setAdapter(adapter);
                                             spinner.setSelection(0);
@@ -3208,7 +3209,7 @@ public class Utilities {
             e.printStackTrace();
         }
 
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
     }
 
 
@@ -3237,7 +3238,7 @@ public class Utilities {
                     tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
                     final String[] entries = field.getPicklistEntries().split(",");
-                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1,0, entries);
+                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1, 0, entries);
                     adapter.setDropDownViewResource(R.layout.customtext);
                     spinner.setAdapter(adapter);
                     spinner.setSelection(0);
@@ -3438,7 +3439,7 @@ public class Utilities {
 
         }
 
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
     }
 
     public static String[] formatStartAndEndDate(String filterItem) {
@@ -3833,7 +3834,7 @@ public class Utilities {
                         _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
                         _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
                         _items.add(new ServiceItem("Renew License Activity", R.mipmap.renew_license));
@@ -4411,13 +4412,17 @@ public class Utilities {
     }
 
     public static String processAmount(String Amount) {
-        int length = Amount.length();
-        if (length > 3) {
-            NumberFormat format = NumberFormat.getCurrencyInstance();
-            Amount = format.format(Double.valueOf(Amount));
-            return Amount.substring(1, Amount.length() - 1);
+        if (!Amount.equals("")) {
+            int length = Amount.length();
+            if (length > 3) {
+                NumberFormat format = NumberFormat.getCurrencyInstance();
+                Amount = format.format(Double.valueOf(Amount));
+                return Amount.substring(1, Amount.length() - 1);
+            } else {
+                return Amount;
+            }
         } else {
-            return Amount;
+            return "";
         }
     }
 

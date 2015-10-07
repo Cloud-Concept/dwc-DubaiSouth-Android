@@ -13,22 +13,41 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note:"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-This service will be subject to approval."
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/grey" />
+
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="20dp">
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="Transfer From"
                     android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
             </LinearLayout>
 
@@ -52,16 +71,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_marginTop="10dp">
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Transfer To"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -69,9 +88,10 @@
                 android:id="@+id/transferTo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@mipmap/spinner_background"
+                android:layout_marginTop="10dp"
                 android:gravity="center" />
 
 
@@ -84,10 +104,9 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Total No. of Shares"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
@@ -120,10 +139,9 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="No of Transferred Shares"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 

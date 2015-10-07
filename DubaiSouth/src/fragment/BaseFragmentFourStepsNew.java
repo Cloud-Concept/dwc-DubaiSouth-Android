@@ -33,7 +33,7 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
     public Button btnNOC2;
     public Button btnNOC3;
     public Button btnNOC4;
-    Button btnNOC5;
+//    Button btnNOC5;
     View line1, line2, line3, line4, line5;
     boolean isLoadedFirst = false, isLoadedSecond = false, isLoadedThird = false, isLoadedFourth = false, isLoadedFifth = false;
 
@@ -165,11 +165,11 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                 tvTitle.setText("Preview");
                 btnNext.setText("Pay & Submit");
                 btnCancel.setVisibility(View.VISIBLE);
-                btnNOC5.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                btnNOC5.setSelected(false);
-                btnNOC5.setTextColor(getActivity().getResources().getColor(R.color.white));
-                btnNOC5.setGravity(Gravity.CENTER);
-                btnNOC5.setText("4");
+//                btnNOC5.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+//                btnNOC5.setSelected(false);
+//                btnNOC5.setTextColor(getActivity().getResources().getColor(R.color.white));
+//                btnNOC5.setGravity(Gravity.CENTER);
+//                btnNOC5.setText("4");
 
                 status = 4;
             }
@@ -303,7 +303,7 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
         btnCancel.setVisibility(View.GONE);
         btnNOC4.setBackgroundResource(R.mipmap.bullet_success);
         btnNOC4.setText("");
-        btnNOC5.setSelected(true);
+//        btnNOC5.setSelected(true);
         status = 5;
         btnBack.setVisibility(View.GONE);
         btnBackTransparent.setVisibility(View.GONE);

@@ -98,12 +98,12 @@ public class CustomerDocumentsFragment2 extends Fragment {
 //            } catch (JSONException e) {
 //                e.printStackTrace();
 //            }
-            if (adapter == null) {
-                companyDocuments.addAll(company_documents__cs);
-                adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
-                        R.layout.company_document_item_row_screen, companyDocuments);
-                lstCustomerDocuments.setAdapter(adapter);
-            }
+
+            companyDocuments.addAll(company_documents__cs);
+            adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
+                    R.layout.company_document_item_row_screen, companyDocuments);
+            lstCustomerDocuments.setAdapter(adapter);
+
         } else {
             if (method == CallType.FIRSTTIME) {
                 Utilities.showloadingDialog(getActivity());
@@ -131,15 +131,10 @@ public class CustomerDocumentsFragment2 extends Fragment {
                                 } else if (method == CallType.FIRSTTIME) {
                                     Utilities.dismissLoadingDialog();
                                 }
-                                if (adapter == null) {
-                                    companyDocuments.addAll(company_documents__cs);
-                                    adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
-                                            R.layout.company_document_item_row_screen, companyDocuments);
-                                    lstCustomerDocuments.setAdapter(adapter);
-                                } else {
-
-                                    adapter.addAll(company_documents__cs);
-                                }
+                                companyDocuments.addAll(company_documents__cs);
+                                adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
+                                        R.layout.company_document_item_row_screen, companyDocuments);
+                                lstCustomerDocuments.setAdapter(adapter);
                             }
 
                             @Override

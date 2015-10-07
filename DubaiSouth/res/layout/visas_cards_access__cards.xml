@@ -109,7 +109,6 @@
                 android:layout_height="wrap_content"
                 android:stackFromBottom="false"
                 android:transcriptMode="alwaysScroll"
-                android:background="@drawable/list_selector"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="2dp"
                 android:footerDividersEnabled="false">

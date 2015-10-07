@@ -75,8 +75,8 @@ public class AccessCardAdapter extends ClickableListAdapter {
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 
         if (_cardManagement.getStatus__c().equals("Active")) {
-            _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
             _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
+            _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
         }
 
         Calendar _calendar = Calendar.getInstance();

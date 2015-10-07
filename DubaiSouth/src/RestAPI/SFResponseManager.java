@@ -1197,6 +1197,65 @@ public class SFResponseManager {
         return contract_dwc__cs;
     }
 
+    public static ArrayList<Contract_DWC__c> parseLeasingContractResponse2(String s) {
+        Gson gson = new Gson();
+        ArrayList<Contract_DWC__c> contract_dwc__cs = new ArrayList<>();
+        Contract_DWC__c contract_dwc__c = new Contract_DWC__c();
+//        JSONObject jsonObject = null;
+        try {
+//            jsonObject = new JSONObject(s.toString());
+            JSONArray jArrayRecords = new JSONArray(s);
+            for (int i = 0; i < jArrayRecords.length(); i++) {
+                contract_dwc__c = new Contract_DWC__c();
+                JSONObject jsonRecord = jArrayRecords.getJSONObject(i);
+//                ObjectReader or = new ObjectMapper().reader().withType(
+//                        Contract_DWC__c.class);
+//                try {
+//                    contract_dwc__c = or.readValue(jsonRecord.toString());
+//                    contract_dwc__cs.add(contract_dwc__c);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+                contract_dwc__c = gson.fromJson(jsonRecord.toString(), Contract_DWC__c.class);
+                Contract_Line_Item__c contract_line_item__c = new Contract_Line_Item__c();
+                ArrayList<Contract_Line_Item__c> contract_line_item__cs;
+                JSONObject jsonContract_Line_Items__r = jsonRecord.getJSONObject("Contract_Line_Items__r");
+                JSONArray jsonArrayRecords = jsonContract_Line_Items__r.getJSONArray(JSONConstants.RECORDS);
+                contract_line_item__cs = new ArrayList<>();
+                for (int j = 0; j < jsonArrayRecords.length(); j++) {
+                    JSONObject json = jsonArrayRecords.getJSONObject(j);
+                    contract_line_item__c = new Contract_Line_Item__c();
+                    gson = new Gson();
+                    contract_line_item__c = gson.fromJson(json.toString(), Contract_Line_Item__c.class);
+                    JSONObject jsonInventory_Unit__r = json.getJSONObject("Inventory_Unit__r");
+                    Inventory_Unit__r inventory_unit__r = new Inventory_Unit__r();
+                    gson = new Gson();
+                    inventory_unit__r = gson.fromJson(jsonInventory_Unit__r.toString(), Inventory_Unit__r.class);
+                    JSONObject jsonProduct_Type__r = jsonInventory_Unit__r.getJSONObject("Product_Type__r");
+                    Product_Type__r product_type__r = new Product_Type__r();
+                    gson = new Gson();
+                    product_type__r = gson.fromJson(jsonProduct_Type__r.toString(), Product_Type__r.class);
+                    inventory_unit__r.setProduct_Type__r(product_type__r);
+                    contract_line_item__c.setInventory_unit__r(inventory_unit__r);
+                    contract_line_item__cs.add(contract_line_item__c);
+                }
+
+                contract_dwc__c.setContract_line_item__cs(contract_line_item__cs);
+                JSONObject jsonQoute = jsonRecord.getJSONObject("Quote__r");
+                Quote quote = new Quote();
+                quote.setId(jsonQoute.getString("Id"));
+                quote.setName(jsonQoute.getString("Name"));
+                contract_dwc__c.setQuote(quote);
+                contract_dwc__cs.add(contract_dwc__c);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return contract_dwc__cs;
+    }
+
+
     public static Case parseCaseObject(String s) {
         Gson gson = new Gson();
         Case caseObject = new Case();

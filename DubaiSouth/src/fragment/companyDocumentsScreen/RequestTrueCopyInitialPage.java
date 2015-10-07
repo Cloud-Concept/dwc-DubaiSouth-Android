@@ -445,7 +445,7 @@ public class RequestTrueCopyInitialPage extends Fragment {
 //                tvNoEmployees.setVisibility(View.VISIBLE);
             } else {
 //                tvNoEmployees.setVisibility(View.GONE);
-                contract_dwc__cs.addAll(SFResponseManager.parseLeasingContractResponse(result.toString()));
+                contract_dwc__cs.addAll(SFResponseManager.parseLeasingContractResponse2(result.toString()));
                 ArrayList<Contract_DWC__c> contracts = new ArrayList<>();
                 for (Contract_DWC__c contract_dwc__c : contract_dwc__cs) {
                     contracts.add(contract_dwc__c);
