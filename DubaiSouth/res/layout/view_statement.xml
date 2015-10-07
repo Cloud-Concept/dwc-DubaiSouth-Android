@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,16 +15,30 @@
         android:background="@mipmap/spinner_background"
         android:gravity="center" />
 
-    <com.malinskiy.superrecyclerview.SuperRecyclerView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/list"
+
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+        android:id="@+id/activity_main_swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_empty="@layout/emptyview"
-        app:layout_moreProgress="@layout/view_more_progress"
-        app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
-        app:recyclerClipToPadding="false"
-        app:recyclerPadding="16dp"
-        app:scrollbarStyle="insideInset" />
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/spinnerViewStatementFilter"
+        app:direction="both"
+        android:background="@color/white_green">
 
-</LinearLayout>
+
+        <ListView
+            android:id="@+id/lstStatements"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:groupIndicator="@null"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/list_selector"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="2dp"
+            android:footerDividersEnabled="false">
+
+        </ListView>
+
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+</RelativeLayout>

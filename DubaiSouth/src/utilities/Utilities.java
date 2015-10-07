@@ -2265,7 +2265,7 @@ import model.Visa;
 import model.WebForm;
 
 public class Utilities {
-public static String contactEmail="";
+    public static String contactEmail = "";
     static ProgressBar mProgressBar;
     public static ProgressDialog _progress;
     private static Receipt_Template__c eServiceAdministration;
@@ -2558,13 +2558,14 @@ public static String contactEmail="";
 
             }
         }
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
 
     }
-    public static void setupUI(View view,final Activity act) {
+
+    public static void setupUI(View view, final Activity act) {
 
         //Set up touch listener for non-text box views to hide keyboard.
-        if(!(view instanceof EditText)) {
+        if (!(view instanceof EditText)) {
 
             view.setOnTouchListener(new View.OnTouchListener() {
 
@@ -2583,10 +2584,11 @@ public static String contactEmail="";
 
                 View innerView = ((ViewGroup) view).getChildAt(i);
 
-                setupUI(innerView,act);
+                setupUI(innerView, act);
             }
         }
     }
+
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, LinearLayout linearLayout, final ArrayList<FormField> formFields, Visa _visa, JSONObject visaJson, Map<String, String> parameters, final Card_Management__c _noc) {
 
         LayoutInflater inflater = (LayoutInflater)
@@ -2739,14 +2741,14 @@ public static String contactEmail="";
 //                                    e.printStackTrace();
 //                                }
 //                    } else {
-                        Field[] fields = Card_Management__c.class.getFields();
-                        for (int j = 0; j < fields.length; j++)
-                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-                                try {
-                                    stringValue = (String) fields[j].get(_noc);
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                }
+                    Field[] fields = Card_Management__c.class.getFields();
+                    for (int j = 0; j < fields.length; j++)
+                        if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                            try {
+                                stringValue = (String) fields[j].get(_noc);
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
 //                    }
 
                     etEmail.setText(stringValue);
@@ -2865,7 +2867,7 @@ public static String contactEmail="";
                     linearLayout.addView(view);
             }
         }
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
     }
 
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, final LinearLayout linearLayout, final ArrayList<FormField> formFields, final Map<String, String> parameters, final EServices_Document_Checklist__c eServices_document_checklist__c, final Receipt_Template__c eService_administration__r) {
@@ -3206,7 +3208,7 @@ public static String contactEmail="";
             e.printStackTrace();
         }
 
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
     }
 
 
@@ -3317,15 +3319,15 @@ public static String contactEmail="";
 //                                    e.printStackTrace();
 //                                }
 //                    } else {
-                        getNocAndFields(visaJson, field, _noc);
-                        Field[] fields = NOC__c.class.getFields();
-                        for (int j = 0; j < fields.length; j++)
-                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-                                try {
-                                    stringValue = (String) fields[j].get(_noc);
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                }
+                    getNocAndFields(visaJson, field, _noc);
+                    Field[] fields = NOC__c.class.getFields();
+                    for (int j = 0; j < fields.length; j++)
+                        if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                            try {
+                                stringValue = (String) fields[j].get(_noc);
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
 //                    }
 
                     etEmail.setText(stringValue);
@@ -3436,7 +3438,7 @@ public static String contactEmail="";
 
         }
 
-        setupUI(linearLayout,act);
+        setupUI(linearLayout, act);
     }
 
     public static String[] formatStartAndEndDate(String filterItem) {
@@ -3490,7 +3492,14 @@ public static String contactEmail="";
         int currentYear = calendar.get(Calendar.YEAR);
         int currentMonth = calendar.get(Calendar.MONTH) + 1;
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-        calendar.set(currentYear, currentMonth - 1, currentDay);
+        if (currentMonth >= 9 && currentMonth <= 12) {
+            calendar.set(currentYear, 9, 1);
+        } else if (currentMonth < 9 && currentMonth >= 5) {
+            calendar.set(currentYear, 6, 1);
+        } else if (currentMonth < 5 && currentMonth >= 1) {
+            calendar.set(currentYear, 3, 1);
+        }
+
         String date1 = sdf.format(calendar.getTime());
         String startDate = null, endDate = null;
         if (filterItem.equals("Current Quarter")) {
@@ -3824,7 +3833,7 @@ public static String contactEmail="";
                         _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
                         _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
                         _items.add(new ServiceItem("Renew License Activity", R.mipmap.renew_license));
@@ -3848,13 +3857,13 @@ public static String contactEmail="";
                         _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewCard".toLowerCase())) {
                         _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LostCard".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LostCard".toLowerCase())) {
                         _items.add(new ServiceItem("Lost Card", R.mipmap.renew_visa));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewBCContract".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewBCContract".toLowerCase())) {
                         _items.add(new ServiceItem("Renew BC Contract", R.mipmap.renew_license));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewContract".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewContract".toLowerCase())) {
                         _items.add(new ServiceItem("Renew Contract", R.mipmap.renew_license));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelContract".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelContract".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
                     }
                 }

@@ -61,7 +61,6 @@ public class AccessCardAdapter extends ClickableListAdapter {
 
     @Override
     protected void bindHolder(ViewHolder h) {
-
         AccessCardViewHolder holder = (AccessCardViewHolder) h;
         Card_Management__c _cardManagement = (Card_Management__c) holder.data;
         holder.tvCardNumber.setText(Utilities.stringNotNull(_cardManagement.getCard_Number__c()));

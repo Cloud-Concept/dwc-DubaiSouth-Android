@@ -20,7 +20,8 @@ public class LegalRepresentativesShowDetailsActivity extends BaseActivity {
 
     @Override
     public int getMenuVisibillity() {
-        return 0;
+
+        return View.GONE;
     }
 
     @Override
