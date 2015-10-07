@@ -20,7 +20,7 @@
             android:layout_marginLeft="10dp"
             android:text="Registration Information"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_view_size"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />
     </RelativeLayout>
 

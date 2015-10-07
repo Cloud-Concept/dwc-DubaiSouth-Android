@@ -43,6 +43,7 @@ import java.util.ArrayList;
 
 import RestAPI.SFResponseManager;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import dataStorage.StoreData;
 import model.Card_Management__c;
 import model.Case;
@@ -120,10 +121,10 @@ public class HorizontalListViewAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.horizontal_item_row, null);
         }
 
-        ImageView ivServiceDrawable;
+        DWCRoundedImageView ivServiceDrawable;
         final TextView tvServiceName;
 
-        ivServiceDrawable = (ImageView) convertView.findViewById(R.id.ivServiceDrawable);
+        ivServiceDrawable = (DWCRoundedImageView) convertView.findViewById(R.id.ivServiceDrawable);
         tvServiceName = (TextView) convertView.findViewById(R.id.tvServiceName);
 
         ivServiceDrawable.setImageResource(_items.get(position).getDrawableIcon());
@@ -217,6 +218,7 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                     } else if (tvServiceName.getText().toString().equals("Cancel Card")) {
                         ActivitiesLauncher.openGenericChangeAndRemovalActivity(context, "Cancel Card", object);
                     }
+
                 } else if (object instanceof Contract_DWC__c) {
                     final Contract_DWC__c contract_dwc__c = (Contract_DWC__c) object;
                     if (tvServiceName.getText().toString().equals("Show Details")) {

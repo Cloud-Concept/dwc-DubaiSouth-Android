@@ -23,6 +23,8 @@ public class Inventory_Unit__r implements Serializable {
     private String id;
     @JsonProperty("Name")
     private String name;
+    @JsonProperty("Building_Number__c")
+    private String building_Number__c;
     @JsonProperty("Area_in_sq_m__c")
     private String area_in_sq_m__c;
     @JsonProperty("Unit_ID__c")
@@ -33,6 +35,14 @@ public class Inventory_Unit__r implements Serializable {
     private String product_Type__c;
 
     Product_Type__r product_Type__r;
+
+    public String getBuilding_Number__c() {
+        return building_Number__c;
+    }
+
+    public void setBuilding_Number__c(String building_Number__c) {
+        this.building_Number__c = building_Number__c;
+    }
 
     public String getId() {
         return id;

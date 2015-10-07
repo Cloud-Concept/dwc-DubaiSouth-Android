@@ -105,15 +105,15 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
             _items.add(new ServiceItem("Renew Visa", R.mipmap.renew_visa));
         }
 
+        if (mo.getVisa_Validity_Status__c().equals("Issued")) {
+            _items.add(new ServiceItem("Renew Passport", R.mipmap.noc_service_image));
+        }
 
         if ((mo.getVisa_Validity_Status__c().equals("Issued") || mo.getVisa_Validity_Status__c().equals("Under Process") || mo.getVisa_Validity_Status__c().equals("Under Renewal")) && (mo.getVisa_Type__c().equals("Employment") || mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External")) && !manager) {
             _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
         }
 
 
-        if (mo.getVisa_Validity_Status__c().equals("Issued")) {
-            _items.add(new ServiceItem("Renew Passport", R.mipmap.renew_license));
-        }
 
 
 //Deprecated By Ahmed Ahdel New Requirement Date:28/09/2015

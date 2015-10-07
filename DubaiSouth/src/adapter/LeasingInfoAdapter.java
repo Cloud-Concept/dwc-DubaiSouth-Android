@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import cloudconcept.dwc.R;
 import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
-import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
 import model.Contract_DWC__c;
 import model.ServiceItem;
@@ -67,7 +66,7 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
         final ContractViewHolder mvh = (ContractViewHolder) h;
         Contract_DWC__c mo = (Contract_DWC__c) mvh.data;
 
-        mvh.tvContractName.setText(Utilities.stringNotNull(mo.getName()));
+        mvh.tvContractName.setText(Utilities.stringNotNull(mo.getContract_line_item__cs().get(0).getName()));
         mvh.tvUnitName.setText(mo.getContract_line_item__cs().get(0).getInventory_unit__r().getName());
         mvh.tvContractType.setText(Utilities.stringNotNull(mo.getContract_Type__c()));
         mvh.tvStatus.setText(Utilities.stringNotNull(mo.getStatus__c()));
@@ -77,9 +76,9 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
         if (!mvh.tvExpiryDate.getText().toString().equals("")) {
             if (Utilities.daysDifference(mvh.tvExpiryDate.getText().toString()) < 60) {
                 if (mo.IS_BC_Contract__c()) {
-                    _items.add(new ServiceItem("Renew BC Contract", R.mipmap.renew_license));
+                    _items.add(new ServiceItem("Renew BC Contract", R.mipmap.lease_bc_contract));
                 } else {
-                    _items.add(new ServiceItem("Renew Contract", R.mipmap.renew_license));
+                    _items.add(new ServiceItem("Renew Contract", R.mipmap.lease_bc_contract));
                 }
             }
         }

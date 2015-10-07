@@ -267,7 +267,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                                             JSONObject jsonRecord = jsonArray.getJSONObject(0);
                                             Log.d("resultcase", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
-                                            activity.setTotal(activity.geteServiceAdministration().getTotal_Amount__c()+"");
+                                            activity.setTotal(activity.geteServiceAdministration().getTotal_Amount__c() + "");
                                             createCardRecord();
                                         } catch (JSONException e) {
                                             e.printStackTrace();
@@ -320,8 +320,10 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
         serviceFields.put("Account__c",activity.getUser().get_contact().get_account().getID());
         if (activity.getType().equals("3"))
             serviceFields.put("Renewal_For__c", activity.getCard().getId());
-        else if (activity.getType().equals("4"))
+        else if (activity.getType().equals("4")) {
             serviceFields.put("Lost_Card__c", activity.getCard().getId());
+            activity.geteServiceAdministration().setNo_of_Upload_Docs__c(0);
+        }
 
 
             /* Load dynamic fetching */
@@ -538,7 +540,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
-        return ThankYou.newInstance(msg, fee, mail);
+        return ThankYou.newInstance(msg,String.format(activity.getResources().getString(R.string.ServiceThankYouMessageCard),activity.getTotal()) , mail);
     }
 
     @Override

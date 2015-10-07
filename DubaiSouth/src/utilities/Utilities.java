@@ -2242,6 +2242,7 @@ import RestAPI.JSONConstants;
 import RestAPI.RelatedServiceType;
 import adapter.HorizontalListViewAdapter;
 import adapter.NationalityAdapter;
+import adapter.formfieldAdapter;
 import cloudconcept.dwc.R;
 import custom.CircularProgressBarDrawable;
 import custom.HorizontalListView;
@@ -2614,8 +2615,8 @@ public class Utilities {
                     tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
                     final String[] entries = field.getPicklistEntries().split(",");
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, entries);
-                    adapter.setDropDownViewResource(R.layout.customtext);
+                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1,0, entries);
+
                     spinner.setAdapter(adapter);
                     spinner.setSelection(0);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -2654,6 +2655,7 @@ public class Utilities {
 //                    spinner.setHint(field.getMobileLabel());
                     NationalityAdapter adapter = new NationalityAdapter(act, android.R.layout.simple_list_item_1, 0, ((CardActivity) act).getCountries());
                     adapter.setDropDownViewResource(R.layout.customtext);
+//                    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                     spinner.setAdapter(adapter);
                     spinner.setSelection(0);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -2928,7 +2930,7 @@ public class Utilities {
                                             tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
                                             final String[] entries = field.getPicklistEntries().split(",");
-                                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, entries);
+                                            formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1,0, entries);
                                             adapter.setDropDownViewResource(R.layout.customtext);
                                             spinner.setAdapter(adapter);
                                             spinner.setSelection(0);
@@ -3235,7 +3237,7 @@ public class Utilities {
                     tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
                     final String[] entries = field.getPicklistEntries().split(",");
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, entries);
+                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1,0, entries);
                     adapter.setDropDownViewResource(R.layout.customtext);
                     spinner.setAdapter(adapter);
                     spinner.setSelection(0);
@@ -3863,7 +3865,11 @@ public class Utilities {
                         _items.add(new ServiceItem("Renew Contract", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelContract".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewPassport".toLowerCase())) {
+                        _items.add(new ServiceItem("Renew Passport", R.mipmap.noc_service_image));
                     }
+
+
                 }
 
                 if (_items.size() > 0) {

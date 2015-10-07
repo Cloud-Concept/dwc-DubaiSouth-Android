@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import java.util.Arrays;
-
 public class StoreData {
     private Context context;
     String DATABASE_NAME = "DWC";
@@ -424,6 +422,17 @@ public class StoreData {
     public String getInvoicesResponse() {
         String b = sharedPreferences.getString("InvoicesResponse",
                 "");
+        return b;
+    }
+
+    public void setEstablishmentCardPageExist(boolean b) {
+        editor.putBoolean("EstablishmentCardPageExist", b);
+        editor.commit();
+    }
+
+    public boolean getEstablishmentCardPageExist() {
+        boolean b = sharedPreferences.getBoolean("EstablishmentCardPageExist",
+                false);
         return b;
     }
 }

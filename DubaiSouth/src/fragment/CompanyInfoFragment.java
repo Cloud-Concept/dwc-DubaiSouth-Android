@@ -4,6 +4,7 @@ import com.blunderer.materialdesignlibrary.handlers.ViewPagerHandler;
 
 import cloudconcept.dwc.R;
 import custom.DWCViewPagerFragment;
+import dataStorage.StoreData;
 import fragment.companyInfo.CardEstablishmentFragment;
 import fragment.companyInfo.CompanyInfoInnerFragment;
 import fragment.companyInfo.DirectorsFragment;
@@ -28,15 +29,27 @@ public class CompanyInfoFragment extends DWCViewPagerFragment {
 
     @Override
     public ViewPagerHandler getViewPagerHandler() {
-        return new ViewPagerHandler(getActivity())
-                .addPage(R.string.title_Company_Info, CompanyInfoInnerFragment.newInstance(getString(R.string.title_Company_Info)))
-                .addPage(R.string.title_license_info, LicenseInfoFragment.newInstance(getString(R.string.title_license_info)))
-                .addPage(R.string.title_card_establishment, CardEstablishmentFragment.newInstance(getString(R.string.title_card_establishment)))
-                .addPage(R.string.title_leasing_info, LeasingInfoFragment.newInstance(getString(R.string.title_leasing_info)))
-                .addPage(R.string.title_shareholders, ShareholdersFragment.newInstance(getString(R.string.title_shareholders)))
-                .addPage(R.string.title_directors, DirectorsFragment.newInstance(getString(R.string.title_directors)))
-                .addPage(R.string.title_general_managers, GeneralManagersFragment.newInstance(getString(R.string.title_general_managers)))
-                .addPage(R.string.title_legal_representative, LegalRepresentativesFragment.newInstance(getString(R.string.title_legal_representative)));
+        if (new StoreData(getActivity().getApplicationContext()).getEstablishmentCardPageExist()) {
+            return new ViewPagerHandler(getActivity())
+                    .addPage(R.string.title_Company_Info, CompanyInfoInnerFragment.newInstance(getString(R.string.title_Company_Info)))
+                    .addPage(R.string.title_license_info, LicenseInfoFragment.newInstance(getString(R.string.title_license_info)))
+                    .addPage(R.string.title_card_establishment, CardEstablishmentFragment.newInstance(getString(R.string.title_card_establishment)))
+                    .addPage(R.string.title_leasing_info, LeasingInfoFragment.newInstance(getString(R.string.title_leasing_info)))
+                    .addPage(R.string.title_shareholders, ShareholdersFragment.newInstance(getString(R.string.title_shareholders)))
+                    .addPage(R.string.title_directors, DirectorsFragment.newInstance(getString(R.string.title_directors)))
+                    .addPage(R.string.title_general_managers, GeneralManagersFragment.newInstance(getString(R.string.title_general_managers)))
+                    .addPage(R.string.title_legal_representative, LegalRepresentativesFragment.newInstance(getString(R.string.title_legal_representative)));
+        } else {
+            return new ViewPagerHandler(getActivity())
+                    .addPage(R.string.title_Company_Info, CompanyInfoInnerFragment.newInstance(getString(R.string.title_Company_Info)))
+                    .addPage(R.string.title_license_info, LicenseInfoFragment.newInstance(getString(R.string.title_license_info)))
+                    .addPage(R.string.title_leasing_info, LeasingInfoFragment.newInstance(getString(R.string.title_leasing_info)))
+                    .addPage(R.string.title_shareholders, ShareholdersFragment.newInstance(getString(R.string.title_shareholders)))
+                    .addPage(R.string.title_directors, DirectorsFragment.newInstance(getString(R.string.title_directors)))
+                    .addPage(R.string.title_general_managers, GeneralManagersFragment.newInstance(getString(R.string.title_general_managers)))
+                    .addPage(R.string.title_legal_representative, LegalRepresentativesFragment.newInstance(getString(R.string.title_legal_representative)));
+        }
+
     }
 
     @Override

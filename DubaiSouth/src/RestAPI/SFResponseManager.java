@@ -146,9 +146,9 @@ public class SFResponseManager {
     private static User parseUserObject(JSONObject jsonUser) {
 
         try {
-            Log.d("result user",jsonUser.toString());
+            Log.d("result user", jsonUser.toString());
             _user.setUrl(jsonUser.getJSONObject(JSONConstants.ATTRIBUTES).getString(JSONConstants.URL));
-            Utilities.contactEmail=jsonUser.getString("Email");
+            Utilities.contactEmail = jsonUser.getString("Email");
             _user.setContactId(jsonUser.getString(JSONConstants.CONTACTID));
             JSONObject jsonContact = jsonUser.getJSONObject(JSONConstants.CONTACT);
             Contact _contact = parseContactObject(jsonContact);
@@ -1166,12 +1166,17 @@ public class SFResponseManager {
                     contract_line_item__c = gson.fromJson(json.toString(), Contract_Line_Item__c.class);
                     JSONObject jsonInventory_Unit__r = json.getJSONObject("Inventory_Unit__r");
                     Inventory_Unit__r inventory_unit__r = new Inventory_Unit__r();
-                    gson = new Gson();
-                    inventory_unit__r = gson.fromJson(jsonInventory_Unit__r.toString(), Inventory_Unit__r.class);
+//                    gson = new Gson();
+//                    inventory_unit__r = gson.fromJson(jsonInventory_Unit__r.toString(), Inventory_Unit__r.class);
+                    inventory_unit__r.setName(jsonInventory_Unit__r.getString("Name"));
+                    inventory_unit__r.setBuilding_Number__c(jsonInventory_Unit__r.getString("Building_Number__c"));
+                    inventory_unit__r.setProduct_Type__c(jsonInventory_Unit__r.getString("Product_Type__c"));
+                    inventory_unit__r.setArea_in_sq_m__c(jsonInventory_Unit__r.getString("Area_in_sq_m__c"));
+
                     JSONObject jsonProduct_Type__r = jsonInventory_Unit__r.getJSONObject("Product_Type__r");
                     Product_Type__r product_type__r = new Product_Type__r();
-                    gson = new Gson();
-                    product_type__r = gson.fromJson(jsonProduct_Type__r.toString(), Product_Type__r.class);
+                    product_type__r.setId(jsonProduct_Type__r.getString("Id"));
+                    product_type__r.setName(jsonProduct_Type__r.getString("Name"));
                     inventory_unit__r.setProduct_Type__r(product_type__r);
                     contract_line_item__c.setInventory_unit__r(inventory_unit__r);
                     contract_line_item__cs.add(contract_line_item__c);
