@@ -54,15 +54,13 @@ public abstract class ClickableListAdapter extends BaseAdapter {
             view = mInflater.inflate(mViewId, null);
             holder = createHolder(view);
             view.setTag(holder);
-
+            // we must update the object's reference
+            holder.data = getItem(position);
+            // call the user's implementation
+            bindHolder(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-
-        // we must update the object's reference
-        holder.data = getItem(position);
-        // call the user's implementation
-        bindHolder(holder);
 
         return view;
     }

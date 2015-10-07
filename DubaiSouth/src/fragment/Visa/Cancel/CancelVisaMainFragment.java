@@ -72,7 +72,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
 
     @Override
     public Fragment getInitialFragment() {
-        return SecondFragment.newInstance("", "");
+        return SecondFragment.newInstance("","");
     }
 
 
@@ -336,9 +336,9 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
         serviceIdentifier = "";
         if (vRt.equals("Employment Visa Issued") || vRt.equals("Transfer Visa Issued")) {
             serviceIdentifier = "Residency Permit Cancellation";
-        } else if ((vRt.equals("Employment Visa Under Process") || vRt.equals("Transfer Visa Under Process")) && activity.getVisa().getResidency_File_Number__c() != null) {
+        } else if ((vRt.equals("Employment Visa Under Process") || vRt.equals("Employment Visa Under Renewal") || vRt.equals("Transfer Visa Under Process")) && activity.getVisa().getResidency_File_Number__c() != null) {
             serviceIdentifier = "Residency Permit Cancellation";
-        } else if (vRt.equals("Employment Visa Under Process") || vRt.equals("Transfer Visa Under Process")) {
+        } else if (vRt.equals("Employment Visa Under Process") ||vRt.equals("Employment Visa Under Renewal") ||  vRt.equals("Transfer Visa Under Process")) {
             serviceIdentifier = "Entry Permit Cancellation";
         } else if (vRt.equals("Visit Visa Issued")) {
             serviceIdentifier = "Visit Visa Cancellation";

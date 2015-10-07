@@ -32,10 +32,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -65,10 +65,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/ArabicName"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -98,10 +98,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/Gender"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -131,10 +131,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/Dateofbirth"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -165,10 +165,10 @@
             </LinearLayout>
 
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/BirthCountry"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -198,10 +198,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/PlaceCountry"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -231,10 +231,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/Email"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -264,10 +264,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/mobile"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -297,10 +297,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/Maritalstatus"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -330,10 +330,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/mothername"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -363,10 +363,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/currentnationality"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -396,10 +396,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/Previousnationality"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -429,10 +429,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/religion"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -463,10 +463,10 @@
             </LinearLayout>
 
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/languagesspoken"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -498,10 +498,10 @@
             </LinearLayout>
 
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/passportno"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -531,10 +531,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/dateofexpiry"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -565,10 +565,10 @@
             </LinearLayout>
 
 
-            <EditText
+            <EditText android:textSize="14sp"
                 android:id="@+id/countryofissue"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -600,10 +600,11 @@
             </LinearLayout>
 
 
-            <EditText
+            <EditText android:textSize="14sp"
+
                 android:id="@+id/placeofissue"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"

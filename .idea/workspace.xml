@@ -20,17 +20,424 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="550e52e7-d4e9-4956-b9f2-c1173b7fe10d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/AccessCardAdapter.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/AccessCardAdapter.java" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\BuildConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\classes\androidTest\debug\org\apache\cordova\test\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\external\cordova\framework\build\intermediates\manifests\tmp\manifestMerger209371208944728199.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\andexert\library\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\andexert\library\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\andexert\library\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\andexert\library\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\andexert\library\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\andexert\library\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\BuildConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\test\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\classes\androidTest\debug\org\apache\cordova\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SalesforceSDK\build\intermediates\manifests\tmp\manifestMerger4795192426915454210.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\andexert\library\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\andexert\library\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\andexert\library\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\andexert\library\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\andexert\library\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\andexert\library\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\BuildConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\test\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\classes\androidTest\debug\org\apache\cordova\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartStore\build\intermediates\manifests\tmp\manifestMerger5497241025754031065.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\appcompat\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\android\support\v7\recyclerview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\andexert\library\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\andexert\library\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\andexert\library\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\andexert\library\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\andexert\library\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\andexert\library\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\malinskiy\superrecyclerview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\orangegangsters\github\swipyrefreshlayout\library\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartstore\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\BuildConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$array.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$menu.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\com\salesforce\androidsdk\smartsync\test\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\de\hdodenhof\circleimageview\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$anim.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$bool.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$color.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$dimen.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$integer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R$styleable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\fr\ganfra\materialspinner\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\org\apache\cordova\R$xml.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\classes\androidTest\debug\org\apache\cordova\R.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Cloud Concept\dwc-DubaiSouth-Android\forcedroid\libs\SmartSync\build\intermediates\manifests\tmp\manifestMerger2597283944108166285.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/outputs/aar/SalesforceSDK-debug.aar" afterPath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/outputs/aar/SalesforceSDK-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/outputs/aar/SalesforceSDK-release.aar" afterPath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/outputs/aar/SalesforceSDK-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/outputs/aar/SmartStore-debug.aar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/outputs/aar/SmartStore-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/outputs/aar/SmartStore-release.aar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/outputs/aar/SmartStore-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/outputs/aar/SmartSync-debug.aar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/outputs/aar/SmartSync-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/outputs/aar/SmartSync-release.aar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/outputs/aar/SmartSync-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.external.cordova/framework/unspecified/jars/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.external.cordova/framework/unspecified/jars/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.external.cordova/framework/unspecified/jars/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.external.cordova/framework/unspecified/jars/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SalesforceSDK/unspecified/jars/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SalesforceSDK/unspecified/jars/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.external.cordova/framework/unspecified/jars/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.external.cordova/framework/unspecified/jars/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SalesforceSDK/unspecified/jars/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SalesforceSDK/unspecified/jars/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SmartStore/unspecified/jars/classes.jar" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/exploded-aar/dwc-DubaiSouth-Android.forcedroid.libs/SmartStore/unspecified/jars/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/outputs/aar/framework-debug.aar" afterPath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/outputs/aar/framework-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/outputs/aar/framework-release.aar" afterPath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/outputs/aar/framework-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/forcedroid/external/cordova/framework/build/intermediates/resources/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/forcedroid/libs/SalesforceSDK/build/intermediates/resources/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartStore/build/intermediates/resources/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/forcedroid/libs/SmartSync/build/intermediates/resources/resources-debug-androidTest.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/activity/AccessCardShowDetailsActivity.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/activity/AccessCardShowDetailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/activity/LegalRepresentativesShowDetailsActivity.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/activity/LegalRepresentativesShowDetailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/PermanentEmployeeListAdapter.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/PermanentEmployeeListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/BaseFragmentFourStepsNew.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/BaseFragmentFourStepsNew.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Cancel/CancelVisaMainFragment.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Cancel/CancelVisaMainFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/adapter/ClickableListAdapter.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/adapter/ClickableListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/exceptionHandling/ExceptionHandler.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/exceptionHandling/ExceptionHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Renew/InitialPage.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Renew/InitialPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/Cards/NewCard/MainNewCardFragment.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/Cards/NewCard/MainNewCardFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/MyRequestsFragment.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/MyRequestsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Cancel/PayAndSubmitCancelVisa.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Cancel/PayAndSubmitCancelVisa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SFResponseManager.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SFResponseManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Cancel/SecondFragment.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/Visa/Cancel/SecondFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/ShowDetailsActivity.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/ShowDetailsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/adapter/ViewStatementAdapter.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/adapter/ViewStatementAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/homepage.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/homepage.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/show_details_access_card.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/show_details_access_card.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/view_header.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/view_header.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/view_header_access_card.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/view_header_access_card.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/values/colors.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/company_documents.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/company_documents.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/fragement_second_renew_license.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/fragement_second_renew_license.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_cancel_visa.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_cancel_visa.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_licence_renew.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_licence_renew.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_renew_passport.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_renew_passport.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_renew_visa.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_initial_renew_visa.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_second.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_second.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_second_cancel_visa.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/fragment_second_cancel_visa.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector_hilight.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector_hilight.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/values/strings.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/view_statement.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/view_statement.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/view_statement_item_row.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/view_statement_item_row.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_disabled.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_disabled.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_enabled.xml" afterPath="$PROJECT_DIR$/DubaiSouth/res/layout/wizard_form_field_label_enabled.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="dwc-DubaiSouth-Android.iws" />
@@ -59,30 +466,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ViewStatementFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java">
+      <file leaf-file-name="AccessCardFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/AccessCardFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44634807">
-              <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="232" column="67" selection-start-line="232" selection-start-column="67" selection-end-line="232" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccessCardAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/AccessCardAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="103" column="63" selection-start-line="103" selection-start-column="63" selection-end-line="103" selection-end-column="63" />
               <folding>
-                <element signature="e#2423#2431#0" expanded="true" />
-                <element signature="e#3513#4596#0" expanded="true" />
-                <element signature="e#4595#4596#0" expanded="true" />
-                <element signature="e#5520#9434#0" expanded="true" />
-                <element signature="e#5988#6019#0" expanded="true" />
-                <element signature="e#6284#9290#0" expanded="true" />
-                <element signature="e#9289#9290#0" expanded="true" />
-                <element signature="e#9433#9434#0" expanded="true" />
+                <element signature="e#3426#3439#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewStatementAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/ViewStatementAdapter.java">
+      <file leaf-file-name="SoqlStatements.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.56930125">
+              <caret line="165" column="81" selection-start-line="165" selection-start-column="81" selection-end-line="165" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HorizontalListViewAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/HorizontalListViewAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.122807">
+              <caret line="157" column="67" selection-start-line="157" selection-start-column="67" selection-end-line="157" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivitiesLauncher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/ActivitiesLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+              <caret line="360" column="74" selection-start-line="360" selection-start-column="74" selection-end-line="360" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -92,50 +522,8 @@
         <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/PermanentEmployeeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="110" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="110" />
-              <folding>
-                <element signature="e#4623#5058#0" expanded="true" />
-                <element signature="e#5057#5058#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_statement.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/view_statement.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6">
-              <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-              <folding>
-                <element signature="e#476#511#0" expanded="true" />
-                <element signature="e#547#582#0" expanded="true" />
-                <element signature="e#616#651#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3502" column="54" selection-start-line="3502" selection-start-column="54" selection-end-line="3502" selection-end-column="54" />
+              <caret line="199" column="65" selection-start-line="199" selection-start-column="65" selection-end-line="199" selection-end-column="65" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SoqlStatements.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="310" column="52" selection-start-line="310" selection-start-column="33" selection-end-line="310" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -7600,18 +7988,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/CompanyDocumentsFragment.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/my_requests_row_item.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/my_requests.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/spinner_item.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/show_details_myrequests.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/MyRequestsFragment.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/adapter/MyRequestsAdapter.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/activity/LeasingShowDetailsActivity.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/view_header_contract_leasing.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/adapter/companyInfoAdapters/ShareHolderAdapter.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/tab_bar.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/director_removal_initial_page.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SFResponseManager.java" />
@@ -7627,12 +8006,10 @@
         <option value="$PROJECT_DIR$/DubaiSouth/src/activity/ViewStatementShowDetails.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/drawable/noc_active_shape.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/drawable/noc_inactive_shape.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/drawable/next_rounded_corners.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/drawable/cancel_rounded_corners.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/employee_noc_list.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/visas_cards_permanent__employee.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/ShowDetailsActivity.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/adapter/LeasingInfoAdapter.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/LeasingShowDetailsActivity.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/base_service_four_steps2.xml" />
@@ -7643,14 +8020,25 @@
         <option value="$PROJECT_DIR$/DubaiSouth/src/activity/LegalRepresentativesShowDetailsActivity.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/homepage.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/show_details_access_card.xml" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/activity/AccessCardShowDetailsActivity.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/view_header.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/AccessCardAdapter.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/view_header_access_card.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/PermanentEmployeeListAdapter.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/adapter/ViewStatementAdapter.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/view_statement.xml" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/view_statement_item_row.xml" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/MyRequestsFragment.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector_hilight.xml" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/view_statement.xml" />
+        <option value="$PROJECT_DIR$/DubaiSouth/res/layout/company_documents.xml" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/exceptionHandling/ExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/ShowDetailsActivity.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/adapter/ClickableListAdapter.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/activity/AccessCardShowDetailsActivity.java" />
       </list>
     </option>
   </component>
@@ -7704,6 +8092,38 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="DubaiSouth" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dwc-DubaiSouth-Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DubaiSouth" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dwc-DubaiSouth-Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DubaiSouth" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -7774,7 +8194,43 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="exceptionHandling" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dwc-DubaiSouth-Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DubaiSouth" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="adapter" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dwc-DubaiSouth-Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DubaiSouth" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -8038,7 +8494,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2145353" sideWeight="0.49230254" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0810622" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19426975" sideWeight="0.4832664" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3417191" sideWeight="0.4832664" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27377892" sideWeight="0.49653122" order="3" side_tool="false" content_ui="combo" />
@@ -8119,7 +8575,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java</url>
-          <line>3035</line>
+          <line>3024</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -8131,13 +8587,13 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java</url>
-          <line>3050</line>
+          <line>3039</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java</url>
-          <line>3819</line>
+          <line>3755</line>
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
@@ -8161,7 +8617,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/RestAPI/SFResponseManager.java</url>
-          <line>904</line>
+          <line>907</line>
           <properties />
           <option name="timeStamp" value="44" />
         </line-breakpoint>
@@ -8191,7 +8647,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/RestAPI/SFResponseManager.java</url>
-          <line>683</line>
+          <line>686</line>
           <properties />
           <option name="timeStamp" value="51" />
         </line-breakpoint>
@@ -8263,7 +8719,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/RestAPI/SFResponseManager.java</url>
-          <line>760</line>
+          <line>763</line>
           <properties />
           <option name="timeStamp" value="74" />
         </line-breakpoint>
@@ -8287,182 +8743,55 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/fragment/MyRequestsFragment.java</url>
-          <line>255</line>
+          <line>259</line>
           <properties />
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java</url>
-          <line>80</line>
+          <line>84</line>
           <properties />
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java</url>
-          <line>120</line>
+          <line>124</line>
           <properties />
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java</url>
-          <line>136</line>
+          <line>141</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java</url>
-          <line>159</line>
+          <line>116</line>
           <properties />
-          <option name="timeStamp" value="87" />
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java</url>
+          <line>3487</line>
+          <properties />
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java</url>
-          <line>112</line>
+          <line>136</line>
           <properties />
-          <option name="timeStamp" value="88" />
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="89" />
+      <option name="time" value="91" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/item_row_visit_visa.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.066667">
-          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/activity/ViewStatementShowDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/drawable/noc_active_shape.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16894197">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/drawable/noc_inactive_shape.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22525597">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/drawable/noc_selector.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08447099">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3327645">
-          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/drawable/next_rounded_corners.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16894197">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/drawable/cancel_rounded_corners.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16894197">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/employee_noc_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.527063">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="84" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/activity/EmployeeListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/show_details_leasing_contract.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.711111">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/ShowDetailsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66211605">
-          <caret line="132" column="77" selection-start-line="132" selection-start-column="11" selection-end-line="132" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/model/Contract_DWC__c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/companyInfo/LeasingInfoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="239" column="64" selection-start-line="239" selection-start-column="64" selection-end-line="239" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/LeasingInfoAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/base_service_four_steps.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03442029">
-          <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/BaseFragmentFiveSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="59" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/BaseServiceFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7867036">
@@ -8525,6 +8854,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6358792">
           <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -8549,6 +8879,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2687783">
           <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -8564,6 +8895,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="140" column="73" selection-start-line="140" selection-start-column="73" selection-end-line="140" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -8574,72 +8906,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.0444446">
           <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/activity/AccessCardShowDetailsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.40173912">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/ActivitiesLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36173913">
-          <caret line="360" column="52" selection-start-line="360" selection-start-column="52" selection-end-line="360" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/HorizontalListViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60475755">
-          <caret line="157" column="58" selection-start-line="157" selection-start-column="58" selection-end-line="157" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/view_header.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60181">
-          <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/item_row_permanent_employee.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.066667">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/ClickableListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="58" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/AccessCardAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/AccessCardFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="226" column="128" selection-start-line="226" selection-start-column="128" selection-end-line="226" selection-end-column="128" />
         </state>
       </provider>
     </entry>
@@ -8650,6 +8917,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5975067">
           <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -8660,34 +8928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.066667">
           <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/PermanentEmployeeListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12414384">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="310" column="52" selection-start-line="310" selection-start-column="33" selection-end-line="310" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/visas_cards_permanent__employee.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35187057">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="84" selection-end-column="83" />
           <folding />
         </state>
       </provider>
@@ -8714,22 +8954,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/PermanentEmployeeFragment.java">
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/Cards/NewCard/MainNewCardFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="110" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="110" />
-          <folding>
-            <element signature="e#4623#5058#0" expanded="true" />
-            <element signature="e#5057#5058#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-2.5656836">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/mipmap-hdpi/spinner_background.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/visas_cards_permanent__employee.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6963658">
+          <caret line="27" column="48" selection-start-line="16" selection-start-column="7" selection-end-line="27" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/view_statement_item_row.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3352872">
+          <caret line="106" column="35" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/Utilities.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3502" column="54" selection-start-line="3502" selection-start-column="54" selection-end-line="3502" selection-end-column="54" />
+          <caret line="3490" column="0" selection-start-line="3490" selection-start-column="0" selection-end-line="3490" selection-end-column="0" />
+          <folding>
+            <element signature="e#119669#119677#0" expanded="true" />
+            <element signature="e#122539#122547#0" expanded="true" />
+            <element signature="e#130712#130720#0" expanded="true" />
+            <element signature="e#148627#148635#0" expanded="true" />
+            <element signature="e#169377#169385#0" expanded="true" />
+            <element signature="e#191686#191694#0" expanded="true" />
+            <element signature="e#196785#196798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/MyRequestsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.2783964">
+          <caret line="210" column="80" selection-start-line="210" selection-start-column="80" selection-end-line="210" selection-end-column="80" />
+          <folding>
+            <element signature="e#9491#9832#0" expanded="true" />
+            <element signature="e#9831#9832#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18374164">
+          <caret line="5" column="94" selection-start-line="5" selection-start-column="94" selection-end-line="5" selection-end-column="94" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/ViewStatementAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3534#3755#0" expanded="false" />
+            <element signature="e#3754#3755#0" expanded="false" />
+            <element signature="e#3812#4051#0" expanded="false" />
+            <element signature="e#4050#4051#0" expanded="false" />
+            <element signature="e#4095#4334#0" expanded="false" />
+            <element signature="e#4333#4334#0" expanded="false" />
+            <element signature="e#4383#4622#0" expanded="false" />
+            <element signature="e#4621#4622#0" expanded="false" />
+            <element signature="e#4668#4907#0" expanded="false" />
+            <element signature="e#4906#4907#0" expanded="false" />
+            <element signature="e#4958#5197#0" expanded="false" />
+            <element signature="e#5196#5197#0" expanded="false" />
+            <element signature="e#5244#5483#0" expanded="false" />
+            <element signature="e#5482#5483#0" expanded="false" />
+            <element signature="e#5535#5774#0" expanded="false" />
+            <element signature="e#5773#5774#0" expanded="false" />
+            <element signature="e#5820#6059#0" expanded="false" />
+            <element signature="e#6058#6059#0" expanded="false" />
+            <element signature="e#6110#6349#0" expanded="false" />
+            <element signature="e#6348#6349#0" expanded="false" />
+            <element signature="e#6409#6648#0" expanded="false" />
+            <element signature="e#6647#6648#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+          <folding>
+            <element signature="e#3670#4813#0" expanded="true" />
+            <element signature="e#4812#4813#0" expanded="true" />
+            <element signature="e#6241#6272#0" expanded="true" />
+            <element signature="e#6529#8826#0" expanded="true" />
+            <element signature="e#8825#8826#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -8738,38 +9075,210 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-          <folding>
-            <element signature="e#476#511#0" expanded="true" />
-            <element signature="e#547#582#0" expanded="true" />
-            <element signature="e#616#651#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/ViewStatementAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+        <state vertical-scroll-proportion="-11.911111">
+          <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/ViewStatementFragment.java">
+    <entry file="file://D:/Android/sdk/sources/android-22/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44634807">
-          <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.33296213">
+          <caret line="859" column="23" selection-start-line="859" selection-start-column="23" selection-end-line="859" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33296213">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/drawable/list_selector_hilight.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07349666">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/company_documents.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34232122">
+          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/activity/CompanyDocumentsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
           <folding>
-            <element signature="e#2423#2431#0" expanded="true" />
-            <element signature="e#3513#4596#0" expanded="true" />
-            <element signature="e#4595#4596#0" expanded="true" />
-            <element signature="e#5520#9434#0" expanded="true" />
-            <element signature="e#5988#6019#0" expanded="true" />
-            <element signature="e#6284#9290#0" expanded="true" />
-            <element signature="e#9289#9290#0" expanded="true" />
-            <element signature="e#9433#9434#0" expanded="true" />
+            <element signature="e#3112#3730#0" expanded="false" />
+            <element signature="e#3729#3730#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/NOCScreen/NOCAttachmentPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3674833">
+          <caret line="283" column="106" selection-start-line="283" selection-start-column="106" selection-end-line="283" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/exceptionHandling/ExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6325167">
+          <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/custom/DWCRoundedImageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2594655">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/PermanentEmployeeListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/sdk/sources/android-22/android/widget/ListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33296213">
+          <caret line="463" column="16" selection-start-line="463" selection-start-column="16" selection-end-line="463" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/view_header.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3094959">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/item_row_permanent_employee.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.066667">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/res/layout/company_info_inner_fragment.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragmentActivity/ShowDetailsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55122495">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/sdk/sources/android-22/android/widget/BaseAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33296213">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/ClickableListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/AccessCardFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="232" column="67" selection-start-line="232" selection-start-column="67" selection-end-line="232" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/visasAdapters/AccessCardAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="63" selection-start-line="103" selection-start-column="63" selection-end-line="103" selection-end-column="63" />
+          <folding>
+            <element signature="e#3426#3439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/adapter/HorizontalListViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.122807">
+          <caret line="157" column="67" selection-start-line="157" selection-start-column="67" selection-end-line="157" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/activity/AccessCardShowDetailsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6982183">
+          <caret line="47" column="92" selection-start-line="47" selection-start-column="92" selection-end-line="47" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/utilities/ActivitiesLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="360" column="74" selection-start-line="360" selection-start-column="74" selection-end-line="360" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/fragment/visasAndCards/PermanentEmployeeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="199" column="65" selection-start-line="199" selection-start-column="65" selection-end-line="199" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DubaiSouth/src/RestAPI/SoqlStatements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56930125">
+          <caret line="165" column="81" selection-start-line="165" selection-start-column="81" selection-end-line="165" selection-end-column="81" />
+          <folding />
         </state>
       </provider>
     </entry>

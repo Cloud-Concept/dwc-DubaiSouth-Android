@@ -61,6 +61,7 @@ import model.User;
 import model.Visa;
 import model.VisaHolder;
 import model.WebForm;
+import utilities.Utilities;
 
 /**
  * Created by Abanoub on 6/15/2015.
@@ -145,7 +146,9 @@ public class SFResponseManager {
     private static User parseUserObject(JSONObject jsonUser) {
 
         try {
+            Log.d("result user",jsonUser.toString());
             _user.setUrl(jsonUser.getJSONObject(JSONConstants.ATTRIBUTES).getString(JSONConstants.URL));
+            Utilities.contactEmail=jsonUser.getString("Email");
             _user.setContactId(jsonUser.getString(JSONConstants.CONTACTID));
             JSONObject jsonContact = jsonUser.getJSONObject(JSONConstants.CONTACT);
             Contact _contact = parseContactObject(jsonContact);

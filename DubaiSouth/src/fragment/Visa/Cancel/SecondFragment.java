@@ -47,7 +47,7 @@ public class SecondFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     EditText visaNumber, visaHolderName;
-    EditText passportNumber, visaExpiryDate;
+    EditText passportNumber, visaExpiryDate,qualification,occupation;
     Switch UrgentStamping;
 
 
@@ -99,6 +99,8 @@ public class SecondFragment extends Fragment {
         visaHolderName = (EditText) view.findViewById(R.id.visaHolderName);
         passportNumber = (EditText) view.findViewById(R.id.passportNumber);
         visaExpiryDate = (EditText) view.findViewById(R.id.visaExpiryDate);
+        qualification = (EditText) view.findViewById(R.id.qualification);
+        occupation = (EditText) view.findViewById(R.id.occupation);
         UrgentStamping = (Switch) view.findViewById(R.id.UrgentStamping);
         Utilities.showloadingDialog(activity);
         new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
@@ -134,10 +136,11 @@ public class SecondFragment extends Fragment {
 
                 List<Visa> visa = SFResponseManager.parseVisaData(response.toString());
                 activity.setVisa(visa.get(0));
-                visaNumber.setText(activity.getVisa().getName());
+                visaNumber.setText(activity.getVisa().getApplicant_Full_Name__c());
 
-                visaHolderName.setText(activity.getVisa().getVisa_Holder__r().getName() + "");
-
+                visaHolderName.setText(activity.getVisa().getPassport_Issue_Country__r().getName() + "");
+                qualification.setText(activity.getVisa().getQualification__r().getName());
+                occupation.setText(activity.getVisa().getJob_Title_at_Immigration__r().getName());
                 passportNumber.setText(activity.getVisa().getPassport_Number__c());
 
                 visaExpiryDate.setText(activity.getVisa().getVisa_Expiry_Date__c());

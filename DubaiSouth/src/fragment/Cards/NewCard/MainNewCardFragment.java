@@ -83,7 +83,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
-        return ThankYou.newInstance(msg, fee, mail);
+        return ThankYou.newInstance(msg,String.format(activity.getResources().getString(R.string.ServiceThankYouMessageCard),activity.getTotal()) , mail);
     }
 
     @Override

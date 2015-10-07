@@ -57,19 +57,13 @@ public class PayAndSubmitCancelVisa extends Fragment {
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
 
-        tvLabel.setText( "Visa Number"+ "\t:");
-        tvValue.setText(activity.getVisa().getID());
+        tvLabel.setText( "Name"+ "\t:");
+        tvValue.setText(activity.getVisa().getApplicant_Full_Name__c());
         nocDetails.addView(view);
         view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
-        tvLabel.setText( "Visa Holder Name"+ "\t:");
-        tvValue.setText(activity.getVisa().getVisa_Holder__r().getName());
-        nocDetails.addView(view);
-        view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
-        tvLabel = (TextView) view.findViewById(R.id.pay_title);
-        tvValue = (TextView) view.findViewById(R.id.pay_text);
-        tvLabel.setText("Passport Number" + "\t:");
+        tvLabel.setText( "Passport Number"+ "\t:");
         tvValue.setText(activity.getVisa().getPassport_Number__c());
         nocDetails.addView(view);
         view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
@@ -78,6 +72,28 @@ public class PayAndSubmitCancelVisa extends Fragment {
         tvLabel.setText("Visa Expiry Date" + "\t:");
         tvValue.setText(activity.getVisa().getVisa_Expiry_Date__c());
         nocDetails.addView(view);
+        view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
+        tvLabel = (TextView) view.findViewById(R.id.pay_title);
+        tvValue = (TextView) view.findViewById(R.id.pay_text);
+        tvLabel.setText("Country of Issue" + "\t:");
+        tvValue.setText(activity.getVisa().getPassport_Issue_Country__r().getName() );
+        nocDetails.addView(view);
+
+
+        view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
+        tvLabel = (TextView) view.findViewById(R.id.pay_title);
+        tvValue = (TextView) view.findViewById(R.id.pay_text);
+        tvLabel.setText("Occupation" + "\t:");
+        tvValue.setText(activity.getVisa().getJob_Title_at_Immigration__r().getName() );
+        nocDetails.addView(view);
+        view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
+        tvLabel = (TextView) view.findViewById(R.id.pay_title);
+        tvValue = (TextView) view.findViewById(R.id.pay_text);
+        tvLabel.setText("Qualification" + "\t:");
+        tvValue.setText(activity.getVisa().getQualification__r().getName() );
+        nocDetails.addView(view);
+
+
         view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);

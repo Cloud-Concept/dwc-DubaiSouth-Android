@@ -22,9 +22,11 @@ import com.salesforce.androidsdk.rest.RestResponse;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
+import adapter.SpinnerAdapter;
 import adapter.ViewStatementAdapter;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
@@ -52,6 +54,7 @@ public class ViewStatementFragment extends Fragment {
     ListView lstStatements;
     private SwipyRefreshLayout mSwipeRefreshLayout;
     private String filterItem = "Current Quarter";
+    ArrayList<FreeZonePayment> freeZonePayments;
 
     @Nullable
     @Override
@@ -61,10 +64,11 @@ public class ViewStatementFragment extends Fragment {
         spinnerViewStatementFilter = (Spinner) view.findViewById(R.id.spinnerViewStatementFilter);
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         lstStatements = (ListView) view.findViewById(R.id.lstStatements);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.customtext, filterItems);
-        adapter.setDropDownViewResource(R.layout.customtext);
-        spinnerViewStatementFilter.setAdapter(adapter);
+        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+                Arrays.asList(filterItems));
+        spinnerViewStatementFilter.setAdapter(dataAdapter);
         spinnerViewStatementFilter.setSelection(0);
+        freeZonePayments = new ArrayList<>();
         InitializeViews(view);
         return view;
     }
@@ -79,7 +83,7 @@ public class ViewStatementFragment extends Fragment {
                 if (position != -1) {
                     filterItem = filterItems[position];
                     queryFilter = ConstructDateRangeFilter(filterItems[position]);
-                    CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.FIRSTTIME);
+                    CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.SPINNETCHANGEDDATA);
                 }
             }
 
@@ -95,15 +99,15 @@ public class ViewStatementFragment extends Fragment {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
                     String[] dates = Utilities.formatStartAndEndDate(filterItem);
-                    startDate = dates[0];
-                    endDate = dates[1];
+                    startDate = dates[0] + "T00:00:00Z";
+                    endDate = dates[1] + "T00:00:00Z";
                     queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
                     CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.REFRESH);
                 } else {
                     offset += 20;
                     String[] dates = Utilities.formatStartAndEndDate(filterItem);
-                    startDate = dates[0];
-                    endDate = dates[1];
+                    startDate = dates[0] + "T00:00:00Z";
+                    endDate = dates[1] + "T00:00:00Z";
                     queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
                     CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.LOADMORE);
                 }
@@ -111,8 +115,8 @@ public class ViewStatementFragment extends Fragment {
         });
 
         String[] dates = Utilities.formatStartAndEndDate("Current Quarter");
-        startDate = dates[0];
-        endDate = dates[1];
+        startDate = dates[0] + "T00:00:00Z";
+        endDate = dates[1] + "T00:00:00Z";
         queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
         CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.FIRSTTIME);
     }
@@ -121,8 +125,8 @@ public class ViewStatementFragment extends Fragment {
         queryFilter = "";
         if (!filterItem.equals("All Time")) {
             String[] dates = Utilities.formatStartAndEndDate(filterItem);
-            startDate = dates[0];
-            endDate = dates[1];
+            startDate = dates[0] + "T00:00:00Z";
+            endDate = dates[1] + "T00:00:00Z";
             queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
         }
 
@@ -130,63 +134,57 @@ public class ViewStatementFragment extends Fragment {
     }
 
     private void CallFreeZonePaymentRequest(final int offset, final int limit, final String queryFilter, final CallType callType) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Gson gson = new Gson();
-                user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
-                String soql = SoqlStatements.constructViewStatementQuery(user.get_contact().get_account().getID(), offset, limit, queryFilter);
-                try {
-                    restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
-                    new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-                        @Override
-                        public void authenticatedRestClient(RestClient client) {
-                            if (client == null) {
-                                SalesforceSDKManager.getInstance().logout(getActivity());
-                                return;
-                            } else {
-                                client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
-                                    @Override
-                                    public void onSuccess(RestRequest request, final RestResponse response) {
-                                        if (callType == CallType.REFRESH || callType == CallType.LOADMORE) {
-                                            mSwipeRefreshLayout.setRefreshing(false);
-                                        }
+        if (callType == CallType.SPINNETCHANGEDDATA) {
+            Utilities.showloadingDialog(getActivity());
+        }
 
-                                        ArrayList<FreeZonePayment> payments = (ArrayList<FreeZonePayment>) SFResponseManager.parseFreeZonePaymentResponse(response.toString());
-                                        
-//                                        mHandler.postDelayed(new Runnable() {
-//                                            public void run() {
-//                                                if (mAdapter == null) {
-//                                                    mAdapter = new ViewStatementAdapter(getActivity().getApplicationContext(), (ArrayList<FreeZonePayment>) SFResponseManager.parseFreeZonePaymentResponse(response.toString()));
-//                                                    mRecycler.setAdapter(mAdapter);
-//                                                } else {
-//                                                    ArrayList<FreeZonePayment> payments = (ArrayList<FreeZonePayment>) SFResponseManager.parseFreeZonePaymentResponse(response.toString());
-//                                                    if (payments.size() == 0) {
-//                                                        mRecycler.setLoadingMore(false);
-//                                                        mRecycler.setOnMoreListener(null);
-//                                                    } else {
-//                                                        mAdapter.addAll(payments);
-//                                                    }
-//                                                }
-//                                            }
-//                                        }, 2000);
-                                    }
+        Gson gson = new Gson();
+        user = gson.fromJson(new StoreData(getActivity().getApplicationContext()).getUserDataAsString(), User.class);
+        String soql = SoqlStatements.constructViewStatementQuery(user.get_contact().get_account().getID(), offset, limit, queryFilter);
+        try {
+            restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
+            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(getActivity());
+                        return;
+                    } else {
+                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                            @Override
+                            public void onSuccess(RestRequest request, final RestResponse response) {
+                                if (callType == CallType.REFRESH || callType == CallType.LOADMORE) {
+                                    mSwipeRefreshLayout.setRefreshing(false);
+                                }
+                                if (callType == CallType.SPINNETCHANGEDDATA) {
+                                    Utilities.dismissLoadingDialog();
+                                }
 
-                                    @Override
-                                    public void onError(Exception exception) {
-                                        if (Utilities.getIsProgressLoading()) {
-                                            Utilities.dismissLoadingDialog();
-                                        }
-                                    }
-                                });
+                                ArrayList<FreeZonePayment> payments = (ArrayList<FreeZonePayment>) SFResponseManager.parseFreeZonePaymentResponse(response.toString());
+                                freeZonePayments.addAll(payments);
+                                mAdapter = new ViewStatementAdapter(getActivity(), getActivity().getApplicationContext(),
+                                        R.layout.view_statement_item_row, freeZonePayments);
+                                lstStatements.setAdapter(mAdapter);
                             }
-                        }
-                    });
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
+
+                            @Override
+                            public void onError(Exception exception) {
+                                if (Utilities.getIsProgressLoading()) {
+                                    Utilities.dismissLoadingDialog();
+                                }
+                                if (callType == CallType.REFRESH || callType == CallType.LOADMORE) {
+                                    mSwipeRefreshLayout.setRefreshing(false);
+                                }
+                                if (callType == CallType.SPINNETCHANGEDDATA) {
+                                    Utilities.dismissLoadingDialog();
+                                }
+                            }
+                        });
+                    }
                 }
-            }
-        });
-        thread.start();
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 }

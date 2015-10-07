@@ -2558,14 +2558,13 @@ public class Utilities {
 
             }
         }
-        setupUI(linearLayout, act);
+        setupUI(linearLayout,act);
 
     }
-
-    public static void setupUI(View view, final Activity act) {
+    public static void setupUI(View view,final Activity act) {
 
         //Set up touch listener for non-text box views to hide keyboard.
-        if (!(view instanceof EditText)) {
+        if(!(view instanceof EditText)) {
 
             view.setOnTouchListener(new View.OnTouchListener() {
 
@@ -2584,11 +2583,10 @@ public class Utilities {
 
                 View innerView = ((ViewGroup) view).getChildAt(i);
 
-                setupUI(innerView, act);
+                setupUI(innerView,act);
             }
         }
     }
-
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, LinearLayout linearLayout, final ArrayList<FormField> formFields, Visa _visa, JSONObject visaJson, Map<String, String> parameters, final Card_Management__c _noc) {
 
         LayoutInflater inflater = (LayoutInflater)
@@ -2727,29 +2725,29 @@ public class Utilities {
                     TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);
                     String stringValue = "";
                     String name = field.getName();
-//                    if (name.equals("NOC_Receiver_Email__c")) {
-//                        String user = new StoreData(applicationContext).getUserDataAsString();
-//                        Gson g = new Gson();
-//                        User u = g.fromJson(user, User.class);
-//                        stringValue = contactEmail;
-//                        Field[] fields = Card_Management__c.class.getFields();
-//                        for (int j = 0; j < fields.length; j++)
-//                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-//                                try {
-//                                    fields[j].set(_noc, stringValue);
-//                                } catch (IllegalAccessException e) {
-//                                    e.printStackTrace();
-//                                }
-//                    } else {
-                    Field[] fields = Card_Management__c.class.getFields();
-                    for (int j = 0; j < fields.length; j++)
-                        if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-                            try {
-                                stringValue = (String) fields[j].get(_noc);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-//                    }
+                    if (name.equals("NOC_Receiver_Email__c")) {
+                        String user = new StoreData(applicationContext).getUserDataAsString();
+                        Gson g = new Gson();
+                        User u = g.fromJson(user, User.class);
+                        stringValue = contactEmail;
+                        Field[] fields = Card_Management__c.class.getFields();
+                        for (int j = 0; j < fields.length; j++)
+                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                                try {
+                                    fields[j].set(_noc, stringValue);
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                    } else {
+                        Field[] fields = Card_Management__c.class.getFields();
+                        for (int j = 0; j < fields.length; j++)
+                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                                try {
+                                    stringValue = (String) fields[j].get(_noc);
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                    }
 
                     etEmail.setText(stringValue);
                     etEmail.setTag(field);
@@ -2867,7 +2865,7 @@ public class Utilities {
                     linearLayout.addView(view);
             }
         }
-        setupUI(linearLayout, act);
+        setupUI(linearLayout,act);
     }
 
     public static void DrawFormFieldsOnLayout(final Activity act, final Context applicationContext, final LinearLayout linearLayout, final ArrayList<FormField> formFields, final Map<String, String> parameters, final EServices_Document_Checklist__c eServices_document_checklist__c, final Receipt_Template__c eService_administration__r) {
@@ -3208,7 +3206,7 @@ public class Utilities {
             e.printStackTrace();
         }
 
-        setupUI(linearLayout, act);
+        setupUI(linearLayout,act);
     }
 
 
@@ -3299,36 +3297,36 @@ public class Utilities {
                     linearLayout.addView(view);
 
                 } else if (field.getType().equals("EMAIL")) {
-                    getNocAndFields(visaJson, field, _noc);
+//                    getNocAndFields(visaJson, field, _noc);
                     View view = inflater.inflate(R.layout.wizard_form_field_edit_text_email, null, false);
                     EditText etEmail = (EditText) view.findViewById(R.id.etEmail);
                     TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);
                     String stringValue = "";
                     String name = field.getName();
-//                    if (name.equals("NOC_Receiver_Email__c")) {
-//                        String user = new StoreData(applicationContext).getUserDataAsString();
-//                        Gson g = new Gson();
-//                        User u = g.fromJson(user, User.class);
-//                        stringValue = contactEmail;
-//                        Field[] fields = NOC__c.class.getFields();
-//                        for (int j = 0; j < fields.length; j++)
-//                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-//                                try {
-//                                    fields[j].set(_noc, stringValue);
-//                                } catch (IllegalAccessException e) {
-//                                    e.printStackTrace();
-//                                }
-//                    } else {
-                    getNocAndFields(visaJson, field, _noc);
-                    Field[] fields = NOC__c.class.getFields();
-                    for (int j = 0; j < fields.length; j++)
-                        if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-                            try {
-                                stringValue = (String) fields[j].get(_noc);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-//                    }
+                    if (name.equals("NOC_Receiver_Email__c")) {
+                        String user = new StoreData(applicationContext).getUserDataAsString();
+                        Gson g = new Gson();
+                        User u = g.fromJson(user, User.class);
+                        stringValue = contactEmail;
+                        Field[] fields = NOC__c.class.getFields();
+                        for (int j = 0; j < fields.length; j++)
+                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                                try {
+                                    fields[j].set(_noc, stringValue);
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                    } else {
+                        getNocAndFields(visaJson, field, _noc);
+                        Field[] fields = NOC__c.class.getFields();
+                        for (int j = 0; j < fields.length; j++)
+                            if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                                try {
+                                    stringValue = (String) fields[j].get(_noc);
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                    }
 
                     etEmail.setText(stringValue);
                     etEmail.setTag(field);
@@ -3438,7 +3436,7 @@ public class Utilities {
 
         }
 
-        setupUI(linearLayout, act);
+        setupUI(linearLayout,act);
     }
 
     public static String[] formatStartAndEndDate(String filterItem) {
@@ -3505,12 +3503,12 @@ public class Utilities {
         if (filterItem.equals("Current Quarter")) {
 
             startDate = date1;
-            calendar.add(Calendar.MONTH, 3);
+            calendar.add(Calendar.MONTH, 4);
             endDate = sdf.format(calendar.getTime());
 
         } else if (filterItem.equals("Last Quarter")) {
 
-            calendar.add(Calendar.MONTH, -3);
+            calendar.add(Calendar.MONTH, -4);
             startDate = sdf.format(calendar.getTime());
             endDate = date1;
 
@@ -3833,7 +3831,7 @@ public class Utilities {
                         _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
+                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
                         _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
                         _items.add(new ServiceItem("Renew License Activity", R.mipmap.renew_license));

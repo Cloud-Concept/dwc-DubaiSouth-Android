@@ -64,7 +64,7 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getPassport_Number__c()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Nationality", ItemType.LABEL));
-        _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getNationality__c()), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getNationality__r().getName()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Designation", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getDesignation__c()), ItemType.VALUE));
