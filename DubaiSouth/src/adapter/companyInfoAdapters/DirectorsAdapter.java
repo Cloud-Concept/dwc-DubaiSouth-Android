@@ -14,7 +14,6 @@ import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
 import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
-import custom.RoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
 import model.Directorship;
 import model.ServiceItem;
@@ -72,7 +71,11 @@ public class DirectorsAdapter extends ClickableListAdapter {
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         if (directorships != null && directorships.size() > 1) {
-            _items.add(new ServiceItem("Remove Director", R.mipmap.remove_directory));
+            if (!holder.tvRole.getText().toString().equals("")) {
+                if (holder.tvRole.getText().toString().toLowerCase().contains("director")) {
+                    _items.add(new ServiceItem("Remove Director", R.mipmap.remove_directory));
+                }
+            }
         }
 
 //        holder.item.setOnClickListener(new ClickableListAdapter.OnClickListener(holder) {
@@ -89,7 +92,7 @@ public class DirectorsAdapter extends ClickableListAdapter {
 //            }
 //        });
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(_directorship.get_director().getPersonal_Photo()), holder._smartEmployeeImage);
-        holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_directorship,activity, context, _items));
+        holder._horizontalListView.setAdapter(new HorizontalListViewAdapter(_directorship, activity, context, _items));
     }
 
     static class DirectorViewHolder extends ViewHolder {

@@ -40,20 +40,20 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
 
     @Override
     protected ViewHolder createHolder(View v) {
-        TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus, textView10;
+        TextView tvFullName, tvPassportNumber, tvStatus;
         DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
         RelativeLayout relativeHeader = item.getHeaderLayout();
         tvFullName = (TextView) relativeHeader.findViewById(R.id.tvFullName);
-        tvVisaExpiry = (TextView) relativeHeader.findViewById(R.id.tvCardExpiry);
+//        tvVisaExpiry = (TextView) relativeHeader.findViewById(R.id.tvCardExpiry);
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvStatus = (TextView) relativeHeader.findViewById(R.id.tvStatus);
-        textView10 = (TextView) relativeHeader.findViewById(R.id.textView10);
+//        textView10 = (TextView) relativeHeader.findViewById(R.id.textView10);
         _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
         RelativeLayout relativeContent = item.getContentLayout();
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
-        VisitVisaViewHolder holder = new VisitVisaViewHolder(tvFullName, tvPassportNumber, tvStatus, textView10, tvVisaExpiry, _smartEmployeeImage, item, _horizontalServices);
+        VisitVisaViewHolder holder = new VisitVisaViewHolder(tvFullName, tvPassportNumber, tvStatus, _smartEmployeeImage, item, _horizontalServices);
         return holder;
     }
 
@@ -67,12 +67,12 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
         mvh.tvPassportNumber.setText(mo.getPassport_Number__c());
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 
-        if (mo.getVisa_Validity_Status__c().equals("Issued") || mo.getVisa_Validity_Status__c().equals("Expired")) {
-            mvh.tvVisaExpiry.setText(mo.getVisa_Validity_Status__c());
-        } else {
-            mvh.textView10.setVisibility(View.GONE);
-            mvh.tvVisaExpiry.setVisibility(View.GONE);
-        }
+//        if (mo.getVisa_Validity_Status__c().equals("Issued") || mo.getVisa_Validity_Status__c().equals("Expired")) {
+//            mvh.tvVisaExpiry.setText(mo.getVisa_Validity_Status__c());
+//        } else {
+//            mvh.textView10.setVisibility(View.GONE);
+//            mvh.tvVisaExpiry.setVisibility(View.GONE);
+//        }
 
         if (mo.getPersonal_Photo__c() != null && !mo.getPersonal_Photo__c().equals(""))
             Utilities.setUserPhoto(activity, mo.getPersonal_Photo__c(), mvh._smartEmployeeImage);
@@ -102,17 +102,17 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
 
     static class VisitVisaViewHolder extends ViewHolder {
 
-        TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus, textView10;
+        TextView tvFullName, tvPassportNumber, tvStatus;
         DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
 
-        public VisitVisaViewHolder(TextView tvFullName, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, TextView textView10, DWCRoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public VisitVisaViewHolder(TextView tvFullName,TextView tvPassportNumber, TextView tvStatus, DWCRoundedImageView _smartEmployeeImage, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
-            this.tvVisaExpiry = tvVisaExpiry;
+//            this.tvVisaExpiry = tvVisaExpiry;
             this.tvPassportNumber = tvPassportNumber;
             this.tvStatus = tvStatus;
-            this.textView10 = textView10;
+//            this.textView10 = textView10;
             this._smartEmployeeImage = _smartEmployeeImage;
             this.item = item;
             this._horizontalListView = _horizontalListView;

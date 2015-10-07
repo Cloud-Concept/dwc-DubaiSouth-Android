@@ -146,8 +146,11 @@ public class LegalRepresentativesShowDetailsFragment extends Fragment {
             _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.get_shareholder().get_currentPassport().getPassport_Expiry_Date__c()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Shareholder Information", ItemType.HEADER));
-            _views.add(new DWCView("Status", ItemType.LABEL));
-            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getShareholder_Status__c()), ItemType.VALUE));
+            _views.add(new DWCView("Ownership (%)", ItemType.LABEL));
+            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getOwnership_of_Share__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("No.of Share", ItemType.LABEL));
+            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(Utilities.processAmount(_ShareHolder.getNo_of_Shares__c())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Start Date", ItemType.LABEL));
             _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getOwnership_Start_Date__c()), ItemType.VALUE));
