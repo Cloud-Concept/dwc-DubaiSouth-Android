@@ -40,7 +40,7 @@ public class SoqlStatements {
             "Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE " +
             "Sponsoring_Company__c = " + "\'" + "%s" + "\'" + "AND Visa_Validity_Status__c LIKE " + "\'" + "%s" + "\'" +
             "AND Visa_Type__c IN ('Employment', 'Transfer - External', 'Transfer - " +
-            "Internal') ORDER BY Visa_Expiry_Date__c LIMIT %s Offset %s";
+            "Internal') ORDER BY Visa_Expiry_Date__c DESC LIMIT %s Offset %s";
 
 
     public static final String soql_get_access_card_page = "SELECT Id, Name, Personal_Photo__c, Card_Number__c, Status__c, " +
@@ -58,7 +58,7 @@ public class SoqlStatements {
     public static final String soql_get_renewal_for_license =
             "SELECT ID, (SELECT Id, Status__c FROM Invoices__r WHERE Status__c = 'Paid') FROM License__c WHERE Renewal_for_License__c = " + "\'" + "%s" + "\'";
 
-    public static final String soql_get_shareholders = "SELECT Id, No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder__r.Nationality__c, Shareholder__r.Personal_Photo__pc, Shareholder__r.Current_Passport__r.Id, Shareholder__r.Current_Passport__r.Name, Shareholder__r.Current_Passport__r.Passport_Expiry_Date__c, Shareholder__r.Current_Passport__r.Passport_Issue_Date__c, Shareholder__r.Current_Passport__r.Passport_Type__c, Shareholder__r.Current_Passport__r.Passport_Place_of_Issue__c, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c FROM Share_Ownership__c WHERE Company__c = " + "\'" + "%s" + "\'"+" AND Ownership_End_Date__c = null" + " ORDER BY Shareholder__r.Name";
+    public static final String soql_get_shareholders = "SELECT Id, No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder__r.Nationality__c, Shareholder__r.Personal_Photo__pc, Shareholder__r.Current_Passport__r.Id, Shareholder__r.Current_Passport__r.Name, Shareholder__r.Current_Passport__r.Passport_Expiry_Date__c, Shareholder__r.Current_Passport__r.Passport_Issue_Date__c, Shareholder__r.Current_Passport__r.Passport_Type__c, Shareholder__r.Current_Passport__r.Passport_Place_of_Issue__c, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c FROM Share_Ownership__c WHERE Company__c = " + "\'" + "%s" + "\'" + " AND Ownership_End_Date__c = null" + " ORDER BY Shareholder__r.Name";
 
     public static final String soql_getDirectors = "SELECT Id, Roles__c, Director_Status__c, Directorship_End_Date__c, Directorship_Start_Date__c, Director__r.Id, Director__r.Name, Director__r.Personal_Photo__pc ,Director__r.Nationality__c, Director__r.Current_Passport__r.Id, Director__r.Current_Passport__r.Name, Director__r.Current_Passport__r.Passport_Expiry_Date__c, Director__r.Current_Passport__r.Passport_Issue_Date__c, Director__r.Current_Passport__r.Passport_Type__c, Director__r.Current_Passport__r.Passport_Place_of_Issue__c FROM Directorship__c WHERE Directorship_End_Date__c = null AND Company__c = " + "\'" + "%s" + "\'" + " ORDER BY Director__r.Name";
 
@@ -109,7 +109,7 @@ public class SoqlStatements {
 
     public static final String soql_get_record_type_company_documents = "SELECT ID FROM RecordType where DeveloperName = 'Company_Documents' AND SObjectType = 'Company_Documents__c'";
 
-    public static final String soql_view_statement = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = " + "\'" + "%s" + "\'" + " AND Effect_on_Account__c IN ('Credit', 'Debit') " + " %s " + " LIMIT " + "%s" + " OFFSET " + "%s";
+    public static final String soql_view_statement = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = " + "\'" + "%s" + "\'" + " AND Effect_on_Account__c IN ('Credit', 'Debit') AND " + " %s " + " ORDER BY CreatedDate DESC " + " LIMIT " + "%s" + " OFFSET " + "%s";
 
     public static final String soql_get_true_copies = "SELECT Id, Name, Template_Name_Link__c, Available_for_Preview__c, Original_can_be_Requested__c, eService_Administration__r.New_Edit_VF_Generator__c, eService_Administration__r.Redirect_Page__c, eService_Administration__r.Id, eService_Administration__r.Related_to_Object__c, eService_Administration__r.Display_Name__c, eService_Administration__r.Record_Type_Picklist__c, eService_Administration__r.Service_VF_Page__c FROM eServices_Document_Checklist__c WHERE eService_Administration__r.Related_to_Object__c = 'Registration' AND eService_Administration__r.RecordType.DeveloperName = 'Service_Request' AND eService_Administration__r.Is_Active__c = true AND eService_Administration__r.Sub_Category__c = 'Registration Services' ORDER BY Name LIMIT " + "%s" + " OFFSET " + "%s";
 
@@ -139,7 +139,7 @@ public class SoqlStatements {
                     "Passport_Number__c, RecordType.Id, RecordType.Name, " +
                     "RecordType.DeveloperName, Nationality__r.Id, Nationality__r.Name " +
                     "FROM Card_Management__c WHERE Account__c = '%s' and Status__c " +
-                    "NOT IN ('Renewed') AND Card_Type__c NOT IN ('Employee Card','Student Card','Work Permit') LIMIT " + limit + " OFFSET " + offset;
+                    "NOT IN ('Renewed') AND Card_Type__c NOT IN ('Employee Card','Student Card') LIMIT " + limit + " OFFSET " + offset;
             soqlFormat = String.format(soqlFormat, _user.get_contact().get_account().getID());
         } else {
             soqlFormat = String.format(soql_get_access_card_page, _user.get_contact().get_account().getID(), validity_status, limit, offset);
@@ -168,7 +168,7 @@ public class SoqlStatements {
                     "Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE " +
                     "Sponsoring_Company__c = " + "\'" + "%s" + "\'" +
                     "AND Visa_Type__c IN ('Employment', 'Transfer - External', 'Transfer - " +
-                    "Internal') ORDER BY Visa_Expiry_Date__c Limit " + limit + " Offset " + offset;
+                    "Internal') ORDER BY Visa_Expiry_Date__c DESC Limit " + limit + " Offset " + offset;
             soqlFormat = String.format(soqlFormat, _user.get_contact().get_account().getID());
         } else {
             soqlFormat = String.format(soql_get_permanent_employee_list_page, _user.get_contact().get_account().getID(), Visa_Validity_Status, limit, offset);

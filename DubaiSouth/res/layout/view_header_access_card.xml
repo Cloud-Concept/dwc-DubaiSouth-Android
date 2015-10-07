@@ -7,8 +7,8 @@
     <custom.DWCRoundedImageView
         android:id="@+id/view"
         android:orientation="vertical"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:src="@mipmap/avatar"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvFullName"
         android:layout_marginTop="3dp"
+        android:textStyle="bold"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/view"
@@ -64,6 +65,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:text="Type:"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -87,7 +89,8 @@
         android:layout_toEndOf="@+id/view"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:text="passport Number:"
+        android:text="Passport Number:"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -112,6 +115,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:text="Status:"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -129,6 +133,7 @@
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
         android:layout_marginTop="3dp"

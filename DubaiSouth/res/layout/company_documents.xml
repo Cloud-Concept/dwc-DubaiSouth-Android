@@ -60,7 +60,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="15dp"
-            android:listSelector="@drawable/list_selector_hilight"
             android:drawSelectorOnTop="true"
             android:divider="@android:color/transparent"
             android:dividerHeight="1dp"

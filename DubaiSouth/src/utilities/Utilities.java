@@ -2266,7 +2266,7 @@ import model.Visa;
 import model.WebForm;
 
 public class Utilities {
-public static String contactEmail="";
+    public static String contactEmail = "";
     static ProgressBar mProgressBar;
     public static ProgressDialog _progress;
     private static Receipt_Template__c eServiceAdministration;
@@ -3492,18 +3492,25 @@ public static String contactEmail="";
         int currentYear = calendar.get(Calendar.YEAR);
         int currentMonth = calendar.get(Calendar.MONTH) + 1;
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-        calendar.set(currentYear, currentMonth - 1, currentDay);
+        if (currentMonth >= 9 && currentMonth <= 12) {
+            calendar.set(currentYear, 9, 1);
+        } else if (currentMonth < 9 && currentMonth >= 5) {
+            calendar.set(currentYear, 6, 1);
+        } else if (currentMonth < 5 && currentMonth >= 1) {
+            calendar.set(currentYear, 3, 1);
+        }
+
         String date1 = sdf.format(calendar.getTime());
         String startDate = null, endDate = null;
         if (filterItem.equals("Current Quarter")) {
 
             startDate = date1;
-            calendar.add(Calendar.MONTH, 3);
+            calendar.add(Calendar.MONTH, 4);
             endDate = sdf.format(calendar.getTime());
 
         } else if (filterItem.equals("Last Quarter")) {
 
-            calendar.add(Calendar.MONTH, -3);
+            calendar.add(Calendar.MONTH, -4);
             startDate = sdf.format(calendar.getTime());
             endDate = date1;
 
@@ -3850,15 +3857,19 @@ public static String contactEmail="";
                         _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewCard".toLowerCase())) {
                         _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("LostCard".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LostCard".toLowerCase())) {
                         _items.add(new ServiceItem("Lost Card", R.mipmap.renew_visa));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewBCContract".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewBCContract".toLowerCase())) {
                         _items.add(new ServiceItem("Renew BC Contract", R.mipmap.renew_license));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewContract".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewContract".toLowerCase())) {
                         _items.add(new ServiceItem("Renew Contract", R.mipmap.renew_license));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelContract".toLowerCase())) {
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelContract".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewPassport".toLowerCase())) {
+                        _items.add(new ServiceItem("Renew Passport", R.mipmap.noc_service_image));
                     }
+
+
                 }
 
                 if (_items.size() > 0) {

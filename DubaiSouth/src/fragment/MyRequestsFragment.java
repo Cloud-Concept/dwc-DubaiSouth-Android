@@ -26,12 +26,14 @@ import com.salesforce.androidsdk.rest.RestResponse;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import adapter.MyRequestsAdapter;
+import adapter.SpinnerAdapter;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
 import model.MyRequest;
@@ -90,12 +92,16 @@ public class MyRequestsFragment extends Fragment {
         lstMyRequests = (ListView) view.findViewById(R.id.lstMyRequests);
         spinnerStatusFilter = (Spinner) view.findViewById(R.id.spinnerStatus);
         spinnerRequestTypeFilter = (Spinner) view.findViewById(R.id.spinnerType);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, status_filter);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        spinnerStatusFilter.setAdapter(adapter);
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, request_type_filter);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        spinnerRequestTypeFilter.setAdapter(adapter);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, status_filter);
+//        adapter.setDropDownViewResource(R.layout.spinner_item);
+        ArrayAdapter<String> dataAdapter2 = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+                Arrays.asList(status_filter));
+        spinnerStatusFilter.setAdapter(dataAdapter2);
+//        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, request_type_filter);
+//        adapter.setDropDownViewResource(R.layout.spinner_item);
+        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+                Arrays.asList(request_type_filter));
+        spinnerRequestTypeFilter.setAdapter(dataAdapter);
 
         spinnerStatusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -104,7 +110,6 @@ public class MyRequestsFragment extends Fragment {
                 if (!status.equals(status_filter[position])) {
                     offset = 0;
                     InflatedRequests.clear();
-                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                     status = status_filter[position];
                     new StoreData(getActivity().getApplicationContext()).setMyRequestsStatus(status);
                     CallMyRequestsService(CallType.SPINNETCHANGEDDATA, status, request_type, limit, offset);
@@ -126,7 +131,6 @@ public class MyRequestsFragment extends Fragment {
                 if (!request_type.equals(request_type_filter[position])) {
                     offset = 0;
                     InflatedRequests.clear();
-                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                     request_type = request_type_filter[position];
                     new StoreData(getActivity().getApplicationContext()).setMyRequestsRequestType(request_type);
                     CallMyRequestsService(CallType.SPINNETCHANGEDDATA, status, request_type, limit, offset);

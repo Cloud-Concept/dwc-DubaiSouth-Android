@@ -3,6 +3,7 @@ package activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,7 +14,6 @@ import java.util.Calendar;
 
 import cloudconcept.dwc.R;
 import custom.DWCRoundedImageView;
-import custom.RoundedImageView;
 import exceptionHandling.ExceptionHandler;
 import model.Card_Management__c;
 import model.DWCView;
@@ -30,6 +30,7 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
     TextView tvCardOwnerName;
     private LinearLayout linearLayout;
     DWCRoundedImageView imageUser;
+    ImageView imageBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         tvCardOwnerName = (TextView) findViewById(R.id.tvCardOwnerName);
         linearLayout = (LinearLayout) findViewById(R.id.linearAddForms);
         imageUser = (DWCRoundedImageView) findViewById(R.id.view);
+        imageBack = (ImageView) findViewById(R.id.imageBack);
         Gson gson = new Gson();
         Card_Management__c _cardManagement = gson.fromJson(getIntent().getExtras().getString("object"), Card_Management__c.class);
         if (_cardManagement.getPersonal_Photo__c() != null && !_cardManagement.getPersonal_Photo__c().equals(""))
@@ -62,7 +64,7 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getPassport_Number__c()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Nationality", ItemType.LABEL));
-        _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getNationality__c()), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getNationality__r().getName()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Designation", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getDesignation__c()), ItemType.VALUE));

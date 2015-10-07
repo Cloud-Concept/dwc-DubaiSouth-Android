@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import cloudconcept.dwc.BaseActivity;
 import cloudconcept.dwc.R;
+import custom.DWCRoundedImageView;
 import model.Contract_DWC__c;
 import model.DWCView;
 import model.ItemType;
@@ -62,6 +63,7 @@ public class LeasingShowDetailsActivity extends BaseActivity {
         private static ArrayList<DWCView> _views;
         private static String ARG_TEXT = "ShowDetails";
         TextView tvContractName;
+        DWCRoundedImageView dwcRoundedImageView;
         Gson gson = new Gson();
         static Contract_DWC__c contract_dwc__c;
         LinearLayout linearAddForms;
@@ -90,30 +92,49 @@ public class LeasingShowDetailsActivity extends BaseActivity {
         private void InitializeViews(View view) {
             tvContractName = (TextView) view.findViewById(R.id.tvContractName);
             linearAddForms = (LinearLayout) view.findViewById(R.id.linearAddForms);
+            dwcRoundedImageView = (DWCRoundedImageView)view.findViewById(R.id.view);
             tvContractName.setText(contract_dwc__c.getName());
             _views.add(new DWCView("Contract Details", ItemType.HEADER));
             _views.add(new DWCView("Contract Type", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Type__c()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
-            _views.add(new DWCView("Contract Duration", ItemType.LABEL));
+            _views.add(new DWCView("Contract Duration (Years)", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Duration__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Contract Duration (Months)", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Duration_Year_Month__c()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Contract Number", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Number__c()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
-            _views.add(new DWCView("Start Date", ItemType.LABEL));
+            _views.add(new DWCView("Contract Start Date", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Start_Date__c()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
-            _views.add(new DWCView("Expiry Date", ItemType.LABEL));
+            _views.add(new DWCView("Contract End Date", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_Expiry_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Rent Start Date", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getRent_Start_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Activated Date", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getActivated_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Total Price", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getTotal_Rent_Price__c()), ItemType.VALUE));
+            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Leasing Unit Details", ItemType.HEADER));
+            _views.add(new DWCView("Unit Name", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_line_item__cs().get(0).getName()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             String services = "";
             if (contract_dwc__c.getContract_Expiry_Date__c() != null && !contract_dwc__c.getContract_Expiry_Date__c().equals("")) {
                 if (Utilities.daysDifference(contract_dwc__c.getContract_Expiry_Date__c()) < 60) {
                     if (contract_dwc__c.IS_BC_Contract__c()) {
                         services += "Renew BC Contract,";
+                        dwcRoundedImageView.setImageResource(R.mipmap.lease_bc_contract);
                     } else {
                         services += "Renew Contract,";
+                        dwcRoundedImageView.setImageResource(R.mipmap.lease_ac_contract);
                     }
                 }
             }

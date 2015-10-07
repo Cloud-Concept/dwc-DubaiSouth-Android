@@ -369,6 +369,7 @@ package cloudconcept.dwc;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -383,6 +384,8 @@ import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -394,6 +397,7 @@ import RestAPI.SoqlStatements;
 import custom.BadgeButton;
 import dataStorage.StoreData;
 import exceptionHandling.ExceptionHandler;
+import model.EstablishmentCard;
 import model.User;
 import utilities.ActivitiesLauncher;
 import utilities.Utilities;
@@ -408,7 +412,8 @@ public class HomepageActivity extends Activity implements
             relativeNeedHelp, notificationll, relativeQuickAccess, relativeCompanyDocuments, relativeViewStatement;
 
     Button btnViewStatement;
-
+    String establishment_card_soql = "select Current_Establishment_Card__c , Current_Establishment_Card__r.Status__c , Current_Establishment_Card__r.Establishment_Card_Number__c , Current_Establishment_Card__r.Issue_Date__c , Current_Establishment_Card__r.Expiry_Date__c from Account where id = " + "\'" + "%s" + "\'";
+    private RestRequest restRequest;
     TextView tvCompanyName, tvLicenseNumber, tvLicenseExpiry, tvBalance, tv10;
     ImageView imageDashboard, imageMyRequests, imageVisasAndCards, imageCompanyInfo, imageCompanyDocuments, imageQuickAccess, imageNeedHelp, imageReports, smartCompanyImage;
 
@@ -421,6 +426,7 @@ public class HomepageActivity extends Activity implements
         }
     };
     private String error;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -574,7 +580,7 @@ public class HomepageActivity extends Activity implements
             ActivitiesLauncher.openMyRequestsActivity(getApplicationContext());
             imageMyRequests.setSelected(true);
 
-        } else if (v == relativeNotifications | v == _badgeButton | v == notificationll | v == tv10| v.getId()==R.id.badgebtn_rl||v.getId()==R.id.badgebtn_btn) {
+        } else if (v == relativeNotifications | v == _badgeButton | v == notificationll | v == tv10 | v.getId() == R.id.badgebtn_rl || v.getId() == R.id.badgebtn_btn) {
 
             ActivitiesLauncher.openNotificationsActivity(getApplicationContext());
             _badgeButton.setSelected(true);
@@ -674,6 +680,7 @@ public class HomepageActivity extends Activity implements
     private void sendNotificationCountRequest(final User user, RestClient client) {
 
         String soql = "SELECT COUNT(ID) FROM Notification_Management__c WHERE Case__r.AccountId = " + "\'" + user.get_contact().get_account().getID() + "\'" + " AND Is_Push_Notification_Allowed__c = TRUE AND isMessageRead__c = FALSE";
+        this.user = user;
         try {
             final RestRequest rest_request_notification = RestRequest.getRequestForQuery(
                     getString(R.string.api_version), soql);
@@ -687,7 +694,7 @@ public class HomepageActivity extends Activity implements
                         if (jsonCountNotifications.optBoolean(JSONConstants.DONE) == true) {
                             notificationCount = jsonCountNotifications.getJSONArray(JSONConstants.RECORDS).getJSONObject(0).getInt("expr0");
                             new StoreData(getApplicationContext()).setNotificationCount(notificationCount + "");
-                            setUICOmponents(user, notificationCount);
+                            DoRequest(true, notificationCount);
                         }
                     } catch (Exception e) {
                         onError(e);
@@ -841,7 +848,59 @@ public class HomepageActivity extends Activity implements
                 HomepageActivity.super.finish();
             }
         });
+    }
 
+    private void DoRequest(final boolean b, final int notificationCount) {
+
+        establishment_card_soql = String.format(establishment_card_soql, user.get_contact().get_account().getID());
+        try {
+            restRequest = RestRequest.getRequestForQuery(
+                    getString(R.string.api_version), establishment_card_soql);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        new ClientManager(this, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(this, new ClientManager.RestClientCallback() {
+
+            @Override
+            public void authenticatedRestClient(RestClient client) {
+                if (client == null) {
+                    SalesforceSDKManager.getInstance().logout(HomepageActivity.this);
+                    return;
+                } else {
+                    client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                        @Override
+                        public void onSuccess(RestRequest request, RestResponse response) {
+                            Log.d("", response.toString());
+                            try {
+                                JSONObject json = new JSONObject(response.toString());
+                                JSONArray jRecords = json.getJSONArray(JSONConstants.RECORDS);
+                                JSONObject jsonRecord = jRecords.getJSONObject(0);
+                                EstablishmentCard establishmentCard = new EstablishmentCard();
+                                establishmentCard.setCurrent_Establishment_Card__c(jsonRecord.getString("Current_Establishment_Card__c"));
+                                if (establishmentCard.getCurrent_Establishment_Card__c() == null || establishmentCard.getCurrent_Establishment_Card__c().equals("null")) {
+                                    new StoreData(getApplicationContext()).setEstablishmentCardPageExist(false);
+                                } else {
+                                    new StoreData(getApplicationContext()).setEstablishmentCardPageExist(true);
+                                    establishmentCard.setIssue_Date__c(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Issue_Date__c"));
+                                    establishmentCard.setExpiry_Date__c(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Expiry_Date__c"));
+                                    establishmentCard.setStatus(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Status__c"));
+                                    establishmentCard.setEstablishment_Card_Number__c(jsonRecord.getJSONObject("Current_Establishment_Card__r").getString("Establishment_Card_Number__c"));
+                                    user.get_contact().get_account().setEstablishmentCard(establishmentCard);
+                                }
+                                setUICOmponents(user, notificationCount);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(Exception exception) {
+
+                        }
+                    });
+                }
+            }
+        });
 
     }
 }

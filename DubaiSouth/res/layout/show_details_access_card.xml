@@ -13,15 +13,23 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:gravity="center"
             android:text="Access Card"
             android:textColor="@color/white"
             android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageBack"
+            android:background="@mipmap/back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
 
     </RelativeLayout>
 
