@@ -3,7 +3,8 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:gravity="center"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
     >
 
 
@@ -12,9 +13,10 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="Small Text"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:gravity="right|top"
-        android:layout_gravity="top"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:id="@+id/pay_title" />
 
@@ -25,7 +27,9 @@
         android:layout_marginLeft="5dp"
         android:gravity="left"
         android:text="Small Text"
-        android:textSize="14sp"
+        android:textSize="12sp"
+        android:maxLength="15"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:id="@+id/pay_text"
         android:layout_gravity="center_vertical" />

@@ -88,8 +88,7 @@
             android:layout_gravity="start"
             android:background="@color/dwc_blue_color"
             android:choiceMode="singleChoice"
-            android:divider="@color/white"
-            android:dividerHeight="1dp" />
+            />
 
     </android.support.v4.widget.DrawerLayout>
 

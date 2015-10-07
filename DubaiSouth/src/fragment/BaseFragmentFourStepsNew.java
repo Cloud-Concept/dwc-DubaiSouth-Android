@@ -301,10 +301,10 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                 .commit();
         btnNext.setText("Close");
         btnCancel.setVisibility(View.GONE);
-        btnNOC4.setBackgroundResource(R.mipmap.bullet_success);
-        btnNOC4.setText("");
-        btnNOC5.setSelected(true);
-        status = 5;
+        btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
+        btnNOC3.setText("");
+status=5;
+        btnNOC4.setSelected(true);
         btnBack.setVisibility(View.GONE);
         btnBackTransparent.setVisibility(View.GONE);
 

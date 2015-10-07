@@ -340,7 +340,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
             serviceIdentifier = "Residency Permit Cancellation";
         } else if (vRt.equals("Employment Visa Under Process") ||vRt.equals("Employment Visa Under Renewal") ||  vRt.equals("Transfer Visa Under Process")) {
             serviceIdentifier = "Entry Permit Cancellation";
-        } else if (vRt.equals("Visit Visa Issued")) {
+        } else if (vRt.equals("Visit Visa Issued")||vRt.equals("Visit Visa Under Cancellation")) {
             serviceIdentifier = "Visit Visa Cancellation";
         }
 
