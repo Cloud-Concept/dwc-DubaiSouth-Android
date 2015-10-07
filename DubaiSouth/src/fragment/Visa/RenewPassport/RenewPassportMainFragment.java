@@ -447,7 +447,7 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
                                             Log.d("result", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
                                             activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
-                                            activity.setTotal(activity.geteServiceAdministration().getTotal_Amount__c() + "");
+
 
                                             createVisaRecord(client);
                                         } catch (JSONException e) {
@@ -491,6 +491,7 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
                 public void onSuccess(RestRequest request, RestResponse result) {
 
                     activity.seteServiceAdministration(SFResponseManager.parseReceiptObjectResponse(result.toString()).get(0));
+                    activity.setTotal(activity.geteServiceAdministration().getTotal_Amount__c() + "");
                     Utilities.dismissLoadingDialog();
                     performParentNext();
 

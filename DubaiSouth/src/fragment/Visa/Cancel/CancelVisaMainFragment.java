@@ -29,6 +29,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import RestAPI.JSONConstants;
@@ -41,6 +42,7 @@ import fragment.BaseFragmentFourStepsNew;
 import fragment.Visa.NOCAttachmentPage;
 import fragmentActivity.NOCScreen.ThankYou;
 import fragmentActivity.VisaActivity;
+import model.Receipt_Template__c;
 import utilities.Utilities;
 
 /**
@@ -50,7 +52,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
 
     VisaActivity activity;
     private RestRequest restRequest;
-    public String eServiceAdmin = "SELECT ID,No_of_Upload_Docs__c, Name, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Service_Identifier__c ='%s'";
+    public String eServiceAdmin = "SELECT ID,No_of_Upload_Docs__c, Name, Service_Identifier__c, Amount__c, Total_Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Service_Identifier__c in ('%s','Urgent Cancellation')";
 
     public String getServiceIdentifier() {
         return serviceIdentifier;
@@ -72,7 +74,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
 
     @Override
     public Fragment getInitialFragment() {
-        return SecondFragment.newInstance("","");
+        return SecondFragment.newInstance("", "");
     }
 
 
@@ -296,7 +298,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
                                             Log.d("result", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
                                             activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
-                                            activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c")+"");
+                                            activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c") + "");
                                             Utilities.dismissLoadingDialog();
                                             getfifthfragment("", activity.getCaseNumber());
                                         } catch (JSONException e) {
@@ -324,8 +326,8 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
                 }
 
 
-            }else
-                Utilities.showLongToast(activity,result.replace("\"",""));
+            } else
+                Utilities.showLongToast(activity, result.replace("\"", ""));
 
         }
     }
@@ -338,9 +340,9 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
             serviceIdentifier = "Residency Permit Cancellation";
         } else if ((vRt.equals("Employment Visa Under Process") || vRt.equals("Employment Visa Under Renewal") || vRt.equals("Transfer Visa Under Process")) && activity.getVisa().getResidency_File_Number__c() != null) {
             serviceIdentifier = "Residency Permit Cancellation";
-        } else if (vRt.equals("Employment Visa Under Process") ||vRt.equals("Employment Visa Under Renewal") ||  vRt.equals("Transfer Visa Under Process")) {
+        } else if (vRt.equals("Employment Visa Under Process") || vRt.equals("Employment Visa Under Renewal") || vRt.equals("Transfer Visa Under Process")) {
             serviceIdentifier = "Entry Permit Cancellation";
-        } else if (vRt.equals("Visit Visa Issued")) {
+        } else if (vRt.equals("Visit Visa Issued") || vRt.equals("Visit Visa Under Cancellation")) {
             serviceIdentifier = "Visit Visa Cancellation";
         }
 
@@ -351,8 +353,19 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
 
                 @Override
                 public void onSuccess(RestRequest request, RestResponse result) {
+                    List<Receipt_Template__c> ess = SFResponseManager.parseReceiptObjectResponse(result.toString());
+                    double totalAmount = 0.0;
+                    for (Receipt_Template__c es : ess) {
+                        if (es.getService_Identifier__c() != null)
+                            if (es.getService_Identifier__c().equals("Urgent Cancellation") && activity.getVisa().Urgent_Stamping_Paid__c) {
 
-                    activity.seteServiceAdministration(SFResponseManager.parseReceiptObjectResponse(result.toString()).get(0));
+                                totalAmount += es.getTotal_Amount__c();
+                            } else if (es.getService_Identifier__c().equals(serviceIdentifier)) {
+                                totalAmount += es.getTotal_Amount__c();
+                                activity.seteServiceAdministration(es);
+                            }
+                    }
+                    activity.setTotal("" + totalAmount);
                     Utilities.dismissLoadingDialog();
                     performParentNext();
 

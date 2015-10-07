@@ -22,9 +22,10 @@
         android:id="@+id/tvFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="mdpeowpoewfpoew"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
+        android:textSize="13sp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -41,7 +42,6 @@
         android:layout_below="@+id/tvFullName"
         android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/view"
-        android:textStyle="bold"
         android:text="Status:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
@@ -54,7 +54,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView7"
-        android:textColor="@color/grey"
+        android:textColor="@color/black"
+        android:text="enwodoenwdeo"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -66,7 +68,6 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_toEndOf="@+id/view"
-        android:textStyle="bold"
         android:text="Passport Number:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey"
@@ -81,7 +82,9 @@
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView8"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey" />
+        android:textColor="@color/black"
+        android:text="enwodoenwdeo"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView9"
@@ -91,7 +94,6 @@
         android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/view"
         android:layout_marginLeft="5dp"
-        android:textStyle="bold"
         android:layout_marginRight="5dp"
         android:text="Visa Expiry:"
         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -105,14 +107,15 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView9"
-        android:textColor="@color/grey"
+        android:textColor="@color/black"
+        android:text="enwodoenwdeo"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_below="@+id/textView9"
         android:background="@color/grey" />

@@ -11,7 +11,7 @@
         android:layout_height="60dp"
         android:src="@mipmap/avatar"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:scaleType="center">
 
     </custom.DWCRoundedImageView>
@@ -20,52 +20,54 @@
         android:id="@+id/tvFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="ndpwndpewnpo"
         android:layout_marginTop="7dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="13sp"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/view" />
 
-    <TextView
-        android:id="@+id/tvCardNumberLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvFullName"
-        android:layout_marginTop="3dp"
-        android:textStyle="bold"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_toEndOf="@+id/view"
-        android:text="Card Number:"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey" />
+    <!--<TextView-->
+        <!--android:id="@+id/tvCardNumberLabel"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/tvFullName"-->
+        <!--android:layout_marginTop="3dp"-->
 
-    <TextView
-        android:id="@+id/tvCardNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvCardNumberLabel"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_toRightOf="@+id/tvCardNumberLabel"
-        android:textColor="@color/grey"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_toEndOf="@+id/view"-->
+        <!--android:text="Card Number:"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@color/grey" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvCardNumber"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/tvCardNumberLabel"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_toRightOf="@+id/tvCardNumberLabel"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:text="enwodoenwdeo"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvCardNumberLabel"
+        android:layout_below="@+id/tvFullName"
         android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/view"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:text="Type:"
-        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -78,7 +80,9 @@
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView7"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey" />
+        android:textColor="@color/black"
+        android:text="enwodoenwdeo"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView8"
@@ -90,7 +94,6 @@
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:text="Passport Number:"
-        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -103,7 +106,9 @@
         android:layout_marginRight="10dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_toRightOf="@+id/textView8"
-        android:textColor="@color/grey" />
+        android:textColor="@color/black"
+        android:text="enwodoenwdeo"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView9"
@@ -115,7 +120,6 @@
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:text="Status:"
-        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -128,40 +132,42 @@
         android:layout_marginRight="10dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_toRightOf="@+id/textView9"
-        android:textColor="@color/grey" />
+        android:textColor="@color/black"
+        android:text="enwodoenwdeo"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView9"
-        android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/view"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="Card Expiry:"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView10"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/textView9"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:layout_toEndOf="@+id/view"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:text="Card Expiry:"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@color/grey" />-->
 
-    <TextView
-        android:id="@+id/tvCardExpiry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView10"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_toRightOf="@+id/textView10"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/grey" />
+    <!--<TextView-->
+        <!--android:id="@+id/tvCardExpiry"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/textView10"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_toRightOf="@+id/textView10"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:text="enwodoenwdeo"-->
+        <!--android:textStyle="bold" />-->
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/textView9"
         android:background="@color/noc_grey" />
 
 

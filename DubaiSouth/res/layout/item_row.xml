@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/dwc_blue_color"
     android:orientation="horizontal"
-    android:paddingBottom="8dp"
-    android:paddingTop="8dp">
+    android:paddingTop="15dp"
+
+
+    >
 
 
     <ImageView
         android:id="@+id/rowIcon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:src="@mipmap/dwc_launcher" />
 
     <TextView
@@ -28,6 +31,14 @@
         android:textAlignment="textStart"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="13sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/rowIcon"
+        />
 
 </RelativeLayout>

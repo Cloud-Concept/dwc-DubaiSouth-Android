@@ -136,20 +136,25 @@ public class SecondFragment extends Fragment {
 
                 List<Visa> visa = SFResponseManager.parseVisaData(response.toString());
                 activity.setVisa(visa.get(0));
-                visaNumber.setText(activity.getVisa().getApplicant_Full_Name__c());
 
-                visaHolderName.setText(activity.getVisa().getPassport_Issue_Country__r().getName() + "");
-                qualification.setText(activity.getVisa().getQualification__r().getName());
-                occupation.setText(activity.getVisa().getJob_Title_at_Immigration__r().getName());
-                passportNumber.setText(activity.getVisa().getPassport_Number__c());
+                    visaNumber.setText(activity.getVisa().getApplicant_Full_Name__c());
+try{
+                    visaHolderName.setText(activity.getVisa().getPassport_Issue_Country__r().getName() + "");
+}catch (NullPointerException e){
 
-                visaExpiryDate.setText(activity.getVisa().getVisa_Expiry_Date__c());
-                UrgentStamping.setOncheckListener(new Switch.OnCheckListener() {
-                    @Override
-                    public void onCheck(Switch aSwitch, boolean b) {
-                        activity.getVisa().Urgent_Stamping_Paid__c = b;
-                    }
-                });
+}
+                    qualification.setText(activity.getVisa().getQualification__r().getName());
+                    occupation.setText(activity.getVisa().getJob_Title_at_Immigration__r().getName());
+                    passportNumber.setText(activity.getVisa().getPassport_Number__c());
+
+                    visaExpiryDate.setText(activity.getVisa().getVisa_Expiry_Date__c());
+                    UrgentStamping.setOncheckListener(new Switch.OnCheckListener() {
+                        @Override
+                        public void onCheck(Switch aSwitch, boolean b) {
+                            activity.getVisa().Urgent_Stamping_Paid__c = b;
+                        }
+                    });
+
                 Utilities.dismissLoadingDialog();
             }
 

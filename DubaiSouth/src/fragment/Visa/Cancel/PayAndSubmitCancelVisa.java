@@ -76,9 +76,12 @@ public class PayAndSubmitCancelVisa extends Fragment {
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
         tvLabel.setText("Country of Issue" + "\t:");
-        tvValue.setText(activity.getVisa().getPassport_Issue_Country__r().getName() );
-        nocDetails.addView(view);
-
+        try {
+            tvValue.setText(activity.getVisa().getPassport_Issue_Country__r().getName());
+            nocDetails.addView(view);
+        }catch(NullPointerException e){
+            nocDetails.addView(view);
+        }
 
         view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
         tvLabel = (TextView) view.findViewById(R.id.pay_title);

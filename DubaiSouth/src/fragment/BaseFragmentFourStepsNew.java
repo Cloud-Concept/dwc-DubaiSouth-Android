@@ -33,7 +33,7 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
     public Button btnNOC2;
     public Button btnNOC3;
     public Button btnNOC4;
-//    Button btnNOC5;
+    Button btnNOC5;
     View line1, line2, line3, line4, line5;
     boolean isLoadedFirst = false, isLoadedSecond = false, isLoadedThird = false, isLoadedFourth = false, isLoadedFifth = false;
 
@@ -135,17 +135,17 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
 //                showInactiveWizard(btnNOC3, line4);
 
 
+                btnNOC2.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                btnNOC2.setSelected(true);
+                btnNOC2.setTextColor(getActivity().getResources().getColor(R.color.white));
+                btnNOC2.setGravity(Gravity.CENTER);
+                btnNOC2.setText("2");
+                btnNext.setText("Next");
                 btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                btnNOC3.setSelected(true);
+                btnNOC3.setSelected(false);
                 btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
                 btnNOC3.setGravity(Gravity.CENTER);
-                btnNOC3.setText("");
-                btnNext.setText("Next");
-                btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                btnNOC4.setSelected(false);
-                btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
-                btnNOC4.setGravity(Gravity.CENTER);
-                btnNOC4.setText("4");
+                btnNOC3.setText("3");
 
                 status = 3;
 
@@ -157,19 +157,19 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                         .commit();
 //                showInactiveWizard(btnNOC4, line5);
 
-                btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-                btnNOC4.setSelected(true);
-                btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
-                btnNOC4.setGravity(Gravity.CENTER);
-                btnNOC4.setText("3");
+                btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                btnNOC3.setSelected(true);
+                btnNOC3.setTextColor(getActivity().getResources().getColor(R.color.white));
+                btnNOC3.setGravity(Gravity.CENTER);
+                btnNOC3.setText("3");
                 tvTitle.setText("Preview");
                 btnNext.setText("Pay & Submit");
                 btnCancel.setVisibility(View.VISIBLE);
-//                btnNOC5.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
-//                btnNOC5.setSelected(false);
-//                btnNOC5.setTextColor(getActivity().getResources().getColor(R.color.white));
-//                btnNOC5.setGravity(Gravity.CENTER);
-//                btnNOC5.setText("4");
+                btnNOC4.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
+                btnNOC4.setSelected(false);
+                btnNOC4.setTextColor(getActivity().getResources().getColor(R.color.white));
+                btnNOC4.setGravity(Gravity.CENTER);
+                btnNOC4.setText("4");
 
                 status = 4;
             }
@@ -301,10 +301,10 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                 .commit();
         btnNext.setText("Close");
         btnCancel.setVisibility(View.GONE);
-        btnNOC4.setBackgroundResource(R.mipmap.bullet_success);
-        btnNOC4.setText("");
-//        btnNOC5.setSelected(true);
-        status = 5;
+        btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
+        btnNOC3.setText("");
+status=5;
+        btnNOC4.setSelected(true);
         btnBack.setVisibility(View.GONE);
         btnBackTransparent.setVisibility(View.GONE);
 

@@ -54,6 +54,8 @@ public class NotificationFragment extends Fragment {
     private RestRequest restRequest;
     private String loadMoreResponse = "";
     private ArrayList<NotificationManagement> InflatedNotificationManagements;
+    private int top;
+    private int index;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class NotificationFragment extends Fragment {
             public void onRefresh() {
                 limit = 10;
                 offset = 0;
+                getListPosition();
                 new PullToRefreshNotificationsTask(offset, limit).execute();
             }
         });
@@ -74,6 +77,7 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onLoadMore() {
                 offset += 10;
+                getListPosition();
                 new LoadMoreNotificationsTask(offset, limit, null).execute();
             }
         });
@@ -254,6 +258,7 @@ public class NotificationFragment extends Fragment {
                     Utilities.dismissLoadingDialog();
 
                     pullAndLoadListViewNotifications.setAdapter(new NotificationsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.notifications_row_item, InflatedNotificationManagements));
+              restoreListPosition();
                 }
 
                 @Override
@@ -266,5 +271,13 @@ public class NotificationFragment extends Fragment {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+    public void getListPosition(){
+         index = pullAndLoadListViewNotifications.getFirstVisiblePosition();
+        View v = pullAndLoadListViewNotifications.getChildAt(0);
+         top = (v == null) ? 0 : (v.getTop() - pullAndLoadListViewNotifications.getPaddingTop());
+    }
+    public void restoreListPosition(){
+        pullAndLoadListViewNotifications.setSelectionFromTop(index, top);
     }
 }
