@@ -60,17 +60,17 @@ public class CompanyDocumentsActivityAdapter extends BaseAdapter {
 
         tvCompanyDocumentName.setText(filteredCompanyDocuments.get(position).getName());
         if (filteredCompanyDocuments.get(position).getCreatedDate().getTime().toString().toLowerCase().equals("NaN".toLowerCase()) || filteredCompanyDocuments.get(position).getCreatedDate().getTime() == null || filteredCompanyDocuments.get(position).getCreatedDate().getTime().toString().toLowerCase().equals("")) {
-            tvDate.setText("");
+            tvDate.setText("Date: ");
         } else {
             Date date = filteredCompanyDocuments.get(position).getCreatedDate().getTime();
-            SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
             String strDate = sdfDate.format(date);
-            tvDate.setText(strDate.substring(0, 10));
+            tvDate.setText("Date: "+strDate.substring(0, 11));
         }
         if (String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()).equals("NaN")) {
-            tvVersion.setText("");
+            tvVersion.setText("Version: V.0");
         } else {
-            tvVersion.setText(String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()));
+            tvVersion.setText("Version: V."+String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()));
         }
 
 

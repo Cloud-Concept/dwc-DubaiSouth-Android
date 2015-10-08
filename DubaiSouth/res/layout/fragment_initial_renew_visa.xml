@@ -41,7 +41,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
 
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -74,7 +74,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -107,7 +107,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -140,7 +140,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -174,7 +174,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -207,7 +207,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -229,7 +229,16 @@
                     android:text="Email"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <EditText android:textSize="14sp"
@@ -261,7 +270,16 @@
                     android:text="Mobile"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <EditText android:textSize="14sp"
@@ -293,7 +311,16 @@
                     android:text="Marital status"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <EditText android:textSize="14sp"
@@ -325,7 +352,16 @@
                     android:text="Mother name"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <EditText android:textSize="14sp"
@@ -368,7 +404,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -401,7 +437,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
+                android:background="@mipmap/edit_text_background_disabled"
                 android:enabled="false"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -423,7 +459,16 @@
                     android:text="Religion"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <EditText android:textSize="14sp"
@@ -455,7 +500,16 @@
                     android:text="Languages Spoken"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
 
@@ -489,7 +543,16 @@
                     android:text="Passport no"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
 
@@ -522,7 +585,16 @@
                     android:text="Date of expiry"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <EditText android:textSize="14sp"
@@ -554,6 +626,16 @@
                     android:text="Country of issue"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -584,7 +666,16 @@
                     android:text="Place of issue"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+
+                    android:text="*"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <EditText android:textSize="14sp"

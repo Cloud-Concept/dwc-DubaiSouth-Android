@@ -8,6 +8,7 @@
         android:id="@+id/bulletStatus"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_alignRight="@+id/tvRefNumber"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp" />
@@ -17,9 +18,10 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="50dp"
+
         android:padding="15dip"
         android:scaleType="center" />
 
@@ -27,7 +29,6 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bulletStatus"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/view"
         android:text="Ref Number:"

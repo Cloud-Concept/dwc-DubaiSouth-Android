@@ -3837,7 +3837,7 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
                         _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Renew License Activity", R.mipmap.renew_license));
+                        _items.add(new ServiceItem("Renew License"+System.getProperty ("line.separator")+"Activity", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
@@ -3851,7 +3851,7 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ChangeLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Change License Activity", R.mipmap.change_license_activity));
+                        _items.add(new ServiceItem("Change License"+System.getProperty ("line.separator")+"Activity", R.mipmap.change_license_activity));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelCard".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ReplaceCard".toLowerCase())) {
@@ -3879,9 +3879,9 @@ public class Utilities {
                         linear.addView(viewHeader);
                     } else {
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params.topMargin = 10;
+                        params.topMargin = 0;
                         params.leftMargin = 5;
-                        params.bottomMargin = 10;
+                        params.bottomMargin = 0;
                         viewHeader.setLayoutParams(params);
                         hlvServices.setAdapter(new HorizontalListViewAdapter(object, activity, applicationContext, _items));
 //                        hlvServices.requestFocus();

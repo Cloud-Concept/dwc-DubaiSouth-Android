@@ -846,6 +846,7 @@ public class SFResponseManager {
                 gson = new Gson();
                 Case recordCase = gson.fromJson(jsonCase.toString(), Case.class);
                 recordCase.setUrl(jsonCase.getJSONObject(JSONConstants.ATTRIBUTES).getString(JSONConstants.URL));
+//               recordCase.setCase_Rating_Score(jsonCase.getString("Case_Rating_Score__c"));
                 notificationManagement.setCaseNotification(recordCase);
                 notificationManagements.add(notificationManagement);
             }

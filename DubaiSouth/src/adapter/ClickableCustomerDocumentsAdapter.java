@@ -51,7 +51,7 @@ public class ClickableCustomerDocumentsAdapter extends ClickableListAdapter {
         final CustomerDocumentsViewHolder mvh = (CustomerDocumentsViewHolder) h;
         Company_Documents__c company_documents__c = (Company_Documents__c) mvh.data;
         mvh.tvCompanyDocumentName.setText(company_documents__c.getName());
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MMM-yyyy");
         if (company_documents__c.getCreatedDate() != null && !Utilities.stringNotNull(company_documents__c.getCreatedDate().getTime().toString()).equals("")) {
             String strDate = sdfDate.format(company_documents__c.getCreatedDate().getTime());
             mvh.tvDate.setText("Date:" + strDate);

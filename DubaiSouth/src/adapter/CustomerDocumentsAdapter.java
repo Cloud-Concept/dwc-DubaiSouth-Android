@@ -44,10 +44,10 @@ public class CustomerDocumentsAdapter extends RecyclerView.Adapter<CustomerDocum
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         holder.tvCompanyDocumentName.setText(data.get(position).getName());
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
         if (!Utilities.stringNotNull(data.get(position).getCreatedDate().getTime().toString()).equals("")) {
+            SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
             String strDate = sdfDate.format(data.get(position).getCreatedDate().getTime());
-            holder.tvDate.setText("Date:" + strDate);
+            holder.tvDate.setText("Date:" +strDate.substring(0, 11));
         } else {
             holder.tvDate.setText("");
         }

@@ -56,7 +56,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDate"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_toEndOf="@+id/imageNotificationRow"
         android:numStars="5" />
 

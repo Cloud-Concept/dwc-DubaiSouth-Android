@@ -15,7 +15,7 @@ public class Case {
     String Id;
     @SerializedName("CaseNumber")
     String CaseNumber;
-    @SerializedName("Case_Rting_Score__c")
+    @SerializedName("Case_Rating_Score__c")
     String Case_Rating_Score;
     @SerializedName("Web_Form__c")
     String Web_Form;
