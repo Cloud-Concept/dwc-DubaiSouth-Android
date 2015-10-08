@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cocosw.bottomsheet.BottomSheet;
@@ -195,9 +194,9 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                     final User _user = (User) object;
                     if (tvServiceName.getText().toString().equals("Cancel License")) {
                         ActivitiesLauncher.openLicenseCancellationActivity(context);
-                    } else if (tvServiceName.getText().toString().equals("Change License Activity")) {
+                    } else if (tvServiceName.getText().toString().replace("\n", " ").equals("Change License Activity")) {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "Change License Activity");
-                    } else if (tvServiceName.getText().toString().equals("Renew License Activity")) {
+                    } else if (tvServiceName.getText().toString().replace("\n", " ").equals("Renew License Activity")) {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "License Renewal");
                     } else if (tvServiceName.getText().toString().equals("License Renewal")) {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "Renewal License");

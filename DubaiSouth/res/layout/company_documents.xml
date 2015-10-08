@@ -52,7 +52,7 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/relativeLayout"
         app:direction="both"
-        android:background="@color/white_green">
+        android:background="@color/white">
 
 
         <ListView
