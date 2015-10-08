@@ -257,7 +257,7 @@ public class NotificationFragment extends Fragment {
                     }
                     Utilities.dismissLoadingDialog();
 
-                    pullAndLoadListViewNotifications.setAdapter(new NotificationsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.notifications_row_item, InflatedNotificationManagements));
+                    pullAndLoadListViewNotifications.setAdapter(new NotificationsAdapter(getActivity(), R.layout.notifications_row_item, 0,InflatedNotificationManagements));
               restoreListPosition();
                 }
 
