@@ -38,7 +38,7 @@ public class SoqlStatements {
             "Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, " +
             "Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, " +
             "Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE " +
-            "Sponsoring_Company__c = " + "\'" + "%s" + "\'" + "AND Visa_Validity_Status__c LIKE " + "\'" + "%s" + "\'" +
+            "Sponsoring_Company__c = " + "\'" + "%s" + "\'" + " AND Visa_Validity_Status__c IN ('Issued', 'Expired', 'Cancelled', 'Under Process', 'Under Renewal')" + " AND Visa_Validity_Status__c LIKE " + "\'" + "%s" + "\'" +
             "AND Visa_Type__c IN ('Employment', 'Transfer - External', 'Transfer - " +
             "Internal') ORDER BY Visa_Expiry_Date__c DESC LIMIT %s Offset %s";
 
@@ -153,23 +153,23 @@ public class SoqlStatements {
         User _user = gson.fromJson(userDataAsString, User.class);
         String soqlFormat;
         if (Visa_Validity_Status.equals("All")) {
-            soqlFormat = "SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, " +
-                    "Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, " +
-                    "Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, " +
-                    "Applicant_Mobile_Number__c, Applicant_Gender__c, " +
-                    "Passport_Country__c, Passport_Number__c, Passport_Expiry__c, " +
-                    "Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c, " +
-                    "Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, " +
-                    "Visit_Visa_Duration__c, Country_of_Birth__r.Id, " +
-                    "Country_of_Birth__r.Name, Current_Nationality__r.Id, " +
-                    "Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, " +
-                    "Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, " +
-                    "Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, " +
-                    "Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE " +
-                    "Sponsoring_Company__c = " + "\'" + "%s" + "\'" +
-                    "AND Visa_Type__c IN ('Employment', 'Transfer - External', 'Transfer - " +
-                    "Internal') ORDER BY Visa_Expiry_Date__c DESC Limit " + limit + " Offset " + offset;
-            soqlFormat = String.format(soqlFormat, _user.get_contact().get_account().getID());
+//            soqlFormat = "SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, " +
+//                    "Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, " +
+//                    "Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, " +
+//                    "Applicant_Mobile_Number__c, Applicant_Gender__c, " +
+//                    "Passport_Country__c, Passport_Number__c, Passport_Expiry__c, " +
+//                    "Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c, " +
+//                    "Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, " +
+//                    "Visit_Visa_Duration__c, Country_of_Birth__r.Id, " +
+//                    "Country_of_Birth__r.Name, Current_Nationality__r.Id, " +
+//                    "Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, " +
+//                    "Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, " +
+//                    "Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, " +
+//                    "Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE " +
+//                    "Sponsoring_Company__c = " + "\'" + "%s" + "\'" +
+//                    "AND Visa_Type__c IN ('Employment', 'Transfer - External', 'Transfer - " +
+//                    "Internal') ORDER BY Visa_Expiry_Date__c DESC Limit " + limit + " Offset " + offset;
+            soqlFormat = String.format(soql_get_permanent_employee_list_page, _user.get_contact().get_account().getID(), "%", limit, offset);
         } else {
             soqlFormat = String.format(soql_get_permanent_employee_list_page, _user.get_contact().get_account().getID(), Visa_Validity_Status, limit, offset);
         }
