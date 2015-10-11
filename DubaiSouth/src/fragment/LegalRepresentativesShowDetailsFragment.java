@@ -155,8 +155,8 @@ public class LegalRepresentativesShowDetailsFragment extends Fragment {
             _views.add(new DWCView("Start Date", ItemType.LABEL));
             _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getOwnership_Start_Date__c()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
-            _views.add(new DWCView("End Date", ItemType.LABEL));
-            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getOwnership_End_Date__c()), ItemType.VALUE));
+//            _views.add(new DWCView("End Date", ItemType.LABEL));
+//            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getOwnership_End_Date__c()), ItemType.VALUE));
             viewItems = Utilities.drawViewsOnLayout(getActivity(), _ShareHolder, getActivity().getApplicationContext(), _views);
         }
         linearAddForms.removeAllViews();

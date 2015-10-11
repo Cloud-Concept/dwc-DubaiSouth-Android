@@ -50,7 +50,7 @@ public class CertificatesAdapter extends ClickableListAdapter {
     protected void bindHolder(ViewHolder h) {
         final CertificatesViewHolder mvh = (CertificatesViewHolder) h;
         EServices_Document_Checklist__c eServices_document_checklist__c = (EServices_Document_Checklist__c) mvh.data;
-        mvh.tvTrueCopyName.setText(Utilities.stringNotNull(eServices_document_checklist__c.getEService_Administration__r().getDisplay_Name__c()));
+        mvh.tvTrueCopyName.setText(Utilities.stringNotNull(eServices_document_checklist__c.getName()));
 
         ArrayList<ServiceItem> _items = new ArrayList<>();
 

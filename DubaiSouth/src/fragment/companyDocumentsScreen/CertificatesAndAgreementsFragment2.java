@@ -47,6 +47,8 @@ public class CertificatesAndAgreementsFragment2 extends Fragment {
     private ArrayList<EServices_Document_Checklist__c> eServiceDocumentChecklists;
     ArrayList<EServices_Document_Checklist__c> eServices_document_checklist__cs = null;
     CertificatesAdapter adapter;
+    private int index;
+    private int top;
 
     public static CertificatesAndAgreementsFragment2 newInstance(String text) {
         CertificatesAndAgreementsFragment2 fragment = new CertificatesAndAgreementsFragment2();
@@ -74,10 +76,14 @@ public class CertificatesAndAgreementsFragment2 extends Fragment {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
                     adapter = null;
+                    index=0;
+                    top=0;
+                    getListPosition();
                     eServiceDocumentChecklists.clear();
                     CallTrueCopiesService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
+                    getListPosition();
                     CallTrueCopiesService(CallType.LOADMORE, offset, limit);
                 }
             }
@@ -148,6 +154,7 @@ public class CertificatesAndAgreementsFragment2 extends Fragment {
                                     adapter = new CertificatesAdapter(getActivity(), getActivity().getApplicationContext(),
                                             R.layout.true_copies_item_row, eServiceDocumentChecklists);
                                     lstTrueCopies.setAdapter(adapter);
+                                    restoreListPosition();
                                 } else {
                                     adapter.addAll(eServices_document_checklist__cs);
                                 }
@@ -161,5 +168,16 @@ public class CertificatesAndAgreementsFragment2 extends Fragment {
                 }
             });
         }
+    }
+
+    public void getListPosition() {
+        index = lstTrueCopies.getFirstVisiblePosition();
+        View v = lstTrueCopies.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lstTrueCopies.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        lstTrueCopies.setSelectionFromTop(index, top);
     }
 }

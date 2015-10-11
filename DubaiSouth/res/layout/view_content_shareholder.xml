@@ -150,7 +150,7 @@
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/textView12"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/black" />
+        android:textColor="@color/grey" />
 
     <View
         android:layout_width="match_parent"

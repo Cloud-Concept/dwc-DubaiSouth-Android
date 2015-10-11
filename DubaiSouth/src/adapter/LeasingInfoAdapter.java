@@ -72,17 +72,18 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
         mvh.tvStatus.setText(Utilities.stringNotNull(mo.getStatus__c()));
         mvh.tvExpiryDate.setText(Utilities.stringNotNull(mo.getContract_Expiry_Date__c().toString()));
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
-        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         if (!mvh.tvExpiryDate.getText().toString().equals("")) {
             if (Utilities.daysDifference(mvh.tvExpiryDate.getText().toString()) < 60) {
                 if (mo.IS_BC_Contract__c()) {
-                    _items.add(new ServiceItem("Renew BC Contract", R.mipmap.lease_bc_contract));
-                } else {
                     _items.add(new ServiceItem("Renew Contract", R.mipmap.lease_bc_contract));
+                } else {
+                    _items.add(new ServiceItem("Renew Contract", R.mipmap.lease_ac_contract));
                 }
             }
         }
-//        _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
+
+        _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
 
         mvh.item.setOnClickListener(new ClickableListAdapter.OnClickListener(mvh) {
 

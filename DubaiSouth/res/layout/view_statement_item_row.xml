@@ -12,7 +12,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="14dp"
         android:background="@mipmap/payment_debit" />
 
     <TextView
@@ -24,6 +24,7 @@
         android:layout_toEndOf="@+id/imageStatusDebitCredit"
         android:text="Employee Name:"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="@dimen/text_size_value"
         android:textColor="@color/grey" />
 
     <TextView
@@ -33,6 +34,7 @@
         android:layout_alignTop="@+id/tvEmployeeNameLabel"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
+        android:textSize="@dimen/text_size_value"
         android:layout_toEndOf="@+id/tvEmployeeNameLabel"
         android:gravity="left"
         android:text="fnewiofnoewnfoi"
@@ -50,7 +52,7 @@
         android:layout_toEndOf="@+id/imageStatusDebitCredit"
         android:text="Date:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-
+        android:textSize="@dimen/text_size_value"
         android:textColor="@color/grey" />
 
     <TextView
@@ -62,7 +64,7 @@
         android:layout_marginRight="5dp"
         android:layout_toEndOf="@+id/tvDateLabel"
         android:gravity="left"
-
+        android:textSize="@dimen/text_size_value"
         android:text="newlnweknfkewnlknekwndew"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/black"
@@ -77,6 +79,7 @@
         android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/imageStatusDebitCredit"
         android:text="Amount:"
+        android:textSize="@dimen/text_size_value"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -88,6 +91,7 @@
         android:layout_alignTop="@+id/tvAmountLabel"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
+        android:textSize="@dimen/text_size_value"
         android:layout_toEndOf="@+id/tvAmountLabel"
         android:gravity="left"
         android:text="djewjde"
@@ -103,6 +107,7 @@
         android:layout_marginTop="3dp"
         android:layout_toStartOf="@+id/tvAmount"
         android:text="Balance:"
+        android:textSize="@dimen/text_size_value"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
 
@@ -112,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvBalanceLabel"
         android:layout_marginLeft="10dp"
+        android:textSize="@dimen/text_size_value"
         android:layout_marginRight="5dp"
         android:layout_toEndOf="@+id/tvBalanceLabel"
         android:gravity="left"
@@ -128,6 +134,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@+id/imageStatusDebitCredit"
+        android:textSize="@dimen/text_size_value"
         android:text="Status:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
@@ -137,6 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvStatusLabel"
+        android:textSize="@dimen/text_size_value"
         android:layout_alignEnd="@+id/tvDate"
         android:layout_alignTop="@+id/tvStatusLabel"
         android:layout_marginLeft="5dp"

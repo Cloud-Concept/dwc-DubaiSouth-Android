@@ -90,18 +90,18 @@ public class PayAndSubmit extends Fragment {
         total.setText((activity.geteServiceAdministration().getTotal_Amount__c()) + " AED");
         TextView person = (TextView) view.findViewById(R.id.personName);
 
-            person.setText(activity.getCard().getFull_Name__c());
+        person.setText(activity.getCard().getFull_Name__c());
 
         TextView ref = (TextView) view.findViewById(R.id.refnumber);
 
-            ref.setText(activity.getCaseNumber());
-        if(activity.getType().equals("1"))
+        ref.setText(activity.getCaseNumber());
+        if (activity.getType().equals("1"))
             image.setImageResource(R.mipmap.new_card);
-        else if(activity.getType().equals("2"))
+        else if (activity.getType().equals("2"))
             image.setImageResource(R.mipmap.cancel_card);
-            else if(activity.getType().equals("3"))
+        else if (activity.getType().equals("3"))
             image.setImageResource(R.mipmap.renew_card);
-            else if(activity.getType().equals("4"))
+        else if (activity.getType().equals("4"))
             image.setImageResource(R.mipmap.replace_card);
 
 
@@ -118,69 +118,64 @@ public class PayAndSubmit extends Fragment {
         List<FormField> formFields = null;
         formFields = ((CardActivity) getActivity()).get_webForm().get_formFields();
         for (FormField field : formFields) {
-            if(!field.isHidden())
-            if (field.getType().equals("CUSTOMTEXT")) {
-                View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);
-                TextView tvHeader = (TextView) view.findViewById(R.id.pay_header);
-                tvHeader.setText(field.getMobileLabel());
-                nocDetails.addView(view);
-            }else if (field.getType().equals("REFERENCE")) {
-                String stringValue = "";
+            if (!field.isHidden())
+                if (field.getType().equals("CUSTOMTEXT")) {
+                    View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);
+                    TextView tvHeader = (TextView) view.findViewById(R.id.pay_header);
+                    tvHeader.setText(field.getMobileLabel());
+                    nocDetails.addView(view);
+                } else if (field.getType().equals("REFERENCE")) {
+                    String stringValue = "";
 
-                Field[] fields = Card_Management__c.class.getFields();
-                String refName = field.getName().replace("__c", "");
-                try {
-                    Class refclass = Class.forName("model." + refName);
-                    Field reffield = null;
-                    for (int l = 0; l < refclass.getFields().length; l++)
-                        if (("name").equals(refclass.getFields()[l].getName().toLowerCase()))
-                            reffield = refclass.getFields()[l];
+                    Field[] fields = Card_Management__c.class.getFields();
+                    String refName = field.getName().replace("__c", "");
+                    try {
+                        Class refclass = Class.forName("model." + refName);
+                        Field reffield = null;
+                        for (int l = 0; l < refclass.getFields().length; l++)
+                            if (("name").equals(refclass.getFields()[l].getName().toLowerCase()))
+                                reffield = refclass.getFields()[l];
 
-                    for (int j = 0; j < fields.length; j++)
-                        if ((refName + "__r").toLowerCase().equals(fields[j].getName().toLowerCase()))
-                            try {
+                        for (int j = 0; j < fields.length; j++)
+                            if ((refName + "__r").toLowerCase().equals(fields[j].getName().toLowerCase()))
+                                try {
+                                    stringValue = String.valueOf(reffield.get(fields[j].get(activity.getCard())));
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
 
-
-                                stringValue = String.valueOf(reffield.get(fields[j].get(activity.getCard())));
-
-
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-
+                        TextView tvLabel;
+                        TextView tvValue;
+                        View view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
+                        tvLabel = (TextView) view.findViewById(R.id.pay_title);
+                        tvValue = (TextView) view.findViewById(R.id.pay_text);
+                        tvLabel.setText(field.getMobileLabel() + "\t:");
+                        tvValue.setText(stringValue);
+                        nocDetails.addView(view);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else {
                     TextView tvLabel;
                     TextView tvValue;
                     View view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
                     tvLabel = (TextView) view.findViewById(R.id.pay_title);
                     tvValue = (TextView) view.findViewById(R.id.pay_text);
                     tvLabel.setText(field.getMobileLabel() + "\t:");
+
+                    String stringValue = "";
+                    String name = field.getName();
+                    Field[] fields = Card_Management__c.class.getFields();
+                    for (int j = 0; j < fields.length; j++)
+                        if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+                            try {
+                                stringValue = String.valueOf(fields[j].get(activity.getCard()));
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
                     tvValue.setText(stringValue);
                     nocDetails.addView(view);
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
-            }else
-             {
-                TextView tvLabel;
-                TextView tvValue;
-                View view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
-                tvLabel = (TextView) view.findViewById(R.id.pay_title);
-                tvValue = (TextView) view.findViewById(R.id.pay_text);
-                tvLabel.setText(field.getMobileLabel() + "\t:");
-
-                String stringValue = "";
-                String name = field.getName();
-                Field[] fields = Card_Management__c.class.getFields();
-                for (int j = 0; j < fields.length; j++)
-                    if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
-                        try {
-                            stringValue = String.valueOf(fields[j].get(activity.getCard()));
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                tvValue.setText(stringValue);
-                nocDetails.addView(view);
-            }
         }
     }
 }

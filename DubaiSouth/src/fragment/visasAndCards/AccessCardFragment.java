@@ -66,6 +66,8 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
     private ArrayList<Card_Management__c> _Filteredcards;
     ImageView imageNewCard;
     TextView tvNewCard;
+    private int index;
+    private int top;
 
     public static AccessCardFragment newInstance(String text) {
         AccessCardFragment fragment = new AccessCardFragment();
@@ -96,7 +98,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
         expandableLayoutListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i==_cards.size()-1){
+                if (i == _cards.size() - 1) {
                     expandableLayoutListView.scrollTo(0, expandableLayoutListView.getHeight() - 600);
 
                 }
@@ -133,11 +135,17 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     _cards.clear();
+                    offset = 0;
+                    index = 0;
+                    top = 0;
+                    getListPosition();
                     if (_Filteredcards != null) {
                         _Filteredcards.clear();
                     }
                     CallAccessCardService(strFilter, CallType.REFRESH);
                 } else {
+                    offset += limit;
+                    getListPosition();
                     CallAccessCardService(strFilter, CallType.LOADMORE);
                 }
             }
@@ -148,12 +156,18 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!strFilter.equals(Access_Card_visa_validity_status[position])) {
+                    offset = 0;
                     strFilter = Access_Card_visa_validity_status[position];
                     new StoreData(getActivity().getApplicationContext()).setAccessCardSpinnerFilterValue(strFilter);
                     _cards.clear();
+                    adapter = new AccessCardAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.item_row_access_card, _cards);
+                    expandableLayoutListView.setAdapter(adapter);
                     if (_Filteredcards != null) {
                         _Filteredcards.clear();
                     }
+                    index = 0;
+                    top = 0;
+                    getListPosition();
                     CallAccessCardService(strFilter, CallType.SPINNETCHANGEDDATA);
                 }
             }
@@ -227,6 +241,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
                     }
                     adapter = new AccessCardAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.item_row_access_card, _Filteredcards);
                     expandableLayoutListView.setAdapter(adapter);
+                    restoreListPosition();
                 }
             });
 
@@ -235,16 +250,12 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
             try {
                 restRequest = RestRequest.getRequestForQuery(
                         getActivity().getString(R.string.api_version), soqlQuery);
-                if (callType == CallType.FIRSTTIME || callType == CallType.REFRESH || callType == CallType.SPINNETCHANGEDDATA) {
-                    offset = 0;
-                } else {
-                    offset += limit;
-                }
-
                 if (callType == CallType.SPINNETCHANGEDDATA) {
                     if (!Utilities.getIsProgressLoading()) {
                         Utilities.showloadingDialog(getActivity());
                     }
+                    _cards = new ArrayList<>();
+                    _Filteredcards = new ArrayList<>();
                 }
                 new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                     @Override
@@ -285,7 +296,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
 
                                         adapter = new AccessCardAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.item_row_access_card, _cards);
                                         expandableLayoutListView.setAdapter(adapter);
-
+                                        restoreListPosition();
                                         _Filteredcards.clear();
 
                                         etSearch.addTextChangedListener(new TextWatcher() {
@@ -316,6 +327,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
                                                 }
                                                 adapter = new AccessCardAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.item_row_access_card, _Filteredcards);
                                                 expandableLayoutListView.setAdapter(adapter);
+                                                restoreListPosition();
                                             }
                                         });
                                     } catch (Exception e) {
@@ -348,5 +360,16 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
         if (v == imageNewCard || v == tvNewCard) {
             ActivitiesLauncher.openNewCardActivity(getActivity().getApplicationContext(), "1");
         }
+    }
+
+    public void getListPosition() {
+        index = expandableLayoutListView.getFirstVisiblePosition();
+        View v = expandableLayoutListView.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - expandableLayoutListView.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        expandableLayoutListView.setSelectionFromTop(index, top);
     }
 }

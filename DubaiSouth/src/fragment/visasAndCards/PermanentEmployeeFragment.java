@@ -55,6 +55,8 @@ public class PermanentEmployeeFragment extends Fragment {
     int offset = 0;
     PermanentEmployeeListAdapter adapter;
     private String soqlQuery;
+    private int index;
+    private int top;
 
     public static PermanentEmployeeFragment newInstance(String text) {
 
@@ -112,8 +114,11 @@ public class PermanentEmployeeFragment extends Fragment {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
+                    offset = 0;
+                    getListPosition();
                     CallPermanentEmployeeService(strFilter, CallType.REFRESH);
                 } else {
+                    getListPosition();
                     CallPermanentEmployeeService(strFilter, CallType.LOADMORE);
                 }
             }
@@ -262,6 +267,7 @@ public class PermanentEmployeeFragment extends Fragment {
                                     adapter = new PermanentEmployeeListAdapter(getActivity(), getActivity().getApplicationContext(),
                                             R.layout.item_row_permanent_employee, _visas);
                                     expandableLayoutListView.setAdapter(adapter);
+                                    restoreListPosition();
                                     _Filteredvisas.clear();
 
                                     etSearch.addTextChangedListener(new TextWatcher() {
@@ -308,5 +314,15 @@ public class PermanentEmployeeFragment extends Fragment {
                 }
             });
         }
+    }
+
+    public void getListPosition() {
+        index = expandableLayoutListView.getFirstVisiblePosition();
+        View v = expandableLayoutListView.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - expandableLayoutListView.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+        expandableLayoutListView.setSelectionFromTop(index, top);
     }
 }

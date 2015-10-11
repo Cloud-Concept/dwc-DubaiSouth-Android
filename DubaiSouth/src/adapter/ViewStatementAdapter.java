@@ -64,11 +64,11 @@ public class ViewStatementAdapter extends ClickableListAdapter {
     protected void bindHolder(ClickableListAdapter.ViewHolder h) {
         final ViewHolder mvh = (ViewHolder) h;
         FreeZonePayment mo = (FreeZonePayment) mvh.data;
-        if (mo.getName() != null && !mo.getName().equals("")) {
+        if (mo.getEmployeeName() != null && !mo.getEmployeeName().equals("")) {
             mvh.tvEmployeeName.setText(mo.getEmployeeName());
         } else {
-            mvh.tvEmployeeName.setVisibility(View.GONE);
-            mvh.tvEmployeeNameLabel.setVisibility(View.GONE);
+            mvh.tvEmployeeName.setVisibility(View.INVISIBLE);
+            mvh.tvEmployeeNameLabel.setVisibility(View.INVISIBLE);
         }
 
         mvh.tvStatus.setText(Utilities.stringNotNull(mo.getStatus()));
@@ -84,7 +84,7 @@ public class ViewStatementAdapter extends ClickableListAdapter {
             mvh.tvBalance.setText(Utilities.stringNotNull(mo.getClosingBalance()));
         }
 
-        mvh.tvDate.setText(!Utilities.stringNotNull(mo.getCreatedDate()).equals("") ? Utilities.stringNotNull(mo.getCreatedDate()).substring(0, 10) : "");
+        mvh.tvDate.setText(!Utilities.stringNotNull(mo.getCreatedDate()).equals("") ? Utilities.formatVisitVisaDate(Utilities.stringNotNull(mo.getCreatedDate()).substring(0, 10)) : "");
         setupListeners(mvh);
     }
 
