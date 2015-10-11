@@ -55,7 +55,7 @@ public class InitialPassportPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_initial_renew_passport, container, false);
         activity = (VisaActivity) getActivity();
-
+        Utilities.setupUI(view, activity);
         InitializeViews(view);
         return view;
     }

@@ -75,7 +75,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
             Date dateTime = dtf.parse(Utilities.stringNotNull(objects.get(position).getCreatedDate()));
             pattern = "dd-MMM-yyyy hh:mm a";
             dtf = new SimpleDateFormat(pattern);
-            tvDate.setText(dtf.format(dateTime).substring(0, 11));
+            tvDate.setText(dtf.format(dateTime));
         } catch (ParseException e) {
             e.printStackTrace();
         }
