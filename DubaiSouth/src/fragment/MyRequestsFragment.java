@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
@@ -66,6 +65,8 @@ public class MyRequestsFragment extends Fragment {
     private ArrayList<MyRequest> _FilteredRequests;
 
     private MyRequestsAdapter adapter;
+    private int index;
+    private int top;
 
     public static Fragment newInstance(String s) {
         MyRequestsFragment fragment = new MyRequestsFragment();
@@ -112,10 +113,11 @@ public class MyRequestsFragment extends Fragment {
                     offset = 0;
                     InflatedRequests.clear();
                     status = status_filter[position];
+                    top = 0;
+                    index = 0;
+                    restoreListPosition();
                     new StoreData(getActivity().getApplicationContext()).setMyRequestsStatus(status);
                     CallMyRequestsService(CallType.SPINNETCHANGEDDATA, status, request_type, limit, offset);
-                }else {
-                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                 }
             }
 
@@ -133,10 +135,11 @@ public class MyRequestsFragment extends Fragment {
                     offset = 0;
                     InflatedRequests.clear();
                     request_type = request_type_filter[position];
+                    top = 0;
+                    index = 0;
+                    restoreListPosition();
                     new StoreData(getActivity().getApplicationContext()).setMyRequestsRequestType(request_type);
                     CallMyRequestsService(CallType.SPINNETCHANGEDDATA, status, request_type, limit, offset);
-                }else{
-                    ((TextView) parent.getChildAt(0)).setTextSize(10);
                 }
             }
 
@@ -152,9 +155,13 @@ public class MyRequestsFragment extends Fragment {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
                     InflatedRequests.clear();
+                    top = 0;
+                    index = 0;
+                    restoreListPosition();
                     CallMyRequestsService(CallType.REFRESH, status, request_type, limit, offset);
                 } else {
                     offset += limit;
+                    getListPosition();
                     CallMyRequestsService(CallType.LOADMORE, status, request_type, limit, offset);
                 }
             }
@@ -246,6 +253,7 @@ public class MyRequestsFragment extends Fragment {
                     adapter = new MyRequestsAdapter(getActivity(), getActivity().getApplicationContext(),
                             R.layout.my_requests_row_item, _FilteredRequests);
                     lstMyRequests.setAdapter(adapter);
+                    restoreListPosition();
                     lstMyRequests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -305,6 +313,7 @@ public class MyRequestsFragment extends Fragment {
                                     adapter = new MyRequestsAdapter(getActivity(), getActivity().getApplicationContext(),
                                             R.layout.my_requests_row_item, InflatedRequests);
                                     lstMyRequests.setAdapter(adapter);
+                                    restoreListPosition();
                                     lstMyRequests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                         @Override
                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -339,6 +348,7 @@ public class MyRequestsFragment extends Fragment {
                                             adapter = new MyRequestsAdapter(getActivity(), getActivity().getApplicationContext(),
                                                     R.layout.my_requests_row_item, _FilteredRequests);
                                             lstMyRequests.setAdapter(adapter);
+                                            restoreListPosition();
                                             lstMyRequests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                                 @Override
                                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -362,5 +372,15 @@ public class MyRequestsFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void getListPosition() {
+        index = lstMyRequests.getFirstVisiblePosition();
+        View v = lstMyRequests.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lstMyRequests.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+        lstMyRequests.setSelectionFromTop(index, top);
     }
 }

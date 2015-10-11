@@ -59,6 +59,8 @@ public class LeasingInfoFragment extends Fragment {
     int offset = 0;
     int limit = 10;
     private Set<Contract_DWC__c> contract_dwc__cs;
+    private int index;
+    private int top;
 
     public LeasingInfoFragment() {
 
@@ -133,6 +135,8 @@ public class LeasingInfoFragment extends Fragment {
                                 SalesforceSDKManager.getInstance().logout(getActivity());
                                 return;
                             } else {
+                                index = 0;
+                                top = 0;
                                 new LeasingInfoTask(CallType.REFRESH, client, offset, limit).execute();
                             }
                         }
@@ -146,6 +150,7 @@ public class LeasingInfoFragment extends Fragment {
                                 SalesforceSDKManager.getInstance().logout(getActivity());
                                 return;
                             } else {
+                                getListPosition();
                                 new LeasingInfoTask(CallType.LOADMORE, client, offset, limit).execute();
                             }
                         }
@@ -238,6 +243,7 @@ public class LeasingInfoFragment extends Fragment {
                     }
                 }
                 lvLeasingInfoItems.setAdapter(new LeasingInfoAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.leasing_info_item, contracts));
+                restoreListPosition();
             }
 
             if (Utilities.getIsProgressLoading()) {
@@ -248,5 +254,16 @@ public class LeasingInfoFragment extends Fragment {
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         }
+    }
+
+    public void getListPosition() {
+        index = lvLeasingInfoItems.getFirstVisiblePosition();
+        View v = lvLeasingInfoItems.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lvLeasingInfoItems.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        lvLeasingInfoItems.setSelectionFromTop(index, top);
     }
 }

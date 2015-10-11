@@ -8,10 +8,10 @@
         android:id="@+id/tvValueItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fbwifeiwhnfie"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="fbwifeiwhnfie"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey"
-        />
+        android:textSize="@dimen/text_size_value" />
 </LinearLayout>

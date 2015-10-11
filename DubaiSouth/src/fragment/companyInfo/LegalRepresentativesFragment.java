@@ -43,6 +43,8 @@ public class LegalRepresentativesFragment extends Fragment {
     private RestRequest restRequest;
     private String lastReponseString = "";
     private ArrayList<LegalRepresentative> legalRepresentatives;
+    private int index;
+    private int top;
 
     public static LegalRepresentativesFragment newInstance(String text) {
         LegalRepresentativesFragment fragment = new LegalRepresentativesFragment();
@@ -71,9 +73,13 @@ public class LegalRepresentativesFragment extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
                 if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
+                    index=0;
+                    top=0;
+                    getListPosition();
                     CallLegalRepresentativesService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
+                    getListPosition();
                     CallLegalRepresentativesService(CallType.LOADMORE, offset, limit);
                 }
             }
@@ -126,6 +132,7 @@ public class LegalRepresentativesFragment extends Fragment {
                                                 }
                                             }
                                             lvLegalRepresentatives.setAdapter(new LegalRepresentativesAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.legal_representatives_item, legalRepresentatives));
+                                            restoreListPosition();
                                         }
                                     } else {
                                         legalRepresentatives = new ArrayList<LegalRepresentative>();
@@ -133,6 +140,7 @@ public class LegalRepresentativesFragment extends Fragment {
                                         if (legalRepresentatives.size() > 0) {
                                             new StoreData(getActivity().getApplicationContext()).setLegalRepresentativesResponse(response.toString());
                                             lvLegalRepresentatives.setAdapter(new LegalRepresentativesAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.legal_representatives_item, legalRepresentatives));
+                                            restoreListPosition();
                                         }
                                     }
                                 }
@@ -149,5 +157,16 @@ public class LegalRepresentativesFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void getListPosition() {
+        index = lvLegalRepresentatives.getFirstVisiblePosition();
+        View v = lvLegalRepresentatives.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lvLegalRepresentatives.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        lvLegalRepresentatives.setSelectionFromTop(index, top);
     }
 }

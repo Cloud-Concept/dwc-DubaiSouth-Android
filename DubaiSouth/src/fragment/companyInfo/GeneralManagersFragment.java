@@ -43,6 +43,8 @@ public class GeneralManagersFragment extends Fragment {
     private String soqlQuery;
     private RestRequest restRequest;
     private String lastReponseString;
+    private int index;
+    private int top;
 
     public static GeneralManagersFragment newInstance(String text) {
         GeneralManagersFragment fragment = new GeneralManagersFragment();
@@ -70,9 +72,13 @@ public class GeneralManagersFragment extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
                 if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
+                    index=0;
+                    top=0;
+                    getListPosition();
                     CallGeneralManagersService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
+                    getListPosition();
                     CallGeneralManagersService(CallType.LOADMORE, offset, limit);
                 }
             }
@@ -85,6 +91,7 @@ public class GeneralManagersFragment extends Fragment {
             _members = SFResponseManager.parseManagementMemberObject(new StoreData(getActivity().getApplicationContext()).getGeneralManagersResponse());
             if (_members.size() > 0) {
                 lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, _members));
+                restoreListPosition();
             }
         } else {
             Gson gson = new Gson();
@@ -125,6 +132,7 @@ public class GeneralManagersFragment extends Fragment {
                                                 }
                                             }
                                             lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.general_managers_whole_item, _members));
+                                            restoreListPosition();
                                         }
                                     } else {
                                         _members = new ArrayList<ManagementMember>();
@@ -132,6 +140,7 @@ public class GeneralManagersFragment extends Fragment {
                                         if (_members.size() > 0) {
                                             new StoreData(getActivity().getApplicationContext()).setGeneralManagersResponse(response.toString());
                                             lvGeneralManagers.setAdapter(new GeneralManagersAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.general_managers_whole_item, _members));
+                                            restoreListPosition();
                                         }
                                     }
                                 }
@@ -148,5 +157,16 @@ public class GeneralManagersFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void getListPosition() {
+        index = lvGeneralManagers.getFirstVisiblePosition();
+        View v = lvGeneralManagers.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lvGeneralManagers.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        lvGeneralManagers.setSelectionFromTop(index, top);
     }
 }

@@ -2252,6 +2252,7 @@ import dataStorage.StoreData;
 import fragmentActivity.CardActivity;
 import model.Attachment;
 import model.Card_Management__c;
+import model.Contract_DWC__c;
 import model.DWCView;
 import model.EServices_Document_Checklist__c;
 import model.FormField;
@@ -2283,8 +2284,8 @@ public class Utilities {
 
 
     @SuppressWarnings("deprecation")
-    public static void showNiftyDialog(String title, Activity act,
-                                       OnClickListener listenerPositive) {
+    public static NiftyDialogBuilder showNiftyDialog(String title, Activity act,
+                                                     OnClickListener listenerPositive) {
 
         final NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder
                 .getInstance(act);
@@ -2308,6 +2309,7 @@ public class Utilities {
                         dialogBuilder.dismiss();
                     }
                 }).show();
+        return dialogBuilder;
     }
 
     public static NiftyDialogBuilder showCustomNiftyDialog(String title, Activity act, OnClickListener listenerPositive, String Text) {
@@ -3040,16 +3042,29 @@ public class Utilities {
                                                 formFieldLabelrequired.setVisibility(View.VISIBLE);
                                             String stringValue = "";
                                             String name = field.getName();
-                                            Gson gson = new Gson();
-                                            User user = gson.fromJson(new StoreData(view.getContext()).getUserDataAsString(), User.class);
+//                                            Gson gson = new Gson();
+//                                            User user = gson.fromJson(new StoreData(view.getContext()).getUserDataAsString(), User.class);
+//                                            Field[] fields = EServices_Document_Checklist__c.class.getFields();
+//                                            for (int j = 0; j < fields.length; j++)
+//                                                if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+//                                                    try {
+//                                                        stringValue = (String) fields[j].get(eServices_document_checklist__c);
+//                                                        if (stringValue == null || stringValue.equals("")) {
+//                                                            stringValue = user.get_contact().get_account().getEmail();
+//                                                        }
+//                                                        fields[j].set(eServices_document_checklist__c, stringValue);
+//                                                    } catch (IllegalAccessException e) {
+//                                                        e.printStackTrace();
+//                                                    }
+
+                                            String user = new StoreData(applicationContext).getUserDataAsString();
+                                            Gson g = new Gson();
+                                            User u = g.fromJson(user, User.class);
+                                            stringValue = contactEmail;
                                             Field[] fields = EServices_Document_Checklist__c.class.getFields();
                                             for (int j = 0; j < fields.length; j++)
                                                 if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
                                                     try {
-                                                        stringValue = (String) fields[j].get(eServices_document_checklist__c);
-                                                        if (stringValue == null || stringValue.equals("")) {
-                                                            stringValue = user.get_contact().get_account().getEmail();
-                                                        }
                                                         fields[j].set(eServices_document_checklist__c, stringValue);
                                                     } catch (IllegalAccessException e) {
                                                         e.printStackTrace();
@@ -3528,6 +3543,43 @@ public class Utilities {
         return new String[]{startDate, endDate};
     }
 
+    public static String formatVisitVisaDate(String s) {
+        if (s == null || s.equals("")) {
+            return "";
+        } else {
+            String[] date = s.split("-");
+            if (date[1].equals("01")) {
+                return date[2] + "-Jan-" + date[0];
+            } else if (date[1].equals("01")) {
+                return date[2] + "-Feb-" + date[0];
+            } else if (date[1].equals("02")) {
+                return date[2] + "-Mar-" + date[0];
+            } else if (date[1].equals("03")) {
+                return date[2] + "-Apr-" + date[0];
+            } else if (date[1].equals("04")) {
+                return date[2] + "-May-" + date[0];
+            } else if (date[1].equals("05")) {
+                return date[2] + "-Jun-" + date[0];
+            } else if (date[1].equals("06")) {
+                return date[2] + "-Jul-" + date[0];
+            } else if (date[1].equals("07")) {
+                return date[2] + "-Aug-" + date[0];
+            } else if (date[1].equals("08")) {
+                return date[2] + "-Sep-" + date[0];
+            } else if (date[1].equals("09")) {
+                return date[2] + "-Oct-" + date[0];
+            } else if (date[1].equals("10")) {
+                return date[2] + "-Nov-" + date[0];
+            } else if (date[1].equals("11")) {
+                return date[2] + "-Dec-" + date[0];
+            } else if (date[1].equals("12")) {
+                return date[2] + "-Jan-" + date[0];
+            } else {
+                return "";
+            }
+        }
+    }
+
 //    public static Calendar getDateCalendar(int year, int month, int day) throws ParseException {
 //        Calendar calendar = Calendar.getInstance();
 ////        cal.set(Calendar.YEAR, year);
@@ -3837,7 +3889,7 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
                         _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Renew License"+System.getProperty ("line.separator")+"Activity", R.mipmap.renew_license));
+                        _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
@@ -3851,7 +3903,7 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ChangeLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Change License"+System.getProperty ("line.separator")+"Activity", R.mipmap.change_license_activity));
+                        _items.add(new ServiceItem("Change License" + System.getProperty("line.separator") + "Activity", R.mipmap.change_license_activity));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelCard".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ReplaceCard".toLowerCase())) {
@@ -3860,10 +3912,14 @@ public class Utilities {
                         _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LostCard".toLowerCase())) {
                         _items.add(new ServiceItem("Lost Card", R.mipmap.renew_visa));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewBCContract".toLowerCase())) {
-                        _items.add(new ServiceItem("Renew BC Contract", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewContract".toLowerCase())) {
-                        _items.add(new ServiceItem("Renew Contract", R.mipmap.renew_license));
+                        Contract_DWC__c contract_dwc__c = (Contract_DWC__c) object;
+                        if(contract_dwc__c.IS_BC_Contract__c()){
+                            _items.add(new ServiceItem("Renew Contract", R.mipmap.lease_bc_contract));
+                        }else{
+                            _items.add(new ServiceItem("Renew Contract", R.mipmap.lease_ac_contract));
+                        }
+
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelContract".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Contract", R.mipmap.cancel_contract));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewPassport".toLowerCase())) {

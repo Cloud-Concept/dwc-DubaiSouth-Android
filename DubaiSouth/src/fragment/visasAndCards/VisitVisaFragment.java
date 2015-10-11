@@ -114,8 +114,10 @@ public class VisitVisaFragment extends Fragment {
                     if (_Filteredvisas != null) {
                         _Filteredvisas.clear();
                     }
+                    offset = 0;
                     CallVisitVisaService(strFilter, CallType.REFRESH);
                 } else {
+                    offset += limit;
                     CallVisitVisaService(strFilter, CallType.LOADMORE);
                 }
             }
@@ -126,6 +128,7 @@ public class VisitVisaFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!strFilter.equals(visit_visa_validity_status[position])) {
+                    offset = 0;
                     strFilter = visit_visa_validity_status[position];
                     new StoreData(getActivity().getApplicationContext()).setVisitVisaSpinnerFilterValue(strFilter);
                     _visas.clear();
@@ -201,11 +204,6 @@ public class VisitVisaFragment extends Fragment {
             try {
                 restRequest = RestRequest.getRequestForQuery(
                         getActivity().getString(R.string.api_version), soqlQuery);
-                if (callType == CallType.FIRSTTIME || callType == CallType.REFRESH || callType == CallType.SPINNETCHANGEDDATA) {
-                    offset = 0;
-                } else {
-                    offset += limit;
-                }
 
                 if (callType == CallType.SPINNETCHANGEDDATA) {
                     Utilities.showloadingDialog(getActivity());

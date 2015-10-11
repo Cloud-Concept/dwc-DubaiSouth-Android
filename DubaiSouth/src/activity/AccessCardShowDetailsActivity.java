@@ -41,6 +41,12 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         linearLayout = (LinearLayout) findViewById(R.id.linearAddForms);
         imageUser = (DWCRoundedImageView) findViewById(R.id.view);
         imageBack = (ImageView) findViewById(R.id.imageBack);
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Gson gson = new Gson();
         Card_Management__c _cardManagement = gson.fromJson(getIntent().getExtras().getString("object"), Card_Management__c.class);
         if (_cardManagement.getPersonal_Photo__c() != null && !_cardManagement.getPersonal_Photo__c().equals(""))
@@ -55,7 +61,7 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getCard_Type__c()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Expiry Date", ItemType.LABEL));
-        _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getCard_Expiry_Date__c()), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.formatVisitVisaDate(Utilities.stringNotNull(_cardManagement.getCard_Expiry_Date__c())), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Status", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getStatus__c()), ItemType.VALUE));
@@ -63,26 +69,27 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         _views.add(new DWCView("Passport Number", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getPassport_Number__c()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
-        _views.add(new DWCView("Nationality", ItemType.LABEL));
+        _views.add(new DWCView("NATIOANLITY", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getNationality__r().getName()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
-        _views.add(new DWCView("Designation", ItemType.LABEL));
+        _views.add(new DWCView("DESIGNATION", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getDesignation__c()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
-        _views.add(new DWCView("Sponsor Company", ItemType.LABEL));
+        _views.add(new DWCView("SPONSORING COMPANY", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getSponsor__c()), ItemType.VALUE));
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
-
-        if (_cardManagement.getStatus__c().equals("Active")) {
-            _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
-            _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
-        }
 
         Calendar _calendar = Calendar.getInstance();
         int DaysToExpire = (int) Utilities.daysDifference(_cardManagement.getCard_Expiry_Date__c());
         if (_cardManagement.getStatus__c().equals("Expired") || (_cardManagement.getStatus__c().equals("Active") && DaysToExpire < 7)) {
             _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
         }
+
+        if (_cardManagement.getStatus__c().equals("Active")) {
+            _items.add(new ServiceItem("Cancel Card", R.mipmap.cancel_card));
+            _items.add(new ServiceItem("Replace Card", R.mipmap.replace_card));
+        }
+
         String str = "";
         if (_items.size() > 0) {
             for (int i = 0; i < _items.size(); i++) {

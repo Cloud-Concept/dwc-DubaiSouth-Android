@@ -66,7 +66,7 @@ public class MyRequestsAdapter extends ClickableListAdapter {
                 Date dateTime = dtf.parse(Utilities.stringNotNull(myRequest.getCreatedDate()));
                 pattern = "dd-MMM-yyyy hh:mm a";
                 dtf = new SimpleDateFormat(pattern);
-                mvh.tvDate.setText(dtf.format(dateTime));
+                mvh.tvDate.setText(dtf.format(dateTime).substring(0, 11));
             } catch (ParseException e) {
                 e.printStackTrace();
             }

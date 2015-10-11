@@ -91,7 +91,7 @@
             android:layout_height="match_parent"
             android:groupIndicator="@null"
             android:layout_marginTop="15dp"
-            android:background="@drawable/list_selector"
+            android:listSelector="@drawable/list_selector"
             android:divider="@android:color/transparent"
             android:dividerHeight="2dp"
             android:footerDividersEnabled="false">

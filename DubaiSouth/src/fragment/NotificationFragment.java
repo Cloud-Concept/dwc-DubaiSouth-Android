@@ -1,6 +1,5 @@
 package fragment;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,8 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -31,11 +33,8 @@ import java.util.ArrayList;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
-import adapter.NotificationsAdapter;
-import cloudconcept.dwc.BaseActivity;
+import adapter.NotificationBaseAdapter;
 import cloudconcept.dwc.R;
-import custom.PullAndLoadListView;
-import custom.PullToRefreshListView;
 import dataStorage.StoreData;
 import model.NotificationManagement;
 import model.User;
@@ -45,9 +44,10 @@ import utilities.Utilities;
 /**
  * Created by Abanoub Wagdy on 6/17/2015.
  */
-public class NotificationFragment extends Fragment {
+public class NotificationFragment extends Fragment implements SwipyRefreshLayout.OnRefreshListener {
 
-    PullAndLoadListView pullAndLoadListViewNotifications;
+    ListView lstNotifications;
+    SwipyRefreshLayout mSwipeRefreshLayout;
     private int limit = 10;
     private int offset = 0;
     private String soqlQuery;
@@ -56,59 +56,73 @@ public class NotificationFragment extends Fragment {
     private ArrayList<NotificationManagement> InflatedNotificationManagements;
     private int top;
     private int index;
+    private String result = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notifications, container, false);
-        pullAndLoadListViewNotifications = (PullAndLoadListView) view.findViewById(R.id.pullandloadNotifications);
-        pullAndLoadListViewNotifications.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
-
-            @Override
-            public void onRefresh() {
-                limit = 10;
-                offset = 0;
-                getListPosition();
-                new PullToRefreshNotificationsTask(offset, limit).execute();
-            }
-        });
-
-        pullAndLoadListViewNotifications.setOnLoadMoreListener(new PullAndLoadListView.OnLoadMoreListener() {
-
-            @Override
-            public void onLoadMore() {
-                offset += 10;
-                getListPosition();
-                new LoadMoreNotificationsTask(offset, limit, null).execute();
-            }
-        });
-
+        lstNotifications = (ListView) view.findViewById(R.id.lstNotifications);
+        mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         InflatedNotificationManagements = new ArrayList<NotificationManagement>();
-        pullAndLoadListViewNotifications.onRefresh();
+        Utilities.showloadingDialog(getActivity());
+        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+            @Override
+            public void authenticatedRestClient(RestClient client) {
+                if (client == null) {
+                    SalesforceSDKManager.getInstance().logout(getActivity());
+                    return;
+                } else {
+                    CallOnRefreshNotificationService(CallType.FIRSTTIME, offset, limit, client);
+                }
+            }
+        });
         return view;
     }
 
-    public class PullToRefreshNotificationsTask extends AsyncTask<Void, Void, Void> {
-
-        private int offset;
-        private int limit;
-
-        public PullToRefreshNotificationsTask(int offset, int limit) {
-            this.limit = limit;
-            this.offset = offset;
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            if (isCancelled()) {
-                return null;
-            }
+    @Override
+    public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
+        if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
             offset = 0;
-            return null;
-        }
+            getListPosition();
+            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(getActivity());
+                        return;
+                    } else {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Gson g = new Gson();
+                                User user = g.fromJson(new StoreData(getActivity()).getUserDataAsString(), User.class);
+                                String attUrl = client.getClientInfo().resolveUrl("/services/apexrest/MobileNotificationsReadWebService?AccountId=" + user.get_contact().get_account().getID()).toString();
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
+                                HttpClient httpclient = new DefaultHttpClient();
+                                HttpGet httppost = new HttpGet(attUrl);
+                                httppost.setHeader("Authorization", "Bearer " + client.getAuthToken());
+                                StringEntity entity = null;
+                                try {
+                                    HttpResponse response = httpclient.execute(httppost);
+                                    result = EntityUtils.toString(response.getEntity());
+                                    Log.d("result", result);
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
+                                } catch (ClientProtocolException e) {
+                                    e.printStackTrace();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
+                        CallOnRefreshNotificationService(CallType.REFRESH, offset, limit, client);
+                    }
+                }
+            });
+        } else {
+            offset += limit;
+            getListPosition();
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                 @Override
                 public void authenticatedRestClient(RestClient client) {
@@ -116,107 +130,10 @@ public class NotificationFragment extends Fragment {
                         SalesforceSDKManager.getInstance().logout(getActivity());
                         return;
                     } else {
-                        new LoadMoreNotificationsTask(offset, limit, client).execute();
-
+                        CallOnRefreshNotificationService(CallType.LOADMORE, offset, limit, client);
                     }
                 }
             });
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
-        protected void onCancelled() {
-            pullAndLoadListViewNotifications.onRefreshComplete();
-        }
-    }
-
-    public class LoadMoreNotificationsTask extends AsyncTask<Void, Void, String> {
-
-        private int offset;
-        private int limit;
-        private RestClient client;
-        private String result;
-
-        public LoadMoreNotificationsTask(int offset, int limit, RestClient client) {
-            this.limit = limit;
-            this.offset = offset;
-            this.client = client;
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-
-            if (isCancelled()) {
-                return null;
-            }
-
-
-
-            if (client != null) {
-                offset = 0;
-                InflatedNotificationManagements = new ArrayList<NotificationManagement>();
-                Gson g=new Gson();
-                User user= g.fromJson(new StoreData(getActivity()).getUserDataAsString(),User.class);
-                String attUrl = client.getClientInfo().resolveUrl("/services/apexrest/MobileNotificationsReadWebService?AccountId="+user.get_contact().get_account().getID()).toString();
-
-                HttpClient httpclient = new DefaultHttpClient();
-                HttpGet httppost = new HttpGet(attUrl);
-                httppost.setHeader("Authorization", "Bearer " + client.getAuthToken());
-                StringEntity entity = null;
-                try {
-
-
-
-                    HttpResponse response = httpclient.execute(httppost);
-                    result = EntityUtils.toString(response.getEntity());
-                    Log.d("result", result);
-                    return result.toLowerCase().contains("success") ? "success" : result;
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (ClientProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }else{
-
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String aVoid) {
-            Utilities.showloadingDialog(getActivity());
-            if (client != null)
-                if (aVoid.equals("success")) {
-                    new StoreData(getActivity()).setNotificationCount("0");
-                    ((BaseActivity)getActivity()).ManageBadgeNotification();
-                    CallOnRefreshNotificationService(CallType.REFRESH, offset, limit, client);
-
-                }
-                else {
-
-                    Utilities.showLongToast(getActivity(), aVoid == null ? "There is an error" : aVoid.replace("\"", ""));
-                }else{
-                new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-                    @Override
-                    public void authenticatedRestClient(RestClient client) {
-                        if (client == null) {
-                            SalesforceSDKManager.getInstance().logout(getActivity());
-                            return;
-                        } else {
-                            CallOnRefreshNotificationService(CallType.LOADMORE, offset, limit, client);
-                        }
-                    }
-                });
-            }
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
-        protected void onCancelled() {
-            pullAndLoadListViewNotifications.onRefreshComplete();
         }
     }
 
@@ -229,7 +146,6 @@ public class NotificationFragment extends Fragment {
         try {
             restRequest = RestRequest.getRequestForQuery(
                     getActivity().getString(R.string.api_version), soqlQuery);
-
 
             client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                 @Override
@@ -244,21 +160,15 @@ public class NotificationFragment extends Fragment {
                             }
                         }
                     }
-                    if (result.toString().equals(loadMoreResponse)) {
-                       // pullAndLoadListViewNotifications.setOnLoadMoreListener(null);
-                    }
                     loadMoreResponse = result.toString();
-                    if (callType == CallType.LOADMORE) {
-                        pullAndLoadListViewNotifications.onLoadMoreComplete();
-                        pullAndLoadListViewNotifications.setScrollingCacheEnabled(true);
-
-                    } else if (callType == CallType.REFRESH) {
-                        pullAndLoadListViewNotifications.onRefreshComplete();
+                    if (callType == CallType.LOADMORE || callType == CallType.REFRESH) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    } else if (callType == CallType.FIRSTTIME) {
+                        Utilities.dismissLoadingDialog();
                     }
-                    Utilities.dismissLoadingDialog();
 
-                    pullAndLoadListViewNotifications.setAdapter(new NotificationsAdapter(getActivity(), R.layout.notifications_row_item, 0,InflatedNotificationManagements));
-              restoreListPosition();
+                    lstNotifications.setAdapter(new NotificationBaseAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.notifications_row_item, InflatedNotificationManagements));
+                    restoreListPosition();
                 }
 
                 @Override
@@ -272,12 +182,15 @@ public class NotificationFragment extends Fragment {
             e.printStackTrace();
         }
     }
-    public void getListPosition(){
-         index = pullAndLoadListViewNotifications.getFirstVisiblePosition();
-        View v = pullAndLoadListViewNotifications.getChildAt(0);
-         top = (v == null) ? 0 : (v.getTop() - pullAndLoadListViewNotifications.getPaddingTop());
+
+    public void getListPosition() {
+        index = lstNotifications.getFirstVisiblePosition();
+        View v = lstNotifications.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lstNotifications.getPaddingTop());
     }
-    public void restoreListPosition(){
-        pullAndLoadListViewNotifications.setSelectionFromTop(index, top);
+
+    public void restoreListPosition() {
+
+        lstNotifications.setSelectionFromTop(index, top);
     }
 }

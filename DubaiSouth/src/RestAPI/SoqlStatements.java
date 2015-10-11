@@ -25,7 +25,7 @@ public class SoqlStatements {
 
     public static final String soql_company_info = "SELECT Email, ContactId, Contact.Name, Contact.Personal_Photo__c, Contact.Account.Id, Contact.Account.Account_Balance__c, Contact.Account.Portal_Balance__c, Contact.Account.Name, Contact.Account.Arabic_Account_Name__c, Contact.Account.License_Number_Formula__c, Contact.Account.BillingCity, Contact.Account.Company_Registration_Date__c, Contact.Account.Legal_Form__c, Contact.Account.Registration_Number_Value__c, Contact.Account.Phone, Contact.Account.Fax, Contact.Account.Email__c, Contact.Account.Mobile__c, Contact.Account.PRO_Email__c, Contact.Account.PRO_Mobile_Number__c,Contact.Account.BillingStreet, Contact.Account.BillingPostalCode, Contact.Account.BillingCountry, Contact.Account.BillingState, Contact.Account.Current_License_Number__r.Id, Contact.Account.Current_License_Number__r.License_Issue_Date__c, Contact.Account.Current_License_Number__r.License_Expiry_Date__c, Contact.Account.Current_License_Number__r.Commercial_Name__c, Contact.Account.Current_License_Number__r.Commercial_Name_Arabic__c, Contact.Account.Current_License_Number__r.License_Number_Value__c, Contact.Account.Current_License_Number__r.Validity_Status__c, Contact.Account.Current_License_Number__r.RecordType.Id, Contact.Account.Current_License_Number__r.RecordType.Name, Contact.Account.Current_License_Number__r.RecordType.DeveloperName, Contact.Account.Current_License_Number__r.RecordType.SObjectType, Contact.Account.Company_Logo__c FROM User WHERE Id = ";
 
-    public static final String soql_get_permanent_employee_list_page = "SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, " +
+    public static final String soql_get_permanent_employee_list_page = "SELECT Id, Name, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, " +
             "Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, " +
             "Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, " +
             "Applicant_Mobile_Number__c, Applicant_Gender__c, " +
@@ -51,7 +51,7 @@ public class SoqlStatements {
             "NOT IN ('Renewed') AND Card_Type__c NOT IN ('Employee " +
             "Card','Student Card','Work Permit') AND Status__c LIKE '%s'" + " LIMIT %s OFFSET %s";
 
-    public static final String soql_get_visit_visa_page = "SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c, Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE Sponsoring_Company__c = " + "\'" + "%s" + "\'" + " AND Visa_Validity_Status__c LIKE " + "\'" + "%s" + "\'" + " AND Visa_Type__c in ('Visit') ORDER BY Visa_Expiry_Date__c";
+    public static final String soql_get_visit_visa_page = "SELECT Id, Name, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c, Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE Sponsoring_Company__c = " + "\'" + "%s" + "\'" + " AND Visa_Validity_Status__c LIKE " + "\'" + "%s" + "\'" + " AND Visa_Type__c in ('Visit') ORDER BY Visa_Expiry_Date__c" + " LIMIT %s OFFSET %s";
 
     public static final String soql_get_activity_license_number = "SELECT Id, Name, Status__c, Start_Date__c, End_Date__c, Original_Business_Activity__r.Id, Original_Business_Activity__r.Name, Original_Business_Activity__r.License_Type__c, Original_Business_Activity__r.Business_Activity_Name__c, Original_Business_Activity__r.Business_Activity_Name_Arabic__c, Original_Business_Activity__r.Business_Activity_Description__c, Original_Business_Activity__r.Status__c FROM License_Activity__c WHERE License__c = " + "\'" + "%s" + "\'";
 
@@ -109,7 +109,7 @@ public class SoqlStatements {
 
     public static final String soql_get_record_type_company_documents = "SELECT ID FROM RecordType where DeveloperName = 'Company_Documents' AND SObjectType = 'Company_Documents__c'";
 
-    public static final String soql_view_statement = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = " + "\'" + "%s" + "\'" + " AND Effect_on_Account__c IN ('Credit', 'Debit') AND " + " %s " + " ORDER BY CreatedDate DESC " + " LIMIT " + "%s" + " OFFSET " + "%s";
+    public static final String soql_view_statement = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = '%s' AND Effect_on_Account__c IN ('Credit', 'Debit') ORDER BY CreatedDate DESC LIMIT %d OFFSET %d";
 
     public static final String soql_get_true_copies = "SELECT Id, Name, Template_Name_Link__c, Available_for_Preview__c, Original_can_be_Requested__c, eService_Administration__r.New_Edit_VF_Generator__c, eService_Administration__r.Redirect_Page__c, eService_Administration__r.Id, eService_Administration__r.Related_to_Object__c, eService_Administration__r.Display_Name__c, eService_Administration__r.Record_Type_Picklist__c, eService_Administration__r.Service_VF_Page__c FROM eServices_Document_Checklist__c WHERE eService_Administration__r.Related_to_Object__c = 'Registration' AND eService_Administration__r.RecordType.DeveloperName = 'Service_Request' AND eService_Administration__r.Is_Active__c = true AND eService_Administration__r.Sub_Category__c = 'Registration Services' ORDER BY Name LIMIT " + "%s" + " OFFSET " + "%s";
 
@@ -133,14 +133,14 @@ public class SoqlStatements {
         User _user = gson.fromJson(userDataAsString, User.class);
         String soqlFormat;
         if (validity_status.equals("All")) {
-            soqlFormat = "SELECT Id, Name, Personal_Photo__c, Card_Number__c, Status__c, " +
-                    "Sponsor__c, Card_Type__c, Salutation__c, Card_Expiry_Date__c, " +
-                    "Card_Issue_Date__c , Full_Name__c, Designation__c, Duration__c, " +
-                    "Passport_Number__c, RecordType.Id, RecordType.Name, " +
-                    "RecordType.DeveloperName, Nationality__r.Id, Nationality__r.Name " +
-                    "FROM Card_Management__c WHERE Account__c = '%s' and Status__c " +
-                    "NOT IN ('Renewed') AND Card_Type__c NOT IN ('Employee Card','Student Card') LIMIT " + limit + " OFFSET " + offset;
-            soqlFormat = String.format(soqlFormat, _user.get_contact().get_account().getID());
+//            soqlFormat = "SELECT Id, Name, Personal_Photo__c, Card_Number__c, Status__c, " +
+//                    "Sponsor__c, Card_Type__c, Salutation__c, Card_Expiry_Date__c, " +
+//                    "Card_Issue_Date__c , Full_Name__c, Designation__c, Duration__c, " +
+//                    "Passport_Number__c, RecordType.Id, RecordType.Name, " +
+//                    "RecordType.DeveloperName, Nationality__r.Id, Nationality__r.Name " +
+//                    "FROM Card_Management__c WHERE Account__c = '%s' and Status__c " +
+//                    "NOT IN ('Renewed') AND Card_Type__c NOT IN ('Employee Card','Student Card') LIMIT " + limit + " OFFSET " + offset;
+            soqlFormat = String.format(soql_get_access_card_page, _user.get_contact().get_account().getID(), "%", limit, offset);
         } else {
             soqlFormat = String.format(soql_get_access_card_page, _user.get_contact().get_account().getID(), validity_status, limit, offset);
         }
@@ -206,10 +206,10 @@ public class SoqlStatements {
         User _user = gson.fromJson(userDataAsString, User.class);
         String soqlFormat;
         if (Visa_Validity_Status.equals("All")) {
-            soqlFormat = "SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c, Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE Sponsoring_Company__c = " + "\'" + "%s" + "\'" + " AND Visa_Type__c in ('Visit') ORDER BY Visa_Expiry_Date__c";
-            soqlFormat = String.format(soqlFormat, _user.get_contact().get_account().getID());
+//            soqlFormat = "SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c, Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE Sponsoring_Company__c = " + "\'" + "%s" + "\'" + " AND Visa_Type__c in ('Visit') ORDER BY Visa_Expiry_Date__c";
+            soqlFormat = String.format(soql_get_visit_visa_page, _user.get_contact().get_account().getID(), "%", limit, offset);
         } else {
-            soqlFormat = String.format(soql_get_visit_visa_page, _user.get_contact().get_account().getID(), Visa_Validity_Status);
+            soqlFormat = String.format(soql_get_visit_visa_page, _user.get_contact().get_account().getID(), Visa_Validity_Status, limit, offset);
         }
         return soqlFormat;
     }
@@ -258,21 +258,33 @@ public class SoqlStatements {
 
     public String constructMyRequestsServiceQuery(String accountId, String status, String type, int Limit, int Offset) {
         String soql = "";
+//        if (status.equals("All") && type.equals("All")) {
+//            soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case WHERE " +
+//                    "AccountId = " + "\'" + "%s" + "\'" + " AND Status LIKE " + "\'" + "%s" + "\'" +
+//                    " AND Type LIKE " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
+//            soql = String.format(soql, accountId, "%", "%");
+//        } else if (!status.equals("All") && !type.equals("All")) {
+//            soql = String.format(soql_get_my_requests, accountId, status, type) + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
+//        } else if (!status.equals("All") && type.equals("All")) {
+//            soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case " +
+//                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Status LIKE " + "\'" + "%s" + "\'" +
+//                    " AND Type LIKE " + "\'" + "%" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
+//            soql = String.format(soql, accountId, status);
+//        } else if (status.equals("All") && !type.equals("All")) {
+//            soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case " +
+//                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Status LIKE " + "\'" + "%" + "\'" + " AND Type LIKE " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
+//
+//            soql = String.format(soql, accountId, type);
+//        }
+
         if (status.equals("All") && type.equals("All")) {
-            soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case WHERE " +
-                    "AccountId = " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
-            soql = String.format(soql, accountId);
+            soql = String.format(soql_get_my_requests, accountId, "%", "%") + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
         } else if (!status.equals("All") && !type.equals("All")) {
             soql = String.format(soql_get_my_requests, accountId, status, type) + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
         } else if (!status.equals("All") && type.equals("All")) {
-            soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case " +
-                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Status LIKE " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
-            soql = String.format(soql, accountId, status);
+            soql = String.format(soql_get_my_requests, accountId, status, "%") + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
         } else if (status.equals("All") && !type.equals("All")) {
-            soql = "SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case " +
-                    "WHERE AccountId = " + "\'" + "%s" + "\'" + " AND Type LIKE " + "\'" + "%s" + "\'" + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
-
-            soql = String.format(soql, accountId, type);
+            soql = String.format(soql_get_my_requests, accountId, "%", type) + " ORDER BY CreatedDate DESC LIMIT " + Limit + " OFFSET " + Offset;
         }
         return soql;
     }
@@ -308,10 +320,10 @@ public class SoqlStatements {
     public static String constructViewStatementQuery(String id, int offset, int limit, String queryFilter) {
         String soql = "";
         if (queryFilter != null && !queryFilter.equals("")) {
-            soql = String.format(soql_view_statement, id, queryFilter, limit, offset);
+            soql = String.format(soql_view_statement, id, limit, offset);
         } else {
-            soql = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = " + "\'" + "%s" + "\'" + " AND Effect_on_Account__c IN ('Credit', 'Debit') " + " ORDER BY CreatedDate DESC " + " LIMIT " + "%s" + " OFFSET " + "%s";
-            soql = String.format(soql, id, limit, offset);
+            soql = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = '%s' AND Effect_on_Account__c IN ('Credit', 'Debit') %s ORDER BY CreatedDate DESC LIMIT %s OFFSET %s";
+            soql = String.format(soql, id, queryFilter, limit, offset);
         }
         return soql;
     }

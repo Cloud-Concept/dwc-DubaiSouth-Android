@@ -43,7 +43,7 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
     @Override
     protected ViewHolder createHolder(View v) {
 
-        TextView tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus;
+        TextView tvFullName, tvPassportNumber, tvStatus, tvVisaExpiry, tvVisaExpiryLabel;
         DWCRoundedImageView _smartEmployeeImage;
 
         final ExpandableLayoutItem item = (ExpandableLayoutItem) v.findViewById(R.id.expandableLayoutListView);
@@ -53,12 +53,13 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         tvVisaExpiry = (TextView) relativeHeader.findViewById(R.id.tvVisaExpiry);
         tvPassportNumber = (TextView) relativeHeader.findViewById(R.id.tvpassportNumber);
         tvStatus = (TextView) relativeHeader.findViewById(R.id.tvStatus);
+        tvVisaExpiryLabel = (TextView) relativeHeader.findViewById(R.id.tvVisaExpiryLabel);
         _smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
 
         RelativeLayout relativeContent = item.getContentLayout();
 
         HorizontalListView _horizontalServices = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
-        VisaViewHolder mvh = new VisaViewHolder(tvFullName, tvVisaExpiry, tvPassportNumber, tvStatus, _smartEmployeeImage, item, _horizontalServices);
+        VisaViewHolder mvh = new VisaViewHolder(tvFullName, tvVisaExpiryLabel, tvVisaExpiry, tvPassportNumber, tvStatus, _smartEmployeeImage, item, _horizontalServices);
 
         return mvh;
     }
@@ -72,29 +73,32 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         mvh.tvFullName.setText(mo.getApplicant_Full_Name__c());
         mvh.tvStatus.setText(mo.getVisa_Validity_Status__c());
         mvh.tvPassportNumber.setText(mo.getPassport_Number__c());
-        mvh.tvVisaExpiry.setText(mo.getVisa_Expiry_Date__c());
         if (mo.getPersonal_Photo__c() != null && !mo.getPersonal_Photo__c().equals(""))
             Utilities.setUserPhoto(act, mo.getPersonal_Photo__c(), mvh._smartEmployeeImage);
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        Date VisaDate = null;
-        try {
-            if (mo.getVisa_Expiry_Date__c() != null) {
-                VisaDate = sdf.parse(mo.getVisa_Expiry_Date__c());
-            } else {
-                VisaDate = null;
-            }
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//
+//        Date VisaDate = null;
+//        try {
+//            if (mo.getVisa_Expiry_Date__c() != null) {
+//                VisaDate = sdf.parse(mo.getVisa_Expiry_Date__c());
+//            } else {
+//                VisaDate = null;
+//            }
+//
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
         if (mo.getVisa_Validity_Status__c().equals("Issued")) {
+            mvh.tvVisaExpiry.setText(Utilities.formatVisitVisaDate(mo.getVisa_Expiry_Date__c()));
             _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
+        } else {
+            mvh.tvVisaExpiry.setVisibility(View.GONE);
+            mvh.tvVisaExpiryLabel.setVisibility(View.GONE);
         }
 
         User user = new Gson().fromJson(new StoreData(context).getUserDataAsString(), User.class);
@@ -112,8 +116,6 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         if ((mo.getVisa_Validity_Status__c().equals("Issued") || mo.getVisa_Validity_Status__c().equals("Under Process") || mo.getVisa_Validity_Status__c().equals("Under Renewal")) && (mo.getVisa_Type__c().equals("Employment") || mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External")) && !manager) {
             _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
         }
-
-
 
 
 //Deprecated By Ahmed Ahdel New Requirement Date:28/09/2015
@@ -173,8 +175,9 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
         DWCRoundedImageView _smartEmployeeImage;
         ExpandableLayoutItem item;
         HorizontalListView _horizontalListView;
+        TextView tvVisaExpiryLabel;
 
-        public VisaViewHolder(TextView tvFullName, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, DWCRoundedImageView i, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
+        public VisaViewHolder(TextView tvFullName, TextView tvVisaExpiryLabel, TextView tvVisaExpiry, TextView tvPassportNumber, TextView tvStatus, DWCRoundedImageView i, ExpandableLayoutItem item, HorizontalListView _horizontalListView) {
             this.tvFullName = tvFullName;
             this._smartEmployeeImage = i;
             this.tvPassportNumber = tvPassportNumber;
@@ -182,6 +185,7 @@ public class PermanentEmployeeListAdapter extends ClickableListAdapter {
             this.tvStatus = tvStatus;
             this.item = item;
             this._horizontalListView = _horizontalListView;
+            this.tvVisaExpiryLabel = tvVisaExpiryLabel;
         }
     }
 }

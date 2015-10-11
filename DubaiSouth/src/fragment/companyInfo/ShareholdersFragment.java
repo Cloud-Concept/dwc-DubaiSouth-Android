@@ -44,6 +44,8 @@ public class ShareholdersFragment extends Fragment {
     private String soqlQuery;
     private RestRequest restRequest;
     private ArrayList<ShareOwnership> _shareOwnerships;
+    private int top;
+    private int index;
 
     public static ShareholdersFragment newInstance(String text) {
         ShareholdersFragment fragment = new ShareholdersFragment();
@@ -71,9 +73,13 @@ public class ShareholdersFragment extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
                 if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
+                    index=0;
+                    top=0;
+                    getListPosition();
                     CallShareholdersService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
+                    getListPosition();
                     CallShareholdersService(CallType.LOADMORE, offset, limit);
                 }
             }
@@ -85,6 +91,7 @@ public class ShareholdersFragment extends Fragment {
             try {
                 _shareOwnerships = SFResponseManager.parseShareOwnerShipObject(new StoreData(getActivity().getApplicationContext()).getShareholdersResponse());
                 lvShareholders.setAdapter(new ShareHolderAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.shareholder_item, _shareOwnerships));
+                restoreListPosition();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -139,6 +146,7 @@ public class ShareholdersFragment extends Fragment {
                                         }
                                     }
                                     lvShareholders.setAdapter(new ShareHolderAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.shareholder_item, _shareOwnerships));
+                                    restoreListPosition();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -153,5 +161,17 @@ public class ShareholdersFragment extends Fragment {
                 }
             });
         }
+    }
+
+
+    public void getListPosition() {
+        index = lvShareholders.getFirstVisiblePosition();
+        View v = lvShareholders.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lvShareholders.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        lvShareholders.setSelectionFromTop(index, top);
     }
 }

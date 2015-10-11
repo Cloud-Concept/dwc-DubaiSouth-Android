@@ -17,7 +17,8 @@
     <dimen name="text_view_size">12sp</dimen>
     <dimen name="text_view_size_spinner">12sp</dimen>
     <dimen name="header_text_size">18sp</dimen>
-    <dimen name="text_size_label">14sp</dimen>
+    <dimen name="text_size_label">13sp</dimen>
+    <dimen name="text_size_value">10sp</dimen>
     <dimen name="spinner_dimen">10dp</dimen>
     <dimen name="underline_top_spacing">8dp</dimen>
 

@@ -120,7 +120,7 @@ public class HorizontalListViewAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.horizontal_item_row, null);
         }
 
-        DWCRoundedImageView ivServiceDrawable;
+        final DWCRoundedImageView ivServiceDrawable;
         final TextView tvServiceName;
 
         ivServiceDrawable = (DWCRoundedImageView) convertView.findViewById(R.id.ivServiceDrawable);
@@ -225,30 +225,35 @@ public class HorizontalListViewAdapter extends BaseAdapter {
 
                     } else if (tvServiceName.getText().toString().equals("Renew Contract")) {
                         //Not BC Contract
-                        new ClientManager(activity, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(activity, new ClientManager.RestClientCallback() {
-                            @Override
-                            public void authenticatedRestClient(final RestClient client) {
-                                if (client == null) {
-                                    SalesforceSDKManager.getInstance().logout(activity);
-                                    return;
-                                } else {
-                                    new DoRenewRequest(client, "CreateNonBCContractRenewalRequest", contract_dwc__c).execute();
-                                }
-                            }
-                        });
-                    } else if (tvServiceName.getText().toString().equals("Renew BC Contract")) {
-                        //BC Contract
-                        new ClientManager(activity, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(activity, new ClientManager.RestClientCallback() {
-                            @Override
-                            public void authenticatedRestClient(final RestClient client) {
-                                if (client == null) {
-                                    SalesforceSDKManager.getInstance().logout(activity);
-                                    return;
-                                } else {
-                                    new DoRenewRequest(client, "CreateBCContractRenewalRequest", contract_dwc__c).execute();
-                                }
-                            }
-                        });
+                        Integer integer = (Integer) ivServiceDrawable.getTag();
+                        switch (integer) {
+                            case R.mipmap.lease_ac_contract:
+                                new ClientManager(activity, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(activity, new ClientManager.RestClientCallback() {
+                                    @Override
+                                    public void authenticatedRestClient(final RestClient client) {
+                                        if (client == null) {
+                                            SalesforceSDKManager.getInstance().logout(activity);
+                                            return;
+                                        } else {
+                                            new DoRenewRequest(client, "CreateNonBCContractRenewalRequest", contract_dwc__c).execute();
+                                        }
+                                    }
+                                });
+                                break;
+                            case R.mipmap.lease_bc_contract:
+                                new ClientManager(activity, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(activity, new ClientManager.RestClientCallback() {
+                                    @Override
+                                    public void authenticatedRestClient(final RestClient client) {
+                                        if (client == null) {
+                                            SalesforceSDKManager.getInstance().logout(activity);
+                                            return;
+                                        } else {
+                                            new DoRenewRequest(client, "CreateBCContractRenewalRequest", contract_dwc__c).execute();
+                                        }
+                                    }
+                                });
+                                break;
+                        }
                     }
                 } else if (object instanceof Directorship) {
                     final Directorship directorship = (Directorship) object;

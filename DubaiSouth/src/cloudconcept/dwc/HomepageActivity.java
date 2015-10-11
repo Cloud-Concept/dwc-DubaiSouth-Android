@@ -395,6 +395,7 @@ import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import custom.BadgeButton;
+import custom.customdialog.NiftyDialogBuilder;
 import dataStorage.StoreData;
 import exceptionHandling.ExceptionHandler;
 import model.EstablishmentCard;
@@ -421,12 +422,14 @@ public class HomepageActivity extends Activity implements
 
         @Override
         public void onClick(View v) {
-            SalesforceSDKManager.getInstance().logout(HomepageActivity.this);
+            builder.dismiss();
             new StoreData(getApplicationContext()).reset();
+            SalesforceSDKManager.getInstance().logout(HomepageActivity.this);
         }
     };
     private String error;
     private User user;
+    private NiftyDialogBuilder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -565,7 +568,7 @@ public class HomepageActivity extends Activity implements
 //    }
 
     public void onLogoutClick(View v) {
-        Utilities.showNiftyDialog("Logout", this, listenerOk1);
+        builder = Utilities.showNiftyDialog("Logout", this, listenerOk1);
     }
 
     @Override

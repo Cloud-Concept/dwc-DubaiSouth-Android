@@ -44,6 +44,8 @@ public class CustomerDocumentsFragment2 extends Fragment {
     private int limit = 50;
     private RestRequest restRequest;
     private static ClickableCustomerDocumentsAdapter adapter;
+    private int index;
+    private int top;
 
     public static CustomerDocumentsFragment2 newInstance(String text) {
         CustomerDocumentsFragment2 fragment = new CustomerDocumentsFragment2();
@@ -72,10 +74,14 @@ public class CustomerDocumentsFragment2 extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
+                    index = 0;
+                    top = 0;
+                    getListPosition();
                     company_documents__cs.clear();
                     CallCustomerDocumentsService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
+                    getListPosition();
                     CallCustomerDocumentsService(CallType.LOADMORE, offset, limit);
                 }
             }
@@ -103,10 +109,12 @@ public class CustomerDocumentsFragment2 extends Fragment {
             adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
                     R.layout.company_document_item_row_screen, companyDocuments);
             lstCustomerDocuments.setAdapter(adapter);
-
+            restoreListPosition();
         } else {
             if (method == CallType.FIRSTTIME) {
-                Utilities.showloadingDialog(getActivity());
+                if (!Utilities.getIsProgressLoading()) {
+                    Utilities.showloadingDialog(getActivity());
+                }
             }
             String soql = SoqlStatements.constructCustomerDocumentsQuery(activity.getUser().get_contact().get_account().getID(), limit, offset);
             try {
@@ -135,6 +143,7 @@ public class CustomerDocumentsFragment2 extends Fragment {
                                 adapter = new ClickableCustomerDocumentsAdapter(getActivity(), getActivity().getApplicationContext(),
                                         R.layout.company_document_item_row_screen, companyDocuments);
                                 lstCustomerDocuments.setAdapter(adapter);
+                                restoreListPosition();
                             }
 
                             @Override
@@ -153,5 +162,16 @@ public class CustomerDocumentsFragment2 extends Fragment {
         adapter = new ClickableCustomerDocumentsAdapter(activity, activity.getApplicationContext(),
                 R.layout.company_document_item_row_screen, companyDocuments);
         lstCustomerDocuments.setAdapter(adapter);
+    }
+
+    public void getListPosition() {
+        index = lstCustomerDocuments.getFirstVisiblePosition();
+        View v = lstCustomerDocuments.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lstCustomerDocuments.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        lstCustomerDocuments.setSelectionFromTop(index, top);
     }
 }

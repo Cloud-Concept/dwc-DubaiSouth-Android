@@ -43,6 +43,8 @@ public class DirectorsFragment extends Fragment {
     private int limit = 10;
     private String soqlQuery;
     private RestRequest restRequest;
+    private int index;
+    private int top;
 
     public static DirectorsFragment newInstance(String text) {
         DirectorsFragment fragment = new DirectorsFragment();
@@ -70,9 +72,13 @@ public class DirectorsFragment extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
                 if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
+                    index = 0;
+                    top = 0;
+                    getListPosition();
                     CallDirectorsService(CallType.REFRESH, offset, limit);
                 } else {
                     offset += limit;
+                    getListPosition();
                     CallDirectorsService(CallType.LOADMORE, offset, limit);
                 }
             }
@@ -126,6 +132,7 @@ public class DirectorsFragment extends Fragment {
                                                 }
                                             }
                                             lvDirectors.setAdapter(new DirectorsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, directorships));
+                                            restoreListPosition();
                                         }
                                     } else {
                                         directorships = new ArrayList<Directorship>();
@@ -133,6 +140,7 @@ public class DirectorsFragment extends Fragment {
                                         if (directorships.size() > 0) {
                                             new StoreData(getActivity().getApplicationContext()).setDirectorsResponse(response.toString());
                                             lvDirectors.setAdapter(new DirectorsAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.directors_item, directorships));
+                                            restoreListPosition();
                                         }
                                     }
                                 }
@@ -149,5 +157,16 @@ public class DirectorsFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void getListPosition() {
+        index = lvDirectors.getFirstVisiblePosition();
+        View v = lvDirectors.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - lvDirectors.getPaddingTop());
+    }
+
+    public void restoreListPosition() {
+
+        lvDirectors.setSelectionFromTop(index, top);
     }
 }

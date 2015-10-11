@@ -20,7 +20,8 @@
                 android:text="Note:"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="15sp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/black" />
 
             <TextView
@@ -30,7 +31,8 @@
                 android:text="-This service will be subject to approval."
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/text_size_value"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/grey" />
 
             <LinearLayout
@@ -47,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:text="Transfer From"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_label"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
             </LinearLayout>
@@ -80,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Transfer To"
+                    android:textSize="@dimen/text_size_label"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -109,7 +113,8 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Total No. of Shares"
                     android:textColor="@color/black"
-                    android:textSize="13sp" />
+
+                    android:textSize="@dimen/text_size_label" />
 
             </LinearLayout>
 
@@ -141,6 +146,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="No of Transferred Shares"
+                    android:textSize="@dimen/text_size_label"
                     android:textColor="@color/black" />
 
             </LinearLayout>
