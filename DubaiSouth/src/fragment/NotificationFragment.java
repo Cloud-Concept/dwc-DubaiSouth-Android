@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
-import adapter.NotificationBaseAdapter;
+import adapter.NotificationsAdapter;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
 import model.NotificationManagement;
@@ -167,7 +167,8 @@ public class NotificationFragment extends Fragment implements SwipyRefreshLayout
                         Utilities.dismissLoadingDialog();
                     }
 
-                    lstNotifications.setAdapter(new NotificationBaseAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.notifications_row_item, InflatedNotificationManagements));
+//                    lstNotifications.setAdapter(new NotificationBaseAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.notifications_row_item, InflatedNotificationManagements));
+                    lstNotifications.setAdapter(new NotificationsAdapter(getActivity(), R.layout.notifications_row_item, R.id.tvNotificationMessage, InflatedNotificationManagements));
                     restoreListPosition();
                 }
 

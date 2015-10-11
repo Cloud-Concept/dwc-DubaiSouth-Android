@@ -70,7 +70,7 @@ public class LeasingInfoAdapter extends ClickableListAdapter {
         mvh.tvUnitName.setText(mo.getContract_line_item__cs().get(0).getInventory_unit__r().getName());
         mvh.tvContractType.setText(Utilities.stringNotNull(mo.getContract_Type__c()));
         mvh.tvStatus.setText(Utilities.stringNotNull(mo.getStatus__c()));
-        mvh.tvExpiryDate.setText(Utilities.stringNotNull(mo.getContract_Expiry_Date__c().toString()));
+        mvh.tvExpiryDate.setText(Utilities.formatVisitVisaDate(Utilities.stringNotNull(mo.getContract_Expiry_Date__c().toString())));
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         if (!mvh.tvExpiryDate.getText().toString().equals("")) {
             if (Utilities.daysDifference(mvh.tvExpiryDate.getText().toString()) < 60) {

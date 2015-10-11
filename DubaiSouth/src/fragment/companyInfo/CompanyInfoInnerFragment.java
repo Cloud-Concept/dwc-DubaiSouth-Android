@@ -59,7 +59,7 @@ public class CompanyInfoInnerFragment extends Fragment {
         _views.add(new DWCView(_user.get_contact().get_account().getName(), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Registration Date", ItemType.LABEL));
-        _views.add(new DWCView(_user.get_contact().get_account().getCompanyRegistrationDate(), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.formatVisitVisaDate(_user.get_contact().get_account().getCompanyRegistrationDate()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Legal Form", ItemType.LABEL));
         _views.add(new DWCView(_user.get_contact().get_account().getLegalForm(), ItemType.VALUE));

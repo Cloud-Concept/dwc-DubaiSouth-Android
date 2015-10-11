@@ -20,6 +20,7 @@ import model.Contract_DWC__c;
 import model.DWCView;
 import model.ItemType;
 import model.ServiceItem;
+import model.TenancyContractPayment;
 import utilities.Utilities;
 
 /**
@@ -125,7 +126,16 @@ public class LeasingShowDetailsActivity extends BaseActivity {
             _views.add(new DWCView("Leasing Unit Details", ItemType.HEADER));
             _views.add(new DWCView("Unit Name", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(contract_dwc__c.getContract_line_item__cs().get(0).getName()), ItemType.VALUE));
-            _views.add(new DWCView("", ItemType.LINE));
+            _views.add(new DWCView("Upcoming Payments", ItemType.HEADER));
+            ArrayList<TenancyContractPayment> tenancyContractPayments = contract_dwc__c.getTenancyContractPayments();
+            if (tenancyContractPayments != null && tenancyContractPayments.size() > 0) {
+                for (int i = 0; i < tenancyContractPayments.size(); i++) {
+                    _views.add(new DWCView(tenancyContractPayments.get(i).getName(), ItemType.LABEL));
+                    _views.add(new DWCView(!Utilities.processAmount(Utilities.stringNotNull(tenancyContractPayments.get(i).getPaymentAmount())).equals("") ? Utilities.processAmount(Utilities.stringNotNull(tenancyContractPayments.get(i).getPaymentAmount())) + " AED." : "", ItemType.VALUE));
+                    _views.add(new DWCView("", ItemType.LINE));
+                }
+            }
+
             String services = "";
             if (contract_dwc__c.getContract_Expiry_Date__c() != null && !contract_dwc__c.getContract_Expiry_Date__c().equals("")) {
                 if (Utilities.daysDifference(contract_dwc__c.getContract_Expiry_Date__c()) < 60) {
