@@ -95,15 +95,15 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
         tvNewCard.setOnClickListener(this);
         imageNewCard.setOnClickListener(this);
         expandableLayoutListView = (ExpandableLayoutListView) view.findViewById(R.id.expandableLayoutListView);
-        expandableLayoutListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == _cards.size() - 1) {
-                    expandableLayoutListView.scrollTo(0, expandableLayoutListView.getHeight() - 600);
-
-                }
-            }
-        });
+//        expandableLayoutListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                if (i == _cards.size() - 1) {
+//                    expandableLayoutListView.scrollTo(0, expandableLayoutListView.getHeight() - 600);
+//
+//                }
+//            }
+//        });
         spinnerFilterAccessCard = (Spinner) view.findViewById(R.id.spinner);
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         etSearch = (EditText) view.findViewById(R.id.etSearch);
