@@ -5,11 +5,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/view"
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/myPrimaryColor" />
+        android:background="@color/myPrimaryColor"
+        android:id="@+id/view">
+        <custom.CorisandeRegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Business Activities"
+            android:layout_centerInParent="true"/>
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:onClick="finish"
+            android:layout_marginLeft="@dimen/header_menu_button"
+            android:background="@mipmap/back" />
+    </RelativeLayout>
 
     <EditText
 
@@ -42,8 +60,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
             android:background="@drawable/list_selector"
-            android:divider="@color/dwc_blue_color"
-            android:dividerHeight=".5dp"
+            android:divider="@color/light_grey"
+            android:dividerHeight="1dp"
             android:footerDividersEnabled="false" />
     </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 </LinearLayout>

@@ -4,12 +4,11 @@
     android:layout_marginTop="5dp"
     android:layout_height="match_parent">
 
-    <custom.CorisandeBoldTextView
+    <custom.CorisandeRegularTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-
+        android:textSize="16sp"
         android:gravity="center"
         android:layout_margin="5dp"
         android:id="@+id/pay_header"

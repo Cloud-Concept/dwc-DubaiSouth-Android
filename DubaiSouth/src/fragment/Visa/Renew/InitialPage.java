@@ -49,6 +49,7 @@ import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import adapter.NationalityAdapter;
+import adapter.SimpleSpinnerStringAdapter;
 import cloudconcept.dwc.R;
 import fragmentActivity.CardActivity;
 import fragmentActivity.VisaActivity;
@@ -71,10 +72,13 @@ public class InitialPage extends Fragment {
     private String DeveloperName;
     private VisaActivity activity;
     EditText Name, ArabicName, Gender, Dateofbirth, BirthCountry,
-            PlaceCountry, Email, mobile, Maritalstatus, mothername,
-            currentnationality, Previousnationality, religion, languagesspoken,
+            PlaceCountry, Email, mobile,  mothername,
+            currentnationality, Previousnationality,
             passportno, dateofexpiry,placeofissue;
-    Spinner countryofissue;
+    Spinner countryofissue,Maritalstatus, religion, languagesspoken;
+    String []Maritalstatuses ={"Single", "Married", "Divorced", "Widowed"};
+    String [] Relegion ={"Bahaei", "Budhist", "Christian", "Hindu", "Kadiani", "Muslim","Sikh"};
+    String [] Language ={"Arabic", "English", "French"};
 
     @Nullable
     @Override
@@ -94,12 +98,12 @@ public class InitialPage extends Fragment {
         PlaceCountry = (EditText) view.findViewById(R.id.PlaceCountry);
         Email = (EditText) view.findViewById(R.id.Email);
         mobile = (EditText) view.findViewById(R.id.mobile);
-        Maritalstatus = (EditText) view.findViewById(R.id.Maritalstatus);
+        Maritalstatus = (Spinner) view.findViewById(R.id.Maritalstatus);
         mothername = (EditText) view.findViewById(R.id.mothername);
         currentnationality = (EditText) view.findViewById(R.id.currentnationality);
         Previousnationality = (EditText) view.findViewById(R.id.Previousnationality);
-        religion = (EditText) view.findViewById(R.id.religion);
-        languagesspoken = (EditText) view.findViewById(R.id.languagesspoken);
+        religion = (Spinner) view.findViewById(R.id.religion);
+        languagesspoken = (Spinner) view.findViewById(R.id.languagesspoken);
         passportno = (EditText) view.findViewById(R.id.passportno);
         dateofexpiry = (EditText) view.findViewById(R.id.dateofexpiry);
         countryofissue = (Spinner) view.findViewById(R.id.countryofissue);
@@ -228,23 +232,26 @@ public class InitialPage extends Fragment {
                                 activity.getVisa().setApplicant_Mobile_Number__c(editable.toString());
                             }
                         });
-                        Maritalstatus.setText(activity.getVisa().getMarital_Status__c());
-                        Maritalstatus.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+
+                        Maritalstatus.setAdapter(new SimpleSpinnerStringAdapter(activity, android.R.layout.simple_list_item_1, 0, Maritalstatuses));
+                        Maritalstatus.setSelection(getSelectedPosition(Maritalstatuses, activity.getVisa().getMarital_Status__c()));
+                        Maritalstatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                activity.getVisa().setMarital_Status__c(Maritalstatuses[i]);
                             }
 
                             @Override
-                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            public void onNothingSelected(AdapterView<?> adapterView) {
 
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable editable) {
-                                activity.getVisa().setMarital_Status__c(editable.toString());
                             }
                         });
+
+
+
+
+
                         mothername.setText(activity.getVisa().getMother_Name__c());
                         mothername.addTextChangedListener(new TextWatcher() {
                             @Override
@@ -281,40 +288,35 @@ public class InitialPage extends Fragment {
                                 activity.getVisa().setPassport_Place_of_Issue__c(editable.toString());
                             }
                         });
-                        religion.setText(activity.getVisa().getReligion__c());
-                        religion.addTextChangedListener(new TextWatcher() {
+                        religion.setAdapter(new SimpleSpinnerStringAdapter(activity, android.R.layout.simple_list_item_1, 0, Relegion));
+                        religion.setSelection(getSelectedPosition(Relegion, activity.getVisa().getReligion__c()));
+                        religion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
-                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                activity.getVisa().setReligion__c(Relegion[i]);
                             }
 
                             @Override
-                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            public void onNothingSelected(AdapterView<?> adapterView) {
 
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable editable) {
-                                activity.getVisa().setReligion__c(editable.toString());
                             }
                         });
-                        languagesspoken.setText(activity.getVisa().getLanguages__c());
-                        languagesspoken.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+
+                        languagesspoken.setAdapter(new SimpleSpinnerStringAdapter(activity, android.R.layout.simple_list_item_1, 0, Language));
+                        languagesspoken.setSelection(getSelectedPosition(Language, activity.getVisa().getLanguages__c()));
+                        languagesspoken.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                activity.getVisa().setLanguages__c(Language[i]);
                             }
 
                             @Override
-                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            public void onNothingSelected(AdapterView<?> adapterView) {
 
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable editable) {
-                                activity.getVisa().setLanguages__c(editable.toString());
                             }
                         });
+
                         passportno.setText(activity.getVisa().getPassport_Number__c());
                         passportno.addTextChangedListener(new TextWatcher() {
                             @Override
@@ -383,7 +385,7 @@ public class InitialPage extends Fragment {
                                                     NationalityAdapter adapter = new NationalityAdapter(activity, android.R.layout.simple_list_item_1, 0,activity.getCountries());
                                                     adapter.setDropDownViewResource(R.layout.customtext);
                                                     countryofissue.setAdapter(adapter);
-                                                    countryofissue.setSelection(0);
+                                                    countryofissue.setSelection(getCountrySelection());
                                                     countryofissue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                                                         @Override
@@ -438,5 +440,23 @@ public class InitialPage extends Fragment {
             }
 
         }
+    }
+
+    private int getCountrySelection() {
+        int selected=0;
+        for (int i=0;i<activity.getCountries().size();i++){
+            if(activity.getCountries().get(i).getId().equals(activity.getVisa().getPassport_Issue_Country__c()))
+                selected=i;
+        }
+        return selected;
+    }
+
+    private int getSelectedPosition(String[] relegion, String religion__c) {
+        int selected=0;
+        for (int i=0;i<relegion.length;i++){
+            if(relegion[i].equals(religion__c))
+                selected=i;
+        }
+        return selected;
     }
 }

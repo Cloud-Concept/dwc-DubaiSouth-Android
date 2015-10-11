@@ -322,19 +322,16 @@
                     android:textColor="@color/red"
                     android:textSize="13sp" />
             </LinearLayout>
-
-            <EditText android:textSize="14sp"
+            <Spinner
                 android:id="@+id/Maritalstatus"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/label"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textColorHint="@color/light_grey" />
+                android:background="@mipmap/spinner_background"
+                android:gravity="center" />
+
 
             <LinearLayout
 
@@ -470,19 +467,16 @@
                     android:textColor="@color/red"
                     android:textSize="13sp" />
             </LinearLayout>
-
-            <EditText android:textSize="14sp"
+            <Spinner
                 android:id="@+id/religion"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/label"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textColorHint="@color/light_grey" />
+                android:background="@mipmap/spinner_background"
+                android:gravity="center" />
+
 
             <LinearLayout
 
@@ -512,19 +506,16 @@
                     android:textSize="13sp" />
             </LinearLayout>
 
-
-            <EditText android:textSize="14sp"
+            <Spinner
                 android:id="@+id/languagesspoken"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/label"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@mipmap/search_edit_text_background"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textColorHint="@color/light_grey" />
+                android:background="@mipmap/spinner_background"
+                android:gravity="center" />
+
 
 
             <LinearLayout
@@ -643,9 +634,10 @@
             <Spinner
                 android:id="@+id/countryofissue"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@mipmap/spinner_background"
                 android:gravity="center" />
 

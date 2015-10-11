@@ -23,6 +23,7 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:dropDownWidth="320dp"
                 android:background="@mipmap/spinner_background"
                 android:gravity="center" />
 
@@ -41,6 +42,8 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:dropDownWidth="320dp"
+
                 android:background="@mipmap/spinner_background"
                 android:gravity="center" />
 

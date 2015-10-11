@@ -33,6 +33,7 @@ import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import adapter.MyRequestsAdapter;
+import adapter.SimpleSpinnerStringAdapter;
 import adapter.SpinnerAdapter;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
@@ -94,13 +95,13 @@ public class MyRequestsFragment extends Fragment {
         spinnerRequestTypeFilter = (Spinner) view.findViewById(R.id.spinnerType);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, status_filter);
 //        adapter.setDropDownViewResource(R.layout.spinner_item);
-        ArrayAdapter<String> dataAdapter2 = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-                Arrays.asList(status_filter));
+        SimpleSpinnerStringAdapter dataAdapter2 = new SimpleSpinnerStringAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+               0, status_filter);
         spinnerStatusFilter.setAdapter(dataAdapter2);
 //        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, request_type_filter);
 //        adapter.setDropDownViewResource(R.layout.spinner_item);
-        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-                Arrays.asList(request_type_filter));
+        SimpleSpinnerStringAdapter dataAdapter = new SimpleSpinnerStringAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+               0,request_type_filter);
         spinnerRequestTypeFilter.setAdapter(dataAdapter);
 
         spinnerStatusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

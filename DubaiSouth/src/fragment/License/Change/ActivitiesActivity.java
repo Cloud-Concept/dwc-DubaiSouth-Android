@@ -290,4 +290,8 @@ View view;
         setResult(RESULT_CANCELED);
         super.onBackPressed();
     }
+
+    public void finish(View v) {
+        onBackPressed();
+    }
 }
