@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
@@ -60,11 +61,12 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         TextView tvNotificationMessage, tvDate;
         ImageView imageView;
         RatingBar ratingBar;
+        RelativeLayout relative;
         tvDate = (TextView) convertView.findViewById(R.id.tvDate);
         tvNotificationMessage = (TextView) convertView.findViewById(R.id.tvNotificationMessage);
         ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
         imageView = (ImageView) convertView.findViewById(R.id.imageNotificationRow);
-
+        relative = (RelativeLayout) convertView.findViewById(R.id.relative);
 
         tvNotificationMessage.setText(Utilities.stringNotNull(objects.get(position).getMobile_Compiled_Message()));
         String pattern = "yyyy-MM-dd'T'HH:mm:ss";
@@ -73,9 +75,16 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
             Date dateTime = dtf.parse(Utilities.stringNotNull(objects.get(position).getCreatedDate()));
             pattern = "dd-MMM-yyyy hh:mm a";
             dtf = new SimpleDateFormat(pattern);
-            tvDate.setText(dtf.format(dateTime));
+            tvDate.setText(dtf.format(dateTime).substring(0, 11));
         } catch (ParseException e) {
             e.printStackTrace();
+        }
+
+
+        if (objects.get(position).isMessageRead()) {
+            relative.setBackgroundColor(context.getResources().getColor(R.color.white));
+        } else {
+            relative.setBackgroundColor(context.getResources().getColor(R.color.noc_grey));
         }
 
         if (objects.get(position).getCase_Process_Name().equals(services[0])) {
@@ -105,7 +114,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
                     Map<String, Object> caseFields = new HashMap<String, Object>();
                     caseFields.put("Case_Rating_Score__c", v);
                     try {
-
+                            Utilities.showloadingDialog(context);
                         final RestRequest restRequest = RestRequest.getRequestForUpdate(context.getString(R.string.api_version), "Case", objects.get(position).getCaseNotification().getId(), caseFields);
                         new ClientManager(context, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(context, new ClientManager.RestClientCallback() {
                             @Override
@@ -118,12 +127,14 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
                                         @Override
                                         public void onSuccess(RestRequest request, RestResponse response) {
                                             Log.d("MyTag", "onSuccess " + response.toString());
+                                        Utilities.dismissLoadingDialog();
                                             objects.get(position).getCaseNotification().setCase_Rating_Score(v + "");
                                         }
 
                                         @Override
                                         public void onError(Exception exception) {
                                             Log.d("MyTag", "onError ");
+                                            Utilities.dismissLoadingDialog();
                                         }
                                     });
                                 }
