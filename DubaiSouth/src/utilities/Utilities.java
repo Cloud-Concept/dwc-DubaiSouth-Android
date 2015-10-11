@@ -3550,30 +3550,28 @@ public class Utilities {
             String[] date = s.split("-");
             if (date[1].equals("01")) {
                 return date[2] + "-Jan-" + date[0];
-            } else if (date[1].equals("01")) {
-                return date[2] + "-Feb-" + date[0];
             } else if (date[1].equals("02")) {
-                return date[2] + "-Mar-" + date[0];
+                return date[2] + "-Feb-" + date[0];
             } else if (date[1].equals("03")) {
-                return date[2] + "-Apr-" + date[0];
+                return date[2] + "-Mar-" + date[0];
             } else if (date[1].equals("04")) {
-                return date[2] + "-May-" + date[0];
+                return date[2] + "-Apr-" + date[0];
             } else if (date[1].equals("05")) {
-                return date[2] + "-Jun-" + date[0];
+                return date[2] + "-May-" + date[0];
             } else if (date[1].equals("06")) {
-                return date[2] + "-Jul-" + date[0];
+                return date[2] + "-Jun-" + date[0];
             } else if (date[1].equals("07")) {
-                return date[2] + "-Aug-" + date[0];
+                return date[2] + "-Jul-" + date[0];
             } else if (date[1].equals("08")) {
-                return date[2] + "-Sep-" + date[0];
+                return date[2] + "-Aug-" + date[0];
             } else if (date[1].equals("09")) {
-                return date[2] + "-Oct-" + date[0];
+                return date[2] + "-Sep-" + date[0];
             } else if (date[1].equals("10")) {
-                return date[2] + "-Nov-" + date[0];
+                return date[2] + "-Oct-" + date[0];
             } else if (date[1].equals("11")) {
-                return date[2] + "-Dec-" + date[0];
+                return date[2] + "-Nov-" + date[0];
             } else if (date[1].equals("12")) {
-                return date[2] + "-Jan-" + date[0];
+                return date[2] + "-Dec-" + date[0];
             } else {
                 return "";
             }
@@ -3916,9 +3914,9 @@ public class Utilities {
                         _items.add(new ServiceItem("Lost Card", R.mipmap.renew_visa));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewContract".toLowerCase())) {
                         Contract_DWC__c contract_dwc__c = (Contract_DWC__c) object;
-                        if(contract_dwc__c.IS_BC_Contract__c()){
+                        if (contract_dwc__c.IS_BC_Contract__c()) {
                             _items.add(new ServiceItem("Renew Contract", R.mipmap.lease_bc_contract));
-                        }else{
+                        } else {
                             _items.add(new ServiceItem("Renew Contract", R.mipmap.lease_ac_contract));
                         }
 

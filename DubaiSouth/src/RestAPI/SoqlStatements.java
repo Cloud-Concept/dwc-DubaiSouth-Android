@@ -49,7 +49,7 @@ public class SoqlStatements {
             "RecordType.DeveloperName,Requested_From__c,Account__r.Id,Account__r.Name, Nationality__r.Id, Nationality__r.Name " +
             "FROM Card_Management__c WHERE Account__c = '%s' and Status__c " +
             "NOT IN ('Renewed') AND Card_Type__c NOT IN ('Employee " +
-            "Card','Student Card','Work Permit') AND Status__c LIKE '%s'" + " LIMIT %s OFFSET %s";
+            "Card','Student Card','Work Permit') AND Status__c LIKE '%s'" + " ORDER BY Card_Expiry_Date__c DESC " + " LIMIT %s OFFSET %s";
 
     public static final String soql_get_visit_visa_page = "SELECT Id, Name, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c, Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE Sponsoring_Company__c = " + "\'" + "%s" + "\'" + " AND Visa_Validity_Status__c LIKE " + "\'" + "%s" + "\'" + " AND Visa_Type__c in ('Visit') ORDER BY Visa_Expiry_Date__c" + " LIMIT %s OFFSET %s";
 

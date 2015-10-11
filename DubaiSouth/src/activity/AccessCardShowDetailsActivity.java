@@ -69,13 +69,13 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         _views.add(new DWCView("Passport Number", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getPassport_Number__c()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
-        _views.add(new DWCView("NATIOANLITY", ItemType.LABEL));
+        _views.add(new DWCView("Nationality", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getNationality__r().getName()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
-        _views.add(new DWCView("DESIGNATION", ItemType.LABEL));
+        _views.add(new DWCView("Designation", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getDesignation__c()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
-        _views.add(new DWCView("SPONSORING COMPANY", ItemType.LABEL));
+        _views.add(new DWCView("Sponsor company", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(_cardManagement.getSponsor__c()), ItemType.VALUE));
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 
