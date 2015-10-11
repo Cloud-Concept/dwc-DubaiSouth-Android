@@ -21,7 +21,18 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@mipmap/noc_service_image" />
-
+            <custom.CorisandeRegularTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:text="Noc Services"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:maxLength="15"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,7 +222,7 @@
                 android:id="@+id/nocDetails"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="15dp"
+                android:padding="15dp"
                 android:orientation="vertical" />
         </ScrollView>
     </LinearLayout>

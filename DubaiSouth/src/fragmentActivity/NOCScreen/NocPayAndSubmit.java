@@ -76,6 +76,9 @@ public class NocPayAndSubmit extends Fragment {
         View view = inflater.inflate(R.layout.fragment_noc_pay_and_submit, container, false);
         nocDetails = (LinearLayout) view.findViewById(R.id.nocDetails);
         // Inflate the layout for this fragment
+        TextView title = (TextView) view.findViewById(R.id.title);
+        title.setVisibility(View.VISIBLE);
+
         ImageView image= (ImageView) view.findViewById(R.id.imageEmpoyeeNOC);
         TextView labelPerson= (TextView) view.findViewById(R.id.labelPerson);
         TextView date = (TextView) view.findViewById(R.id.date);

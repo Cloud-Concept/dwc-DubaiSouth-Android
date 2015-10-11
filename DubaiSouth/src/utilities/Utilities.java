@@ -3890,6 +3890,8 @@ public class Utilities {
                         _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
+                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
+                        _items.add(new ServiceItem("Cancel License", R.mipmap.name_change_service));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
                         _items.add(new ServiceItem("New NOC", R.mipmap.company_noc));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ReserveName".toLowerCase())) {

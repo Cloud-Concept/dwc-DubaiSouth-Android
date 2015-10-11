@@ -143,7 +143,7 @@ public class InitialPage extends Fragment {
             tvLabelItem.setText(activity.get_licenses().get(i).getName());
             tvValue.setText(activity.get_licenses().get(i).getBusinessActivityName());
             viewHeader.setTag(activity.get_licenses().get(i));
-            final ImageButton cancel = (ImageButton) viewHeader.findViewById(R.id.cancel);
+            final View cancel =  viewHeader.findViewById(R.id.cancel);
             cancel.setVisibility(View.VISIBLE);
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override

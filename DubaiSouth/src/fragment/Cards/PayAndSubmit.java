@@ -81,6 +81,9 @@ public class PayAndSubmit extends Fragment {
         ImageView image = (ImageView) view.findViewById(R.id.imageEmpoyeeNOC);
         TextView labelPerson = (TextView) view.findViewById(R.id.labelPerson);
         TextView date = (TextView) view.findViewById(R.id.date);
+        TextView title = (TextView) view.findViewById(R.id.title);
+        title.setVisibility(View.VISIBLE);
+        title.setText("Card Services");
         long yourmilliseconds = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
         Date resultdate = new Date(yourmilliseconds);
@@ -169,7 +172,7 @@ public class PayAndSubmit extends Fragment {
                     for (int j = 0; j < fields.length; j++)
                         if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
                             try {
-                                stringValue = String.valueOf(fields[j].get(activity.getCard()));
+                                stringValue = String.valueOf(fields[j].get(activity.getCard())==null?"":fields[j].get(activity.getCard()));
                             } catch (IllegalAccessException e) {
                                 e.printStackTrace();
                             }
