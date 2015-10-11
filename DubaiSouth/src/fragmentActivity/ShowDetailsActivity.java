@@ -120,12 +120,12 @@ public class ShowDetailsActivity extends BaseActivity {
             _views.add(new DWCView("Status", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(_visa.getVisa_Validity_Status__c()), ItemType.VALUE));
             _views.add(new DWCView("Expiry", ItemType.LABEL));
-            _views.add(new DWCView(Utilities.stringNotNull(_visa.getVisa_Expiry_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView(Utilities.formatVisitVisaDate(Utilities.stringNotNull(_visa.getVisa_Expiry_Date__c())), ItemType.VALUE));
             _views.add(new DWCView("Passport Information", ItemType.HEADER));
             _views.add(new DWCView("Passport", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(_visa.getPassport_Number__c()), ItemType.VALUE));
-            _views.add(new DWCView("Expriry Date", ItemType.LABEL));
-            _views.add(new DWCView(Utilities.stringNotNull(_visa.getVisa_Expiry_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView("Expiry Date", ItemType.LABEL));
+            _views.add(new DWCView(Utilities.formatVisitVisaDate(Utilities.stringNotNull(_visa.getPassport_Expiry__c())), ItemType.VALUE));
             _views.add(new DWCView("Issue Country", ItemType.LABEL));
             _views.add(new DWCView(Utilities.stringNotNull(_visa.getPassport_Country__c()), ItemType.VALUE));
             String Services = "";

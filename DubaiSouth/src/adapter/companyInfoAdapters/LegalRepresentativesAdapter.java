@@ -63,7 +63,7 @@ public class LegalRepresentativesAdapter extends ClickableListAdapter {
         holder.tvNationality.setText(legalRepresentative.getLegalRepresentativeLookup().getNationality() == null ? "" : legalRepresentative.getLegalRepresentativeLookup().getNationality());
         holder.tvPassportNumber.setText(legalRepresentative.getLegalRepresentativeLookup().getCurrentPassport() == null ? "" : legalRepresentative.getLegalRepresentativeLookup().getCurrentPassport().getName());
         holder.tvRole.setText(legalRepresentative.getRole() == null ? "" : legalRepresentative.getRole());
-        holder.tvStartDate.setText(legalRepresentative.getLegal_Representative_Start_Date() == null ? "" : legalRepresentative.getLegal_Representative_Start_Date());
+        holder.tvStartDate.setText(legalRepresentative.getLegal_Representative_Start_Date() == null ? "" : Utilities.formatVisitVisaDate(legalRepresentative.getLegal_Representative_Start_Date()));
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(legalRepresentative.getLegalRepresentativeLookup().getPersonal_Photo()), holder._smartEmployeeImage);
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));

@@ -66,7 +66,7 @@ public class DirectorsAdapter extends ClickableListAdapter {
         holder.tvNationality.setText(_directorship.get_director().getNationality() == null ? "" : _directorship.get_director().getNationality());
         holder.tvPassportNumber.setText(_directorship.get_director().get_currentPassport() == null ? "" : _directorship.get_director().get_currentPassport().getName());
         holder.tvRole.setText(_directorship.getRoles() == null ? "" : _directorship.getRoles());
-        holder.tvStartDate.setText(_directorship.getDirectorship_Start_Date() == null ? "" : _directorship.getDirectorship_Start_Date());
+        holder.tvStartDate.setText(_directorship.getDirectorship_Start_Date() == null ? "" : Utilities.formatVisitVisaDate(_directorship.getDirectorship_Start_Date()));
 
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));

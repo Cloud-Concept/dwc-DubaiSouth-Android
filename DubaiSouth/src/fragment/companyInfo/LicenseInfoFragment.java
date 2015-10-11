@@ -219,10 +219,10 @@ public class LicenseInfoFragment extends Fragment {
         _views.add(new DWCView(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Number_Value(), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Issue Date", ItemType.LABEL));
-        _views.add(new DWCView(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Issue_Date(), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.formatVisitVisaDate(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Issue_Date()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Expiry Date", ItemType.LABEL));
-        _views.add(new DWCView(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date(), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.formatVisitVisaDate(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date()), ItemType.VALUE));
 
         _views.add(new DWCView("Activity Information", ItemType.HEADER));
         if (_licenses != null && _licenses.size() > 0) {

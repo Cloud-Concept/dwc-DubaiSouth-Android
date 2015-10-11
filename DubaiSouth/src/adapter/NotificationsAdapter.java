@@ -46,7 +46,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         super(context, resource, textViewResourceId, objects);
         this.context = context;
         this.objects = objects;
-        services = new String[]{"Visa Services", "NOC Services", "License Services", "Access Cards Services", "Registration Services", "Leasing Services"};
+        services = new String[]{"Visa Services", "NOC Services", "License Services", "Access Card Services", "Registration Services", "Leasing Services"};
         status_filter = new String[]{"Completed", "In Process", "Ready for collection", "Not Submitted", "Application Submitted", "Draft"};
 
     }

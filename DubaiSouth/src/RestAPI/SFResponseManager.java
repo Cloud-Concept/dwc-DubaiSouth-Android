@@ -57,6 +57,7 @@ import model.Registration_Amendments__c;
 import model.ShareOwnership;
 import model.Shareholder;
 import model.SponsoringCompany;
+import model.TenancyContractPayment;
 import model.User;
 import model.Visa;
 import model.VisaHolder;
@@ -1247,6 +1248,24 @@ public class SFResponseManager {
                 quote.setId(jsonQoute.getString("Id"));
                 quote.setName(jsonQoute.getString("Name"));
                 contract_dwc__c.setQuote(quote);
+                if(jsonRecord.toString().contains("Tenancy_Contract_Payments__r")){
+                    JSONObject jsonUpcomingPayments = jsonRecord.getJSONObject("Tenancy_Contract_Payments__r");
+                    if (jsonUpcomingPayments != null) {
+                        JSONArray jsonArrayUpcomingPayments = jsonUpcomingPayments.getJSONArray(JSONConstants.RECORDS);
+                        if (jsonArrayUpcomingPayments.length() > 0) {
+                            ArrayList<TenancyContractPayment> tenancyContractPayments = new ArrayList<>();
+                            for (int j = 0; j < jsonArrayUpcomingPayments.length(); j++) {
+                                JSONObject jsonUpcomingPayment = jsonArrayUpcomingPayments.getJSONObject(0);
+                                TenancyContractPayment tenancyContractPayment = new TenancyContractPayment();
+                                gson = new Gson();
+                                tenancyContractPayment = gson.fromJson(jsonUpcomingPayment.toString(),TenancyContractPayment.class);
+                                tenancyContractPayments.add(tenancyContractPayment);
+                            }
+                            contract_dwc__c.setTenancyContractPayments(tenancyContractPayments);
+                        }
+                    }
+                }
+
                 contract_dwc__cs.add(contract_dwc__c);
 
             }

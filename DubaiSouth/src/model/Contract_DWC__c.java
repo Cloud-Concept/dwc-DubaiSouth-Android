@@ -46,6 +46,7 @@ public class Contract_DWC__c implements java.io.Serializable {
     private String RecordTypeId;
 
     ArrayList<Contract_Line_Item__c> contract_line_item__cs;
+    ArrayList<TenancyContractPayment> tenancyContractPayments;
 
     Quote quote;
 
@@ -183,6 +184,14 @@ public class Contract_DWC__c implements java.io.Serializable {
 
     public void setQuote(Quote quote) {
         this.quote = quote;
+    }
+
+    public ArrayList<TenancyContractPayment> getTenancyContractPayments() {
+        return tenancyContractPayments;
+    }
+
+    public void setTenancyContractPayments(ArrayList<TenancyContractPayment> tenancyContractPayments) {
+        this.tenancyContractPayments = tenancyContractPayments;
     }
 
 

@@ -69,7 +69,7 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 
         if (mo.getVisa_Validity_Status__c().equals("Issued") || mo.getVisa_Validity_Status__c().equals("Expired")) {
-            mvh.tvVisaExpiry.setText(mo.getVisa_Validity_Status__c());
+            mvh.tvVisaExpiry.setText(Utilities.formatVisitVisaDate(Utilities.stringNotNull(mo.getVisa_Expiry_Date__c())));
         } else {
             mvh.tvVisaExpiry.setVisibility(View.GONE);
         }

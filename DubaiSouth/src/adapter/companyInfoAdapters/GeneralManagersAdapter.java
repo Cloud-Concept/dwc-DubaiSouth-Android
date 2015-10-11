@@ -66,7 +66,7 @@ public class GeneralManagersAdapter extends ClickableListAdapter {
         holder.tvNationality.setText(managementMember.get_manager().getNationality() == null ? "" : managementMember.get_manager().getNationality());
         holder.tvPassportNumber.setText(managementMember.get_manager().getCurrentPassport() == null ? "" : managementMember.get_manager().getCurrentPassport().getName());
         holder.tvRole.setText(managementMember.getRole() == null ? "" : managementMember.getRole());
-        holder.tvStartDate.setText(managementMember.getManager_Start_Date() == null ? "" : managementMember.getManager_Start_Date());
+        holder.tvStartDate.setText(managementMember.getManager_Start_Date() == null ? "" : Utilities.formatVisitVisaDate(managementMember.getManager_Start_Date()));
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(managementMember.get_manager().getPersonal_Photo()), holder._smartEmployeeImage);
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
         _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));

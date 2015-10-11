@@ -68,7 +68,7 @@ public class ShareHolderAdapter extends ClickableListAdapter {
         holder.tvPassportNumber.setText(_ShareHolder.get_shareholder().get_currentPassport() == null ? "" : _ShareHolder.get_shareholder().get_currentPassport().getName());
         holder.tvOwnerShip.setText(_ShareHolder.getOwnership_of_Share__c() == null ? "" : _ShareHolder.getOwnership_of_Share__c());
         holder.tvNumberOfShares.setText(_ShareHolder.getNo_of_Shares__c() == null ? "" : _ShareHolder.getNo_of_Shares__c());
-        holder.tvStartDate.setText(_ShareHolder.getOwnership_Start_Date__c() == null ? "" : _ShareHolder.getOwnership_Start_Date__c());
+        holder.tvStartDate.setText(_ShareHolder.getOwnership_Start_Date__c() == null ? "" : Utilities.formatVisitVisaDate(_ShareHolder.getOwnership_Start_Date__c()));
         Utilities.setUserPhoto(activity, Utilities.stringNotNull(_ShareHolder.get_shareholder().getPersonalPhoto()), holder._smartEmployeeImage);
 
 //        holder.item.setOnClickListener(new OnClickListener(holder) {
