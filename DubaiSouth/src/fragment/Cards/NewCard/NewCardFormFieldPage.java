@@ -1,5 +1,6 @@
 package fragment.Cards.NewCard;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -42,8 +43,10 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import fragmentActivity.CardActivity;
+import model.CashedNationality;
 import model.Country__c;
 import model.FormField;
+import utilities.ComplexPreferences;
 import utilities.Utilities;
 
 /**
@@ -273,40 +276,57 @@ public class NewCardFormFieldPage extends Fragment {
 //            }
 
             if (reference != null && reference.size() > 0) {
+
+                final ComplexPreferences cp=ComplexPreferences.getComplexPreferences(activity,"countries", Context.MODE_PRIVATE);
+
                 if (reference.get(0).getTextValue().equals("Country__c")) {
-                    String referenceSoql = "select Id,Nationality_Name__c from Country__c";
-                    try {
-                        restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), referenceSoql);
-                        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-                            @Override
-                            public void authenticatedRestClient(RestClient client) {
-                                if (client == null) {
-                                    System.exit(0);
-                                } else {
-                                    client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
-                                        @Override
-                                        public void onSuccess(RestRequest request, RestResponse response) {
-                                            try {
 
-                                                ArrayList<Country__c> countries = SFResponseManager.parseCountryObject(response.toString());
-                                                activity.setCountries(countries);
-                                                Utilities.DrawFormFieldsOnLayout(activity, getActivity().getApplicationContext(), linearAddForms, formFields, null, null, activity.getParameters(), activity.getCard());
-                                                Utilities.dismissLoadingDialog();
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
+                    CashedNationality cN=cp.getObject("cList", CashedNationality.class);
+                    if(cN!=null){
+                        activity.setCountries(cN.getCountries());
+                        Utilities.DrawFormFieldsOnLayout(activity, getActivity().getApplicationContext(), linearAddForms, formFields, null, null, activity.getParameters(), activity.getCard());
+                        Utilities.dismissLoadingDialog();
+                        Log.d("here","here");
+                    }
+                    else {
+
+                        String referenceSoql = "select Id,Nationality_Name__c from Country__c";
+                        try {
+                            restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), referenceSoql);
+                            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                                @Override
+                                public void authenticatedRestClient(RestClient client) {
+                                    if (client == null) {
+                                        System.exit(0);
+                                    } else {
+                                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                                            @Override
+                                            public void onSuccess(RestRequest request, RestResponse response) {
+                                                try {
+
+                                                    ArrayList<Country__c> countries = SFResponseManager.parseCountryObject(response.toString());
+                                                    activity.setCountries(countries);
+                                                    cp.putObject("cList",new CashedNationality().setCountries(countries));
+                                                    cp.commit();
+                                                    Utilities.DrawFormFieldsOnLayout(activity, getActivity().getApplicationContext(), linearAddForms, formFields, null, null, activity.getParameters(), activity.getCard());
+                                                    Utilities.dismissLoadingDialog();
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
                                             }
-                                        }
 
-                                        @Override
-                                        public void onError(Exception exception) {
+                                            @Override
+                                            public void onError(Exception exception) {
 
-                                        }
-                                    });
+                                            }
+                                        });
+                                    }
                                 }
-                            }
-                        });
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
+                            });
+
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }

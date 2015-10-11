@@ -2,10 +2,12 @@ package model;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by M_Ghareeb on 8/25/2015.
  */
-public class Country__c {
+public class Country__c implements Serializable{
     public model.attributes getAttributes() {
         return attributes;
     }
