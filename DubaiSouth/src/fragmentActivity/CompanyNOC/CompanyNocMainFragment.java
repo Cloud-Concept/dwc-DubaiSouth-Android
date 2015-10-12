@@ -85,26 +85,31 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
 
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText("New NOC");
         return CompanyNOCInitialPage.newInstance("Initial");
     }
 
     @Override
     public Fragment getSecondFragment() {
+        tvTitle.setText("Details");
         return CompanyNOCFormFieldPage.newInstance("Second");
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return CompanyNOCAttachmentPage.newInstance("Third");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return NocPayAndSubmit.newInstance("Com");
     }
 
     @Override
     public Fragment getFifthFragment(String msg,String fee,String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg,fee,mail);
     }
 
@@ -425,7 +430,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
                                 updateCaseRecord(insertedCaseId, insertedServiceId);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                if(response.toString().equals(""))
+                                if (response.toString().equals(""))
                                     PerfromParentNext(btnNext);
                             }
                             Utilities.dismissLoadingDialog();
@@ -611,6 +616,9 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
 
         }
     };
+
+
+
     public class GetPickLists extends AsyncTask<String, Void, String> {
 
         private final RestClient client;

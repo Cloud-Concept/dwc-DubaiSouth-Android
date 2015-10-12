@@ -74,16 +74,19 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
 
     @Override
     public Fragment getSecondFragment() {
+        tvTitle.setText("Upload Document");
         return AttachmentPage.newInstance("Attachment");
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Preview");
         return PreviewPage.newInstance("Preview");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Thank You");
         return ThankYouPage.newInstance("Thank You");
     }
 

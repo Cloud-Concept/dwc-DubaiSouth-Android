@@ -85,16 +85,19 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
     }
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText("Renew Passport");
         return InitialPassportPage.newInstance("PassPort");
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return NOCAttachmentPage.newInstance("Third");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return PayAndSubmit.newInstance("1");
     }
     @Override

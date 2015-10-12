@@ -64,26 +64,31 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
 
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText("Renew Visa");
         return InitialPage.newInstance("Renew");
     }
 
     @Override
     public Fragment getSecondFragment() {
+        tvTitle.setText("Details");
         return SecondFragment.newInstance("", "");
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return NOCAttachmentPage.newInstance("Third");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return PayAndSubmit.newInstance("1");
     }
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg, fee, mail);
     }
 

@@ -61,20 +61,24 @@ LicenseActivity activity;
 
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText(activity.getType());
         return SecondFragment.newInstance();
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return NOCAttachmentPage.newInstance("");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return PayAndSubmit.newInstance();
     }
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg, fee, mail);
     }
 
