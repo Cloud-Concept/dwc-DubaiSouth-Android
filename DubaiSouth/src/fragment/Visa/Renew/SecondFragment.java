@@ -144,7 +144,7 @@ public class SecondFragment extends Fragment {
                             public void onSuccess(RestRequest request, RestResponse response) {
                                 try {
                                     activity.setOccupations(SFResponseManager.parseJobImmagrationObject(response.toString()));
-                                    Occupation.setAdapter(new JobAdapters(activity, android.R.layout.simple_list_item_1, 0, activity.getOccupations()));
+                                    Occupation.setAdapter(new JobAdapters(activity, R.layout.spinner_item_wizard, 0, activity.getOccupations()));
                                     Occupation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                         @Override
                                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

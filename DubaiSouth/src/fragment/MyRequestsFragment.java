@@ -97,16 +97,20 @@ public class MyRequestsFragment extends Fragment {
         lstMyRequests = (ListView) view.findViewById(R.id.lstMyRequests);
         spinnerStatusFilter = (Spinner) view.findViewById(R.id.spinnerStatus);
         spinnerRequestTypeFilter = (Spinner) view.findViewById(R.id.spinnerType);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, status_filter);
-//        adapter.setDropDownViewResource(R.layout.spinner_item);
-        SimpleSpinnerStringAdapter dataAdapter2 = new SimpleSpinnerStringAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-               0, status_filter);
-        spinnerStatusFilter.setAdapter(dataAdapter2);
-//        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, request_type_filter);
-//        adapter.setDropDownViewResource(R.layout.spinner_item);
-        SimpleSpinnerStringAdapter dataAdapter = new SimpleSpinnerStringAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-               0,request_type_filter);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, status_filter);
+//        dataAdapter.setDropDownViewResource(R.layout.myrequest_spinner_item);
+        spinnerStatusFilter.setAdapter(dataAdapter);
+        dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, request_type_filter);
+//        dataAdapter.setDropDownViewResource(R.layout.myrequest_spinner_item);
         spinnerRequestTypeFilter.setAdapter(dataAdapter);
+//        SimpleSpinnerStringAdapter dataAdapter2 = new SimpleSpinnerStringAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+//               0, status_filter);
+//        spinnerStatusFilter.setAdapter(dataAdapter2);
+////        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, request_type_filter);
+////        adapter.setDropDownViewResource(R.layout.spinner_item);
+//        SimpleSpinnerStringAdapter dataAdapter = new SimpleSpinnerStringAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
+//               0,request_type_filter);
+//        spinnerRequestTypeFilter.setAdapter(dataAdapter);
 
         spinnerStatusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 

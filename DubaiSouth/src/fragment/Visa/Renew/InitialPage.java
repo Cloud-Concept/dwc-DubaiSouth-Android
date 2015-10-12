@@ -234,7 +234,7 @@ public class InitialPage extends Fragment {
                         });
 
 
-                        Maritalstatus.setAdapter(new SimpleSpinnerStringAdapter(activity, android.R.layout.simple_list_item_1, 0, Maritalstatuses));
+                        Maritalstatus.setAdapter(new SimpleSpinnerStringAdapter(activity, R.layout.spinner_item_wizard, 0, Maritalstatuses));
                         Maritalstatus.setSelection(getSelectedPosition(Maritalstatuses, activity.getVisa().getMarital_Status__c()));
                         Maritalstatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override

@@ -75,26 +75,31 @@ public class NocMainFragment extends BaseServiceFragment {
 
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText("New NOC");
         return NOCInitialPage.newInstance("Initial");
     }
 
     @Override
     public Fragment getSecondFragment() {
+        tvTitle.setText("Details");
         return NOCFormFieldPage.newInstance("Second");
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return NOCAttachmentPage.newInstance("Third");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return NocPayAndSubmit.newInstance("Emp");
     }
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg, fee, mail);
     }
 
@@ -137,7 +142,6 @@ public class NocMainFragment extends BaseServiceFragment {
                 }
             } else if (BaseServiceFragment.status == 4) {
                 builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
-
                 super.onClick(v);
             } else {
 
@@ -602,9 +606,14 @@ public class NocMainFragment extends BaseServiceFragment {
             if (aVoid.equals("success")) {
                 NiftyDialogBuilder
                         .getInstance(getActivity()).dismiss();
+                tvTitle.setText("Thank You");
                 getfifthfragment(_noc.getNOC_Receiver_Email__c(), caseNummberId);
             }
 
         }
+    }
+
+    public void setTitle(String s){
+        tvTitle.setText(s);
     }
 }

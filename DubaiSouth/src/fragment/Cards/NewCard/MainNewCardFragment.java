@@ -63,26 +63,31 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText("New Card");
         return NewCardInitialPage.newInstance("NewCardInitial");
     }
 
     @Override
     public Fragment getSecondFragment() {
+        tvTitle.setText("Details");
         return NewCardFormFieldPage.newInstance("");
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return NOCAttachmentPage.newInstance("");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return PayAndSubmit.newInstance(activity.getType());
     }
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg,String.format(activity.getResources().getString(R.string.ServiceThankYouMessageCard),activity.getTotal()) , mail);
     }
 
@@ -530,6 +535,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
             super.onPostExecute(aVoid);
             Utilities.dismissLoadingDialog();
             if (aVoid.equals("success")) {
+                tvTitle.setText("Thank You");
                 NiftyDialogBuilder
                         .getInstance(getActivity()).dismiss();
                 getfifthfragment("", activity.getCaseNumber());

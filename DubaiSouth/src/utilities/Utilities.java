@@ -2173,6 +2173,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -2180,6 +2181,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -2618,9 +2620,42 @@ public class Utilities {
                     tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
                     final String[] entries = field.getPicklistEntries().split(",");
-                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_list_item_1, 0, entries);
+//                    formfieldAdapter adapter = new formfieldAdapter(act, android.R.layout.simple_dropdown_item_1line, 0, entries);
+                    formfieldAdapter adapter = new formfieldAdapter(act, R.layout.spinner_item_wizard, 0, entries);
 
                     spinner.setAdapter(adapter);
+
+//
+//                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(applicationContext, R.layout.spinner_item, entries) {
+//
+//                        public View getView(int position, View convertView, ViewGroup parent) {
+//
+//                            View v = super.getView(position, convertView, parent);
+//
+//                            ((TextView) v).setGravity(Gravity.CENTER);
+//
+//                            ((TextView) v).setTextSize(12);
+//
+//                            return v;
+//
+//                        }
+//
+//                        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+//
+//                            View v = super.getDropDownView(position, convertView, parent);
+//
+//                            ((TextView) v).setGravity(Gravity.CENTER);
+//                            ((TextView) v).setTextSize(12);
+//                            return v;
+//
+//                        }
+//
+//                    };
+//
+//                    adapter.setDropDownViewResource(R.layout.spinner_item_center);
+//                    spinner.setAdapter(adapter);
+
+
                     spinner.setSelection(0);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -2656,7 +2691,7 @@ public class Utilities {
                     final TextView tvLabel = (TextView) view.findViewById(R.id.tvLabel);
                     tvLabel.setText(field.getMobileLabel());
 //                    spinner.setHint(field.getMobileLabel());
-                    NationalityAdapter adapter = new NationalityAdapter(act, android.R.layout.simple_list_item_1, 0, ((CardActivity) act).getCountries());
+                    NationalityAdapter adapter = new NationalityAdapter(act, R.layout.spinner_item_wizard, 0, ((CardActivity) act).getCountries());
                     adapter.setDropDownViewResource(R.layout.customtext);
 //                    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                     spinner.setAdapter(adapter);
@@ -3887,14 +3922,14 @@ public class Utilities {
                         _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
-                        _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicense".toLowerCase())) {
+                        _items.add(new ServiceItem("Renew License", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_license));
+                        _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Visa", R.drawable.cancellicense));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel License", R.mipmap.name_change_service));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
+                        _items.add(new ServiceItem("Cancel License", R.mipmap.cancel_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
                         _items.add(new ServiceItem("New NOC", R.mipmap.company_noc));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ReserveName".toLowerCase())) {
@@ -4144,14 +4179,27 @@ public class Utilities {
             FormField f = (FormField) view.getTag();
             String name = f.getName();
             Field[] fields = EServices_Document_Checklist__c.class.getFields();
+//            for (int j = 0; j < fields.length; j++) {
+//                if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+//                    try {
+//                        if (f.getType().equals("DOUBLE"))
+//                            fields[j].set(eServices_document_checklist__c, Double.parseDouble(text));
+//                        else
+//                            fields[j].set(eServices_document_checklist__c, text);
+//
+//                    } catch (IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//            }
+
             for (int j = 0; j < fields.length; j++)
                 if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
                     try {
-                        if (f.getType().equals("DOUBLE"))
+                        if (f.getType().equals("DOUBLE")) {
                             fields[j].set(eServices_document_checklist__c, Double.parseDouble(text));
-                        else
+                        } else {
                             fields[j].set(eServices_document_checklist__c, text);
-
+                        }
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }

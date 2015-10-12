@@ -81,6 +81,8 @@ public class NOCFormFieldPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.noc_second_page, container, false);
         InitializeViews(view);
+        NocMainFragment fragment = (NocMainFragment) getParentFragment();
+        fragment.setTitle("Details");
         parameters.put("auth", new StoreData(getActivity()).getNOCAuthorityType());
         parameters.put("lang", new StoreData(getActivity().getApplicationContext()).getNOCLanguage());
         eServiceAdministration = Utilities.geteServiceAdministration();

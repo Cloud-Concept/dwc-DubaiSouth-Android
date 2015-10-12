@@ -80,6 +80,8 @@ public class NOCAttachmentPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.noc_attachment_page, container, false);
+        NocMainFragment fragment = (NocMainFragment) getParentFragment();
+        fragment.setTitle("Upload Document");
         InitializeViews(view);
         act = getActivity();
         if(!(Utilities.geteServiceAdministration().getNo_of_Upload_Docs__c()>0)){

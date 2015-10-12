@@ -74,22 +74,26 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
 
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText("Cancel Visa");
         return SecondFragment.newInstance("", "");
     }
 
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return NOCAttachmentPage.newInstance("Third");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return PayAndSubmitCancelVisa.newInstance("1");
     }
 
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg, fee, mail);
     }
 
@@ -300,6 +304,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
                                             activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
                                             activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c") + "");
                                             Utilities.dismissLoadingDialog();
+                                            tvTitle.setText("Thank You");
                                             getfifthfragment("", activity.getCaseNumber());
                                         } catch (JSONException e) {
                                             e.printStackTrace();

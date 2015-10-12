@@ -80,9 +80,12 @@ public class AccessCardShowDetailsActivity extends FragmentActivity {
         ArrayList<ServiceItem> _items = new ArrayList<ServiceItem>();
 
         Calendar _calendar = Calendar.getInstance();
-        int DaysToExpire = (int) Utilities.daysDifference(_cardManagement.getCard_Expiry_Date__c());
-        if (_cardManagement.getStatus__c().equals("Expired") || (_cardManagement.getStatus__c().equals("Active") && DaysToExpire < 7)) {
-            _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
+        if(_cardManagement.getCard_Expiry_Date__c()!=null&&!_cardManagement.getCard_Expiry_Date__c().equals("")){
+            int DaysToExpire = (int) Utilities.daysDifference(_cardManagement.getCard_Expiry_Date__c());
+
+            if (_cardManagement.getStatus__c().equals("Expired") || (_cardManagement.getStatus__c().equals("Active") && DaysToExpire < 7)) {
+                _items.add(new ServiceItem("Renew Card", R.mipmap.renew_card));
+            }
         }
 
         if (_cardManagement.getStatus__c().equals("Active")) {

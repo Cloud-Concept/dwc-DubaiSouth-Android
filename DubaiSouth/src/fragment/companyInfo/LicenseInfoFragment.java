@@ -236,9 +236,17 @@ public class LicenseInfoFragment extends Fragment {
         String services = "";
 
         if (Utilities.daysDifference(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date()) < 60) {
-            services += "License Renewal,Renew License Activity,";
+            services += "Renew License,";
         }
-        services += "Cancel License,Change License Activity";
+
+        services += "Cancel License,";
+
+        if (Utilities.daysDifference(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date()) < 60) {
+            services += "Renew License Activity,";
+        }
+
+        services += "Change License Activity,";
+        services = services.substring(0, services.length() - 1);
 
         _views.add(new DWCView(services, ItemType.HORIZONTAL_LIST_VIEW));
 

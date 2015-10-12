@@ -1171,9 +1171,18 @@ public class SFResponseManager {
 //                    gson = new Gson();
 //                    inventory_unit__r = gson.fromJson(jsonInventory_Unit__r.toString(), Inventory_Unit__r.class);
                     inventory_unit__r.setName(jsonInventory_Unit__r.getString("Name"));
-                    inventory_unit__r.setBuilding_Number__c(jsonInventory_Unit__r.getString("Building_Number__c"));
-                    inventory_unit__r.setProduct_Type__c(jsonInventory_Unit__r.getString("Product_Type__c"));
-                    inventory_unit__r.setArea_in_sq_m__c(jsonInventory_Unit__r.getString("Area_in_sq_m__c"));
+
+                    if (jsonInventory_Unit__r.toString().contains("Building_Number__c")) {
+                        inventory_unit__r.setBuilding_Number__c(jsonInventory_Unit__r.getString("Building_Number__c"));
+                    }
+
+                    if (jsonInventory_Unit__r.toString().contains("Product_Type__c")) {
+                        inventory_unit__r.setProduct_Type__c(jsonInventory_Unit__r.getString("Product_Type__c"));
+                    }
+
+                    if (jsonInventory_Unit__r.toString().contains("Area_in_sq_m__c")) {
+                        inventory_unit__r.setArea_in_sq_m__c(jsonInventory_Unit__r.getString("Area_in_sq_m__c"));
+                    }
 
                     JSONObject jsonProduct_Type__r = jsonInventory_Unit__r.getJSONObject("Product_Type__r");
                     Product_Type__r product_type__r = new Product_Type__r();
@@ -1190,6 +1199,23 @@ public class SFResponseManager {
                 quote.setId(jsonQoute.getString("Id"));
                 quote.setName(jsonQoute.getString("Name"));
                 contract_dwc__c.setQuote(quote);
+                if (jsonRecord.toString().contains("Tenancy_Contract_Payments__r")) {
+                    JSONObject jsonUpcomingPayments = jsonRecord.getJSONObject("Tenancy_Contract_Payments__r");
+                    if (jsonUpcomingPayments != null) {
+                        JSONArray jsonArrayUpcomingPayments = jsonUpcomingPayments.getJSONArray(JSONConstants.RECORDS);
+                        if (jsonArrayUpcomingPayments.length() > 0) {
+                            ArrayList<TenancyContractPayment> tenancyContractPayments = new ArrayList<>();
+                            for (int j = 0; j < jsonArrayUpcomingPayments.length(); j++) {
+                                JSONObject jsonUpcomingPayment = jsonArrayUpcomingPayments.getJSONObject(0);
+                                TenancyContractPayment tenancyContractPayment = new TenancyContractPayment();
+                                gson = new Gson();
+                                tenancyContractPayment = gson.fromJson(jsonUpcomingPayment.toString(), TenancyContractPayment.class);
+                                tenancyContractPayments.add(tenancyContractPayment);
+                            }
+                            contract_dwc__c.setTenancyContractPayments(tenancyContractPayments);
+                        }
+                    }
+                }
                 contract_dwc__cs.add(contract_dwc__c);
 
             }
@@ -1248,23 +1274,6 @@ public class SFResponseManager {
                 quote.setId(jsonQoute.getString("Id"));
                 quote.setName(jsonQoute.getString("Name"));
                 contract_dwc__c.setQuote(quote);
-                if(jsonRecord.toString().contains("Tenancy_Contract_Payments__r")){
-                    JSONObject jsonUpcomingPayments = jsonRecord.getJSONObject("Tenancy_Contract_Payments__r");
-                    if (jsonUpcomingPayments != null) {
-                        JSONArray jsonArrayUpcomingPayments = jsonUpcomingPayments.getJSONArray(JSONConstants.RECORDS);
-                        if (jsonArrayUpcomingPayments.length() > 0) {
-                            ArrayList<TenancyContractPayment> tenancyContractPayments = new ArrayList<>();
-                            for (int j = 0; j < jsonArrayUpcomingPayments.length(); j++) {
-                                JSONObject jsonUpcomingPayment = jsonArrayUpcomingPayments.getJSONObject(0);
-                                TenancyContractPayment tenancyContractPayment = new TenancyContractPayment();
-                                gson = new Gson();
-                                tenancyContractPayment = gson.fromJson(jsonUpcomingPayment.toString(),TenancyContractPayment.class);
-                                tenancyContractPayments.add(tenancyContractPayment);
-                            }
-                            contract_dwc__c.setTenancyContractPayments(tenancyContractPayments);
-                        }
-                    }
-                }
 
                 contract_dwc__cs.add(contract_dwc__c);
 

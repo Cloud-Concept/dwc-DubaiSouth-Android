@@ -77,20 +77,24 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
 
     @Override
     public Fragment getInitialFragment() {
+        tvTitle.setText("Share Transfer");
         return InitialPage.newInstance("");
     }
 
     @Override
     public Fragment getThirdFragment() {
+        tvTitle.setText("Upload Document");
         return NOCAttachmentPage.newInstance("Third");
     }
 
     @Override
     public Fragment getFourthFragment() {
+        tvTitle.setText("Preview");
         return PayAndSubmit.newInstance("1");
     }
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg, fee, mail);
     }
 
@@ -272,6 +276,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
             super.onPostExecute(aVoid);
             Utilities.dismissLoadingDialog();
             if (aVoid.equals("success")) {
+                tvTitle.setText("Thank You");
                 NiftyDialogBuilder
                         .getInstance(getActivity()).dismiss();
                 getfifthfragment("", activity.getCaseNumber());

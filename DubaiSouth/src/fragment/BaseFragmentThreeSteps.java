@@ -174,6 +174,7 @@ public abstract class BaseFragmentThreeSteps extends Fragment implements View.On
                 btnNOC2.setText("");
                 btnNOC3.setSelected(true);
                 btnBack.setVisibility(View.GONE);
+                tvTitle.setText("Thank You");
                 btnBackTransparent.setVisibility(View.GONE);
                 btnNext.setVisibility(View.GONE);
                 btnCancel.setVisibility(View.GONE);

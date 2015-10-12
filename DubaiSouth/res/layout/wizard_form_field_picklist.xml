@@ -10,7 +10,7 @@
         android:id="@+id/tvLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:textSize="@dimen/text_view_size"
@@ -21,9 +21,10 @@
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-
         android:background="@mipmap/spinner_background"
         android:gravity="center" />
 

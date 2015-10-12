@@ -64,7 +64,7 @@ public class ClickableCustomerDocumentsAdapter extends ClickableListAdapter {
             if (company_documents__c.getVersion__c().equals("") || company_documents__c.getVersion__c() == null) {
                 mvh.tvVersion.setText("");
             } else {
-                mvh.tvVersion.setText("Version:V" + String.valueOf(company_documents__c.getVersion__c()).substring(0, String.valueOf(company_documents__c.getVersion__c()).length() - 2));
+                mvh.tvVersion.setText("Version:V." + String.valueOf(company_documents__c.getVersion__c()).substring(0, String.valueOf(company_documents__c.getVersion__c()).length() - 2));
             }
         }
 

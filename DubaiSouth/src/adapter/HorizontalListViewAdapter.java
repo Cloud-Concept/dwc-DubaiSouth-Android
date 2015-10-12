@@ -198,7 +198,7 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "Change License Activity");
                     } else if (tvServiceName.getText().toString().replace("\n", " ").equals("Renew License Activity")) {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "License Renewal");
-                    } else if (tvServiceName.getText().toString().equals("License Renewal")) {
+                    } else if (tvServiceName.getText().toString().equals("Renew License")) {
                         ActivitiesLauncher.openChangeAndRemovalLicenceActivity(context, _user, "Renewal License");
                     } else if (tvServiceName.getText().toString().equals("New NOC")) {
                         ActivitiesLauncher.openCompanyNocActivity(context);

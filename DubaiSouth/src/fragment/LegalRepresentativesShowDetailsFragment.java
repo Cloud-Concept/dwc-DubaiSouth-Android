@@ -86,17 +86,17 @@ public class LegalRepresentativesShowDetailsFragment extends Fragment {
             _views.add(new DWCView(managementMember.get_manager() == null ? "" : managementMember.get_manager().getCurrentPassport().getName(), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Passport Expiry", ItemType.LABEL));
-            _views.add(new DWCView(managementMember.get_manager() == null ? "" : Utilities.stringNotNull(managementMember.get_manager().getCurrentPassport().getPassport_Expiry_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView(managementMember.get_manager() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(managementMember.get_manager().getCurrentPassport().getPassport_Expiry_Date__c())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Manager Information", ItemType.HEADER));
             _views.add(new DWCView("Role", ItemType.LABEL));
             _views.add(new DWCView(managementMember.get_manager() == null ? "" : Utilities.stringNotNull(managementMember.getRole()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Start Date", ItemType.LABEL));
-            _views.add(new DWCView(managementMember.get_manager() == null ? "" : Utilities.stringNotNull(managementMember.getManager_Start_Date()), ItemType.VALUE));
+            _views.add(new DWCView(managementMember.get_manager() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(managementMember.getManager_Start_Date())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("End Date", ItemType.LABEL));
-            _views.add(new DWCView(managementMember.get_manager() == null ? "" : Utilities.stringNotNull(managementMember.getManager_End_Date()), ItemType.VALUE));
+            _views.add(new DWCView(managementMember.get_manager() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(managementMember.getManager_End_Date())), ItemType.VALUE));
             viewItems = Utilities.drawViewsOnLayout(getActivity(), managementMember, getActivity().getApplicationContext(), _views);
         } else if (legalRepresentative != null) {
             //Legal Representatives
@@ -114,17 +114,17 @@ public class LegalRepresentativesShowDetailsFragment extends Fragment {
             _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : legalRepresentative.getLegalRepresentativeLookup().getCurrentPassport().getName(), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Passport Expiry", ItemType.LABEL));
-            _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : Utilities.stringNotNull(legalRepresentative.getLegalRepresentativeLookup().getCurrentPassport().getPassport_Expiry_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(legalRepresentative.getLegalRepresentativeLookup().getCurrentPassport().getPassport_Expiry_Date__c())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Legal Representatives Information", ItemType.HEADER));
             _views.add(new DWCView("Role", ItemType.LABEL));
             _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : Utilities.stringNotNull(legalRepresentative.getRole()), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Start Date", ItemType.LABEL));
-            _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : Utilities.stringNotNull(legalRepresentative.getLegal_Representative_Start_Date()), ItemType.VALUE));
+            _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(legalRepresentative.getLegal_Representative_Start_Date())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("End Date", ItemType.LABEL));
-            _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : Utilities.stringNotNull(legalRepresentative.getLegal_Representative_End_Date()), ItemType.VALUE));
+            _views.add(new DWCView(legalRepresentative.getLegalRepresentativeLookup() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(legalRepresentative.getLegal_Representative_End_Date())), ItemType.VALUE));
             viewItems = Utilities.drawViewsOnLayout(getActivity(), legalRepresentative, getActivity().getApplicationContext(), _views);
         } else {
             //Shareholders
@@ -143,7 +143,7 @@ public class LegalRepresentativesShowDetailsFragment extends Fragment {
             _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : _ShareHolder.get_shareholder().get_currentPassport().getName(), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Passport Expiry", ItemType.LABEL));
-            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.get_shareholder().get_currentPassport().getPassport_Expiry_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(_ShareHolder.get_shareholder().get_currentPassport().getPassport_Expiry_Date__c())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Shareholder Information", ItemType.HEADER));
             _views.add(new DWCView("Ownership (%)", ItemType.LABEL));
@@ -153,7 +153,7 @@ public class LegalRepresentativesShowDetailsFragment extends Fragment {
             _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(Utilities.processAmount(_ShareHolder.getNo_of_Shares__c())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
             _views.add(new DWCView("Start Date", ItemType.LABEL));
-            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getOwnership_Start_Date__c()), ItemType.VALUE));
+            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(_ShareHolder.getOwnership_Start_Date__c())), ItemType.VALUE));
             _views.add(new DWCView("", ItemType.LINE));
 //            _views.add(new DWCView("End Date", ItemType.LABEL));
 //            _views.add(new DWCView(_ShareHolder.get_shareholder() == null ? "" : Utilities.stringNotNull(_ShareHolder.getOwnership_End_Date__c()), ItemType.VALUE));
