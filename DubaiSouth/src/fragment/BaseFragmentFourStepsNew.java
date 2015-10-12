@@ -201,7 +201,7 @@ public abstract class BaseFragmentFourStepsNew extends Fragment implements View.
                 btnNOC3.setSelected(true);
                 status = 4;
             } else if (status == 4) {
-
+                tvTitle.setText("Thank You");
 
             } else {
                 getActivity().finish();

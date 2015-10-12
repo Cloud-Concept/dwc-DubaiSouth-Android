@@ -76,13 +76,12 @@ public class MyVisitVisaAdapter extends ClickableListAdapter {
 
         if (mo.getPersonal_Photo__c() != null && !mo.getPersonal_Photo__c().equals(""))
             Utilities.setUserPhoto(activity, mo.getPersonal_Photo__c(), mvh._smartEmployeeImage);
-
-        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         User user = new Gson().fromJson(new StoreData(context).getUserDataAsString(), User.class);
         boolean manager = mo.getVisa_Holder__c().equals(user.get_contact().get_account().getID());
         if ((mo.getVisa_Validity_Status__c().equals("Issued") || mo.getVisa_Validity_Status__c().equals("Under Process") || mo.getVisa_Validity_Status__c().equals("Under Renewal")) && (mo.getVisa_Type__c().equals("Employment") || mo.getVisa_Type__c().equals("Visit") || mo.getVisa_Type__c().equals("Transfer - Internal") || mo.getVisa_Type__c().equals("Transfer - External")) && !manager) {
             _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
         }
+        _items.add(new ServiceItem("Show Details", R.mipmap.service_show_details));
         mvh._horizontalListView.setAdapter(new HorizontalListViewAdapter(mo, activity, context, _items));
     }
 

@@ -865,6 +865,7 @@ public class ChangeAndRemovalServiceFragment extends BaseFragmentFourSteps {
     }
 
     private void PerformParentNext(Button btnNext) {
+        tvTitle.setText("Thank You");
         super.onClick(btnNext);
     }
 

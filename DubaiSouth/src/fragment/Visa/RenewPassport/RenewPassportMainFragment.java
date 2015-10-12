@@ -99,6 +99,7 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
     }
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
+        tvTitle.setText("Thank You");
         return ThankYou.newInstance(msg, "", mail);
     }
     @Override

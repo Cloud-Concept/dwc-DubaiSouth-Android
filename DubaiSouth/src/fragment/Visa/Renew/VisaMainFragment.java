@@ -36,7 +36,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import RestAPI.JSONConstants;
-import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
@@ -193,7 +192,7 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
                 });
 
 
-            }  else if (getStatus() == 3) {
+            } else if (getStatus() == 3) {
                 if (!isValidAttachments()) {
                     Utilities.showLongToast(activity, "Please fill all attachments");
                 } else {
@@ -342,6 +341,7 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
             super.onPostExecute(aVoid);
             Utilities.dismissLoadingDialog();
             if (aVoid.equals("success")) {
+                tvTitle.setText("Thank You");
                 NiftyDialogBuilder
                         .getInstance(getActivity()).dismiss();
                 getfifthfragment("", activity.getCaseNumber());
@@ -443,7 +443,7 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
                                         Log.d("result", response.toString());
                                         activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
                                         activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
-                                        activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c")+"");
+                                        activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c") + "");
                                         createVisaRecord(client);
                                     } catch (JSONException e) {
                                         e.printStackTrace();

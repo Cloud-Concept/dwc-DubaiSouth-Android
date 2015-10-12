@@ -69,17 +69,17 @@ public class DirectorsShowDetailsFragment extends Fragment {
         _views.add(new DWCView(directorship.get_director().get_currentPassport() == null ? "" : directorship.get_director().get_currentPassport().getName(), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Passport Expiry", ItemType.LABEL));
-        _views.add(new DWCView(directorship.get_director().get_currentPassport() == null ? "" : Utilities.stringNotNull(directorship.get_director().get_currentPassport().getPassport_Expiry_Date__c()), ItemType.VALUE));
+        _views.add(new DWCView(directorship.get_director().get_currentPassport() == null ? "" : Utilities.formatVisitVisaDate(Utilities.stringNotNull(directorship.get_director().get_currentPassport().getPassport_Expiry_Date__c())), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Director Information", ItemType.HEADER));
         _views.add(new DWCView("Role", ItemType.LABEL));
         _views.add(new DWCView(Utilities.stringNotNull(directorship.getRoles()), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("Start Date", ItemType.LABEL));
-        _views.add(new DWCView(Utilities.stringNotNull(directorship.getDirectorship_Start_Date()), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.formatVisitVisaDate(Utilities.stringNotNull(directorship.getDirectorship_Start_Date())), ItemType.VALUE));
         _views.add(new DWCView("", ItemType.LINE));
         _views.add(new DWCView("End Date", ItemType.LABEL));
-        _views.add(new DWCView(Utilities.stringNotNull(directorship.getDirectorship_End_Date()), ItemType.VALUE));
+        _views.add(new DWCView(Utilities.formatVisitVisaDate(Utilities.stringNotNull(directorship.getDirectorship_End_Date())), ItemType.VALUE));
 
         View viewItems = Utilities.drawViewsOnLayout(getActivity(), directorship, getActivity().getApplicationContext(), _views);
         linearAddForms.removeAllViews();

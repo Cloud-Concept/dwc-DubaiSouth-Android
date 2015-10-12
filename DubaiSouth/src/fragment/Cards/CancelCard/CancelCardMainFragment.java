@@ -611,6 +611,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
             super.onPostExecute(aVoid);
             Utilities.dismissLoadingDialog();
             if (aVoid.equals("success")) {
+                tvTitle.setText("Thank You");
                 NiftyDialogBuilder
                         .getInstance(getActivity()).dismiss();
                 getfifthfragment("", activity.getCaseNumber());

@@ -308,6 +308,9 @@ public class NameReservationFragment extends BaseFragmentThreeSteps {
     }
 
     private void PerformParentNext() {
+        if (status == 2) {
+            tvTitle.setText("Thank You");
+        }
         super.onClick(btnNext);
     }
 

@@ -80,7 +80,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvTitle.setText("Company NOC");
+        tvTitle.setText("New NOC");
     }
 
     @Override
@@ -663,6 +663,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
             super.onPostExecute(aVoid);
             Utilities.dismissLoadingDialog();
             if(aVoid.equals("success")) {
+                tvTitle.setText("Thank You");
                 NiftyDialogBuilder
                         .getInstance(getActivity()).dismiss();
                 getfifthfragment(_noc.getNOC_Receiver_Email__c(), caseNummberId);

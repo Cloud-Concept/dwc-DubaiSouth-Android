@@ -23,10 +23,8 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:dropDownWidth="320dp"
                 android:background="@mipmap/spinner_background"
-                android:gravity="center" />
-
+                android:dropDownWidth="320dp" />
 
         </RelativeLayout>
 
@@ -42,10 +40,8 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:dropDownWidth="320dp"
-
                 android:background="@mipmap/spinner_background"
-                android:gravity="center" />
+                android:dropDownWidth="320dp" />
 
         </RelativeLayout>
 
@@ -60,14 +56,13 @@
         <EditText
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
-            android:cursorVisible="false"
-
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/textfield_bg"
+            android:cursorVisible="false"
             android:gravity="center"
             android:hint="Search"
             android:imeOptions="actionDone"
@@ -81,20 +76,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
-        app:direction="both"
-        android:background="@color/white_green">
+        android:background="@color/white_green"
+        app:direction="both">
 
 
         <ListView
             android:id="@+id/lstMyRequests"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:groupIndicator="@null"
             android:layout_marginTop="15dp"
-            android:listSelector="@drawable/list_selector"
             android:divider="@android:color/transparent"
             android:dividerHeight="2dp"
-            android:footerDividersEnabled="false">
+            android:footerDividersEnabled="false"
+            android:groupIndicator="@null"
+            android:listSelector="@drawable/list_selector">
 
         </ListView>
 

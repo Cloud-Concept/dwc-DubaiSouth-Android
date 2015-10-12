@@ -470,6 +470,7 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
     }
 
     private void performParentNext() {
+        tvTitle.setText("Thank You");
         super.onClick(btnNext);
     }
 

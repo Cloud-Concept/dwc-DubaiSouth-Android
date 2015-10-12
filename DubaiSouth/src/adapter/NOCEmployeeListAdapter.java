@@ -9,7 +9,6 @@ import java.util.List;
 
 import cloudconcept.dwc.R;
 import custom.DWCRoundedImageView;
-import custom.RoundedImageView;
 import model.Visa;
 import utilities.Utilities;
 
@@ -47,10 +46,15 @@ public class NOCEmployeeListAdapter extends ClickableListAdapter {
         final EmployeeListHolder mvh = (EmployeeListHolder) h;
         Visa mo = (Visa) mvh.data;
 
-        mvh.tvFullName.setText(Utilities.stringNotNull(mo.getApplicant_Full_Name__c())); 
+        mvh.tvFullName.setText(Utilities.stringNotNull(mo.getApplicant_Full_Name__c()));
         mvh.tvStatus.setText(Utilities.stringNotNull(mo.getVisa_Validity_Status__c()));
         mvh.tvPassportNumber.setText(Utilities.stringNotNull(mo.getPassport_Number__c()));
-        mvh.tvVisaExpiry.setText(Utilities.stringNotNull(mo.getVisa_Expiry_Date__c()));
+        if (Utilities.stringNotNull(mo.getVisa_Expiry_Date__c()).equals("")) {
+            mvh.tvVisaExpiry.setText("");
+        } else {
+            mvh.tvVisaExpiry.setText(Utilities.formatVisitVisaDate(Utilities.stringNotNull(mo.getVisa_Expiry_Date__c())));
+        }
+
         Utilities.setUserPhoto(act, Utilities.stringNotNull(mo.getPersonal_Photo__c()), mvh._smartEmployeeImage);
     }
 

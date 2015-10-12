@@ -3884,14 +3884,14 @@ public class Utilities {
                         _items.add(new ServiceItem("New NOC", R.mipmap.noc_service_image));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("AddressChange".toLowerCase())) {
                         _items.add(new ServiceItem("Address Change", R.mipmap.address_change_service));
-                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("LicenseRenewal".toLowerCase())) {
-                        _items.add(new ServiceItem("License Renewal", R.mipmap.renew_license));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicense".toLowerCase())) {
+                        _items.add(new ServiceItem("Renew License", R.mipmap.renew_license));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
-                        _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_license));
+                        _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel Visa", R.drawable.cancellicense));
-                    }else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel License", R.mipmap.name_change_service));
+                    } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
+                        _items.add(new ServiceItem("Cancel License", R.mipmap.cancel_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {
                         _items.add(new ServiceItem("New NOC", R.mipmap.company_noc));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("ReserveName".toLowerCase())) {
@@ -4141,14 +4141,27 @@ public class Utilities {
             FormField f = (FormField) view.getTag();
             String name = f.getName();
             Field[] fields = EServices_Document_Checklist__c.class.getFields();
+//            for (int j = 0; j < fields.length; j++) {
+//                if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
+//                    try {
+//                        if (f.getType().equals("DOUBLE"))
+//                            fields[j].set(eServices_document_checklist__c, Double.parseDouble(text));
+//                        else
+//                            fields[j].set(eServices_document_checklist__c, text);
+//
+//                    } catch (IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//            }
+
             for (int j = 0; j < fields.length; j++)
                 if (name.toLowerCase().equals(fields[j].getName().toLowerCase()))
                     try {
-                        if (f.getType().equals("DOUBLE"))
+                        if(f.getType().equals("DOUBLE")){
                             fields[j].set(eServices_document_checklist__c, Double.parseDouble(text));
-                        else
+                        }else{
                             fields[j].set(eServices_document_checklist__c, text);
-
+                        }
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }

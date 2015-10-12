@@ -225,6 +225,7 @@ public abstract class BaseFragmentFourSteps extends Fragment implements View.OnC
                         .commitAllowingStateLoss();
                 btnNOC3.setBackgroundResource(R.mipmap.bullet_success);
                 btnNOC3.setText("");
+                tvTitle.setText("Thank You");
                 btnNOC4.setSelected(true);
                 btnBack.setVisibility(View.GONE);
                 btnBackTransparent.setVisibility(View.GONE);

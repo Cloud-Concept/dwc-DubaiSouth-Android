@@ -137,7 +137,6 @@ public class NocMainFragment extends BaseServiceFragment {
                 }
             } else if (BaseServiceFragment.status == 4) {
                 builder = Utilities.showCustomNiftyDialog("Pay Process", getActivity(), listenerOkPay, "Are you sure want to Pay for the service ?");
-
                 super.onClick(v);
             } else {
 
@@ -602,6 +601,7 @@ public class NocMainFragment extends BaseServiceFragment {
             if (aVoid.equals("success")) {
                 NiftyDialogBuilder
                         .getInstance(getActivity()).dismiss();
+                tvTitle.setText("Thank You");
                 getfifthfragment(_noc.getNOC_Receiver_Email__c(), caseNummberId);
             }
 

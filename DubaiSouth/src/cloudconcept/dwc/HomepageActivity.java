@@ -640,7 +640,7 @@ public class HomepageActivity extends Activity implements
                             Utilities.setUserPhoto(HomepageActivity.this, _user.get_contact().get_account().getCompany_Logo(), smartCompanyImage);
                             tvCompanyName.setText(_user.get_contact().get_account().getName());
                             tvLicenseNumber.setText(_user.get_contact().get_account().getLicenseNumberFormula());
-                            tvLicenseExpiry.setText(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date());
+                            tvLicenseExpiry.setText(Utilities.formatVisitVisaDate(_user.get_contact().get_account().get_currentLicenseNumber().getLicense_Expiry_Date()));
                             tvBalance.setText(Utilities.processAmount(_user.get_contact().get_account().getPortalBalance()) + " AED");
                         }
                     });

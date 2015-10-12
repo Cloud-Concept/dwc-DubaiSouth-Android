@@ -300,6 +300,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
                                             activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
                                             activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c") + "");
                                             Utilities.dismissLoadingDialog();
+                                            tvTitle.setText("Thank You");
                                             getfifthfragment("", activity.getCaseNumber());
                                         } catch (JSONException e) {
                                             e.printStackTrace();
