@@ -35,7 +35,7 @@ public class JobAdapters extends ArrayAdapter<JobTitleAtImmigration>{
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(android.R.layout.simple_list_item_1, parent,false);
+            convertView = mInflater.inflate(R.layout.spinner_item_wizard, parent,false);
         }
 
         TextView tv = (TextView)convertView;

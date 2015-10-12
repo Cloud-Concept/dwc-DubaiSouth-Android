@@ -27,7 +27,7 @@ public class SimpleSpinnerStringAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.spinner_item, parent,false);
+            convertView = mInflater.inflate(R.layout.spinner_item_wizard, parent,false);
         }
 
         TextView tv = (TextView)convertView;
