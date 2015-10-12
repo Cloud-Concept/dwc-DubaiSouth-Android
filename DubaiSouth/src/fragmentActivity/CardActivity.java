@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import RestAPI.RestMessages;
@@ -326,7 +327,86 @@ public class CardActivity extends BaseFragmentActivity {
         }
     }
 
-    private void ConnectAttachmentWithCompanyDocument(final Company_Documents__c company_documents__c, final int position) {
+
+    //Recursion
+
+    public void ConnectAttachmentWithCompanyDocument(final List< Company_Documents__c> company_documents__c, final int position) {
+        Log.d("Work With "+position,company_documents__c.get(position).getName());
+
+        Map<String, Object> fields = new HashMap<String, Object>();
+        fields.put("Attachment_Id__c", company_documents__c.get(position).getAttachment_Id__c());
+        try {
+            restRequest = RestRequest.getRequestForUpdate(getString(R.string.api_version), "Company_Documents__c", company_documents__c.get(position).getId(), fields);
+            new ClientManager(this, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(this, new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        SalesforceSDKManager.getInstance().logout(CardActivity.this);
+                        return;
+                    } else {
+                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                            @Override
+                            public void onSuccess(RestRequest request, RestResponse result) {
+                                Utilities.dismissLoadingDialog();
+                                Log.d("in success", company_documents__c.get(position).getName() + "   " + result.toString());
+                                if (company_documents__c.get(position).getName().startsWith("Person Photo")) {
+                                    Map<String, Object> field = new HashMap<String, Object>();
+                                    field.put("Personal_photo__c", company_documents__c.get(position).getAttachment_Id__c());
+                                    try {
+                                        restRequest = RestRequest.getRequestForUpdate(getString(R.string.api_version), get_webForm().getObject_Name(), getInsertedServiceId(), field);
+                                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+
+                                            @Override
+                                            public void onSuccess(RestRequest request, RestResponse response) {
+
+                                            }
+
+                                            @Override
+                                            public void onError(Exception exception) {
+
+                                            }
+                                        });
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+
+                                }
+
+                                if(position!=(company_documents__c.size()-1)){
+                                    if(company_documents__c.get((position+1)).getAttachment_Id__c()!=null){
+
+                                        ConnectAttachmentWithCompanyDocument(company_documents__c,(position+1));
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onError(Exception exception) {
+                                Utilities.dismissLoadingDialog();
+                                Utilities.showToast(CardActivity.this, RestMessages.getInstance().getErrorMessage());
+                                VolleyError volleyError = (VolleyError) exception;
+                                NetworkResponse response = volleyError.networkResponse;
+                                String json = new String(response.data);
+                                Log.d("error", json);
+                            }
+                        });
+
+//                        String attUrl = client.getClientInfo().resolveUrl("/services/data/v26.0/sobjects/attachment").toString();
+                    }
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    public void ConnectAttachmentWithCompanyDocument(final Company_Documents__c company_documents__c, final int position) {
+       Log.d("Work With "+position,company_documents__c.getName());
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put("Attachment_Id__c", company_documents__c.getAttachment_Id__c());
         try {
@@ -342,7 +422,7 @@ public class CardActivity extends BaseFragmentActivity {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse result) {
                                 Utilities.dismissLoadingDialog();
-                                Log.d("", result.toString());
+                                Log.d("in success", company_documents__c.getName()+"   "+result.toString());
                                 if (company_documents__c.getName().startsWith("Person Photo")) {
                                     Map<String, Object> field = new HashMap<String, Object>();
                                     field.put("Personal_photo__c", company_documents__c.getAttachment_Id__c());
@@ -375,7 +455,7 @@ public class CardActivity extends BaseFragmentActivity {
                                 VolleyError volleyError = (VolleyError) exception;
                                 NetworkResponse response = volleyError.networkResponse;
                                 String json = new String(response.data);
-                                Log.d("", json);
+                                Log.d("error", json);
                             }
                         });
 

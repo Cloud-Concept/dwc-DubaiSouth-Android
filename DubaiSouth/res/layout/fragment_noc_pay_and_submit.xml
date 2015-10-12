@@ -30,7 +30,7 @@
                 android:text="Noc Services"
                 android:gravity="center"
                 android:textSize="14sp"
-                android:maxLength="15"
+
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 />
             <LinearLayout

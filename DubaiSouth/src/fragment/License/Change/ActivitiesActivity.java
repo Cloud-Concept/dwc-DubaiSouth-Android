@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -42,6 +43,7 @@ import java.util.List;
 
 import RestAPI.JSONConstants;
 import cloudconcept.dwc.R;
+import custom.Images;
 import fragment.companyInfo.LicenseInfoFragment;
 import model.LicenseActivity;
 import model.OriginalBusinessActivity;
@@ -80,6 +82,7 @@ View view;
             }
         });
         search= (EditText) findViewById(R.id.search);
+        search.setHint(Html.fromHtml("<p><img src='search'>Search</p>",new Images(this),null));
         search.clearFocus();
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,6 +38,7 @@ import RestAPI.SoqlStatements;
 import adapter.SpinnerAdapter;
 import adapter.visasAdapters.AccessCardAdapter;
 import cloudconcept.dwc.R;
+import custom.Images;
 import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.Card_Management__c;
@@ -108,6 +110,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         etSearch = (EditText) view.findViewById(R.id.etSearch);
         etSearch.clearFocus();
+        etSearch.setHint(Html.fromHtml("<p><img src='search'>Search</p>", new Images(getActivity()), null));
         LinearAddNewCard = (LinearLayout) view.findViewById(R.id.LinearAddNewCard);
         ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
                 Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.access_card_filter)));

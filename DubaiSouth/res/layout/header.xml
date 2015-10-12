@@ -6,28 +6,40 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <custom.DWCRoundedImageView
-        android:id="@+id/view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
+    <RelativeLayout
+        android:id="@+id/lay_rel_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:orientation="vertical"
         android:scaleType="center"
-        android:src="@mipmap/avatar" />
 
+        android:layout_centerHorizontal="true"
+
+        android:background="@drawable/circle_border"
+        android:padding="3dp">
+
+        <custom.DWCRoundedImageView
+            android:id="@+id/view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:orientation="vertical"
+
+            android:src="@mipmap/avatar" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvProfileName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/view"
+        android:layout_below="@+id/lay_rel_img"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="mdoemdowe"
         android:textColor="@color/dwc_blue_color" />

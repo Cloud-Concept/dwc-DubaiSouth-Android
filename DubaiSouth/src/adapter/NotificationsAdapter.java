@@ -12,6 +12,8 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.VolleyError;
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
 import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
@@ -26,7 +28,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cloudconcept.dwc.BaseActivity;
 import cloudconcept.dwc.R;
+import dataStorage.StoreData;
 import model.NotificationManagement;
 import utilities.Utilities;
 
@@ -67,6 +71,55 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
         imageView = (ImageView) convertView.findViewById(R.id.imageNotificationRow);
         relative = (RelativeLayout) convertView.findViewById(R.id.relative);
+        relative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!objects.get(position).isMessageRead()) {
+                    Utilities.showloadingDialog(context);
+                    new ClientManager(context, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(context, new ClientManager.RestClientCallback() {
+                        @Override
+                        public void authenticatedRestClient(RestClient client) {
+                            if (client == null) {
+                                SalesforceSDKManager.getInstance().logout(context);
+                                return;
+                            } else {
+                                Map<String, Object> caseFields = new HashMap<String, Object>();
+                                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                                caseFields.put("Read_Date_and_Time__c", sdf.format(new Date(System.currentTimeMillis())));
+                                caseFields.put("isMessageRead__c", true);
+                                try {
+                                    RestRequest restRequest = RestRequest.getRequestForUpdate(context.getString(R.string.api_version), "Notification_Management__c", objects.get(position).getId(), caseFields);
+                                    client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+                                        @Override
+                                        public void onSuccess(RestRequest request, RestResponse response) {
+                                            Log.d("MyTag", "onSuccess " + response.toString());
+                                            Utilities.dismissLoadingDialog();
+                                            objects.get(position).setIsMessageRead(true);
+                                            notifyDataSetChanged();
+                                            new StoreData(context).setNotificationCount(new StoreData(context).getNotificationCount()-1+"");
+                                            ((BaseActivity)context).ManageBadgeNotification();
+                                        }
+
+                                        @Override
+                                        public void onError(Exception exception) {
+                                            VolleyError volleyError = (VolleyError) exception;
+                                            NetworkResponse response = volleyError.networkResponse;
+                                            String json = new String(response.data);
+                                            Log.d("", json);
+                                            Utilities.dismissLoadingDialog();
+                                        }
+                                    });
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
 
         tvNotificationMessage.setText(Utilities.stringNotNull(objects.get(position).getMobile_Compiled_Message()));
         String pattern = "yyyy-MM-dd'T'HH:mm:ss";
@@ -152,5 +205,8 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
 
         return convertView;
     }
-
+    @Override
+    public boolean isEnabled(int position) {
+        return true;
+    }
 }

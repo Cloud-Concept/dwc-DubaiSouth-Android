@@ -80,10 +80,11 @@ public class PayAndSubmit extends Fragment {
         // Inflate the layout for this fragment
         ImageView image = (ImageView) view.findViewById(R.id.imageEmpoyeeNOC);
         TextView labelPerson = (TextView) view.findViewById(R.id.labelPerson);
+        labelPerson.setVisibility(View.GONE);
         TextView date = (TextView) view.findViewById(R.id.date);
         TextView title = (TextView) view.findViewById(R.id.title);
         title.setVisibility(View.VISIBLE);
-        title.setText("Card Services");
+        title.setText("Access Card Services");
         long yourmilliseconds = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
         Date resultdate = new Date(yourmilliseconds);
@@ -94,7 +95,7 @@ public class PayAndSubmit extends Fragment {
         TextView person = (TextView) view.findViewById(R.id.personName);
 
         person.setText(activity.getCard().getFull_Name__c());
-
+person.setVisibility(View.GONE);
         TextView ref = (TextView) view.findViewById(R.id.refnumber);
 
         ref.setText(activity.getCaseNumber());
