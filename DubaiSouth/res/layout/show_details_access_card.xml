@@ -163,25 +163,30 @@
         android:layout_below="@+id/header"
         android:background="@color/noc_top_background">
 
-        <custom.DWCRoundedImageView
-            android:id="@+id/view"
-            android:layout_centerHorizontal="true"
-            android:orientation="vertical"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:padding="10dip"
-            android:src="@mipmap/avatar"
+        <RelativeLayout
+            android:id="@+id/lay_rel_img"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/circle_border"
+            android:layout_centerHorizontal="true"
+            android:padding="2dp"
             android:scaleType="center">
 
-        </custom.DWCRoundedImageView>
+            <custom.DWCRoundedImageView
+                android:id="@+id/view"
+                android:layout_width="71dp"
+                android:layout_height="71dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/avatar" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tvCardOwnerName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view"
+            android:layout_below="@+id/lay_rel_img"
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"

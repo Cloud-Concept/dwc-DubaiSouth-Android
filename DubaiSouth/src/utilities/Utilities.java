@@ -2173,7 +2173,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -2181,7 +2180,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -2248,7 +2246,6 @@ import cloudconcept.dwc.R;
 import custom.CircularProgressBarDrawable;
 import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
-import custom.RoundedImageView;
 import custom.customdialog.Effectstype;
 import custom.customdialog.NiftyDialogBuilder;
 import dataStorage.StoreData;
@@ -2387,7 +2384,32 @@ public class Utilities {
     }
 
     public static synchronized void setUserPhoto(Activity act, final String attachmentId, final DWCRoundedImageView smartImageView) {
+        boolean isFound = false;
+        String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+        File folder = new File(extStorageDirectory, "attachment-export");
+        if (folder.exists()) {
+            ArrayList<String> files = getListOfAttachments();
+            for (int i = 0; i < files.size(); i++) {
+                if (files.get(i).equals(attachmentId)) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (isFound) {
+                String path = Environment.getExternalStorageDirectory() + "/attachment-export/" + attachmentId;
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+                smartImageView.setImageBitmap(bitmap);
+            } else {
+                DownloadAttachment(act, attachmentId, smartImageView);
+            }
+        } else {
+            DownloadAttachment(act, attachmentId, smartImageView);
+        }
+    }
 
+    public static void DownloadAttachment(Activity act, final String attachmentId, final DWCRoundedImageView smartImageView) {
         if (!attachmentId.equals("") && attachmentId != null) {
             List<String> fieldList = new ArrayList<String>();
             fieldList.add("Id");
@@ -3816,12 +3838,12 @@ public class Utilities {
         long diffMinutes;
         long diffHours;
         long diffDays = 0;
-        String[] expiry_date_array={"2015","07","20"};
+        String[] expiry_date_array = {"2015", "07", "20"};
         try {
             expiry_date_array = expiryDate.split("-");
-}catch (NullPointerException e){
+        } catch (NullPointerException e) {
 
-}
+        }
         long diff = 0;
 
         ActualExpiryDate = expiry_date_array[1] + "/" + expiry_date_array[2] + "/" + expiry_date_array[0] + " 09:29:58";
@@ -3928,7 +3950,7 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
                         _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel Visa", R.drawable.cancellicense));
+                        _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel License", R.mipmap.cancel_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {

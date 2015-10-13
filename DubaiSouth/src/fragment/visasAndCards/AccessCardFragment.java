@@ -192,24 +192,24 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
     public void CallAccessCardService(String visa_validity_status, final CallType callType) {
         if (callType == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getAccessCardResponse().equals("")) {
             ArrayList<Card_Management__c> _Returnedcards = SFResponseManager.parseCardsData(new StoreData(getActivity().getApplicationContext()).getAccessCardResponse());
-            if (_cards.size() == 0) {
-                _cards.addAll(_Returnedcards);
-            } else {
-                for (int i = 0; i < _Returnedcards.size(); i++) {
-                    if (_cards.size() > 0) {
-                        boolean isFound = false;
-                        for (int j = 0; j < _cards.size(); j++) {
-                            if (_Returnedcards.get(i).getId().equals(_cards.get(j).getId())) {
-                                isFound = true;
-                                break;
-                            }
-                        }
-                        if (!isFound) {
-                            _cards.add(_Returnedcards.get(i));
-                        }
-                    }
-                }
-            }
+//            if (_cards.size() == 0) {
+            _cards.addAll(_Returnedcards);
+//            } else {
+//                for (int i = 0; i < _Returnedcards.size(); i++) {
+//                    if (_cards.size() > 0) {
+//                        boolean isFound = false;
+//                        for (int j = 0; j < _cards.size(); j++) {
+//                            if (_Returnedcards.get(i).getId().equals(_cards.get(j).getId())) {
+//                                isFound = true;
+//                                break;
+//                            }
+//                        }
+//                        if (!isFound) {
+//                            _cards.add(_Returnedcards.get(i));
+//                        }
+//                    }
+//                }
+//            }
 
             adapter = new AccessCardAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.item_row_access_card, _cards);
             expandableLayoutListView.setAdapter(adapter);
@@ -278,24 +278,24 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
                                         }
                                         new StoreData(getActivity().getApplicationContext()).saveAccessCardResponse(result.toString());
                                         ArrayList<Card_Management__c> _Returnedcards = SFResponseManager.parseCardsData(result.toString());
-                                        if (_cards.size() == 0) {
+//                                        if (_cards.size() == 0) {
                                             _cards.addAll(_Returnedcards);
-                                        } else {
-                                            for (int i = 0; i < _Returnedcards.size(); i++) {
-                                                if (_cards.size() > 0) {
-                                                    boolean isFound = false;
-                                                    for (int j = 0; j < _cards.size(); j++) {
-                                                        if (_Returnedcards.get(i).getId().equals(_cards.get(j).getId())) {
-                                                            isFound = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (isFound == false) {
-                                                        _cards.add(_Returnedcards.get(i));
-                                                    }
-                                                }
-                                            }
-                                        }
+//                                        } else {
+//                                            for (int i = 0; i < _Returnedcards.size(); i++) {
+//                                                if (_cards.size() > 0) {
+//                                                    boolean isFound = false;
+//                                                    for (int j = 0; j < _cards.size(); j++) {
+//                                                        if (_Returnedcards.get(i).getId().equals(_cards.get(j).getId())) {
+//                                                            isFound = true;
+//                                                            break;
+//                                                        }
+//                                                    }
+//                                                    if (isFound == false) {
+//                                                        _cards.add(_Returnedcards.get(i));
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
 
                                         adapter = new AccessCardAdapter(getActivity(), getActivity().getApplicationContext(), R.layout.item_row_access_card, _cards);
                                         expandableLayoutListView.setAdapter(adapter);

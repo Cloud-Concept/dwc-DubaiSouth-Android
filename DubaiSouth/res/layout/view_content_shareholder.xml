@@ -4,18 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <custom.DWCRoundedImageView
-        android:id="@+id/view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+    <RelativeLayout
+        android:id="@+id/lay_rel_img"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="31dp"
-        android:orientation="vertical"
-        android:padding="10dip"
-        android:scaleType="center"
-        android:src="@mipmap/avatar" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/circle_border"
+        android:padding="2dp"
+        android:scaleType="center">
+
+        <custom.DWCRoundedImageView
+            android:id="@+id/view"
+            android:layout_width="71dp"
+            android:layout_height="71dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/avatar" />
+    </RelativeLayout>
 
 
     <TextView
@@ -26,7 +31,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="15dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="oewomfdoewnfoi"
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -40,7 +45,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="Nationality:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
@@ -64,7 +69,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="passport Number:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
@@ -88,7 +93,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="Ownership%:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
@@ -112,7 +117,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="Number Of Shares:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />
@@ -136,7 +141,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="Start Date:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey" />

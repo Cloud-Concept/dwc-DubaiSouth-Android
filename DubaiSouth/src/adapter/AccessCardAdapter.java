@@ -15,7 +15,6 @@ import java.util.List;
 import cloudconcept.dwc.R;
 import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
-import custom.SmartRoundedImageView;
 import custom.expandableView.ExpandableLayoutItem;
 import model.Card_Management__c;
 import model.ServiceItem;
@@ -71,17 +70,11 @@ public class AccessCardAdapter extends ArrayAdapter<Card_Management__c> {
             holder._smartEmployeeImage = (DWCRoundedImageView) relativeHeader.findViewById(R.id.view);
             RelativeLayout relativeContent = holder.item.getContentLayout();
             holder._horizontalListView = (HorizontalListView) relativeContent.findViewById(R.id.horizontalServices);
-            if (_cardManagement.getPersonal_Photo__c() != null && !_cardManagement.getPersonal_Photo__c().equals(""))
-                Utilities.setUserPhoto(context, _cardManagement.getPersonal_Photo__c(), holder._smartEmployeeImage);
             convertView.setTag(holder);
 
         } else {
             holder = (AccessCardViewHolder) convertView.getTag();
         }
-
-
-
-
 //        tvCardNumber.setText(Utilities.stringNotNull(_cardManagement.getCard_Number__c()));
         holder.tvFullName.setText(Utilities.stringNotNull(_cardManagement.getFull_Name__c()));
         holder.tvType.setText(Utilities.stringNotNull(_cardManagement.getCard_Type__c()));
@@ -112,6 +105,8 @@ public class AccessCardAdapter extends ArrayAdapter<Card_Management__c> {
 
 //        }
 
+        if (_cardManagement.getPersonal_Photo__c() != null && !_cardManagement.getPersonal_Photo__c().equals(""))
+            Utilities.setUserPhoto(context, _cardManagement.getPersonal_Photo__c(), holder._smartEmployeeImage);
 
         Calendar _calendar = Calendar.getInstance();
         if (_cardManagement.getCard_Expiry_Date__c() != null && !_cardManagement.getCard_Expiry_Date__c().equals("")) {
