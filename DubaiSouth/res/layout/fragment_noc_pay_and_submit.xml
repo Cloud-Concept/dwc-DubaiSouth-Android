@@ -29,7 +29,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Noc Services"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textSize="16sp"
 
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 />
@@ -55,14 +55,14 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                      />
 
-                <custom.CorisandeRegularTextView
+                <custom.CorisandeLightTextView
                     android:id="@+id/personName"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:maxLength="15"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -89,7 +89,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                      />
 
-                <custom.CorisandeRegularTextView
+                <custom.CorisandeLightTextView
                     android:id="@+id/refnumber"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -97,7 +97,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:text="Small Text"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:maxLength="15"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
@@ -123,7 +123,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                      />
 
-                <custom.CorisandeRegularTextView
+                <custom.CorisandeLightTextView
                     android:id="@+id/date"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -131,7 +131,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:text="Small Text"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:maxLength="15"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
@@ -157,10 +157,10 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                      />
 
-                <custom.CorisandeRegularTextView
+                <custom.CorisandeLightTextView
                     android:id="@+id/total_Amount"
                     android:layout_width="0dp"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:maxLength="15"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -191,10 +191,10 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                      />
 
-                <custom.CorisandeRegularTextView
+                <custom.CorisandeLightTextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:maxLength="15"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

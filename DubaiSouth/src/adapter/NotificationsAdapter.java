@@ -126,6 +126,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         SimpleDateFormat dtf = new SimpleDateFormat(pattern);
         try {
             Date dateTime = dtf.parse(Utilities.stringNotNull(objects.get(position).getCreatedDate()));
+
             pattern = "dd-MMM-yyyy hh:mm a";
             dtf = new SimpleDateFormat(pattern);
             tvDate.setText(dtf.format(dateTime));
@@ -147,7 +148,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         } else if (objects.get(position).getCase_Process_Name().equals(services[2])) {
             imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.renew_license));
         } else if (objects.get(position).getCase_Process_Name().equals(services[3])) {
-            imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.notification_license));
+            imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.notification_card_icon));
         } else if (objects.get(position).getCase_Process_Name().equals(services[4])) {
             imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.notification_registration));
         } else if (objects.get(position).getCase_Process_Name().equals(services[5])) {
