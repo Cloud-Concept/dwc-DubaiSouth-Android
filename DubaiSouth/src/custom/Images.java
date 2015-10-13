@@ -18,13 +18,13 @@ public Images(Activity activity){
             int id=0;
 
             if (source.equals("search")) {
-                id = android.R.drawable.ic_menu_search;
+                id = R.drawable.search;
             }
 
 
 
             Drawable d = activity.getResources().getDrawable(id);
-            d.setBounds(0,15,d.getIntrinsicWidth(),d.getIntrinsicHeight()+5);
+            d.setBounds(-10,20,d.getIntrinsicWidth()-10,d.getIntrinsicHeight()+20);
 
             return d;
         }
