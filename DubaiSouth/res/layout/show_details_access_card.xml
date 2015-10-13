@@ -171,7 +171,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/circle_border"
             android:layout_centerHorizontal="true"
-            android:padding="2dp"
+            android:padding="1dp"
             android:scaleType="center">
 
             <custom.DWCRoundedImageView

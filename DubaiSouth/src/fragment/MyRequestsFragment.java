@@ -32,6 +32,7 @@ import java.util.Calendar;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
+import adapter.MyRequestSpinnerAdapter;
 import adapter.MyRequestsAdapter;
 import adapter.SimpleSpinnerStringAdapter;
 import adapter.SpinnerAdapter;
@@ -97,10 +98,10 @@ public class MyRequestsFragment extends Fragment {
         lstMyRequests = (ListView) view.findViewById(R.id.lstMyRequests);
         spinnerStatusFilter = (Spinner) view.findViewById(R.id.spinnerStatus);
         spinnerRequestTypeFilter = (Spinner) view.findViewById(R.id.spinnerType);
-        ArrayAdapter<String> dataAdapter = new SimpleSpinnerStringAdapter(getActivity(), R.layout.spinner_item,0, status_filter);
+        MyRequestSpinnerAdapter dataAdapter = new MyRequestSpinnerAdapter(getActivity(), R.layout.spinner_item,0, status_filter);
 //        dataAdapter.setDropDownViewResource(R.layout.myrequest_spinner_item);
         spinnerStatusFilter.setAdapter(dataAdapter);
-        dataAdapter = new SimpleSpinnerStringAdapter(getActivity(), R.layout.spinner_item, 0,request_type_filter);
+        dataAdapter = new MyRequestSpinnerAdapter(getActivity(), R.layout.spinner_item, 0,request_type_filter);
 //        dataAdapter.setDropDownViewResource(R.layout.myrequest_spinner_item);
         spinnerRequestTypeFilter.setAdapter(dataAdapter);
 //        SimpleSpinnerStringAdapter dataAdapter2 = new SimpleSpinnerStringAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
