@@ -70,7 +70,7 @@ public class CompanyDocumentsActivityAdapter extends BaseAdapter {
         if (String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()).equals("NaN")) {
             tvVersion.setText("Version: V.0");
         } else {
-            tvVersion.setText("Version: V."+String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()));
+            tvVersion.setText("Version: V."+String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()).substring(0, String.valueOf(filteredCompanyDocuments.get(position).getVersion__c()).length() - 2));
         }
 
 

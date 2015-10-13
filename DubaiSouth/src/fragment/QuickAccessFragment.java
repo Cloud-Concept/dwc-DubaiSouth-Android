@@ -80,6 +80,7 @@ public class QuickAccessFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ActivitiesLauncher.openNewCardActivity(getActivity().getApplicationContext(), "1");
+                QuickAccessFragment.this.getActivity().finish();
             }
         });
 
@@ -88,15 +89,18 @@ public class QuickAccessFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ActivitiesLauncher.openNewCardActivity(getActivity().getApplicationContext(), "1");
+                QuickAccessFragment.this.getActivity().finish();
             }
         });
     }
 
     private void PerformEmployeeNOCAction() {
         ActivitiesLauncher.openEmployeeListActivity(getActivity().getApplicationContext());
+        getActivity().finish();
     }
 
     private void PerformCompanyNOCAction() {
         ActivitiesLauncher.openCompanyNocActivity(getActivity().getApplicationContext());
+        getActivity().finish();
     }
 }

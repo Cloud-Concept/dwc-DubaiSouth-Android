@@ -110,6 +110,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                     parameters.put("accountID", Utilities.stringNotNull(activity.getUser().get_contact().get_account().getID()));
                     parameters.put("Dur", activity.getDuration());
                     activity.setParameters(parameters);
+                    tvTitle.setText("Details");
                     super.onClick(v);
                 }
             } else if (getStatus() == 2) {
@@ -132,6 +133,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
         } else if (v == btnBack || v == btnBackTransparent) {
 
             if (getStatus() == 3) {
+                tvTitle.setText("Details");
 //                    activity.setInsertedCaseId(null);
 //                    activity.setInsertedServiceId(null);
             } else if (getStatus() == 4) {
@@ -151,6 +153,8 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                     btnNOC4.setGravity(Gravity.CENTER);
                     btnNOC4.setText("4");
                 }
+            }else if(getStatus()==2){
+                tvTitle.setText("New Card");
             }
             super.onClick(v);
         } else {

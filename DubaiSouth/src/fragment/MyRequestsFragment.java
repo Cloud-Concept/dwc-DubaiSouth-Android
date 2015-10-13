@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ import adapter.MyRequestsAdapter;
 import adapter.SimpleSpinnerStringAdapter;
 import adapter.SpinnerAdapter;
 import cloudconcept.dwc.R;
+import custom.Images;
 import dataStorage.StoreData;
 import model.MyRequest;
 import model.User;
@@ -90,6 +92,7 @@ public class MyRequestsFragment extends Fragment {
 
     private void InitializeViews(View view) {
         etSearch = (EditText) view.findViewById(R.id.etSearch);
+        etSearch.setHint(Html.fromHtml("<p><img src='search'>Search</p>", new Images(getActivity()), null));
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         lstMyRequests = (ListView) view.findViewById(R.id.lstMyRequests);
         spinnerStatusFilter = (Spinner) view.findViewById(R.id.spinnerStatus);

@@ -1,6 +1,5 @@
 package fragment.Cards;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,6 +31,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import RestAPI.JSONConstants;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
@@ -38,12 +39,8 @@ import activity.CompanyDocumentsActivity;
 import adapter.CompanyDocumentsAdapter;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
-
 import fragment.BaseFragmentFiveSteps;
-import fragmentActivity.BaseFragmentActivity;
 import fragmentActivity.CardActivity;
-
-import fragmentActivity.VisaActivity;
 import model.Company_Documents__c;
 import model.Receipt_Template__c;
 import model.User;
@@ -83,10 +80,10 @@ public class NOCAttachmentPage extends Fragment {
         InitializeViews(view);
         if (getActivity() instanceof CardActivity)
             activity = (CardActivity) getActivity();
-if(activity.getType().equals("2")){
-    return view;
-}
-        if(!(activity.geteServiceAdministration().getNo_of_Upload_Docs__c()>0)){
+        if (activity.getType().equals("2")) {
+            return view;
+        }
+        if (!(activity.geteServiceAdministration().getNo_of_Upload_Docs__c() > 0)) {
             return view;
         }
         _companyDocuments = new ArrayList<Company_Documents__c>();
@@ -97,7 +94,7 @@ if(activity.getType().equals("2")){
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(activity.getType().equals("2")||!(activity.geteServiceAdministration().getNo_of_Upload_Docs__c()>0)){
+        if (activity.getType().equals("2") || !(activity.geteServiceAdministration().getNo_of_Upload_Docs__c() > 0)) {
             PerfromParentNext();
         }
 
@@ -129,6 +126,8 @@ if(activity.getType().equals("2")){
                                             item.setHasAttachmentBefore(true);
                                     }
                                     lstAttachments.setAdapter(new CompanyDocumentsAdapter(getActivity().getApplicationContext(), _companyDocuments));
+                                    if (activity.getType().equals("3"))
+                                        attachOldToNew();
                                 } else {
                                     filesUploaded = false;
                                     String soqlCompanyRecordType = SoqlStatements.getInstance().constructCompanyDocumentsRecordType();
@@ -275,35 +274,39 @@ if(activity.getType().equals("2")){
                 }
             });
         } else {
-            lstAttachments.setAdapter(new CompanyDocumentsAdapter(getActivity().getApplicationContext(), companyDocuments));
-            lstAttachments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-//                    view.setSelected(true);
-                    new BottomSheet.Builder(getActivity()).title("Choose Attachment Option").sheet(R.menu.list).listener(new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            switch (which) {
-                                case R.id.camera:
-                                    loadImagefromCamera(position, _companyDocuments.get(position));
-                                    break;
-                                case R.id.existing_document:
-                                    intent = new Intent(getActivity().getApplicationContext(), CompanyDocumentsActivity.class);
-                                    Gson gson = new Gson();
-                                    String companyDocumentString = gson.toJson(_companyDocuments.get(position));
-                                    intent.putExtra("position", position);
-                                    intent.putExtra("company_documents__c", companyDocumentString);
-                                    getActivity().startActivityForResult(intent, 1);
-                                    break;
-                                case R.id.gallery:
-                                    loadImagefromGallery(position, _companyDocuments.get(position));
-                                    break;
-                            }
-                        }
-                    }).show();
-                }
-            });
 
+            if (activity.getType().equals("3"))
+                attachOldToNew();
+            else {
+                lstAttachments.setAdapter(new CompanyDocumentsAdapter(getActivity().getApplicationContext(), companyDocuments));
+                lstAttachments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+//                    view.setSelected(true);
+                        new BottomSheet.Builder(getActivity()).title("Choose Attachment Option").sheet(R.menu.list).listener(new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which) {
+                                    case R.id.camera:
+                                        loadImagefromCamera(position, _companyDocuments.get(position));
+                                        break;
+                                    case R.id.existing_document:
+                                        intent = new Intent(getActivity().getApplicationContext(), CompanyDocumentsActivity.class);
+                                        Gson gson = new Gson();
+                                        String companyDocumentString = gson.toJson(_companyDocuments.get(position));
+                                        intent.putExtra("position", position);
+                                        intent.putExtra("company_documents__c", companyDocumentString);
+                                        getActivity().startActivityForResult(intent, 1);
+                                        break;
+                                    case R.id.gallery:
+                                        loadImagefromGallery(position, _companyDocuments.get(position));
+                                        break;
+                                }
+                            }
+                        }).show();
+                    }
+                });
+            }
             Utilities.dismissLoadingDialog();
 
         }
@@ -353,6 +356,8 @@ if(activity.getType().equals("2")){
         adapter = new CompanyDocumentsAdapter(activity.getApplicationContext(), _companyDocuments);
         lstAttachments.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
     }
 
     public static boolean ValidateAttachments() {
@@ -363,5 +368,100 @@ if(activity.getType().equals("2")){
             }
         }
         return true;
+    }
+
+
+    public void attachOldToNew() {
+        new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+            @Override
+            public void authenticatedRestClient(final RestClient client) {
+                if (client == null) {
+                    SalesforceSDKManager.getInstance().logout(getActivity());
+                    return;
+                } else {
+                    final String soql = "select Attachment_Id__c,name,Id from Company_Documents__c where Card_Management__c= '" + activity.getCard().getId() + "'";
+                    try {
+                        RestRequest restRequestCompanyDocumentsRecordType = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
+                        client.sendAsync(restRequestCompanyDocumentsRecordType, new RestClient.AsyncRequestCallback() {
+
+                            @Override
+                            public void onSuccess(RestRequest request, RestResponse result) {
+                                Log.d("", result.toString());
+                                ArrayList<Company_Documents__c> _companyDocumentss = new ArrayList<Company_Documents__c>();
+
+                                try {
+                                    JSONObject jsonObject = new JSONObject(result.toString());
+                                    JSONArray jArrayRecords = jsonObject.getJSONArray(JSONConstants.RECORDS);
+                                    if (jArrayRecords.length() > 0) {
+                                        for (int i = 0; i < jArrayRecords.length(); i++) {
+                                            Company_Documents__c temp = new Company_Documents__c();
+                                            temp.setAttachment_Id__c(jArrayRecords.getJSONObject(i).getString("Attachment_Id__c"));
+                                            temp.setName(jArrayRecords.getJSONObject(i).getString("Name"));
+                                            temp.setId(jArrayRecords.getJSONObject(i).getString("Id"));
+                                            _companyDocumentss.add(temp);
+                                        }
+                                    }
+
+
+                                    for (int i = 0; i < _companyDocumentss.size(); i++)
+                                        for (int j = 0; j < _companyDocuments.size(); j++) {
+                                            if (_companyDocuments.get(j).getName().toLowerCase().equals(_companyDocumentss.get(i).getName().toLowerCase())) {
+                                                _companyDocuments.get(j).setAttachment_Id__c(_companyDocumentss.get(i).getAttachment_Id__c());
+                                                _companyDocumentss.get(i).setId(_companyDocuments.get(j).getId());
+                                                _companyDocuments.get(j).setHasAttachment(true);
+                                            }
+
+                                        }
+                                    activity.setCompanyDocuments(_companyDocuments);
+                                    lstAttachments.setAdapter(new CompanyDocumentsAdapter(getActivity().getApplicationContext(), _companyDocuments));
+                                    lstAttachments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+//                    view.setSelected(true);
+                                            new BottomSheet.Builder(getActivity()).title("Choose Attachment Option").sheet(R.menu.list).listener(new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    switch (which) {
+                                                        case R.id.camera:
+                                                            loadImagefromCamera(position, _companyDocuments.get(position));
+                                                            break;
+                                                        case R.id.existing_document:
+                                                            intent = new Intent(getActivity().getApplicationContext(), CompanyDocumentsActivity.class);
+                                                            Gson gson = new Gson();
+                                                            String companyDocumentString = gson.toJson(_companyDocuments.get(position));
+                                                            intent.putExtra("position", position);
+                                                            intent.putExtra("company_documents__c", companyDocumentString);
+                                                            getActivity().startActivityForResult(intent, 1);
+                                                            break;
+                                                        case R.id.gallery:
+                                                            loadImagefromGallery(position, _companyDocuments.get(position));
+                                                            break;
+                                                    }
+                                                }
+                                            }).show();
+                                        }
+                                    });
+                                    if (_companyDocumentss.size() > 0)
+                                        activity.ConnectAttachmentWithCompanyDocument(_companyDocumentss, 0);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                            @Override
+                            public void onError(Exception exception) {
+                                Utilities.showToast(getActivity(), RestMessages.getInstance().getErrorMessage());
+                                Utilities.dismissLoadingDialog();
+                                getActivity().finish();
+                            }
+                        });
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 }

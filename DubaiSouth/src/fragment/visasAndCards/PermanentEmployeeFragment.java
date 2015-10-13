@@ -3,6 +3,7 @@ package fragment.visasAndCards;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ import RestAPI.SoqlStatements;
 import adapter.SpinnerAdapter;
 import adapter.visasAdapters.PermanentEmployeeListAdapter;
 import cloudconcept.dwc.R;
+import custom.Images;
 import custom.expandableView.ExpandableLayoutListView;
 import dataStorage.StoreData;
 import model.Visa;
@@ -86,6 +88,7 @@ public class PermanentEmployeeFragment extends Fragment {
         mSwipeRefreshLayout = (SwipyRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         etSearch = (EditText) view.findViewById(R.id.etSearch);
         etSearch.clearFocus();
+        etSearch.setHint(Html.fromHtml("<p><img src='search'>Search</p>", new Images(getActivity()), null));
         ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
                 Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
         spinnerFilterPermanentEmployee.setAdapter(dataAdapter);

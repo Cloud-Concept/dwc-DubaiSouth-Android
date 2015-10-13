@@ -3816,9 +3816,12 @@ public class Utilities {
         long diffMinutes;
         long diffHours;
         long diffDays = 0;
+        String[] expiry_date_array={"2015","07","20"};
+        try {
+            expiry_date_array = expiryDate.split("-");
+}catch (NullPointerException e){
 
-        String[] expiry_date_array = expiryDate.split("-");
-
+}
         long diff = 0;
 
         ActualExpiryDate = expiry_date_array[1] + "/" + expiry_date_array[2] + "/" + expiry_date_array[0] + " 09:29:58";
