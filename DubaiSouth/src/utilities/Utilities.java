@@ -2246,6 +2246,7 @@ import adapter.NationalityAdapter;
 import adapter.formfieldAdapter;
 import cloudconcept.dwc.R;
 import custom.CircularProgressBarDrawable;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
 import custom.RoundedImageView;
 import custom.customdialog.Effectstype;
@@ -2385,7 +2386,7 @@ public class Utilities {
         Toast.makeText(act, message, Toast.LENGTH_LONG).show();
     }
 
-    public static synchronized void setUserPhoto(Activity act, final String attachmentId, final RoundedImageView smartImageView) {
+    public static synchronized void setUserPhoto(Activity act, final String attachmentId, final DWCRoundedImageView smartImageView) {
 
         if (!attachmentId.equals("") && attachmentId != null) {
             List<String> fieldList = new ArrayList<String>();
@@ -3640,10 +3641,10 @@ public class Utilities {
         private final RestClient client;
         private final Attachment attachment;
         String path;
-        RoundedImageView smartImageView;
+        DWCRoundedImageView smartImageView;
         boolean isFound = false;
 
-        public DownloadAttachmentBodyForRoundedImage(RestClient client, Attachment attachment, RoundedImageView smartImageView) {
+        public DownloadAttachmentBodyForRoundedImage(RestClient client, Attachment attachment, DWCRoundedImageView smartImageView) {
             this.client = client;
             this.attachment = attachment;
             this.smartImageView = smartImageView;
@@ -3794,7 +3795,7 @@ public class Utilities {
     }
 
 
-    private static ArrayList<String> getListOfAttachments() {
+    public static ArrayList<String> getListOfAttachments() {
         File sdCardRoot = Environment.getExternalStorageDirectory();
 
         File yourDir = new File(sdCardRoot, "attachment-export");
