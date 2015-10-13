@@ -412,6 +412,7 @@ public class NOCAttachmentPage extends Fragment {
                                             }
 
                                         }
+                                    activity.setCompanyDocuments(_companyDocuments);
                                     lstAttachments.setAdapter(new CompanyDocumentsAdapter(getActivity().getApplicationContext(), _companyDocuments));
                                     lstAttachments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                         @Override
