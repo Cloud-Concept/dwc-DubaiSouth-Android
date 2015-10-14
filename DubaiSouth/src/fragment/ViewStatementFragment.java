@@ -145,7 +145,9 @@ public class ViewStatementFragment extends Fragment {
 
     private void CallFreeZonePaymentRequest(final int offset, final int limit, final String queryFilter, final CallType callType) {
         if (callType == CallType.SPINNETCHANGEDDATA) {
-            Utilities.showloadingDialog(getActivity());
+            if (!Utilities.getIsProgressLoading()) {
+                Utilities.showloadingDialog(getActivity());
+            }
         }
 
         Gson gson = new Gson();
@@ -167,7 +169,9 @@ public class ViewStatementFragment extends Fragment {
                                     mSwipeRefreshLayout.setRefreshing(false);
                                 }
                                 if (callType == CallType.SPINNETCHANGEDDATA) {
-                                    Utilities.dismissLoadingDialog();
+                                    if (Utilities.getIsProgressLoading()) {
+                                        Utilities.dismissLoadingDialog();
+                                    }
                                 }
 
                                 ArrayList<FreeZonePayment> payments = (ArrayList<FreeZonePayment>) SFResponseManager.parseFreeZonePaymentResponse(response.toString());
