@@ -3,8 +3,8 @@
     android:id="@+id/label"
     android:layout_width="fill_parent"
     android:layout_height="35dp"
-    android:gravity="center"
-    android:padding="3dip"
+    android:gravity="left|center_vertical"
+    android:padding="5dip"
     android:text="meodmeow"
     android:textColor="@color/black"
     android:textSize="@dimen/text_view_size_spinner" />
