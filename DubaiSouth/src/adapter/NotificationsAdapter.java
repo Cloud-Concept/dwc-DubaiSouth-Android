@@ -138,7 +138,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         if (objects.get(position).isMessageRead()) {
             relative.setBackgroundColor(context.getResources().getColor(R.color.white));
         } else {
-            relative.setBackgroundColor(context.getResources().getColor(R.color.noc_grey));
+            relative.setBackgroundColor(context.getResources().getColor(R.color.light_grey));
         }
 
         if (objects.get(position).getCase_Process_Name().equals(services[0])) {
