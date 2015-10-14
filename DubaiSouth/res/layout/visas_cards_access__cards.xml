@@ -29,6 +29,7 @@
                 android:entries="@array/permanent_employee_filter"
                 android:keepScreenOn="true"
                 android:padding="5dp"
+                android:dropDownWidth="320dp"
                 android:prompt="@string/prompt"
                 android:textAlignment="textStart" />
         </RelativeLayout>
