@@ -2173,7 +2173,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -2181,7 +2180,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -2228,6 +2226,7 @@ import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -2246,8 +2245,8 @@ import adapter.NationalityAdapter;
 import adapter.formfieldAdapter;
 import cloudconcept.dwc.R;
 import custom.CircularProgressBarDrawable;
+import custom.DWCRoundedImageView;
 import custom.HorizontalListView;
-import custom.RoundedImageView;
 import custom.customdialog.Effectstype;
 import custom.customdialog.NiftyDialogBuilder;
 import dataStorage.StoreData;
@@ -2385,8 +2384,33 @@ public class Utilities {
         Toast.makeText(act, message, Toast.LENGTH_LONG).show();
     }
 
-    public static synchronized void setUserPhoto(Activity act, final String attachmentId, final RoundedImageView smartImageView) {
+    public static synchronized void setUserPhoto(Activity act, final String attachmentId, final DWCRoundedImageView smartImageView) {
+        boolean isFound = false;
+        String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+        File folder = new File(extStorageDirectory, "attachment-export");
+        if (folder.exists()) {
+            ArrayList<String> files = getListOfAttachments();
+            for (int i = 0; i < files.size(); i++) {
+                if (files.get(i).equals(attachmentId)) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (isFound) {
+                String path = Environment.getExternalStorageDirectory() + "/attachment-export/" + attachmentId;
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+                smartImageView.setImageBitmap(bitmap);
+            } else {
+                DownloadAttachment(act, attachmentId, smartImageView);
+            }
+        } else {
+            DownloadAttachment(act, attachmentId, smartImageView);
+        }
+    }
 
+    public static void DownloadAttachment(Activity act, final String attachmentId, final DWCRoundedImageView smartImageView) {
         if (!attachmentId.equals("") && attachmentId != null) {
             List<String> fieldList = new ArrayList<String>();
             fieldList.add("Id");
@@ -3492,90 +3516,73 @@ public class Utilities {
         setupUI(linearLayout, act);
     }
 
-    public static String[] formatStartAndEndDate(String filterItem) {
+    public static Date[] formatStartAndEndDate(String filterItem) {
 
-//        Calendar calendar = Calendar.getInstance();
-//        int currentMonth = calendar.get(Calendar.MONTH) + 1;
-//        int currentYear = calendar.get(Calendar.YEAR);
-//        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-//        Calendar calendar1 = getDateCalendar(currentYear, currentMonth, currentDay);
-//        Date quarterStartDate = new Date();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        if (currentMonth >= 1 && currentMonth <= 3) {
-//            sdf.format(calendar1.getTime());
-////            quarterStartDate = getDate(currentYear, 1, 1);
-//            quarterStartDate = getDate(currentYear, 1, 1);
-//        } else if (currentMonth >= 4 && currentMonth <= 6) {
-//            quarterStartDate = getDate(currentYear, 4, 1);
-//        } else if (currentMonth >= 7 && currentMonth <= 9) {
-//            quarterStartDate = getDate(currentYear, 7, 1);
-//        } else if (currentMonth >= 10 && currentMonth <= 12) {
-//            quarterStartDate = getDate(currentYear, 10, 1);
-//        }
-//
-//        if (filterItem.equals("Current Quarter")) {
-//
-//            startDate = sdf.parse(String.valueOf(quarterStartDate));
-//            calendar = Calendar.getInstance();
-//            calendar.add(Calendar.MONTH, 3);
-//            endDate = sdf.parse(String.valueOf(calendar.getTime()));
-//
-//        } else if (filterItem.equals("Last Quarter")) {
-//            calendar = Calendar.getInstance();
-//            calendar.add(Calendar.MONTH, -3);
-//            startDate = sdf.parse(String.valueOf(calendar.getTime()));
-//            endDate = sdf.parse(String.valueOf(quarterStartDate));
-//        } else if (filterItem.equals("Current Year")) {
-//            startDate = sdf.parse(String.valueOf(getDate(currentYear, 1, 1)));
-//            calendar = Calendar.getInstance();
-//            calendar.add(Calendar.YEAR, 1);
-//            endDate = sdf.parse(String.valueOf(calendar.getTime()));
-//        } else if (filterItem.equals("Last Year")) {
-//            calendar = Calendar.getInstance();
-//            calendar.add(Calendar.YEAR, -1);
-//            startDate = sdf.parse(String.valueOf(getDate(currentYear, 1, 1)));
-//            endDate = sdf.parse(String.valueOf(quarterStartDate));
-//        }
-//
-//        return new Date[]{startDate, endDate};
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = null, endDate = null;
         Calendar calendar = Calendar.getInstance();
-        int currentYear = calendar.get(Calendar.YEAR);
         int currentMonth = calendar.get(Calendar.MONTH) + 1;
+        int currentYear = calendar.get(Calendar.YEAR);
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-        if (currentMonth >= 9 && currentMonth <= 12) {
-            calendar.set(currentYear, 9, 1);
-        } else if (currentMonth < 9 && currentMonth >= 5) {
-            calendar.set(currentYear, 6, 1);
-        } else if (currentMonth < 5 && currentMonth >= 1) {
-            calendar.set(currentYear, 3, 1);
+        Calendar calendar1 = null;
+        try {
+            calendar1 = getDateCalendar(currentYear, currentMonth, currentDay);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
-        String date1 = sdf.format(calendar.getTime());
-        String startDate = null, endDate = null;
+        if (currentMonth >= 1 && currentMonth <= 3) {
+            calendar1.set(currentYear, 1, 1);
+        } else if (currentMonth >= 4 && currentMonth <= 6) {
+            calendar1.set(currentYear, 3, 1);
+        } else if (currentMonth >= 7 && currentMonth <= 9) {
+            calendar1.set(currentYear, 6, 1);
+        } else if (currentMonth >= 10 && currentMonth <= 12) {
+            calendar1.set(currentYear, 9, 1);
+        }
+
         if (filterItem.equals("Current Quarter")) {
-
-            startDate = date1;
-            calendar.add(Calendar.MONTH, 4);
-            endDate = sdf.format(calendar.getTime());
-
+            startDate = calendar1.getTime();
+            calendar1.add(Calendar.MONTH, 3);
+            endDate = calendar1.getTime();
         } else if (filterItem.equals("Last Quarter")) {
-
-            calendar.add(Calendar.MONTH, -4);
-            startDate = sdf.format(calendar.getTime());
-            endDate = date1;
-
+            endDate = calendar1.getTime();
+            calendar1.add(Calendar.MONTH, -3);
+            startDate = calendar1.getTime();
         } else if (filterItem.equals("Current Year")) {
-            startDate = date1;
-            calendar.add(Calendar.YEAR, 1);
-            endDate = sdf.format(calendar.getTime());
+            startDate = calendar1.getTime();
+            calendar1.add(Calendar.YEAR, 1);
+            endDate = calendar1.getTime();
 
         } else if (filterItem.equals("Last Year")) {
-            calendar.add(Calendar.YEAR, -1);
-            startDate = sdf.format(calendar.getTime());
-            endDate = date1;
+            endDate = calendar1.getTime();
+            calendar1.add(Calendar.YEAR, -1);
+            startDate = calendar1.getTime();
         }
-        return new String[]{startDate, endDate};
+        return new Date[]{startDate, endDate};
+    }
+
+    public static Calendar getDateCalendar(int year, int month, int day) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+//        cal.set(Calendar.YEAR, year);
+//        cal.set(Calendar.MONTH, month);
+//        cal.set(Calendar.DAY_OF_MONTH, day);
+//        cal.set(Calendar.HOUR_OF_DAY, 0);
+//        cal.set(Calendar.MINUTE, 0);
+//        cal.set(Calendar.SECOND, 0);
+//        cal.set(Calendar.MILLISECOND, 0);
+        calendar.clear();
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        return calendar;
+    }
+
+    private static Date getDate(int currentYear, int month, int day) {
+        Date date = new Date();
+        date.setYear(currentYear);
+        date.setMonth(month);
+        date.setDate(day);
+        return date;
     }
 
     public static String formatVisitVisaDate(String s) {
@@ -3612,22 +3619,6 @@ public class Utilities {
             }
         }
     }
-
-//    public static Calendar getDateCalendar(int year, int month, int day) throws ParseException {
-//        Calendar calendar = Calendar.getInstance();
-////        cal.set(Calendar.YEAR, year);
-////        cal.set(Calendar.MONTH, month);
-////        cal.set(Calendar.DAY_OF_MONTH, day);
-////        cal.set(Calendar.HOUR_OF_DAY, 0);
-////        cal.set(Calendar.MINUTE, 0);
-////        cal.set(Calendar.SECOND, 0);
-////        cal.set(Calendar.MILLISECOND, 0);
-//        calendar.clear();
-//        calendar.set(Calendar.MONTH, month);
-//        calendar.set(Calendar.YEAR, year);
-//        calendar.set(Calendar.DAY_OF_MONTH, day);
-//        return calendar;
-//    }
 //
 //    public static Date getEndDate(Date date) {
 //
@@ -3640,10 +3631,10 @@ public class Utilities {
         private final RestClient client;
         private final Attachment attachment;
         String path;
-        RoundedImageView smartImageView;
+        DWCRoundedImageView smartImageView;
         boolean isFound = false;
 
-        public DownloadAttachmentBodyForRoundedImage(RestClient client, Attachment attachment, RoundedImageView smartImageView) {
+        public DownloadAttachmentBodyForRoundedImage(RestClient client, Attachment attachment, DWCRoundedImageView smartImageView) {
             this.client = client;
             this.attachment = attachment;
             this.smartImageView = smartImageView;
@@ -3794,7 +3785,7 @@ public class Utilities {
     }
 
 
-    private static ArrayList<String> getListOfAttachments() {
+    public static ArrayList<String> getListOfAttachments() {
         File sdCardRoot = Environment.getExternalStorageDirectory();
 
         File yourDir = new File(sdCardRoot, "attachment-export");
@@ -3815,12 +3806,12 @@ public class Utilities {
         long diffMinutes;
         long diffHours;
         long diffDays = 0;
-        String[] expiry_date_array={"2015","07","20"};
+        String[] expiry_date_array = {"2015", "07", "20"};
         try {
             expiry_date_array = expiryDate.split("-");
-}catch (NullPointerException e){
+        } catch (NullPointerException e) {
 
-}
+        }
         long diff = 0;
 
         ActualExpiryDate = expiry_date_array[1] + "/" + expiry_date_array[2] + "/" + expiry_date_array[0] + " 09:29:58";
@@ -3927,7 +3918,7 @@ public class Utilities {
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("RenewLicenseActivity".toLowerCase())) {
                         _items.add(new ServiceItem("Renew License" + System.getProperty("line.separator") + "Activity", R.mipmap.renew_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelVisa".toLowerCase())) {
-                        _items.add(new ServiceItem("Cancel Visa", R.drawable.cancellicense));
+                        _items.add(new ServiceItem("Cancel Visa", R.mipmap.cancel_visa));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("CancelLicense".toLowerCase())) {
                         _items.add(new ServiceItem("Cancel License", R.mipmap.cancel_card));
                     } else if (services[j].toLowerCase().trim().replace(" ", "").equals("NewNOCCompany".toLowerCase())) {

@@ -320,10 +320,10 @@ public class SoqlStatements {
     public static String constructViewStatementQuery(String id, int offset, int limit, String queryFilter) {
         String soql = "";
         if (queryFilter != null && !queryFilter.equals("")) {
-            soql = String.format(soql_view_statement, id, limit, offset);
-        } else {
-            soql = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = '%s' AND Effect_on_Account__c IN ('Credit', 'Debit') %s ORDER BY CreatedDate DESC LIMIT %s OFFSET %s";
+            soql = "SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c, Request__r.Employee_Ref__r.Name FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = '%s' AND Effect_on_Account__c IN ('Credit', 'Debit') AND %s ORDER BY CreatedDate DESC LIMIT %s OFFSET %s";
             soql = String.format(soql, id, queryFilter, limit, offset);
+        } else {
+            soql = String.format(soql_view_statement, id, limit, offset);
         }
         return soql;
     }

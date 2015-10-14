@@ -30,7 +30,7 @@ public class DWCRoundedImageView extends ImageView {
     }
 
     public DWCRoundedImageView(Context context, AttributeSet attrs,
-                                 int defStyle) {
+                               int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -52,7 +52,7 @@ public class DWCRoundedImageView extends ImageView {
             int w = getWidth(), h = getHeight();
             Bitmap roundBitmap = getCroppedBitmap(bitmap, w);
             canvas.drawBitmap(roundBitmap, 0, 0, null);
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
 
         }
     }

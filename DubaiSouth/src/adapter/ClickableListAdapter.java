@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,10 +23,6 @@ public abstract class ClickableListAdapter extends BaseAdapter {
         mInflater = LayoutInflater.from(context);
         mDataObjects = objects;
         mViewId = viewid;
-
-        if (objects == null) {
-            mDataObjects = new ArrayList<Object>();
-        }
     }
 
 
@@ -48,19 +43,20 @@ public abstract class ClickableListAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
 
         ViewHolder holder;
+//        if (view == null) {
+//            view = mInflater.inflate(mViewId, null);
+//            holder = createHolder(view);
+//            view.setTag(holder);
+//        } else {
+//            holder = (ViewHolder) view.getTag();
+//        }
 
+        view = mInflater.inflate(mViewId, null);
+        holder = createHolder(view);
+//        view.setTag(holder);
 
-        if (view == null) {
-            view = mInflater.inflate(mViewId, null);
-            holder = createHolder(view);
-            view.setTag(holder);
-            // we must update the object's reference
-            holder.data = getItem(position);
-            // call the user's implementation
-            bindHolder(holder);
-        } else {
-            holder = (ViewHolder) view.getTag();
-        }
+        holder.data = mDataObjects.get(position);
+        bindHolder(holder);
 
         return view;
     }

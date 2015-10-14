@@ -9,6 +9,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.ClickableListAdapter;
+import adapter.HorizontalListViewAdapter;
 import cloudconcept.dwc.R;
 import custom.DWCRoundedImageView;
 import custom.HorizontalListView;

@@ -4,17 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/view"
-        layout="@layout/custom_rounded_image_view"></include>
+    <RelativeLayout
+        android:id="@+id/lay_rel_img"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/circle_border"
+        android:padding="2dp"
+        android:scaleType="center">
+
+        <custom.DWCRoundedImageView
+            android:id="@+id/view"
+            android:layout_width="71dp"
+            android:layout_height="71dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/avatar" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/view"
+        android:layout_alignTop="@+id/lay_rel_img"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/text_view_size" />
@@ -25,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvFullName"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="status:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey"
@@ -49,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="passport Number:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey"
@@ -73,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView8"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/view"
+        android:layout_toEndOf="@+id/lay_rel_img"
         android:text="Visa Expiry:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/grey"

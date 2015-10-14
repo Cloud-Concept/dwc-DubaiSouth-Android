@@ -21,8 +21,10 @@ import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
@@ -82,6 +84,10 @@ public class ViewStatementFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != -1) {
                     filterItem = filterItems[position];
+                    freeZonePayments.clear();
+                    mAdapter = new ViewStatementAdapter(getActivity(), getActivity().getApplicationContext(),
+                            R.layout.view_statement_item_row, freeZonePayments);
+                    lstStatements.setAdapter(mAdapter);
                     queryFilter = ConstructDateRangeFilter(filterItems[position]);
                     CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.SPINNETCHANGEDDATA);
                 }
@@ -98,14 +104,14 @@ public class ViewStatementFragment extends Fragment {
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 if (direction == SwipyRefreshLayoutDirection.TOP) {
                     offset = 0;
-                    String[] dates = Utilities.formatStartAndEndDate(filterItem);
+                    Date[] dates = Utilities.formatStartAndEndDate(filterItem);
                     startDate = dates[0] + "T00:00:00Z";
                     endDate = dates[1] + "T00:00:00Z";
                     queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
                     CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.REFRESH);
                 } else {
                     offset += 20;
-                    String[] dates = Utilities.formatStartAndEndDate(filterItem);
+                    Date[] dates = Utilities.formatStartAndEndDate(filterItem);
                     startDate = dates[0] + "T00:00:00Z";
                     endDate = dates[1] + "T00:00:00Z";
                     queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
@@ -114,9 +120,12 @@ public class ViewStatementFragment extends Fragment {
             }
         });
 
-        String[] dates = Utilities.formatStartAndEndDate("Current Quarter");
-        startDate = dates[0] + "T00:00:00Z";
-        endDate = dates[1] + "T00:00:00Z";
+
+        Date[] dates = Utilities.formatStartAndEndDate("Current Quarter");
+
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+        startDate = DATE_FORMAT.format(dates[0]) + "T00:00:00Z";
+        endDate = DATE_FORMAT.format(dates[1]) + "T00:00:00Z";
         queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
         CallFreeZonePaymentRequest(offset, limit, queryFilter, CallType.FIRSTTIME);
     }
@@ -124,9 +133,10 @@ public class ViewStatementFragment extends Fragment {
     private String ConstructDateRangeFilter(String filterItem) {
         queryFilter = "";
         if (!filterItem.equals("All Time")) {
-            String[] dates = Utilities.formatStartAndEndDate(filterItem);
-            startDate = dates[0] + "T00:00:00Z";
-            endDate = dates[1] + "T00:00:00Z";
+            Date[] dates = Utilities.formatStartAndEndDate(filterItem);
+            SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+            startDate = DATE_FORMAT.format(dates[0]) + "T00:00:00Z";
+            endDate = DATE_FORMAT.format(dates[1]) + "T00:00:00Z";
             queryFilter = String.format("CreatedDate >= %s AND CreatedDate <= %s", startDate, endDate);
         }
 
