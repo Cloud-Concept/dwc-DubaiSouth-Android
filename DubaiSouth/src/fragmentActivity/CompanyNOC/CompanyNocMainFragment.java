@@ -164,7 +164,7 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
 
                 super.onClick(v);
             }
-        } else {
+        } else if(v==btnBack||v==btnBackTransparent){
             if (BaseServiceFragment.status == 3) {
 //                CompanyNocMainFragment.insertedServiceId = null;
 //                CompanyNocMainFragment.insertedCaseId = null;
@@ -187,6 +187,9 @@ public class CompanyNocMainFragment extends BaseServiceFragment {
                     btnNOC3.setText("3");
                 }
             }
+            super.onClick(v);
+        }
+        else{
             super.onClick(v);
         }
     }
