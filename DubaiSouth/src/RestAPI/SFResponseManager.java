@@ -1377,9 +1377,30 @@ public class SFResponseManager {
         if (jArrayRecords.length() > 0) {
             for (int i = 0; i < jArrayRecords.length(); i++) {
                 JSONObject jsonRecord = jArrayRecords.getJSONObject(i);
+//                gson = new Gson();
+//                eServices_document_checklist__c = gson.fromJson(jsonRecord.toString(),EServices_Document_Checklist__c.class);
                 ObjectReader or = new ObjectMapper().reader().withType(
                         EServices_Document_Checklist__c.class);
                 eServices_document_checklist__c = or.readValue(jsonRecord.toString());
+                eServices_document_checklist__cs.add(eServices_document_checklist__c);
+            }
+        }
+        return eServices_document_checklist__cs;
+    }
+
+    public static ArrayList<EServices_Document_Checklist__c> parseEServiceDocumentChecklist2(String s) throws JSONException, IOException {
+        JSONObject jsonObject = new JSONObject(s.toString());
+        JSONArray jArrayRecords = jsonObject.getJSONArray(JSONConstants.RECORDS);
+        ArrayList<EServices_Document_Checklist__c> eServices_document_checklist__cs = new ArrayList<EServices_Document_Checklist__c>();
+        EServices_Document_Checklist__c eServices_document_checklist__c;
+        if (jArrayRecords.length() > 0) {
+            for (int i = 0; i < jArrayRecords.length(); i++) {
+                JSONObject jsonRecord = jArrayRecords.getJSONObject(i);
+                gson = new Gson();
+                eServices_document_checklist__c = gson.fromJson(jsonRecord.toString(),EServices_Document_Checklist__c.class);
+//                ObjectReader or = new ObjectMapper().reader().withType(
+//                        EServices_Document_Checklist__c.class);
+//                eServices_document_checklist__c = or.readValue(jsonRecord.toString());
                 eServices_document_checklist__cs.add(eServices_document_checklist__c);
             }
         }
