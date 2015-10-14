@@ -81,6 +81,7 @@ public abstract class BaseActivity extends SalesforceActivity implements View.On
 
         @Override
         public void onClick(View v) {
+            drawerLayout.closeDrawer(Gravity.LEFT);
             SalesforceSDKManager.getInstance().logout(BaseActivity.this);
             new StoreData(getApplicationContext()).reset();
         }
@@ -139,27 +140,35 @@ public abstract class BaseActivity extends SalesforceActivity implements View.On
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position - 1) {
                     case 0:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openHomePageActivity(getApplicationContext());
                         break;
                     case 1:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openDashboardActivity(getApplicationContext());
                         break;
                     case 2:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openMyRequestsActivity(getApplicationContext());
                         break;
                     case 3:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openVisasAndCardsActivity(getApplicationContext());
                         break;
                     case 4:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openCompanyInfoActivity(getApplicationContext());
                         break;
                     case 5:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openReportsActivity(getApplicationContext());
                         break;
                     case 6:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openHomeCompanyDocumentsActivity(getApplicationContext());
                         break;
                     case 7:
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         ActivitiesLauncher.openNeedHelpActivity(getApplicationContext());
                         break;
                     case 8:

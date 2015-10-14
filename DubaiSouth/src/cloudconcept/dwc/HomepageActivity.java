@@ -383,6 +383,7 @@ import com.salesforce.androidsdk.rest.ClientManager;
 import com.salesforce.androidsdk.rest.RestClient;
 import com.salesforce.androidsdk.rest.RestRequest;
 import com.salesforce.androidsdk.rest.RestResponse;
+import com.salesforce.androidsdk.ui.sfnative.SalesforceActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -423,8 +424,8 @@ public class HomepageActivity extends Activity implements
         @Override
         public void onClick(View v) {
             builder.dismiss();
-            new StoreData(getApplicationContext()).reset();
             SalesforceSDKManager.getInstance().logout(HomepageActivity.this);
+            new StoreData(getApplicationContext()).reset();
         }
     };
     private String error;
