@@ -23,10 +23,12 @@ import com.salesforce.androidsdk.rest.RestResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import cloudconcept.dwc.BaseActivity;
 import cloudconcept.dwc.R;
@@ -124,12 +126,13 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         tvNotificationMessage.setText(Utilities.stringNotNull(objects.get(position).getMobile_Compiled_Message()));
         String pattern = "yyyy-MM-dd'T'HH:mm:ss";
         SimpleDateFormat dtf = new SimpleDateFormat(pattern);
+
         try {
             Date dateTime = dtf.parse(Utilities.stringNotNull(objects.get(position).getCreatedDate()));
 
             pattern = "dd-MMM-yyyy hh:mm a";
             dtf = new SimpleDateFormat(pattern);
-            tvDate.setText(dtf.format(dateTime));
+            tvDate.setText(dtf.format(GMTToCVT(dateTime)));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -138,7 +141,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         if (objects.get(position).isMessageRead()) {
             relative.setBackgroundColor(context.getResources().getColor(R.color.white));
         } else {
-            relative.setBackgroundColor(context.getResources().getColor(R.color.noc_grey));
+            relative.setBackgroundColor(context.getResources().getColor(R.color.light_grey));
         }
 
         if (objects.get(position).getCase_Process_Name().equals(services[0])) {
@@ -209,5 +212,22 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
     @Override
     public boolean isEnabled(int position) {
         return true;
+    }
+
+    private  Date GMTToCVT( Date date ){
+        TimeZone tz = TimeZone.getDefault();
+        Date ret = new Date( date.getTime() + tz.getRawOffset() );
+
+        // if we are now in DST, back off by the delta.  Note that we are checking the GMT date, this is the KEY.
+        if ( tz.inDaylightTime( ret )){
+            Date dstDate = new Date( ret.getTime() + tz.getDSTSavings() );
+
+            // check to make sure we have not crossed back into standard time
+            // this happens when we are on the cusp of DST (7pm the day before the change for PDT)
+            if ( tz.inDaylightTime( dstDate )){
+                ret = dstDate;
+            }
+        }
+        return ret;
     }
 }
