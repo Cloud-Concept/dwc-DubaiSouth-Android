@@ -35,6 +35,7 @@ import java.util.Arrays;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
+import adapter.MyRequestSpinnerAdapter;
 import adapter.SpinnerAdapter;
 import adapter.visasAdapters.AccessCardAdapter;
 import cloudconcept.dwc.R;
@@ -112,8 +113,7 @@ public class AccessCardFragment extends Fragment implements View.OnClickListener
         etSearch.clearFocus();
         etSearch.setHint(Html.fromHtml("<p><img src='search'>Search</p>", new Images(getActivity()), null));
         LinearAddNewCard = (LinearLayout) view.findViewById(R.id.LinearAddNewCard);
-        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-                Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.access_card_filter)));
+        ArrayAdapter<String> dataAdapter = new MyRequestSpinnerAdapter(getActivity(), R.layout.spinner_item, 0,getActivity().getApplicationContext().getResources().getStringArray(R.array.access_card_filter));
 
         spinnerFilterAccessCard.setAdapter(dataAdapter);
         strFilter = new StoreData(getActivity().getApplicationContext()).getAccessCardSpinnerFilterValue();

@@ -28,6 +28,7 @@ import java.util.Arrays;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
+import adapter.MyRequestSpinnerAdapter;
 import adapter.SpinnerAdapter;
 import adapter.visasAdapters.MyVisitVisaAdapter;
 import cloudconcept.dwc.R;
@@ -87,8 +88,8 @@ public class VisitVisaFragment extends Fragment {
         etSearch.setHint(Html.fromHtml("<p><img src='search'>Search</p>", new Images(getActivity()), null));
 //        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
 //                Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
-        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-                Arrays.asList(visit_visa_validity_status));
+        ArrayAdapter<String> dataAdapter =  new MyRequestSpinnerAdapter(getActivity(), R.layout.spinner_item, 0,
+                visit_visa_validity_status);
         spinnerFilterPermanentEmployee.setAdapter(dataAdapter);
         strFilter = new StoreData(getActivity().getApplicationContext()).getVisitVisaSpinnerFilterValue();
         if (strFilter.equals("")) {

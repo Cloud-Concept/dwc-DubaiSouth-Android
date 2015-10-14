@@ -28,6 +28,7 @@ import java.util.Arrays;
 import RestAPI.RestMessages;
 import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
+import adapter.MyRequestSpinnerAdapter;
 import adapter.SpinnerAdapter;
 import adapter.visasAdapters.PermanentEmployeeListAdapter;
 import cloudconcept.dwc.R;
@@ -89,8 +90,7 @@ public class PermanentEmployeeFragment extends Fragment {
         etSearch = (EditText) view.findViewById(R.id.etSearch);
         etSearch.clearFocus();
         etSearch.setHint(Html.fromHtml("<p><img src='search'>Search</p>", new Images(getActivity()), null));
-        ArrayAdapter<String> dataAdapter = new SpinnerAdapter(getActivity().getApplicationContext(), R.layout.spinner_item,
-                Arrays.asList(getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter)));
+        ArrayAdapter<String> dataAdapter = new MyRequestSpinnerAdapter(getActivity(), R.layout.spinner_item, 0,getActivity().getApplicationContext().getResources().getStringArray(R.array.permanent_employee_filter));
         spinnerFilterPermanentEmployee.setAdapter(dataAdapter);
         strFilter = new StoreData(getActivity().getApplicationContext()).getPermanentEmployeeSpinnerFilterValue();
         if (strFilter.equals("")) {
