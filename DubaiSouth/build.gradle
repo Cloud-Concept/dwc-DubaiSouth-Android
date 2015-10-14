@@ -18,6 +18,7 @@ dependencies {
     compile 'com.marshalchen.ultimaterecyclerview:library:0.3.17'
     compile project(':library')
     compile project(':jackson-all-1.9.0')
+    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
 }
 
 android {

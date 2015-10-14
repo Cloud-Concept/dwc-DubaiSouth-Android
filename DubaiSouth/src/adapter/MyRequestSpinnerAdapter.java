@@ -44,7 +44,7 @@ public class MyRequestSpinnerAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.customtextnationality, parent,false);
+            convertView = mInflater.inflate(R.layout.myrequest_dropdown_item, parent,false);
         }
 
         TextView tv = (TextView)convertView.findViewById(R.id.spinnertext);

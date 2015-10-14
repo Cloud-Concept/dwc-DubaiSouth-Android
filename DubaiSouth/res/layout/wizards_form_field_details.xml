@@ -22,6 +22,7 @@
 
     <custom.CorisandeLightTextView
         android:layout_width="0dp"
+        fontPath="Corisande-Light.ttf"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
