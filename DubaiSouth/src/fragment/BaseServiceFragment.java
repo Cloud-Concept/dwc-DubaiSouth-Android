@@ -54,8 +54,8 @@ public abstract class BaseServiceFragment extends Fragment implements View.OnCli
     static FragmentManager fragmentManager;
     public static Button btnNext;
     Button btnCancel;
-    Button btnBackTransparent;
-    ImageView btnBack;
+    public Button btnBackTransparent;
+    public ImageView btnBack;
     public static Button btnNOC1;
     public static Button btnNOC2;
     public static Button btnNOC3;
