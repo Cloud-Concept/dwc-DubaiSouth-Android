@@ -22,11 +22,7 @@
     <bookmark url="file://$PROJECT_DIR$/DubaiSouth/src/adapter/CertificatesAdapter.java" line="27" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="550e52e7-d4e9-4956-b9f2-c1173b7fe10d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/BaseActivity.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/BaseActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" afterPath="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="550e52e7-d4e9-4956-b9f2-c1173b7fe10d" name="Default" comment="" />
     <ignored path="dwc-DubaiSouth-Android.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,7 +80,7 @@
       <file leaf-file-name="HomepageActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.036626">
+            <state vertical-scroll-proportion="0.92674804">
               <caret line="424" column="37" selection-start-line="424" selection-start-column="37" selection-end-line="424" selection-end-column="37" />
               <folding>
                 <element signature="e#0#45845#0" expanded="true" />
@@ -7615,8 +7611,8 @@
         <option value="$PROJECT_DIR$/DubaiSouth/res/layout/wizards_form_field_details.xml" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/RestAPI/SFResponseManager.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/fragment/companyDocumentsScreen/CertificatesAndAgreementsFragment2.java" />
-        <option value="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" />
         <option value="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java" />
       </list>
     </option>
   </component>
@@ -8987,7 +8983,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DubaiSouth/src/cloudconcept/dwc/HomepageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.036626">
+        <state vertical-scroll-proportion="0.92674804">
           <caret line="424" column="37" selection-start-line="424" selection-start-column="37" selection-end-line="424" selection-end-column="37" />
           <folding>
             <element signature="e#0#45845#0" expanded="true" />
