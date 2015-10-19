@@ -60,7 +60,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity = (CardActivity) getActivity();
-
+// Initiating Card Type Tag
         if (activity.getType().equals("2")) {
             tvTitle.setText("Cancel Card");
             activity.setInsertedServiceId(activity.getCard().getId());
@@ -202,6 +202,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
     }
 
     public void createCaseRecord() {
+        // Create Case Record on SalesForce.com
         activity = (CardActivity) getActivity();
         if (activity.geteServiceAdministration() != null) {
             Map<String, Object> caseFields = activity.getCaseFields();
@@ -217,11 +218,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
             activity.setCaseFields(caseFields);
         }
-//        if (activity.get_webForm() != null) {
-//            Map<String, Object> caseFields = activity.getCaseFields();
-//            caseFields.put("Visual_Force_Generator__c", activity.get_webForm().getID());
-//            activity.setCaseFields(caseFields);
-//        }
+
 
         if (activity.getInsertedCaseId() != null && !activity.getInsertedCaseId().equals("")) {
             try {
@@ -253,15 +250,20 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                                 activity.setInsertedCaseId(jsonObject.getString("id"));
 
                                 try {
+
                                     restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), SoqlStatements.getCaseNumberQuery(activity.getInsertedCaseId()));
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
+                                // Request Case Number and Case Amount
                                 client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                                     @Override
                                     public void onSuccess(RestRequest request, RestResponse response) {
                                         JSONObject jsonObject = null;
                                         try {
+
+
+
                                             jsonObject = new JSONObject(response.toString());
                                             JSONArray jsonArray = jsonObject.getJSONArray(JSONConstants.RECORDS);
                                             JSONObject jsonRecord = jsonArray.getJSONObject(0);
@@ -309,12 +311,10 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
     }
 
     public void createCardRecord() {
-
+// Create Card Record in SalesForce.com
         Map<String, Object> serviceFields = activity.getServiceFields();
-//        serviceFields = new HashMap<String, Object>();
         serviceFields.put("Request__c", activity.getInsertedCaseId());
         serviceFields.put("Requested_From__c","Portal");
-
         serviceFields.put("RecordTypeId", activity.getCard().getRecordType().getId());
         serviceFields.put("Card_Type__c", activity.getCardType().replaceAll("_", " "));
         serviceFields.put("Account__c",activity.getUser().get_contact().get_account().getID());
@@ -381,12 +381,14 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
         activity.setServiceFields(serviceFields);
         if (activity.getInsertedServiceId() != null && !activity.getInsertedServiceId().equals("")) {
             try {
+                // Update the currentCard
                 restRequest = RestRequest.getRequestForUpdate(getActivity().getString(R.string.api_version), activity.get_webForm().getObject_Name(), activity.getInsertedServiceId(), serviceFields);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try {
+                // Create New Card
                 restRequest = RestRequest.getRequestForCreate(getActivity().getString(R.string.api_version), activity.get_webForm().getObject_Name(), serviceFields);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -404,6 +406,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                         @Override
                         public void onSuccess(RestRequest request, RestResponse response) {
                             try {
+                                // Response in case Create
                                 JSONObject jsonObject = new JSONObject(response.toString());
                                 activity.setInsertedServiceId(jsonObject.getString("id"));
                                 updateCaseRecord(activity.getInsertedCaseId(), activity.getInsertedServiceId());
@@ -411,6 +414,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
                                 e.printStackTrace();
                                 if(response.toString().equals(""))
                                 {
+                                    // Response in case Update
                                     if (activity.getType().equals("2")) {
                                         CallCancelCardWebService(client);
                                     } else {
@@ -437,7 +441,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
     }
 
     private void updateCaseRecord(String insertedCaseId, String insertedServiceId) {
-
+// Linking the Case with the new/Updated Card
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put(activity.get_webForm().getObject_Name(), insertedServiceId);
 
@@ -482,11 +486,9 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
 
     private void CallCancelCardWebService(RestClient client) {
-
+// This Method Called only in Case Cancel Card
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put("Status__c", "Cancelled");
-
-       // fields.put("Service_Identifier__c", activity.geteServiceAdministration().getService_Identifier__c());
         long yourmilliseconds = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         Date resultdate = new Date(yourmilliseconds);
@@ -583,6 +585,11 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
 
         @Override
         protected String doInBackground(String... params) {
+
+            // Submitting The Case by Calling #MobilePayAndSubmitWebService webservice
+            // HTTP POST
+            // param caseId -->> the container activity with inserted case id String value
+
             String attUrl = client.getClientInfo().resolveUrl("/services/apexrest/MobilePayAndSubmitWebService").toString();
 
             HttpClient httpclient = new DefaultHttpClient();
@@ -626,6 +633,7 @@ public class CancelCardMainFragment extends BaseFragmentFiveSteps {
     }
 
     private boolean isValidAttachments() {
+        //Check that every document has an attachment in it's Object
         if (activity.getCompanyDocuments() != null && activity.getCompanyDocuments().size() > 0) {
             for (int i = 0; i < activity.getCompanyDocuments().size(); i++) {
                 if (activity.getCompanyDocuments().get(i).getAttachment_Id__c() == null || activity.getCompanyDocuments().get(i).getAttachment_Id__c().equals("")) {

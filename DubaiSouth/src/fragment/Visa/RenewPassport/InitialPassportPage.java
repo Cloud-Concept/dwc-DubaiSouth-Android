@@ -35,6 +35,7 @@ import utilities.Utilities;
 
 /**
  * Created by M_Ghareeb on 9/2/2015.
+ * Creating UI Filled with passport data
  */
 public class InitialPassportPage extends Fragment {
     private VisaActivity activity;

@@ -60,6 +60,8 @@ public class PayAndSubmit extends Fragment{
     }
 
     private void DrawLayout(LayoutInflater inflater) {
+
+        //Initiating UI Fields
         View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);
         TextView tvHeader = (TextView) view.findViewById(R.id.pay_header);
         tvHeader.setText("License Details");

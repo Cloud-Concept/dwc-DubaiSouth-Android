@@ -121,7 +121,9 @@ public class NewCardInitialPage extends Fragment {
             }
         });
     }
-
+/*
+Getting Card E-service Administrator
+ */
     private void DoCardEServiceAdminQuery(String cardQuery, final String cardType, final String duration) {
 
         String SoqlcardQuery = String.format(cardQuery, duration, cardType);

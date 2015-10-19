@@ -113,7 +113,9 @@ public class SecondFragment extends Fragment {
 
         });
     }
-
+/*
+getting Rcord Type From Server
+ */
     private void getRecordType() {
         String soql ="SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SObjectType = 'Case' AND DeveloperName = 'License_Request'";
         try {
@@ -164,7 +166,9 @@ public class SecondFragment extends Fragment {
             e.printStackTrace();
         }
     }
-
+/*
+Creating Case In Server and getting the case number
+ */
     private void getCase() {
 
         if (activity.geteServiceAdministration() != null) {
@@ -211,6 +215,10 @@ public class SecondFragment extends Fragment {
                                     } catch (UnsupportedEncodingException e) {
                                         e.printStackTrace();
                                     }
+
+                                    /*
+                                    Getting Other information related to the created case
+                                     */
                                     client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                                         @Override
                                         public void onSuccess(RestRequest request, RestResponse response) {

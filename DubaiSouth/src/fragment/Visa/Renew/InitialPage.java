@@ -131,7 +131,12 @@ public class InitialPage extends Fragment {
         fragment.setArguments(bundle);
         return fragment;
     }
-
+/*
+Calling #MobileRenewVisaWebService
+HTTP POST
+@param oldVisaId
+Return the new linked Visa Renewed for the given old visa
+ */
     public class AsyncToGetNewVisaRequest extends AsyncTask<String, Void, String> {
         private RestClient client;
         private String result;
@@ -179,6 +184,8 @@ public class InitialPage extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if (result != null) {
+
+                //Getting all information for new Created visa then setting UI
                 String SoqlVisaQuery = String.format(SoqlStatements.renewVisaSQL, result.replace("\"", ""));
                 try {
                     restRequest = RestRequest.getRequestForQuery(getActivity().getString(R.string.api_version), SoqlVisaQuery);

@@ -70,6 +70,7 @@ public class InitialPage extends Fragment {
 
         activity.setRemoved(new HashSet<model.LicenseActivity>());
         activity.set_licenses(new ArrayList<OriginalBusinessActivity>());
+        //Handling Current Activities
         for (int i = 0; i < LicenseInfoFragment._licenses.size(); i++) {
 
             View viewHeader = LayoutInflater.from(getActivity()).inflate(R.layout.licence_activity, null);
@@ -116,6 +117,8 @@ public class InitialPage extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        //Handling returned Activities
         if (requestCode == 55) {
             if (resultCode == Activity.RESULT_OK) {
                 OriginalBusinessActivity oBA = (OriginalBusinessActivity) data.getExtras().get("data");
@@ -134,6 +137,7 @@ public class InitialPage extends Fragment {
     }
 
     void reload(){
+//        reload List of Activities and setting Actions
         newLicenseActivities.removeAllViews();
         for (int i = 0; i < activity.get_licenses().size(); i++) {
 

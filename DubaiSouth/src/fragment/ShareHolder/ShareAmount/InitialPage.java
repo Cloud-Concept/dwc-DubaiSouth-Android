@@ -64,6 +64,8 @@ public class InitialPage extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
+                //Saving ShareTransfer Number after changes with Condition
                 int value=Integer.parseInt(TextUtils.isEmpty(editable.toString()) ? "0" : editable.toString());
                 if(value>Integer.parseInt(activity.getShareHolder().getNo_of_Shares__c()==null?"0":activity.getShareHolder().getNo_of_Shares__c())){
                     activity.setShareno(Integer.parseInt(activity.getShareHolder().getNo_of_Shares__c()));
@@ -80,13 +82,6 @@ public class InitialPage extends Fragment {
         transferFrom.setText(activity.getShareHolder().get_shareholder().getName());
         noOfShares.setText(activity.getShareHolder().getNo_of_Shares__c());
         NoofTransferredShares.setText(activity.getShareHolder().getNo_of_Shares__c());
-//        ArrayList<ShareOwnership> holders=new ArrayList<ShareOwnership>();
-//        for(Object obj:activity.getShareHolders()){
-//
-//            ShareOwnership temp=(ShareOwnership)obj;
-//            if(temp.get_shareholder().getName()!=null)
-//                holders.add(temp);
-//        }
         transferTo.setAdapter(new NameIdAdapter(activity,android.R.layout.simple_list_item_1,0,activity.getShareHolders()));
         transferTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

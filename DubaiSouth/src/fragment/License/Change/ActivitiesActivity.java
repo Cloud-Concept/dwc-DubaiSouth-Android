@@ -75,6 +75,7 @@ View view;
         activities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //Return the selected Activity
                 Intent intent = new Intent();
                 intent.putExtra("data",filtered.get(i));
                 setResult(RESULT_OK,intent);
@@ -98,26 +99,7 @@ View view;
             }
         });
 
-//search.addTextChangedListener(new TextWatcher() {
-//    @Override
-//    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//    }
-//
-//    @Override
-//    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//    }
-//
-//    @Override
-//    public void afterTextChanged(Editable editable) {
-//        if(TextUtils.isEmpty(editable)) {
-//            filtered = new ArrayList<OriginalBusinessActivity>();
-//            filtered.addAll(oActivities);
-//            activities.setAdapter(new MyAdapter(ActivitiesActivity.this, R.layout.licence_activity, 0, filtered));
-//        }
-//    }
-//});
+
 
 
         view=findViewById(R.id.view);
@@ -134,16 +116,14 @@ View view;
     }
 
     private void performSearch(String s) {
+        //Getting the search result from the server related to typed text s
+
         filtered = new ArrayList<OriginalBusinessActivity>();
 
         if (!TextUtils.isEmpty(s)) {
             searchValue=s;
             String SQLSearch="select id , name, License_Type__c , Business_Activity_Name__c from Business_activity__c where where id in (select Original_Business_Activity__c from License_Activity__c where end_date__c=null) and ( name like'%"+searchValue+"%' or Business_Activity_Name__c like '%"+searchValue+"%')";
 
-//                    for (int i = 0; i < oActivities.size(); i++) {
-//                        if (oActivities.get(i).getName().toLowerCase().contains(editable.toString().toLowerCase()) || oActivities.get(i).getBusinessActivityName().toLowerCase().contains(editable.toString().toLowerCase()))
-//                            filtered.add(oActivities.get(i));
-//                    }
 
             try {
                 restRequest = RestRequest.getRequestForQuery(
@@ -159,7 +139,6 @@ View view;
                         SalesforceSDKManager.getInstance().logout(ActivitiesActivity.this);
                         return;
                     } else {
-//                    Utilities.showloadingDialog(ActivitiesActivity.this);
                         client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                             @Override
                             public void onSuccess(RestRequest request, RestResponse result) {
@@ -212,7 +191,7 @@ View view;
 
 
     private void CallActivitties( int limit,  int offset) {
-
+//Calling Activities From the server
         try {
             restRequest = RestRequest.getRequestForQuery(
                     getString(R.string.api_version), String.format(SQL, limit, offset));
@@ -229,7 +208,6 @@ View view;
                     SalesforceSDKManager.getInstance().logout(ActivitiesActivity.this);
                     return;
                 } else {
-//                    Utilities.showloadingDialog(ActivitiesActivity.this);
                     client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                         @Override
                         public void onSuccess(RestRequest request, RestResponse result) {
@@ -268,6 +246,8 @@ View view;
         });
     }
     public class MyAdapter extends ArrayAdapter<OriginalBusinessActivity>{
+//        Ui Adapter
+
         ArrayList<OriginalBusinessActivity> objects;
         Context context;
         public MyAdapter(Context context, int resource, int textViewResourceId, ArrayList<OriginalBusinessActivity> objects) {

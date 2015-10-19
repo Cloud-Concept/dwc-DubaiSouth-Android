@@ -65,7 +65,6 @@ public class PayAndSubmit extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -113,12 +112,10 @@ person.setVisibility(View.GONE);
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-    }
 
     public void DrawLayout(LayoutInflater inflater) {
+
+     //Drawing Layout from Form Fields
         List<FormField> formFields = null;
         formFields = ((CardActivity) getActivity()).get_webForm().get_formFields();
         for (FormField field : formFields) {

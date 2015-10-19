@@ -75,6 +75,8 @@ public class InitialPage extends Fragment {
                     }
                     String SoqlEServiceQuery = String.format(eServiceAdmin, Value);
                     try {
+
+                        // Getting E-Service Administration
                         restRequest = RestRequest.getRequestForQuery(getActivity().getString(R.string.api_version), SoqlEServiceQuery);
                         client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
 
@@ -107,6 +109,7 @@ public class InitialPage extends Fragment {
     }
 
     private void getRecordType() {
+        //Getting  Case record Type
         String soql ="SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SObjectType = 'Case' AND DeveloperName = 'License_Request'";
         try {
             restRequest = RestRequest.getRequestForQuery(getActivity().getString(R.string.api_version), soql);
@@ -159,6 +162,8 @@ public class InitialPage extends Fragment {
 
     private void getCase() {
 
+        //Creating Case and save id in the running Activity
+
         if (activity.geteServiceAdministration() != null) {
             activity.setCaseFields(new HashMap<String, Object>());
             Map<String, Object> caseFields = activity.getCaseFields();
@@ -197,7 +202,7 @@ public class InitialPage extends Fragment {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response.toString());
                                     activity.setInsertedCaseId(jsonObject.getString("id"));
-
+                                        // Getting other information Related to Created Case
                                     try {
                                         restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), SoqlStatements.getCaseNumberQuery(activity.getInsertedCaseId()));
                                     } catch (UnsupportedEncodingException e) {

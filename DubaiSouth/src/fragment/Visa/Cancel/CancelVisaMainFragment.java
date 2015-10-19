@@ -216,6 +216,14 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
         }
     };
 
+
+    // Creating and Submitting Case by Calling #MobileServiceUtilityWebService webservice
+    // HTTP POST
+    // param actionType -->> value of "SubmitRequestVisaCancellation"
+    // param AccountId
+    // param visaId
+    // param urgentCancellation
+    // param serviceIdentifier
     public class GetPickLists extends AsyncTask<String, Void, String> {
 
         private final RestClient client;
@@ -291,6 +299,8 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
+
+                                //Getting Other fields Related to the created Case
                                 client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                                     @Override
                                     public void onSuccess(RestRequest request, RestResponse response) {
@@ -341,6 +351,8 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
     private void createVisaRecord(RestClient client) {
         String vRt = activity.getVisa().getRecord_Type_Name__c();
         serviceIdentifier = "";
+
+        //Getting serviceIdentifier
         if (vRt.equals("Employment Visa Issued") || vRt.equals("Transfer Visa Issued")) {
             serviceIdentifier = "Residency Permit Cancellation";
         } else if ((vRt.equals("Employment Visa Under Process") || vRt.equals("Employment Visa Under Renewal") || vRt.equals("Transfer Visa Under Process")) && activity.getVisa().getResidency_File_Number__c() != null) {

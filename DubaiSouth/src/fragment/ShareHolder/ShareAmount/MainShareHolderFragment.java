@@ -31,10 +31,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +45,6 @@ import fragment.ShareHolder.NOCAttachmentPage;
 import fragment.ShareHolder.PayAndSubmit;
 import fragmentActivity.NOCScreen.ThankYou;
 import fragmentActivity.ShareHolderActivity;
-import fragmentActivity.VisaActivity;
 import utilities.Utilities;
 
 /**
@@ -63,7 +58,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        activity=(ShareHolderActivity)getActivity();
+        activity = (ShareHolderActivity) getActivity();
         //
         return super.onCreateView(inflater, container, savedInstanceState);
 
@@ -92,6 +87,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
         tvTitle.setText("Preview");
         return PayAndSubmit.newInstance("1");
     }
+
     @Override
     public Fragment getFifthFragment(String msg, String fee, String mail) {
         tvTitle.setText("Thank You");
@@ -104,7 +100,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
     }
 
     public static Fragment newInstance(String newShareHolder) {
-        MainShareHolderFragment fragment=new MainShareHolderFragment();
+        MainShareHolderFragment fragment = new MainShareHolderFragment();
         return fragment;
     }
 
@@ -112,22 +108,22 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
     public void onClick(View v) {
         if (v == btnNext) {
             if (getStatus() == 1) {
-                if(required())
-                new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-                    @Override
-                    public void authenticatedRestClient(final RestClient client) {
-                        if (client == null) {
-                            System.exit(0);
-                        } else {
+                if (required())
+                    new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                        @Override
+                        public void authenticatedRestClient(final RestClient client) {
+                            if (client == null) {
+                                System.exit(0);
+                            } else {
 
                                 new AsyncCreateCase(client).execute();
 
 
+                            }
                         }
-                    }
-                });
+                    });
 
-            }else if (getStatus() == 3) {
+            } else if (getStatus() == 3) {
                 if (!isValidAttachments()) {
                     Utilities.showLongToast(activity, "Please fill all attachments");
                 } else {
@@ -172,18 +168,21 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
     }
 
     private boolean required() {
-        if(activity.getSelectedShareHolder()==null){
+
+        //Check the required Fields with valid data
+        if (activity.getSelectedShareHolder() == null) {
             Utilities.showLongToast(activity, "Please change the share Holder");
-            return false;}
-        else if(activity.getShareno()==0){
-            Utilities.showLongToast(activity,"There is no transferred shared");
             return false;
-        }
-        else return true;
+        } else if (activity.getShareno() == 0) {
+            Utilities.showLongToast(activity, "There is no transferred shared");
+            return false;
+        } else return true;
     }
 
 
     private boolean isValidAttachments() {
+
+        // Check that every document has attachment
         if (activity.getCompanyDocuments() != null && activity.getCompanyDocuments().size() > 0) {
             for (int i = 0; i < activity.getCompanyDocuments().size(); i++) {
                 if (activity.getCompanyDocuments().get(i).getAttachment_Id__c() == null || activity.getCompanyDocuments().get(i).getAttachment_Id__c().equals("")) {
@@ -239,6 +238,11 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
             Utilities.showloadingDialog(activity);
 
         }
+        // Submitting The Case by Calling #MobileServiceUtilityWebService webservice
+        // HTTP POST
+        // param caseId -->> the container activity with inserted case id String value
+        // param actionType -->> value of "SubmitRequestShareTransfer"
+
 
         @Override
         protected String doInBackground(String... params) {
@@ -251,7 +255,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
             try {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("caseId", activity.getInsertedCaseId());
-                map.put("actionType","SubmitRequestShareTransfer");
+                map.put("actionType", "SubmitRequestShareTransfer");
                 entity = new StringEntity("{\"wrapper\":" + new JSONObject(map).toString() + "}", "UTF-8");
                 entity.setContentType("application/json");
                 httppost.setEntity(entity);
@@ -284,7 +288,13 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
 
         }
     }
-
+    // Creating  Case by Calling #MobileServiceUtilityWebService webservice
+    // HTTP POST
+    // param actionType -->> value of "CreateRequestShareTransfer"
+    // param AccountId
+    // param transferFrom
+    // param transferTo
+    // param noOfShares
     public class AsyncCreateCase extends AsyncTask<Void, Void, String> {
         RestClient client;
         private String result;
@@ -311,9 +321,9 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
             map.put("AccountId", activity.getUser().get_contact().get_account().getID());
             map.put("transferFrom", activity.getShareHolder().getID());
             map.put("transferTo", activity.getSelectedShareHolder().get_shareholder().getID());
-            map.put("noOfShares", activity.getShareno()+"");
+            map.put("noOfShares", activity.getShareno() + "");
 
-            map.put("actionType","CreateRequestShareTransfer");
+            map.put("actionType", "CreateRequestShareTransfer");
 
             StringEntity entity = null;
             try {
@@ -340,13 +350,13 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if (s != null) {
-                String resul=s.replace("\"", "");
+                String resul = s.replace("\"", "");
 
-                if(resul.equals("Duplication")){
+                if (resul.equals("Duplication")) {
                     Utilities.dismissLoadingDialog();
-                    Utilities.showLongToast(activity,"Duplication");
-                }else if(resul.startsWith("Success")){
-                    activity.setInsertedCaseId(resul.replace("Success",""));
+                    Utilities.showLongToast(activity, "Duplication");
+                } else if (resul.startsWith("Success")) {
+                    activity.setInsertedCaseId(resul.replace("Success", ""));
 
 
                     new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
@@ -362,6 +372,8 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
+
+                                //In success case getting other fields related to the created case
                                 client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                                     @Override
                                     public void onSuccess(RestRequest request, RestResponse response) {
@@ -373,7 +385,7 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
                                             Log.d("result", response.toString());
                                             activity.setCaseNumber(jsonRecord.getString("CaseNumber"));
                                             activity.setService_Requested__c(jsonRecord.getString("Service_Requested__c"));
-                                            activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c")+"");
+                                            activity.setTotal(jsonRecord.getJSONObject("Invoice__r").getDouble("Amount__c") + "");
                                             createVisaRecord(client);
                                         } catch (JSONException e) {
                                             e.printStackTrace();
@@ -396,15 +408,17 @@ public class MainShareHolderFragment extends BaseFragmentFourStepsNew {
 
                         }
                     });
-                }else{
+                } else {
                     Utilities.dismissLoadingDialog();
-                    Utilities.showLongToast(activity,"There is an error");
+                    Utilities.showLongToast(activity, "There is an error");
                 }
             }
 
         }
     }
-
+/*
+Getting E-Service Administrator
+ */
 
     private void createVisaRecord(RestClient client) {
         String SoqlEServiceQuery = String.format(eServiceAdmin, activity.getService_Requested__c());

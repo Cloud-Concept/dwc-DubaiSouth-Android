@@ -92,7 +92,7 @@ public class PayAndSubmit extends Fragment {
     }
 
     public void DrawLayout(LayoutInflater inflater) {
-
+//Ui Fields for confirmation
         View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);
         TextView tvHeader = (TextView) view.findViewById(R.id.pay_header);
         tvHeader.setText("Visa Details");

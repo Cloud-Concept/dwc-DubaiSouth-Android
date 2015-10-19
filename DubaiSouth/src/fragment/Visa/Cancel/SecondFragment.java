@@ -121,7 +121,7 @@ public class SecondFragment extends Fragment {
     }
 
     protected void execution(RestClient client) {
-
+//Getting all required Visa Values And Display it
 
         String SoqlVisaQuery = String.format(SoqlStatements.renewVisaSQL, activity.getVisa().getID());
         try {

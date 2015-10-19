@@ -119,7 +119,7 @@ public class InitialCancelVisaFragment extends Fragment {
 
     protected void execution(RestClient client) {
 
-
+//Getting all required Visa Values And Display it
         String SoqlVisaQuery = String.format(SoqlStatements.renewVisaSQL, activity.getVisa().getID());
         try {
             restRequest = RestRequest.getRequestForQuery(getActivity().getString(R.string.api_version), SoqlVisaQuery);

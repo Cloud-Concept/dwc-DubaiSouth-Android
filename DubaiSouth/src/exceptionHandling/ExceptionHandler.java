@@ -53,6 +53,6 @@ public class ExceptionHandler implements
         errorReport.append(LINE_SEPARATOR);
         Log.v("error report", errorReport.toString());
         Log.e("error report", errorReport.toString());
-//        android.os.Process.killProcess(android.os.Process.myPid());
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }

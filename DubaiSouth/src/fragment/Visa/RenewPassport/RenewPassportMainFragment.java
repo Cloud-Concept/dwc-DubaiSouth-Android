@@ -248,6 +248,8 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
     }
 
     private boolean required() {
+
+        //CHECK THAT EVERY INPUTS IS FILLED WITH VALID DATA
         if(activity.getNewPassport().getName()==null
                 ||activity.getNewPassport().getName().equals("")
                 ||activity.getNewPassport().getPassport_Issue_Date__c()==null
@@ -299,6 +301,10 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
 
         }
     };
+// Submitting The Case by Calling #MobileServiceUtilityWebService webservice
+// HTTP POST
+// param caseId -->> the container activity with inserted case id String value
+// param actionType -->> "SubmitRequestPassportRenewal"
 
     public class GetPickLists extends AsyncTask<String, Void, String> {
 
@@ -359,6 +365,21 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
 
         }
     }
+    // Creating The Case by Calling #MobileServiceUtilityWebService webservice
+// HTTP POST
+// param AccountId
+// param passportIssueCountryId
+    // param passportNo
+    // param passportPlaceOfIssue
+    // param visaId
+    // param PassportHolderId
+    // param passportIssueDate
+    // param passportExpiryDate
+    // param actionType -->> "CreateRequestPassportRenewal"
+
+
+
+
 
     public class AsyncCreateCase extends AsyncTask<Void, Void, String> {
         RestClient client;
@@ -440,6 +461,7 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
+                                //Getting other fields related to the created case
                                 client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                                     @Override
                                     public void onSuccess(RestRequest request, RestResponse response) {
@@ -483,7 +505,10 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
 
         }
     }
+/*
 
+Getting the E-Service Administrator
+ */
 
     private void createVisaRecord(RestClient client) {
         String SoqlEServiceQuery = String.format(eServiceAdmin, activity.getService_Requested__c());

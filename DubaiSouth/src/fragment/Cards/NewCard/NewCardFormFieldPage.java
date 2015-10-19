@@ -50,7 +50,7 @@ import utilities.ComplexPreferences;
 import utilities.Utilities;
 
 /**
- * Created by Abanoub Wagdy on 8/24/2015.
+ * Created by M-Ghareeb on 8/24/2015.
  */
 public class NewCardFormFieldPage extends Fragment {
 
@@ -84,7 +84,7 @@ public class NewCardFormFieldPage extends Fragment {
     }
 
     private void perFormFormFieldsRequest() {
-
+// Getting Form Fields from server
         Utilities.showloadingDialog(getActivity());
         try {
             restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
@@ -112,19 +112,11 @@ public class NewCardFormFieldPage extends Fragment {
                                         reference.add(activity.get_webForm().get_formFields().get(i));
                                     }
                                 }
-//                                if (!CardQueryBuilder.equals("")) {
-//                                    CardQueryBuilder = CardQueryBuilder.substring(0, CardQueryBuilder.length() - 1);
-//                                    cardQuery = String.format(cardQuery, CardQueryBuilder, NocActivity.get_visa().get_visaHolder().getID());
-//                                    PerformCardQueryValues(NocMainFragment._webForm, cardQuery);
-//                                } else if (picklist.size() > 0) {
-//                                    new GetPickLists(client).execute(picklist);
-//                                } else {
-//                                    Utilities.dismissLoadingDialog();
-//                                    Utilities.DrawCardFormFieldsOnLayout(getActivity(), getActivity().getApplicationContext(), linearAddForms, formFields, Cardjson, CardBaseServiceFragment.parameters, CardBaseServiceFragment._cardManagement);
-//                                }
                                 if (CardQueryBuilder.equals("")) {
                                     if (picklist.size() > 0) {
                                         formFields = activity.get_webForm().get_formFields();
+
+                                        //Getting form fields pick lists values
                                         new GetPickLists(client).execute(picklist);
                                     }
 
@@ -148,58 +140,16 @@ public class NewCardFormFieldPage extends Fragment {
         }
     }
 
-//    private void PerformCardQueryValues(final WebForm webForm, String cardQuery) {
-//
-//        try {
-//            restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), cardQuery);
-//            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-//                @Override
-//                public void authenticatedRestClient(RestClient client) {
-//                    if (client == null) {
-//                        SalesforceSDKManager.getInstance().logout(getActivity());
-//                        return;
-//                    } else {
-//
-//                        client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
-//                            @Override
-//                            public void onSuccess(RestRequest request, RestResponse result) {
-//                                Cardjson = SFResponseManager.parseJsonCardData(result.toString());
-//                                Utilities.dismissLoadingDialog();
-//                                formFields = webForm.get_formFields();
-//                                new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-//                                    @Override
-//                                    public void authenticatedRestClient(final RestClient client) {
-//                                        if (client == null) {
-//                                            return;
-//                                        } else {
-//
-//                                            new GetPickLists(client).execute(picklist);
-//                                        }
-//                                    }
-//                                });
-//                            }
-//
-//                            @Override
-//                            public void onError(Exception exception) {
-//                                Utilities.showToast(getActivity(), RestMessages.getInstance().getErrorMessage());
-//                                Utilities.dismissLoadingDialog();
-//                                getActivity().finish();
-//                            }
-//                        });
-//                    }
-//                }
-//            });
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     private void InitializeViews(View view) {
         linearAddForms = (LinearLayout) view.findViewById(R.id.linearAddForms);
         activity = (CardActivity) getActivity();
     }
 
-
+    /*
+        Getting  Pick lists Values From Server by FormField ID
+        Using HTTP GEt Method
+        Using web service method MobilePickListValuesWebService
+         */
     public class GetPickLists extends AsyncTask<List<FormField>, Void, Map<String, List<String>>> {
 
         private final RestClient client;
@@ -228,8 +178,6 @@ public class NewCardFormFieldPage extends Fragment {
                     getRequest.setURI(theUrl);
                     getRequest.setHeader("Authorization", "Bearer " + client.getAuthToken());
                     BasicHttpParams param = new BasicHttpParams();
-
-//                    param.setParameter("fieldId", fieldId);
                     getRequest.setParams(param);
                     HttpResponse httpResponse = null;
                     try {
@@ -270,26 +218,23 @@ public class NewCardFormFieldPage extends Fragment {
         protected void onPostExecute(Map<String, List<String>> aVoid) {
             super.onPostExecute(aVoid);
 
-//            if (picklist.size() > 0) {
-//                formFields = activity.get_webForm().get_formFields();
-////                new GetReferences(client).execute(reference);
-//            }
 
             if (reference != null && reference.size() > 0) {
 
                 final ComplexPreferences cp=ComplexPreferences.getComplexPreferences(activity,"countries", Context.MODE_PRIVATE);
 
                 if (reference.get(0).getTextValue().equals("Country__c")) {
-
+//Check the Cashed Nationality
                     CashedNationality cN=cp.getObject("cList", CashedNationality.class);
                     if(cN!=null){
+                        //Setting Nationality from cash
                         activity.setCountries(cN.getCountries());
                         Utilities.DrawFormFieldsOnLayout(activity, getActivity().getApplicationContext(), linearAddForms, formFields, null, null, activity.getParameters(), activity.getCard());
                         Utilities.dismissLoadingDialog();
                         Log.d("here","here");
                     }
                     else {
-
+//getting nationality from server then cash it to avoid reload again
                         String referenceSoql = "select Id,Nationality_Name__c from Country__c";
                         try {
                             restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), referenceSoql);
@@ -333,6 +278,9 @@ public class NewCardFormFieldPage extends Fragment {
         }
     }
 
+  /*
+    Converting JsonArray Of Strings to comma separated values
+     */
 
     public static String convertJsonStringToString(JSONArray jsonArray) {
         String result = "";

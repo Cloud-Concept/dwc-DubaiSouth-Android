@@ -46,13 +46,43 @@ import model.FormField;
 import utilities.Utilities;
 
 /**
- * Created by Abanoub Wagdy on 8/25/2015.
+ * Created by M-Ghareeb on 8/25/2015.
  */
 public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
     CardActivity activity;
-    private RestRequest restRequest;
     NiftyDialogBuilder builder;
+    private RestRequest restRequest;
+    private View.OnClickListener listenerOkPay = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            builder.dismiss();
+            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
+                @Override
+                public void authenticatedRestClient(final RestClient client) {
+                    if (client == null) {
+                        System.exit(0);
+                    } else {
+
+                        new GetPickLists(client).execute();
+//
+
+
+                    }
+                }
+            });
+
+        }
+    };
+
+    public static Fragment newInstance(String newCard) {
+        MainNewCardFragment fragment = new MainNewCardFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("text", newCard);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -134,8 +164,6 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
 
             if (getStatus() == 3) {
                 tvTitle.setText("Details");
-//                    activity.setInsertedCaseId(null);
-//                    activity.setInsertedServiceId(null);
             } else if (getStatus() == 4) {
                 if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
                     setStatus(3);
@@ -164,6 +192,8 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     }
 
     private boolean isValidAttachments() {
+
+        // Check if the documents have attachments or not to validate next step
         if (activity.getCompanyDocuments() != null && activity.getCompanyDocuments().size() > 0) {
             for (int i = 0; i < activity.getCompanyDocuments().size(); i++) {
                 if (activity.getCompanyDocuments().get(i).getAttachment_Id__c() == null || activity.getCompanyDocuments().get(i).getAttachment_Id__c().equals("")) {
@@ -178,6 +208,8 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     }
 
     private boolean required() {
+
+        // Check Validation of the Dynamic Form Fields
         boolean result = true;
         for (FormField field : activity.get_webForm().get_formFields()) {
             if (field.isRequired() && !field.isHidden()) {
@@ -218,15 +250,9 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
         return result;
     }
 
-    public static Fragment newInstance(String newCard) {
-        MainNewCardFragment fragment = new MainNewCardFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("text", newCard);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
-
     public void createCaseRecord() {
+
+        //Initiating Case Record or update it if already created
         activity = (CardActivity) getActivity();
         if (activity.geteServiceAdministration() != null) {
             Map<String, Object> caseFields = activity.getCaseFields();
@@ -275,6 +301,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                                 activity.setInsertedCaseId(jsonObject.getString("id"));
 
                                 try {
+                                    //Getting Case Number and other fields related to created or updated case
                                     restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), SoqlStatements.getCaseNumberQuery(activity.getInsertedCaseId()));
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
@@ -332,7 +359,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     }
 
     public void createCardRecord() {
-
+// Create Service (Card) Record
         Map<String, Object> serviceFields = activity.getServiceFields();
         serviceFields = new HashMap<String, Object>();
         serviceFields.put("RecordTypeId", activity.getCardRecordTypeId());
@@ -417,7 +444,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     }
 
     private void updateCaseRecord(String insertedCaseId, String insertedServiceId) {
-
+// Linking Service with Case in Server
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put(activity.get_webForm().getObject_Name(), insertedServiceId);
 
@@ -435,7 +462,6 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
                             public void onSuccess(RestRequest request, RestResponse response) {
                                 Utilities.dismissLoadingDialog();
                                 Log.d("", response.toString());
-//                                onClick(BaseServiceFragment.btnNext);
                                 PerfromParentNext();
                             }
 
@@ -457,33 +483,9 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
         }
     }
 
-
     private void PerfromParentNext() {
         super.onClick(btnNext);
     }
-
-    private View.OnClickListener listenerOkPay = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            builder.dismiss();
-            new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
-                @Override
-                public void authenticatedRestClient(final RestClient client) {
-                    if (client == null) {
-                        System.exit(0);
-                    } else {
-
-                        new GetPickLists(client).execute();
-//
-
-
-                    }
-                }
-            });
-
-        }
-    };
 
     public class GetPickLists extends AsyncTask<String, Void, String> {
 
@@ -499,6 +501,10 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
             super.onPreExecute();
             Utilities.showloadingDialog(getActivity());
         }
+// Submitting The Case by Calling #MobilePayAndSubmitWebService webservice
+// HTTP POST
+// param caseId -->> the container activity with inserted case id String value
+
 
         @Override
         protected String doInBackground(String... params) {

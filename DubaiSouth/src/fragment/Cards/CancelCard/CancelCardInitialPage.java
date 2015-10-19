@@ -65,6 +65,7 @@ public class CancelCardInitialPage extends Fragment {
     }
 
     private void InitializeViews(View view) {
+        // initiating UI
         activity = (CardActivity) getActivity();
         card = activity.getCard();
         activity.setCardType(card.getCard_Type__c());
@@ -168,6 +169,9 @@ public class CancelCardInitialPage extends Fragment {
     }
 
     private void DoCardEServiceAdminQuery(String cardQuery, final String cardType, final String duration) {
+
+
+        // Getting E-service Administration
         Utilities.showloadingDialog(activity);
         String SoqlcardQuery = String.format(cardQuery, duration, cardType);
         try {
@@ -207,6 +211,8 @@ public class CancelCardInitialPage extends Fragment {
     }
 
     private void getCardRecordType(String cardType, String duration) {
+
+        // Getting Card Record Type
         try {
             restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), query);
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {

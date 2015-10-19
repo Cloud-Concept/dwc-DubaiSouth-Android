@@ -48,7 +48,7 @@ import model.WebForm;
 import utilities.Utilities;
 
 /**
- * Created by Abanoub Wagdy on 8/26/2015.
+ * Created by M-Ghareeb on 8/26/2015.
  */
 public class CancelCardFormFieldPage extends Fragment {
 
@@ -76,13 +76,13 @@ public class CancelCardFormFieldPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.noc_second_page, container, false);
         InitializeViews(view);
-        soql = SoqlStatements.getInstance().constructWebFormQuery(activity.getType().equals("2")?activity.geteServiceAdministration().getCancel_VF_Generator__c():(activity.getType().equals("3")?activity.geteServiceAdministration().getRenewal_VF_Generator__c():activity.geteServiceAdministration().getReplace_VF_Generator__c()));
+        soql = SoqlStatements.getInstance().constructWebFormQuery(activity.getType().equals("2") ? activity.geteServiceAdministration().getCancel_VF_Generator__c() : (activity.getType().equals("3") ? activity.geteServiceAdministration().getRenewal_VF_Generator__c() : activity.geteServiceAdministration().getReplace_VF_Generator__c()));
         perFormFormFieldsRequest();
         return view;
     }
 
     private void perFormFormFieldsRequest() {
-
+// Getting Form Fields From Sales Force
         Utilities.showloadingDialog(getActivity());
         try {
             restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), soql);
@@ -105,18 +105,16 @@ public class CancelCardFormFieldPage extends Fragment {
                                     if (!activity.get_webForm().get_formFields().get(i).getType().equals("CUSTOMTEXT") && activity.get_webForm().get_formFields().get(i).isParameter() == false && activity.get_webForm().get_formFields().get(i).isQuery() == true) {
                                         CardQueryBuilder += activity.get_webForm().get_formFields().get(i).getTextValue() + ",";
                                     } else if (!activity.get_webForm().get_formFields().get(i).isParameter() && (activity.get_webForm().get_formFields().get(i).getType().equals("PICKLIST"))) {
+                                        // Saving Pick lists Type
                                         picklist.add(activity.get_webForm().get_formFields().get(i));
+
                                     } else if (!activity.get_webForm().get_formFields().get(i).isParameter() && (activity.get_webForm().get_formFields().get(i).getType().equals("REFERENCE"))) {
+                                        // Saving References Type
+
                                         reference.add(activity.get_webForm().get_formFields().get(i));
                                     }
                                 }
-//                                if (!CardQueryBuilder.equals("")) {
-//                                } else if (picklist.size() > 0) {
-//                                    new GetPickLists(client).execute(picklist);
-//                                } else {
-//                                    Utilities.dismissLoadingDialog();
-//                                    Utilities.DrawCardFormFieldsOnLayout(getActivity(), getActivity().getApplicationContext(), linearAddForms, formFields, Cardjson, CardBaseServiceFragment.parameters, CardBaseServiceFragment._cardManagement);
-//                                }
+
                                 if (CardQueryBuilder.equals("")) {
                                     if (picklist.size() > 0) {
                                         formFields = activity.get_webForm().get_formFields();
@@ -144,9 +142,13 @@ public class CancelCardFormFieldPage extends Fragment {
         }
     }
 
+    /*
+    Getting card values to fill in Form Fields
+     */
     private void PerformCardQueryValues(final WebForm webForm, String cardQuery) {
 
         try {
+
             restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), cardQuery);
             new ClientManager(getActivity(), SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(getActivity(), new ClientManager.RestClientCallback() {
                 @Override
@@ -168,6 +170,7 @@ public class CancelCardFormFieldPage extends Fragment {
                                         if (client == null) {
                                             return;
                                         } else {
+                                            // Calling To get Pick lists values from server
                                             new GetPickLists(client).execute(picklist);
                                         }
                                     }
@@ -194,7 +197,11 @@ public class CancelCardFormFieldPage extends Fragment {
         activity = (CardActivity) getActivity();
     }
 
-
+    /*
+    Getting  Pick lists Values From Server by FormField ID
+    Using HTTP GEt Method
+    Using web service method MobilePickListValuesWebService
+     */
     public class GetPickLists extends AsyncTask<List<FormField>, Void, Map<String, List<String>>> {
 
         private final RestClient client;
@@ -223,8 +230,6 @@ public class CancelCardFormFieldPage extends Fragment {
                     getRequest.setURI(theUrl);
                     getRequest.setHeader("Authorization", "Bearer " + client.getAuthToken());
                     BasicHttpParams param = new BasicHttpParams();
-
-//                    param.setParameter("fieldId", fieldId);
                     getRequest.setParams(param);
                     HttpResponse httpResponse = null;
                     try {
@@ -265,10 +270,7 @@ public class CancelCardFormFieldPage extends Fragment {
         protected void onPostExecute(Map<String, List<String>> aVoid) {
             super.onPostExecute(aVoid);
 
-//            if (picklist.size() > 0) {
-//                formFields = activity.get_webForm().get_formFields();
-////                new GetReferences(client).execute(reference);
-//            }
+// Getting References values
 
             if (reference != null && reference.size() > 0) {
                 if (reference.get(0).getTextValue().equals("Country__c")) {
@@ -288,7 +290,7 @@ public class CancelCardFormFieldPage extends Fragment {
 
                                                 ArrayList<Country__c> countries = SFResponseManager.parseCountryObject(response.toString());
                                                 activity.setCountries(countries);
-                                                Utilities.drawstaticFormFields(activity, getActivity().getApplicationContext(), linearAddForms, formFields,activity.getParameters(), activity.getCard());
+                                                Utilities.drawstaticFormFields(activity, getActivity().getApplicationContext(), linearAddForms, formFields, activity.getParameters(), activity.getCard());
                                                 Utilities.dismissLoadingDialog();
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -311,6 +313,9 @@ public class CancelCardFormFieldPage extends Fragment {
         }
     }
 
+    /*
+    Converting JsonArray Of Strings to comma separated values
+     */
 
     public static String convertJsonStringToString(JSONArray jsonArray) {
         String result = "";

@@ -57,6 +57,8 @@ public class PayAndSubmit extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //Setup UI Component
         activity = ((VisaActivity) getActivity());
         View view = inflater.inflate(R.layout.fragment_noc_pay_and_submit, container, false);
         nocDetails = (LinearLayout) view.findViewById(R.id.nocDetails);
@@ -92,7 +94,7 @@ public class PayAndSubmit extends Fragment {
     }
 
     public void DrawLayout(LayoutInflater inflater) {
-
+//Filling UI Fields
         View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);
         TextView tvHeader = (TextView) view.findViewById(R.id.pay_header);
         tvHeader.setText("Visa Details");

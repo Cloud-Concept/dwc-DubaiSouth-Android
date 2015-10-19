@@ -34,6 +34,7 @@ import utilities.Utilities;
  * to handle interaction events.
  * Use the {@link SecondFragment#newInstance} factory method to
  * create an instance of this fragment.
+ * This related to UI Fragment
  */
 public class SecondFragment extends Fragment {
 

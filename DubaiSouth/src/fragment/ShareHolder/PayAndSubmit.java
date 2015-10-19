@@ -1,6 +1,5 @@
 package fragment.ShareHolder;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,12 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import cloudconcept.dwc.R;
 import fragmentActivity.ShareHolderActivity;
-import fragmentActivity.VisaActivity;
 
 /**
  * Created by M_Ghareeb on 8/26/2015.
@@ -67,6 +62,7 @@ public class PayAndSubmit extends Fragment {
     }
 
     ShareHolderActivity activity;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         activity = ((ShareHolderActivity) getActivity());
@@ -79,12 +75,13 @@ public class PayAndSubmit extends Fragment {
         image.setImageResource(R.mipmap.cancel_visa);
 
 
-
-
         DrawLayout(inflater);
         return view;
     }
 
+    /*
+    Creating UI Fields
+     */
     private void DrawLayout(LayoutInflater inflater) {
         View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);
         TextView tvHeader = (TextView) view.findViewById(R.id.pay_header);
@@ -96,29 +93,28 @@ public class PayAndSubmit extends Fragment {
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
 
-        tvLabel.setText( "Transfer From"+ "\t:");
+        tvLabel.setText("Transfer From" + "\t:");
         tvValue.setText(activity.getShareHolder().get_shareholder().getName());
         nocDetails.addView(view);
         view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
-        tvLabel.setText( "Transfer To"+ "\t:");
+        tvLabel.setText("Transfer To" + "\t:");
         tvValue.setText(activity.getSelectedShareHolder().get_shareholder().getName());
         nocDetails.addView(view);
         view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
         tvLabel.setText("No of Transferred Shares" + "\t:");
-        tvValue.setText(activity.getShareno()+"");
+        tvValue.setText(activity.getShareno() + "");
         nocDetails.addView(view);
 
         view = inflater.inflate(R.layout.wizards_form_field_details, null, false);
         tvLabel = (TextView) view.findViewById(R.id.pay_title);
         tvValue = (TextView) view.findViewById(R.id.pay_text);
         tvLabel.setText("Total Amount" + "\t:");
-        tvValue.setText(activity.geteServiceAdministration().getTotal_Amount__c()+"AED");
+        tvValue.setText(activity.geteServiceAdministration().getTotal_Amount__c() + "AED");
         nocDetails.addView(view);
-
 
 
     }

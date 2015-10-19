@@ -111,6 +111,9 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
                 Calendar now = Calendar.getInstance();
                 now.setTime(resultdate);
                 try {
+
+
+                    // Validate all inputs and make sure that all inputs are correct
                     Date expiryDate = sdf.parse(Expiry);
                     now.add(Calendar.MONTH, 6);
                     if (sdf.parse(sdf.format(now.getTime())).compareTo(expiryDate) < 0) {
@@ -295,6 +298,10 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
 
         }
     };
+// Submitting The Case by Calling #MobilePayAndSubmitWebService webservice
+// HTTP POST
+// param caseId -->> the container activity with inserted case id String value
+
 
     public class GetPickLists extends AsyncTask<String, Void, String> {
 
@@ -354,6 +361,11 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
 
         }
     }
+
+
+    // Creating  Case by Calling #MobileSubmitRenewVisaWebService webservice
+    // HTTP POST
+    // param as below
 
     public class AsyncCreateCase extends AsyncTask<Void, Void, String> {
         RestClient client;
@@ -437,6 +449,7 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
                             } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
                             }
+                            //getting all fields related to created case
                             client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                                 @Override
                                 public void onSuccess(RestRequest request, RestResponse response) {
@@ -479,6 +492,8 @@ public class VisaMainFragment extends BaseFragmentFiveSteps {
 
 
     private void createVisaRecord(RestClient client) {
+
+        //Getting the E-Service Administrator
         String SoqlEServiceQuery = String.format(eServiceAdmin, activity.getService_Requested__c());
         try {
             restRequest = RestRequest.getRequestForQuery(getActivity().getString(R.string.api_version), SoqlEServiceQuery);

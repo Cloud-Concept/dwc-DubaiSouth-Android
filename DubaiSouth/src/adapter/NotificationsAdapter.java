@@ -23,7 +23,6 @@ import com.salesforce.androidsdk.rest.RestResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +54,6 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         this.objects = objects;
         services = new String[]{"Visa Services", "NOC Services", "License Services", "Access Card Services", "Registration Services", "Leasing Services"};
         status_filter = new String[]{"Completed", "In Process", "Ready for collection", "Not Submitted", "Application Submitted", "Draft"};
-
     }
 
     @Override
@@ -76,8 +74,8 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
         relative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(!objects.get(position).isMessageRead()) {
+                //  Mark this Notification as read
+                if (!objects.get(position).isMessageRead()) {
                     Utilities.showloadingDialog(context);
                     new ClientManager(context, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(context, new ClientManager.RestClientCallback() {
                         @Override
@@ -87,7 +85,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
                                 return;
                             } else {
                                 Map<String, Object> caseFields = new HashMap<String, Object>();
-                                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                                 caseFields.put("Read_Date_and_Time__c", sdf.format(new Date(System.currentTimeMillis())));
                                 caseFields.put("isMessageRead__c", true);
                                 try {
@@ -99,8 +97,8 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
                                             Utilities.dismissLoadingDialog();
                                             objects.get(position).setIsMessageRead(true);
                                             notifyDataSetChanged();
-                                            new StoreData(context).setNotificationCount(new StoreData(context).getNotificationCount()-1+"");
-                                            ((BaseActivity)context).ManageBadgeNotification();
+                                            new StoreData(context).setNotificationCount(new StoreData(context).getNotificationCount() - 1 + "");
+                                            ((BaseActivity) context).ManageBadgeNotification();
                                         }
 
                                         @Override
@@ -171,7 +169,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
                     Map<String, Object> caseFields = new HashMap<String, Object>();
                     caseFields.put("Case_Rating_Score__c", v);
                     try {
-                            Utilities.showloadingDialog(context);
+                        Utilities.showloadingDialog(context);
                         final RestRequest restRequest = RestRequest.getRequestForUpdate(context.getString(R.string.api_version), "Case", objects.get(position).getCaseNotification().getId(), caseFields);
                         new ClientManager(context, SalesforceSDKManager.getInstance().getAccountType(), SalesforceSDKManager.getInstance().getLoginOptions(), SalesforceSDKManager.getInstance().shouldLogoutWhenTokenRevoked()).getRestClient(context, new ClientManager.RestClientCallback() {
                             @Override
@@ -184,7 +182,7 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
                                         @Override
                                         public void onSuccess(RestRequest request, RestResponse response) {
                                             Log.d("MyTag", "onSuccess " + response.toString());
-                                        Utilities.dismissLoadingDialog();
+                                            Utilities.dismissLoadingDialog();
                                             objects.get(position).getCaseNotification().setCase_Rating_Score(v + "");
                                         }
 
@@ -209,22 +207,23 @@ public class NotificationsAdapter extends ArrayAdapter<NotificationManagement> {
 
         return convertView;
     }
+
     @Override
     public boolean isEnabled(int position) {
         return true;
     }
 
-    private  Date GMTToCVT( Date date ){
+    private Date GMTToCVT(Date date) {
         TimeZone tz = TimeZone.getDefault();
-        Date ret = new Date( date.getTime() + tz.getRawOffset() );
+        Date ret = new Date(date.getTime() + tz.getRawOffset());
 
         // if we are now in DST, back off by the delta.  Note that we are checking the GMT date, this is the KEY.
-        if ( tz.inDaylightTime( ret )){
-            Date dstDate = new Date( ret.getTime() + tz.getDSTSavings() );
+        if (tz.inDaylightTime(ret)) {
+            Date dstDate = new Date(ret.getTime() + tz.getDSTSavings());
 
             // check to make sure we have not crossed back into standard time
             // this happens when we are on the cusp of DST (7pm the day before the change for PDT)
-            if ( tz.inDaylightTime( dstDate )){
+            if (tz.inDaylightTime(dstDate)) {
                 ret = dstDate;
             }
         }

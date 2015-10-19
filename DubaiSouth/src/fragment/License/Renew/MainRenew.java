@@ -195,6 +195,11 @@ LicenseActivity activity;
 
         }
     };
+
+// Submitting The Case by Calling #MobilePayAndSubmitWebService webservice
+// HTTP POST
+// param caseId -->> the container activity with inserted case id String value
+
     public class GetPickLists extends AsyncTask<String, Void, String> {
 
         private final RestClient client;
@@ -255,6 +260,10 @@ LicenseActivity activity;
 
         }
     }
+// Updating The Case by Calling #MobileRenewLicensetWebService webservice
+// HTTP POST
+// param caseId -->> the container activity with inserted case id String value
+// param licenseId -->> from Cashed User object
 
     public class UpdatecaseFields extends AsyncTask<String, Void, String> {
 

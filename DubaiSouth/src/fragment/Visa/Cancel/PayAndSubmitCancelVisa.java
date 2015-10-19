@@ -47,6 +47,8 @@ public class PayAndSubmitCancelVisa extends Fragment {
     }
 
     private void DrawLayout(LayoutInflater inflater) {
+
+        // Creating UI Fields
         View view = inflater.inflate(R.layout.wizard_form_field_pay_header, null, false);
         TextView tvHeader = (TextView) view.findViewById(R.id.pay_header);
         tvHeader.setText("Visa Details");

@@ -225,6 +225,12 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
 
         }
     };
+// Submitting The Case by Calling #MobileServiceUtilityWebService webservice
+// HTTP POST
+// param caseId -->> the container activity with inserted case id String value
+    // param actionType
+    // param licenseOperation
+
 
     public class GetPickLists extends AsyncTask<String, Void, String> {
 
@@ -298,7 +304,15 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
 
         }
     }
-
+    // Creating Case The Case by Calling #MobileServiceUtilityWebService webservice
+    // HTTP POST
+    // param AccountId
+    // param licenseId
+    // param removedActivityIds
+    // param currentLicBActivities
+    // param newActivityIds
+    // param actionType
+    // param licenseOperation
     public class AsyncCreateCase extends AsyncTask<Void, Void, String> {
         RestClient client;
         private String result;
@@ -402,6 +416,7 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
+                                //Getting Case Details
                                 client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                                     @Override
                                     public void onSuccess(RestRequest request, RestResponse response) {
@@ -447,6 +462,8 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
 
 
     private void createVisaRecord(RestClient client) {
+
+        // Getting E-Service Administrator
         String SoqlEServiceQuery = String.format(eServiceAdmin, activity.getService_Requested__c());
         try {
             restRequest = RestRequest.getRequestForQuery(getActivity().getString(R.string.api_version), SoqlEServiceQuery);
