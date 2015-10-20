@@ -36,6 +36,7 @@ import RestAPI.JSONConstants;
 import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
+import fragment.AttachmentPage;
 import fragment.BaseFragmentFiveSteps;
 import fragment.Cards.NOCAttachmentPage;
 import fragment.Cards.PayAndSubmit;
@@ -106,7 +107,7 @@ public class MainNewCardFragment extends BaseFragmentFiveSteps {
     @Override
     public Fragment getThirdFragment() {
         tvTitle.setText("Upload Document");
-        return NOCAttachmentPage.newInstance("");
+        return AttachmentPage.newInstance("");
     }
 
     @Override

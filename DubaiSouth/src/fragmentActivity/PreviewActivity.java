@@ -33,7 +33,6 @@ import cloudconcept.dwc.BaseActivity;
 import cloudconcept.dwc.R;
 import dataStorage.StoreData;
 import fragment.PreviewFragment;
-import fragmentActivity.CompanyNOC.CompanyNOCAttachmentPage;
 import model.Company_Documents__c;
 import utilities.Utilities;
 

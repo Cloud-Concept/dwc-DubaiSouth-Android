@@ -40,6 +40,7 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
+import fragment.AttachmentPage;
 import fragment.BaseFragmentFourStepsNew;
 import fragment.License.NOCAttachmentPage;
 import fragment.companyInfo.LicenseInfoFragment;
@@ -87,7 +88,7 @@ public class MainChangeOrRenewLicense extends BaseFragmentFourStepsNew {
     @Override
     public Fragment getThirdFragment() {
         tvTitle.setText("Upload Document");
-        return NOCAttachmentPage.newInstance("");
+        return AttachmentPage.newInstance("");
     }
 
     @Override

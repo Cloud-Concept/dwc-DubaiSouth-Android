@@ -68,6 +68,7 @@ public class CompanyNOCFormFieldPage extends Fragment {
     String visaQueryBuilder = "";
     String visaQuery = "Select ID, "+ "%s" +" FROM Account WHERE ID = " + "\'" + "%s" + "\'";
     ;
+    CompanyNocActivity activity;
     Visa _currentVisa;
     static Map<String, String> parameters;
     private static RestRequest restRequest;
@@ -91,6 +92,7 @@ public class CompanyNOCFormFieldPage extends Fragment {
         eServiceAdministration = Utilities.geteServiceAdministration();
         soql = SoqlStatements.getInstance().constructWebFormQuery(eServiceAdministration.getNew_Edit_VF_Generator__c());
         perFormFormFieldsRequest(soql);
+        activity= (CompanyNocActivity) getActivity();
         return view;
     }
 
@@ -116,20 +118,20 @@ public class CompanyNOCFormFieldPage extends Fragment {
                                 picklist=new ArrayList<FormField>();
 
                                 Log.d("", result.toString());
-                                CompanyNocMainFragment._webForm = SFResponseManager.parseWebFormObject(result.toString());
-                                for (int i = 0; i < CompanyNocMainFragment._webForm.get_formFields().size(); i++) {
-                                    if (!CompanyNocMainFragment._webForm.get_formFields().get(i).getType().equals("CUSTOMTEXT") && CompanyNocMainFragment._webForm.get_formFields().get(i).isParameter() == false && CompanyNocMainFragment._webForm.get_formFields().get(i).isQuery() == true) {
-                                        visaQueryBuilder += CompanyNocMainFragment._webForm.get_formFields().get(i).getTextValue() + ",";
-                                    }else if(!CompanyNocMainFragment._webForm.get_formFields().get(i).isParameter()&&CompanyNocMainFragment._webForm.get_formFields().get(i).getType().equals("PICKLIST")){
-                                        picklist.add(CompanyNocMainFragment._webForm.get_formFields().get(i));
+                                activity.set_webForm(SFResponseManager.parseWebFormObject(result.toString()));
+                                for (int i = 0; i < activity.get_webForm().get_formFields().size(); i++) {
+                                    if (!activity.get_webForm().get_formFields().get(i).getType().equals("CUSTOMTEXT") && activity.get_webForm().get_formFields().get(i).isParameter() == false && activity.get_webForm().get_formFields().get(i).isQuery() == true) {
+                                        visaQueryBuilder += activity.get_webForm().get_formFields().get(i).getTextValue() + ",";
+                                    }else if(!activity.get_webForm().get_formFields().get(i).isParameter()&&activity.get_webForm().get_formFields().get(i).getType().equals("PICKLIST")){
+                                        picklist.add(activity.get_webForm().get_formFields().get(i));
 
                                     }
                                 }
 
 
                                 visaQueryBuilder = visaQueryBuilder.substring(0, visaQueryBuilder.length() - 1);
-                                visaQuery = String.format(visaQuery, visaQueryBuilder, CompanyNocMainFragment.user.get_contact().get_account().getID());
-                                PerformVisaQueryValues(CompanyNocMainFragment._webForm, visaQuery);
+                                visaQuery = String.format(visaQuery, visaQueryBuilder, activity.getUser().get_contact().get_account().getID());
+                                PerformVisaQueryValues(activity.get_webForm(), visaQuery);
                             }
 
                             @Override

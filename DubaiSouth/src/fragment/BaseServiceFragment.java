@@ -341,7 +341,7 @@ btnBack.setVisibility(View.INVISIBLE);
         String ServiceThankYouMessageCards=String.format(getActivity().getString(R.string.ServiceThankYouMessageCards),(Utilities.geteServiceAdministration().getTotal_Amount__c()));
         String ServiceThankYouMessageNOCNote=String.format(getActivity().getString(R.string.ServiceThankYouMessageNOCNote),RXEmail);
         fragmentManager.beginTransaction()
-                .replace(R.id.content, getFifthFragment(ServiceThankYouMessage,ServiceThankYouMessageCards,ServiceThankYouMessageNOCNote))
+                .replace(R.id.content, getFifthFragment(ServiceThankYouMessage, ServiceThankYouMessageCards, ServiceThankYouMessageNOCNote))
                 .commit();
         btnNext.setText("Close");
         btnCancel.setVisibility(View.GONE);
@@ -350,4 +350,6 @@ btnBack.setVisibility(View.INVISIBLE);
         btnNOC5.setSelected(true);
         status = 5;
     }
+
+
 }

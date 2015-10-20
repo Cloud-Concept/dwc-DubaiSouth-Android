@@ -30,6 +30,7 @@ import java.util.Map;
 
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
+import fragment.AttachmentPage;
 import fragment.BaseFragmentFiveSteps;
 import fragment.BaseFragmentFourStepsNew;
 import fragment.License.NOCAttachmentPage;
@@ -68,7 +69,7 @@ LicenseActivity activity;
     @Override
     public Fragment getThirdFragment() {
         tvTitle.setText("Upload Document");
-        return NOCAttachmentPage.newInstance("");
+        return AttachmentPage.newInstance("");
     }
 
     @Override

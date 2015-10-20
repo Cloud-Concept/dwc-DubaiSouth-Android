@@ -38,6 +38,7 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
+import fragment.AttachmentPage;
 import fragment.BaseFragmentFourStepsNew;
 import fragment.Visa.NOCAttachmentPage;
 import fragmentActivity.NOCScreen.ThankYou;
@@ -82,7 +83,7 @@ public class CancelVisaMainFragment extends BaseFragmentFourStepsNew {
     @Override
     public Fragment getThirdFragment() {
         tvTitle.setText("Upload Document");
-        return NOCAttachmentPage.newInstance("Third");
+        return AttachmentPage.newInstance("Third");
     }
 
     @Override

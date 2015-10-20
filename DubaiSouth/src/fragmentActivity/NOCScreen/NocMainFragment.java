@@ -3,10 +3,13 @@ package fragmentActivity.NOCScreen;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.android.volley.NetworkResponse;
@@ -41,6 +44,7 @@ import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
 import dataStorage.StoreData;
+import fragment.AttachmentPage;
 import fragment.BaseServiceFragment;
 import model.Company_Documents__c;
 import model.FormField;
@@ -56,12 +60,10 @@ public class NocMainFragment extends BaseServiceFragment {
     static String caseRecordTypeId, nocRecordTypeId;
     public static NOC__c _noc;
     public static _case finalCase;
-    public static User user;
-    public static Map<String, Object> caseFields = new HashMap<String, Object>();
+
     public static Map<String, Object> serviceFields = new HashMap<String, Object>();
-    public static String insertedCaseId, insertedServiceId, caseNummberId;
-    public static WebForm _webForm;
-    private Receipt_Template__c eServiceAdministration;
+    public static String  caseNummberId;
+  NocActivity activity;
     private RestRequest restRequest;
     String serviceFieldCaseObjectName;
     NiftyDialogBuilder builder;
@@ -71,6 +73,14 @@ public class NocMainFragment extends BaseServiceFragment {
 
     public NocMainFragment() {
 
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        activity= (NocActivity) getActivity();
+        activity.setUser(new Gson().fromJson(new StoreData(activity).getUserDataAsString(), User.class));
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
@@ -88,7 +98,7 @@ public class NocMainFragment extends BaseServiceFragment {
     @Override
     public Fragment getThirdFragment() {
         tvTitle.setText("Upload Document");
-        return NOCAttachmentPage.newInstance("Third");
+        return AttachmentPage.newInstance("Third");
     }
 
     @Override
@@ -129,9 +139,9 @@ public class NocMainFragment extends BaseServiceFragment {
                     Utilities.showLongToast(getActivity(), "Please fill required fields");
                 }
             } else if (BaseServiceFragment.status == 3) {
-                if (NOCAttachmentPage._companyDocuments.size() > 0) {
-                    final ArrayList<Company_Documents__c> company_documents__cs = NOCAttachmentPage._companyDocuments;
-                    if (NOCAttachmentPage.ValidateAttachments()) {
+                if (activity.getCompanyDocuments().size() > 0) {
+                    final ArrayList<Company_Documents__c> company_documents__cs = activity.getCompanyDocuments();
+                    if (AttachmentPage.ValidateAttachments()) {
                         PerfromParentNext(BaseServiceFragment.btnNext);
 
                     } else {
@@ -152,7 +162,7 @@ public class NocMainFragment extends BaseServiceFragment {
 //                NocMainFragment.insertedServiceId = null;
 //                NocMainFragment.insertedCaseId = null;
             } else if (BaseServiceFragment.status == 4) {
-                if (NOCAttachmentPage._companyDocuments == null || NOCAttachmentPage._companyDocuments.size() == 0) {
+                if (activity.getCompanyDocuments() == null || activity.getCompanyDocuments().size() == 0) {
                     BaseServiceFragment.status = 3;
 
                     btnNOC3.setBackground(getActivity().getResources().getDrawable(R.drawable.noc_selector));
@@ -177,7 +187,7 @@ public class NocMainFragment extends BaseServiceFragment {
 
     private boolean required() {
         boolean result = true;
-        for (FormField field : _webForm.get_formFields()) {
+        for (FormField field : activity.get_webForm().get_formFields()) {
             if (field.isRequired()) {
                 String name = field.getName();
                 String stringValue = "";
@@ -222,18 +232,12 @@ public class NocMainFragment extends BaseServiceFragment {
         finalCase = new _case();
         Bundle bundle = new Bundle();
         bundle.putString("text", baseEmployee);
-        user = new Gson().fromJson(new StoreData(context).getUserDataAsString(), User.class);
+
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    public static void setCaseFields(Map<String, Object> caseFields) {
-        NocMainFragment.caseFields = caseFields;
-    }
 
-    public static Map<String, Object> getCaseFields() {
-        return caseFields;
-    }
 
     public static void setServiceFields(Map<String, Object> serviceFields) {
         NocMainFragment.serviceFields = serviceFields;
@@ -253,37 +257,37 @@ public class NocMainFragment extends BaseServiceFragment {
 
 
     public void createCaseRecord() {
-        eServiceAdministration = Utilities.geteServiceAdministration();
-        if (eServiceAdministration != null) {
-            Map<String, Object> caseFields = getCaseFields();
-            caseFields.put("Service_Requested__c", eServiceAdministration.getId());
-            caseFields.put("AccountId", user.get_contact().get_account().getID());
+        activity.seteServiceAdministration(Utilities.geteServiceAdministration());
+        if (activity.geteServiceAdministration() != null) {
+            Map<String, Object> caseFields = new HashMap<>();
+            caseFields.put("Service_Requested__c", activity.geteServiceAdministration().getId());
+            caseFields.put("AccountId", activity.getUser().get_contact().get_account().getID());
             caseFields.put("RecordTypeId", caseRecordTypeId);
             caseFields.put("Status", "Draft");
             caseFields.put("Type", "NOC Services");
             caseFields.put("Origin", "Mobile");
             caseFields.put("isCourierRequired__c", false);
             caseFields.put("Employee_Ref__c", NocActivity.get_visa().getVisa_Holder__r().getID());
-            caseFields.put("Service_Requested__c", eServiceAdministration.getID());
+            caseFields.put("Service_Requested__c", activity.geteServiceAdministration().getID());
             caseFields.put("Visa_Ref__c", NocActivity.get_visa().getID());
-            setCaseFields(caseFields);
+            activity.setCaseFields(caseFields);
         }
 
-        if (_webForm != null) {
-            Map<String, Object> caseFields = getCaseFields();
-            caseFields.put("Visual_Force_Generator__c", _webForm.getID());
-            setCaseFields(caseFields);
+        if (activity.get_webForm() != null) {
+            Map<String, Object> caseFields = activity.getCaseFields();
+            caseFields.put("Visual_Force_Generator__c", activity.get_webForm().getID());
+            activity.setCaseFields(caseFields);
         }
 
-        if (insertedCaseId != null && !insertedCaseId.equals("")) {
+        if (activity.getInsertedCaseId() != null && !activity.getInsertedCaseId().equals("")) {
             try {
-                restRequest = RestRequest.getRequestForUpdate(getActivity().getString(R.string.api_version), "Case", insertedCaseId, getCaseFields());
+                restRequest = RestRequest.getRequestForUpdate(getActivity().getString(R.string.api_version), "Case", activity.getInsertedCaseId(), activity.getCaseFields());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try {
-                restRequest = RestRequest.getRequestForCreate(getActivity().getString(R.string.api_version), "Case", getCaseFields());
+                restRequest = RestRequest.getRequestForCreate(getActivity().getString(R.string.api_version), "Case", activity.getCaseFields());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -302,10 +306,10 @@ public class NocMainFragment extends BaseServiceFragment {
                         public void onSuccess(RestRequest request, RestResponse response) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response.toString());
-                                insertedCaseId = jsonObject.getString("id");
+                                activity.setInsertedCaseId(jsonObject.getString("id"));
 
                                 try {
-                                    restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), SoqlStatements.getCaseNumberQuery(insertedCaseId));
+                                    restRequest = RestRequest.getRequestForQuery(getString(R.string.api_version), SoqlStatements.getCaseNumberQuery(activity.getInsertedCaseId()));
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
@@ -319,7 +323,7 @@ public class NocMainFragment extends BaseServiceFragment {
                                             JSONObject jsonRecord = jsonArray.getJSONObject(0);
                                             Log.d("resultcase", response.toString());
                                             caseNummberId = jsonRecord.getString("CaseNumber");
-                                            createServiceRecord(insertedCaseId);
+                                            createServiceRecord(activity.getInsertedCaseId());
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -336,7 +340,7 @@ public class NocMainFragment extends BaseServiceFragment {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 if(response.toString().equals("")){
-                                    createServiceRecord(insertedCaseId);
+                                    createServiceRecord(activity.getInsertedCaseId());
                                 }
                             }
                         }
@@ -362,11 +366,11 @@ public class NocMainFragment extends BaseServiceFragment {
 
         Map<String, Object> serviceFields = getServiceFields();
         serviceFields.put("Request__c", caseRecordTypeId);
-        serviceFields.put("Document_Name__c", eServiceAdministration.getService_Identifier__c());
+        serviceFields.put("Document_Name__c", activity.geteServiceAdministration().getService_Identifier__c());
         serviceFields.put("Person__c", NocActivity.get_visa().getVisa_Holder__r().getID());
         serviceFields.put("Current_Visa__c", NocActivity.get_visa().getID());
-        serviceFields.put("Current_Sponsor__c", user.get_contact().get_account().getID());
-        for (FormField field : NocMainFragment._webForm.get_formFields()) {
+        serviceFields.put("Current_Sponsor__c", activity.getUser().get_contact().get_account().getID());
+        for (FormField field : activity.get_webForm().get_formFields()) {
             if (field.getType().equals("CUSTOMTEXT") || field.isCalculated()) {
 
 
@@ -386,15 +390,15 @@ public class NocMainFragment extends BaseServiceFragment {
                 serviceFields.put(name, (stringValue.equals("true") || stringValue.equals("false") ? Boolean.valueOf(stringValue) : stringValue));
             }
         }
-        if (insertedServiceId != null && !insertedServiceId.equals("")) {
+        if (activity.getInsertedServiceId() != null && !activity.getInsertedServiceId().equals("")) {
             try {
-                restRequest = RestRequest.getRequestForUpdate(getActivity().getString(R.string.api_version), _webForm.getObject_Name(), insertedServiceId, serviceFields);
+                restRequest = RestRequest.getRequestForUpdate(getActivity().getString(R.string.api_version), activity.get_webForm().getObject_Name(), activity.getInsertedServiceId(), serviceFields);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try {
-                restRequest = RestRequest.getRequestForCreate(getActivity().getString(R.string.api_version), _webForm.getObject_Name(), serviceFields);
+                restRequest = RestRequest.getRequestForCreate(getActivity().getString(R.string.api_version), activity.get_webForm().getObject_Name(), serviceFields);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -412,8 +416,8 @@ public class NocMainFragment extends BaseServiceFragment {
                         public void onSuccess(RestRequest request, RestResponse response) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response.toString());
-                                insertedServiceId = jsonObject.getString("id");
-                                updateCaseRecord(insertedCaseId, insertedServiceId);
+                                activity.setInsertedServiceId(jsonObject.getString("id"));
+                                updateCaseRecord(activity.getInsertedCaseId(), activity.getInsertedServiceId());
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 if(response.toString().equals(""))
@@ -440,7 +444,7 @@ public class NocMainFragment extends BaseServiceFragment {
     public void updateCaseRecord(String insertedCaseId, String insertedServiceId) {
 
         Map<String, Object> fields = new HashMap<String, Object>();
-        fields.put(_webForm.getObject_Name(), insertedServiceId);
+        fields.put(activity.get_webForm().getObject_Name(), insertedServiceId);
 
         try {
             restRequest = RestRequest.getRequestForUpdate(getString(R.string.api_version), "Case", insertedCaseId, fields);
@@ -490,9 +494,9 @@ public class NocMainFragment extends BaseServiceFragment {
         HashMap<String, Object> fields = new HashMap<String, Object>();
         fields.put("Name", company_documents__c.getName());
         fields.put("eServices_Document__c", company_documents__c.getId());
-        fields.put("Company__c", user.get_contact().get_account().getID());
-        fields.put("Request__c", insertedCaseId);
-        fields.put(_webForm.getObject_Name(), insertedServiceId);
+        fields.put("Company__c", activity.getUser().get_contact().get_account().getID());
+        fields.put("Request__c", activity.getInsertedCaseId());
+        fields.put(activity.get_webForm().getObject_Name(), activity.getInsertedServiceId());
         fields.put("Attachment_Id__c", company_documents__c.getAttachment_Id__c());
         if (company_documents__c.getHasAttachmentBefore()) {
             try {
@@ -581,7 +585,7 @@ public class NocMainFragment extends BaseServiceFragment {
             StringEntity entity = null;
             try {
                 Map<String, String> map = new HashMap<String, String>();
-                map.put("caseId", NocMainFragment.insertedCaseId);
+                map.put("caseId", activity.getInsertedCaseId());
                 entity = new StringEntity(new JSONObject(map).toString(), "UTF-8");
                 entity.setContentType("application/json");
                 httppost.setEntity(entity);

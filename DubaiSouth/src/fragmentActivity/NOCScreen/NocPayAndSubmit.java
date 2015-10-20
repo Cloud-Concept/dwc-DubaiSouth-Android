@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import cloudconcept.dwc.R;
+import fragmentActivity.CompanyNOC.CompanyNocActivity;
 import fragmentActivity.CompanyNOC.CompanyNocMainFragment;
 import model.FormField;
 import model.NOC__c;
@@ -93,7 +94,7 @@ public class NocPayAndSubmit extends Fragment {
         if (mParam1.equals("Emp")) {
             person.setText(NocActivity.get_visa().getApplicant_Full_Name__c());
         } else
-            person.setText(CompanyNocMainFragment.user.get_contact().get_account().getName());
+            person.setText(((CompanyNocActivity)getActivity()).getUser().get_contact().get_account().getName());
         TextView ref = (TextView) view.findViewById(R.id.refnumber);
         if (mParam1.equals("Emp")) {
             ref.setText(NocMainFragment.caseNummberId);
@@ -117,9 +118,9 @@ public class NocPayAndSubmit extends Fragment {
     public void DrawLayout(LayoutInflater inflater) {
         List<FormField> formFields=null;
         if(mParam1.equals("Emp"))
-            formFields=NocMainFragment._webForm.get_formFields();
+            formFields=((NocActivity)getActivity()).get_webForm().get_formFields();
         else
-            formFields=CompanyNocMainFragment._webForm.get_formFields();
+            formFields=((CompanyNocActivity)getActivity()).get_webForm().get_formFields();
 
         for (FormField field : formFields) {
             if (field.getType().equals("CUSTOMTEXT")) {

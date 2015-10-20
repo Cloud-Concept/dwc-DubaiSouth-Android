@@ -66,7 +66,7 @@ public class NOCFormFieldPage extends Fragment {
     static Map<String, String> parameters;
     private static RestRequest restRequest;
     List<FormField> picklist;
-
+NocActivity activity;
     public static Fragment newInstance(String second) {
         NOCFormFieldPage fragment = new NOCFormFieldPage();
         Bundle bundle = new Bundle();
@@ -80,9 +80,9 @@ public class NOCFormFieldPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.noc_second_page, container, false);
+        activity= (NocActivity) getActivity();
         InitializeViews(view);
-        NocMainFragment fragment = (NocMainFragment) getParentFragment();
-        fragment.setTitle("Details");
+
         parameters.put("auth", new StoreData(getActivity()).getNOCAuthorityType());
         parameters.put("lang", new StoreData(getActivity().getApplicationContext()).getNOCLanguage());
         eServiceAdministration = Utilities.geteServiceAdministration();
@@ -112,18 +112,18 @@ public class NOCFormFieldPage extends Fragment {
                             public void onSuccess(RestRequest request, RestResponse result) {
                                 picklist = new ArrayList<FormField>();
                                 Log.d("", result.toString());
-                                NocMainFragment._webForm = SFResponseManager.parseWebFormObject(result.toString());
-                                for (int i = 0; i < NocMainFragment._webForm.get_formFields().size(); i++) {
-                                    if (!NocMainFragment._webForm.get_formFields().get(i).getType().equals("CUSTOMTEXT") && NocMainFragment._webForm.get_formFields().get(i).isParameter() == false && NocMainFragment._webForm.get_formFields().get(i).isQuery() == true) {
-                                        visaQueryBuilder += NocMainFragment._webForm.get_formFields().get(i).getTextValue() + ",";
-                                    } else if (!NocMainFragment._webForm.get_formFields().get(i).isParameter() && NocMainFragment._webForm.get_formFields().get(i).getType().equals("PICKLIST")) {
-                                        picklist.add(NocMainFragment._webForm.get_formFields().get(i));
+                                activity.set_webForm(SFResponseManager.parseWebFormObject(result.toString()));
+                                for (int i = 0; i < activity.get_webForm().get_formFields().size(); i++) {
+                                    if (!activity.get_webForm().get_formFields().get(i).getType().equals("CUSTOMTEXT") && activity.get_webForm().get_formFields().get(i).isParameter() == false && activity.get_webForm().get_formFields().get(i).isQuery() == true) {
+                                        visaQueryBuilder += activity.get_webForm().get_formFields().get(i).getTextValue() + ",";
+                                    } else if (!activity.get_webForm().get_formFields().get(i).isParameter() && activity.get_webForm().get_formFields().get(i).getType().equals("PICKLIST")) {
+                                        picklist.add(activity.get_webForm().get_formFields().get(i));
 
                                     }
                                 }
                                 visaQueryBuilder = visaQueryBuilder.substring(0, visaQueryBuilder.length() - 1);
                                 visaQuery = String.format(visaQuery, visaQueryBuilder, NocActivity.get_visa().getVisa_Holder__r().getID());
-                                PerformVisaQueryValues(NocMainFragment._webForm, visaQuery);
+                                PerformVisaQueryValues(activity.get_webForm(), visaQuery);
                             }
 
                             @Override

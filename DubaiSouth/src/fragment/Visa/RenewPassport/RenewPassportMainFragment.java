@@ -45,6 +45,7 @@ import RestAPI.SFResponseManager;
 import RestAPI.SoqlStatements;
 import cloudconcept.dwc.R;
 import custom.customdialog.NiftyDialogBuilder;
+import fragment.AttachmentPage;
 import fragment.BaseFragmentFiveSteps;
 import fragment.BaseFragmentFourStepsNew;
 import fragment.Visa.NOCAttachmentPage;
@@ -92,7 +93,7 @@ public class RenewPassportMainFragment extends BaseFragmentFourStepsNew {
     @Override
     public Fragment getThirdFragment() {
         tvTitle.setText("Upload Document");
-        return NOCAttachmentPage.newInstance("Third");
+        return AttachmentPage.newInstance("Third");
     }
 
     @Override
