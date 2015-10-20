@@ -94,7 +94,7 @@ public class CertificatesAndAgreementsFragment2 extends Fragment {
     private void CallTrueCopiesService(final CallType method, int offset, final int limit) {
         if (method == CallType.FIRSTTIME && !new StoreData(getActivity().getApplicationContext()).getCertificatesAgreementsResponse().equals("")) {
 
-//                eServices_document_checklist__cs = (ArrayList<EServices_Document_Checklist__c>) SFResponseManager.parseEServiceDocumentChecklist(new StoreData(getActivity().getApplicationContext()).getCertificatesAgreementsResponse());
+//                eServices_document_checklist__cs = (ArrayList<EServices_Document_Checklist__c>) SFResponseManager.parseEServiceDocumentChecklist2(new StoreData(getActivity().getApplicationContext()).getCertificatesAgreementsResponse());
             try {
                 JSONArray jsonArray = new JSONArray(new StoreData(getActivity().getApplicationContext()).getCertificatesAgreementsResponse());
                 eServices_document_checklist__cs = new ArrayList<>();
@@ -135,7 +135,7 @@ public class CertificatesAndAgreementsFragment2 extends Fragment {
                             @Override
                             public void onSuccess(RestRequest request, final RestResponse response) {
                                 try {
-                                    eServices_document_checklist__cs = (ArrayList<EServices_Document_Checklist__c>) SFResponseManager.parseEServiceDocumentChecklist(response.toString());
+                                    eServices_document_checklist__cs = (ArrayList<EServices_Document_Checklist__c>) SFResponseManager.parseEServiceDocumentChecklist2(response.toString());
                                     if (eServices_document_checklist__cs.size() > 0) {
                                         Gson gson = new Gson();
                                         String str = gson.toJson(eServices_document_checklist__cs);
